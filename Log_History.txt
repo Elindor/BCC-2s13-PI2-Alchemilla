@@ -1,0 +1,2 @@
+<GaNopper> 03/07/13
+  Repositório criado, arquivos gerados. Sempre identar após identificação no Log_history com um tab.
