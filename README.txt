@@ -1,6 +1,7 @@
 BCC-PI2
 =======
 
-Repositório para criação do projeto interativo II do Centro Universitário Senac, 2013. O nome será trocado uma vez que o projeto seja nomeado.
+Repositório para criação do projeto interativo II, Alchemilla, do Centro Universitário Senac em 2013.
+O intuito do jogo é ensinar quimica subjetivmente.
 
 O jogo
