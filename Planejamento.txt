@@ -1,0 +1,88 @@
+typedef struct{
+	int *Adress; (Para ligar a lista)
+	int num; (numero na lista)
+	char nome[100]; (nome do item, o que vai aparecer)
+	int tipo; (Define se há saída, se é ingrediente final, se é easter egg, etc.)
+	char info [1000]; (Descrição, clique direito)
+	img; (como colocar isso? nome da imagem, pra chamar 'img'.jpg?)
+	formul; (O mesmo)
+} item;
+
+--------------------------------------------------------------------------------------------------------
+
+main(){
+
+	init_addons
+
+	intro
+		init_intro
+		animação(fade in, rest(1~2), fade out)(usar som)
+		destroy intro
+
+	start_menu_principal
+    		enquanto sair = false
+
+    			-iniciar jogo
+        			destroy_menu_principal
+				seleciona_fase
+       		 			start_fase
+
+			-créditos(colocar animação?)
+      				load_creditos(imagem)
+				if(clicar em voltar)
+				destroy_creditos
+				voltar p/menu	
+        
+  			  -sair
+    				 sair = true
+     	 			 realmente sair?
+      	 			 destroy_menu_principal
+      	 			 fechar jogo
+}
+
+uma função para todas as fases ou uma função por fase?
+
+--------------------------------------------------------------------------------------------------------
+
+\* a = in1, b = in2, c = aux, e outs abaixo identicos aos de fora*\
+
+void checagem(char *a, char *b, char *c, char *out1, char *out2){ 
+    int x =0, n;
+    while (x < 2){
+        if(a == bla && b == blo && c = clic)
+            Escrever em out1, out2;
+            \*Se esta combinação tem bonus*\
+            (Escrever bonus direto na lista)
+
+
+        ...
+        [Todas as checagens]
+        ...
+
+        n = a;
+        a = b;
+        b = n;  
+        x++;
+    }
+}
+
+
+void add list(char *v){
+ - procura string na lista
+    (se achar) - não fazer nada.
+    (se chegar em FIM) - adicionar.
+
+}
+
+--------------------------------------------------------------------------------------------------------
+
+Matriz [2][n] para menu de reagentes.
+
+2 espaços em cima = in1, in2;
+2 abaixo = out1, out2;
+Reagente selecionado = aux;
+
+Contador para ajudar na inserção da lista?
+
+Algumas dicas/definições no inicio da fase? Baseado em tempo, erros, ou padrão?
+Contador de erros no default da checagem?
