@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-W -Wall
-EXEC = PI2_temp
+EXEC = Alchemilla
 SRC= $(wildcard *.c)
 OBJ= $(SRC:.c=.o)
 LIBS =-lallegro_primitives
