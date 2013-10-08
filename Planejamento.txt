@@ -86,3 +86,30 @@ Contador para ajudar na inserção da lista?
 
 Algumas dicas/definições no inicio da fase? Baseado em tempo, erros, ou padrão?
 Contador de erros no default da checagem?
+
+--------------------------------------------------------------------------------------------------------
+//Formatação p/ entradas de texto
+
+-Um txt pra carregar elementos
+	nº
+	nº
+	nº
+	.
+	.
+	.
+	-(fim)
+
+-Outro com TODOS os dados da struct
+	numero do elemento/n
+	nome/n
+	tipo
+	texto info
+	img do elemento
+	img/formula
+	- (final)
+	repete...
+
+-lista de checagem
+	duas entradas + reagente, duas saídas
+	´.´ para vazio
+	´-´ para final de reação
