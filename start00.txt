@@ -1,0 +1,15 @@
+start 00
+-
+01          // <- Numero atrelado ao elemento
+Azul        // <- Nome do elemento
+1           // <- valor inicial. 2 equivale a produto final, 3 a easter egg/piada.
+O azul é uma cor muito frequentemente encontrada. É uma das três cores básicas e possui nuances que tangeiam o roxo e o o verde. // <- informação sobre elemento, clique direito.
+- // <- Seta simples = Separação de elementos
+02
+Amarelo
+1
+O amarelo é uma cor usada varias vezes associada à claridade e luz. É uma cor bastante comum que tangeia o verde e o laranja.
+-- // <- seta dupla = separação de setor
+Preto // <- String impressa num canto da tela - Objetivo da fase
+--
+1 // <- reagentes ligados na fase. No caso, apenas a agua.
