@@ -40,7 +40,37 @@ main(){
       	 			 fechar jogo
 }
 
-uma função para todas as fases ou uma função por fase?
+start_fase
+	carregar elementos
+		abre arquivo start(número da fase).txt
+		while(não encontrar --)
+			procurar no arquivo stage(no caso só do prólogo, para testar) pelo elemento
+			carregar informações na lista de elementos iniciais
+		
+		carregar objetivo
+		carregar reagentes
+
+	while (1){
+		ação do player
+			clica em um elemento >> copia para in1
+			clica em outro elemento >> copia para in2
+	
+		preencheu dois espaços DE TIPO 1 || mudou reagente com dois espaços preenchidos de tipo 1 >> carrega lista de checagem
+			procura na lista pelos elementos ordenados: Menor, maior.
+			carrega lista de checagens
+			se houver uma combinação, carregar elemento(s) de saída e (se houver) bonus.
+		(como chamar os easter eggs?)
+	
+		se encontrou na lista a combinação >> preenche saída 		/*(se a reação não der nenhum resultado, avisar?)*/
+			adiciona na lista de elementos a serem usados
+		
+			clicar em saída >> adiciona elemento
+				se o resultado for o objetivo, libera botão de terminar fase (caso player decida procurar easter eggs ou ver as informações sobre o elemento final)
+				clicou em botão de completar fase >> return ;
+	
+		se não encontrou depois de 16 vezes, notificar de que há ajuda disponível. (se descobrir novo elemento, reseta o contador)
+
+	}
 
 --------------------------------------------------------------------------------------------------------
 
