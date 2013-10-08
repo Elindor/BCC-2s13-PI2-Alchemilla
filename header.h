@@ -11,3 +11,6 @@
 #include <allegro5/allegro_memfile.h>
 #include <allegro5/allegro_physfs.h>
 #include <allegro5/allegro_native_dialog.h>
+#define al_init() (al_install_system(ALLEGRO_VERSION_INT, atexit))
+
+bool al_install_mouse(void)
