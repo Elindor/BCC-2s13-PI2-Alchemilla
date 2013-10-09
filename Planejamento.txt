@@ -105,6 +105,8 @@ void add list(char *v){
 }
 
 --------------------------------------------------------------------------------------------------------
+			DETALHES ADICIONAIS - COMO SERÃO ESTRUTURADO POR DENTRO
+--------------------------------------------------------------------------------------------------------
 
 Matriz [2][n] para menu de reagentes.
 
@@ -117,6 +119,10 @@ Contador para ajudar na inserção da lista?
 Algumas dicas/definições no inicio da fase? Baseado em tempo, erros, ou padrão?
 Contador de erros no default da checagem?
 
+Tamanho da tela: 800x600
+
+--------------------------------------------------------------------------------------------------------
+					  ENTRADAS DE TXT
 --------------------------------------------------------------------------------------------------------
 //Formatação p/ entradas de texto
 
