@@ -1,26 +1,26 @@
 check 00
 :
-01 02 .    // <- Entrada total. Primeiro/segundo elemento (em int), reagente. O caractere '.' equivale sempre ao vázio.
-03 .       // <- Saída 1 e dois. A resposta aqui dá um numero, que é puxado pra saida de dados. Só vai pro menu quando clica na saída, chamando outra lista (stageNN)
+01 02 0    // <- Entrada total. Primeiro/segundo elemento (em int), reagente. O caractere '0' equivale sempre ao vázio.
+03 0       // <- Saída 1 e dois. A resposta aqui dá um numero, que é puxado pra saida de dados. Só vai pro menu quando clica na saída, chamando outra lista (stageNN)
 04         // <- Bonus. Nem todos tem, maioria serão um '.' .
 -
 04 01 1
-05 .
-.
+05 0
+0
 -
 04 02 1
-06 .
-.
+06 0
+0
 -
-02 05 .
-07 .
-.
+02 05 0
+07 0
+0
 -
-01 06 .
-08 .
-.
+01 06 0
+08 0
+0
 -
-07 08 .
-09 .
-.
+07 08 0
+09 0
+0
 !
