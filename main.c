@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -85,22 +84,3 @@ int checagem(int in1, int in2, int reag){
     
     return 0;
 } 
-
-int main(){
-    int a, b, r;
-    int check;
-    fase = 00;
-    printf("bla");
-    a = 01;
-    b = 02;
-    r = 00;
-    
-    check = checagem(a, b, r);
-    
-    
-    printf("In1 = %d\n in2 = %d\n reag = %d\n out1 = %d\n out2 = %d\n, extra = %d\n", a, b, r, out1, out2, outb);
-    
-    
-    
-    return 0;
-}
