@@ -21,12 +21,87 @@ char checklist[11], startlist[11], itemlist[11];	//Nomes dos arquivos que serão
 
 
 
+struct element{
+    int ElNum;
+    char ElName[30];
+    int Eltype;
+    struct element *prox;;
+};
+typedef struct element lista;
+
+
+
+
 void filenamesgen(){
 	sprintf (checklist, "check%d.txt", fase);		//
 	sprintf (startlist, "start%d.txt", fase);		// Isto gera os nomes dos 3 arquivos necessários para as leituras de cada função.
 	sprintf (itemlist, "stage%d.txt", fase);		//
 }
 
+
+                                        //*********************************************//
+void insert(int num, lista menu){       // LEMBRAR: O nome da lista TEM QUE SER MENU!!!//
+    lista *p, *q;                       //*********************************************//
+    p = menu;
+    q = menu -> prox;
+    while(q != NULL){
+        if(q -> ElNum == num)
+            return;
+        p = q;
+        q = q -> prox;
+    }
+    lista *nova;
+    nova = malloc(sizeof (lista));
+
+    FILE *file;
+    int x;
+    char confere;
+    file = fopen(itemlist, "r");
+    do
+        fscanf(file, "%c", &confere);       // procura traços / saidas.
+        if(confere == '-'){
+            fscanf(file, "%d", &x);         //verifica primeiro numero -> checa com valor num.
+            if(x == num){
+                nova -> ElNum = num;
+                fscanf(file, "%d", &nova -> ElName);
+                fscanf(file, "%d", &nova -> ElType);
+                /*
+                ou
+                fscanf(file, "%d", &x);
+                nova -> ElName = x;
+                fscanf(file, "%d", &x);
+                nova -> ElType = x;
+                */
+                nova -> prox = NULL;
+                fclose(file);
+                return;
+            }
+        }
+    while(confere != '!');
+    fclose(file);
+    return ;
+}
+
+//*****************************************************************************************
+//***********************                INCOMPLETO               *************************
+//*****************************************************************************************
+lista start_menu(){
+    FILE *start;
+    char confere;
+    int x;
+    file = fopen(startlist, "r");
+    do
+        fscanf(file, "%c", &confere);       // Vai até o começo da checagem.
+    while(confere != ':');
+
+    do
+    fscanf(file, "%d", &x);
+    insert(x, menu);
+    while(x != 45);
+
+
+}
+//*****************************************************************************************
 
 
 
