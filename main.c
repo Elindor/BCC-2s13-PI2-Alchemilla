@@ -162,3 +162,4 @@ int checagem(int in1, int in2, int reag){
     fclose(file);
     return 0;
 } 
+ 
