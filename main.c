@@ -15,23 +15,25 @@
 
 
 
-int out1, out2, outb;		//Variaveis globais, os numeros pra saida da tela de elementos.
-int fase;			//Variavel global, a fase do jogo.
+int out1, out2, outb;					//Variaveis globais, os numeros pra saida da tela de elementos.
+int fase;						//Variavel global, a fase do jogo.
+char checklist[11], startlist[11], itemlist[11];	//Nomes dos arquivos que serão usados
+
+
+
+void filenamesgen(){
+	sprintf (checklist, "check%d.txt", fase);		//
+	sprintf (startlist, "start%d.txt", fase);		// Isto gera os nomes dos 3 arquivos necessários para as leituras de cada função.
+	sprintf (itemlist, "stage%d.txt", fase);		//
+}
+
+
 
 
 int checagem(int in1, int in2, int reag){
-	FILE *checklist;
+	FILE *file;
 	int aux;					//Usado em ordenação e conferir entradas
-	char confere;               // Usado nos do/while e conferir reagente
-    int y = fase + 48;
-	char x = (char)y;
-	char *z = &x;
-    //char *z1 = &x1;
-    //char *z2 = &x2;
-	char archive[11];
-	strcpy (archive,"check");
-	strcat (archive, z);
-	strcat (archive,".txt");
+	char confere;               			// Usado nos do/while e conferir reagente
     
     
 	if(in1 > in2){
@@ -40,36 +42,37 @@ int checagem(int in1, int in2, int reag){
 		in2 = aux;
 	}
     
-	checklist = fopen("check00.txt", "r");
+	file = fopen(checklist, "r");
     
 	do
-        fscanf(checklist, "%c", &confere);		// Vai até o começo da checagem.
+        fscanf(file, "%c", &confere);		// Vai até o começo da checagem.
 	while(confere != ':');
     
 	do{
-		fscanf(checklist, "%d", &aux);
+		fscanf(file, "%d", &aux);
 		if(aux == in1){
-            fscanf(checklist, "%d", &aux);
+            fscanf(file, "%d", &aux);
 			if(aux == in2){
-				fscanf(checklist, "%d", &aux);
+				fscanf(file, "%d", &aux);
 				if(aux == reag){
                     
-					fscanf(checklist, "%d", &aux);
+					fscanf(file, "%d", &aux);
                     if(aux != 0){
                         out1 = aux;
                     }
                     
-                    fscanf(checklist, "%d", &aux);
+                    fscanf(file, "%d", &aux);
                     if(aux != 0){
                         out2 = aux;
                     }
                     
-                    fscanf(checklist, "%d", &aux);
+                    fscanf(file, "%d", &aux);
                     if(aux != 0){
                         outb = aux;
                         
                     }
-					
+		  			
+                    fclose(file);
                     return 1;
                     
 				}
@@ -77,10 +80,10 @@ int checagem(int in1, int in2, int reag){
 		}
         
 		do{
-			fscanf(checklist, "%c", &confere);
+			fscanf(file, "%c", &confere);
 		}while(confere != '-' || confere != '!');
 		
 	}while(confere != '!');
-    
+    fclose(file);
     return 0;
 } 
