@@ -1,11 +1,8 @@
-start 00
-:
 01        // <- Número do elemento a ser adicionado
 02
--         // <- seta dupla = separação de setor
+-1        // <- negativo = separação de setor
 09        // número do elemento objetivo
--
 Preto     // <- String impressa num canto da tela - Objetivo da fase
--
+-1
 1         // <- reagentes ligados na fase. No caso, apenas a agua.
-!
+-1
