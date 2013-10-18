@@ -66,7 +66,8 @@ void insert(int num, lista *menu){
             if(x == num){
                 nova -> ElNum = num;
                 while(confere != '\0'){
-                    fscanf(file, "%s", nova -> ElName);
+                    fgets(nova -> ElName, 30, file);
+                    //fscanf(file, "%s", nova -> ElName);
                     
                 }
                 fscanf(file, "%d", &nova -> ElType);
@@ -93,7 +94,8 @@ void start_menu(lista *menu){
         fscanf(file, "%d", &x);
     }    
     fscanf(file, "%d", &target);    //pega numero do objetivo p/ global
-    fscanf(file, "%s", targetname); //pega nome do objetivo p/ global
+    fgets(targetname, 30, file);
+    //fscanf(file, "%s", targetname); //pega nome do objetivo p/ global
     
     fscanf(file, "%d", &x); // Só pra tirar o próximo -1
     
