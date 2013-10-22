@@ -1,18 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-
-
-
-
-
-
-
-
-
-
-
+#include "leitura.h"
 
 
 int out1, out2; char out1name, out2name; //Variaveis globais, os numeros pra saida da tela de elementos.
