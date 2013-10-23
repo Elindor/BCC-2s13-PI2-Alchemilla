@@ -1,4 +1,4 @@
-#include "leitura.h"
+#include "struct.h"
 
 
 int out1, out2; char out1name, out2name; //Variaveis globais, os numeros pra saida da tela de elementos.
@@ -9,13 +9,6 @@ int tabreagentes[2][10];        //reagentes ativos
 
 
 
-struct element{
-    int ElNum;
-    char ElName[30];
-    int ElType;
-    struct element *prox;;
-};
-typedef struct element lista;
 
 
 
