@@ -1,44 +1,23 @@
-﻿#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "struct.h"
+
+
+int out1, out2; char out1name, out2name; //Variaveis globais, os numeros pra saida da tela de elementos.
+int fase; //Variavel global, a fase do jogo.
+char checklist[12], startlist[12], itemlist[12], infolist[11]; //Nomes dos arquivos que serão usados
+int target; char targetname[30]; //Objetivo da fase
+int tabreagentes[2][10];        //reagentes ativos
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-int out1, out2, outb;                   //Variaveis globais, os numeros pra saida da tela de elementos.
-int fase;                       //Variavel global, a fase do jogo.
-char checklist[12], startlist[12], itemlist[12];    //Nomes dos arquivos que serão usados
-int target;
-char targetname[30];
-int tabreagentes[2][10];
-
-
-
-struct element{
-    int ElNum;
-    char ElName[30];
-    int ElType;
-    struct element *prox;;
-};
-typedef struct element lista;
 
 
 
 
 void filenamesgen(){
-    sprintf (checklist, "check%02d.txt", fase);    //
-    sprintf (startlist, "start%02d.txt", fase);    // Isto gera os nomes dos 3 arquivos necessários para as leituras de cada função.
-    sprintf (itemlist, "stage%02d.txt", fase);    //
+    sprintf (checklist, "check%02d.txt", fase); //
+    sprintf (startlist, "start%02d.txt", fase); // Isto gera os nomes dos 4 arquivos necessários para as leituras de cada função.
+    sprintf (itemlist, "stage%02d.txt", fase); //
+    sprintf(infolist, "stage%02d.txt", fase)
 }
 
 
@@ -60,9 +39,9 @@ void insert(int num, lista *menu){
     int x;
     file = fopen(itemlist, "r");
     do{
-        fscanf(file, "%d", &x);       // procura traços / saidas.
+        fscanf(file, "%d", &x); // procura traços / saidas.
         if(x == -1){
-            fscanf(file, "%d", &x);         //verifica primeiro numero -> checa com valor num.
+            fscanf(file, "%d", &x); //verifica primeiro numero -> checa com valor num.
             if(x == num){
                 nova -> ElNum = num;
                 while(confere != '\0'){
@@ -92,8 +71,8 @@ void start_menu(lista *menu){
     while(x != -1){
         insert(x, menu);
         fscanf(file, "%d", &x);
-    }    
-    fscanf(file, "%d", &target);    //pega numero do objetivo p/ global
+    }
+    fscanf(file, "%d", &target); //pega numero do objetivo p/ global
     fgets(targetname, 30, file);
     //fscanf(file, "%s", targetname); //pega nome do objetivo p/ global
     
@@ -112,12 +91,35 @@ void start_menu(lista *menu){
 }
 
 
+char * nomeia(int num){
+FILE *info;
+    int aux; //Usado em ordenação e conferir entradas
+    char confere[1]; // Usado nos do/while e conferir reagente
+    char nome[30];
+    confere[0] = NULL;
 
+    file = fopen(checklist, "r");
+
+    do{
+        fscanf(info, "%d", &aux);
+        if(aux == num){
+            fgets(nome, 30, info);
+            fclose(info)
+            return nome;
+        }
+
+        do{
+            fgets(confere, 1, info)
+        }while(confere[1] != '-' && confere[1] != '!')
+    }while(confere[1] != '!');
+
+    fclose(info);
+    return NULL;
+}
 
 int checagem(int in1, int in2, int reag){
     FILE *file;
-    int aux;                    //Usado em ordenação e conferir entradas
-    char confere;                           // Usado nos do/while e conferir reagente
+    int aux; //Usado em ordenação e conferir entradas
     
     
     if(in1 > in2){
@@ -148,12 +150,12 @@ int checagem(int in1, int in2, int reag){
                     
                     fscanf(file, "%d", &aux);
                     if(aux != 0){
-                        outb = aux;
+                        insert(aux);
                         
                     }
                     
                     fclose(file);
-                    return 1;               // Se retornar um, faz checagem na lista INFO pelo nome dos elementos.
+                    return 1; // Se retornar um, faz checagem na lista INFO pelo nome dos elementos.
                     
                 }
             }
@@ -174,3 +176,4 @@ lista inicializa_lista(){
     l -> prox = NULL;
     return *l;
 }
+
