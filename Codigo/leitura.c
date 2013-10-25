@@ -5,7 +5,8 @@ int out1, out2; char out1name, out2name; //Variaveis globais, os numeros pra sai
 int fase; //Variavel global, a fase do jogo.
 char checklist[12], startlist[12], itemlist[12], infolist[11]; //Nomes dos arquivos que serão usados
 int target; char targetname[30]; //Objetivo da fase
-int tabreagentes[2][10];        //reagentes ativos
+int reagentes[10];        //reagentes ativos
+char reagname[30][10];    //e seus nomes
 
 
 
@@ -17,7 +18,7 @@ void filenamesgen(){
     sprintf (checklist, "check%02d.txt", fase); //
     sprintf (startlist, "start%02d.txt", fase); // Isto gera os nomes dos 4 arquivos necessários para as leituras de cada função.
     sprintf (itemlist, "stage%02d.txt", fase); //
-    sprintf(infolist, "stage%02d.txt", fase)
+    sprintf(infolist, "info%02d.txt", fase);
 }
 
 
@@ -61,11 +62,29 @@ void insert(int num, lista *menu){
     return ;
 }
 
+void nomeia_reag(int reagente, int i){
+FILE *reag;
+int aux; char confere;
+reag = fopen("reaglist", "r");
+do{
+        fscanf(info, "%d", &aux);
+        if(aux == reagente){
+            fgets(reagname[i], 30, info);
+            fclose(info);
+            return void;
+        }
+
+        do{
+            fgets(confere, 1, info);
+        }while(confere[1] != '-' && confere[1] != '!');
+    }while(confere[1] != '!');
+    return ;
+}
 
 void start_menu(lista *menu){
     FILE *file;
     int x;
-    file = fopen("start00.txt", "r");
+    file = fopen(startlist, "r");
     
     fscanf(file, "%d", &x);
     while(x != -1){
@@ -77,10 +96,16 @@ void start_menu(lista *menu){
     //fscanf(file, "%s", targetname); //pega nome do objetivo p/ global
     
     fscanf(file, "%d", &x); // Só pra tirar o próximo -1
-    
+    for(int i; i < 10; i++){
+        tabreagentes[i] = 0;
+
+    }
+    i = 0;
     fscanf(file, "%d", &x);
     while(x != -1){
-        printf("registra %d\n\n", x);
+        tabreagentes[i] = x;
+        nomeia_reag(x, i);
+        i++;
         fscanf(file, "%d", &x);
     }
     printf("EXIT");
@@ -104,13 +129,13 @@ FILE *info;
         fscanf(info, "%d", &aux);
         if(aux == num){
             fgets(nome, 30, info);
-            fclose(info)
+            fclose(info);
             return nome;
         }
 
         do{
-            fgets(confere, 1, info)
-        }while(confere[1] != '-' && confere[1] != '!')
+            fgets(confere, 1, info);
+        }while(confere[1] != '-' && confere[1] != '!');
     }while(confere[1] != '!');
 
     fclose(info);
@@ -176,4 +201,3 @@ lista inicializa_lista(){
     l -> prox = NULL;
     return *l;
 }
-
