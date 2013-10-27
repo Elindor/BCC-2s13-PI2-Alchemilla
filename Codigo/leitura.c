@@ -7,7 +7,7 @@ char checklist[12], startlist[12], itemlist[12], infolist[11]; //Nomes dos arqui
 int target; char targetname[30]; //Objetivo da fase
 int reagentes[10];        //reagentes ativos
 char reagname[30][10];    //e seus nomes
-
+char infoname[30], infosymbol[30], infotext[500];    // Para janela de informações
 
 
 
@@ -23,12 +23,12 @@ void filenamesgen(){
 
 
 
-void insert(int num, lista *menu){
-    lista *p, *q;
-    p = menu;
-    q = menu -> prox;
-    while(q != NULL){
-        if(q -> ElNum == num)
+void insert(int num, lista *menu){              //
+    lista *p, *q;                               //  Esta função é responsável por inserir elementos na lista dinamica
+    p = menu;                                   // de elementos. Ela é ativada ao clicar em um botão de out(int num) e
+    q = menu -> prox;                           // insere numa lista dinamica (lista *menu) todas as informações
+    while(q != NULL){                           // correspondentes ao numero do elemento.
+        if(q -> ElNum == num)                   //
             return;
         p = q;
         q = q -> prox;
@@ -62,13 +62,13 @@ void insert(int num, lista *menu){
     return ;
 }
 
-void nomeia_reag(int reagente, int i){
-FILE *reag;
-int aux; char descarta[30];
-reag = fopen("reaglist", "r");
-do{
-        fscanf(info, "%d", &aux);
-        if(aux == reagente){
+void nomeia_reag(int reagente, int i){              //
+FILE *reag;                                         //  Esta função é chamada dentro da função start_menu.
+int aux; char descarta[30];                         // Ela recebe os reagentes da lista de entrada, e insere-os num
+reag = fopen("reaglist", "r");                      // vetor global, e então esta função aqui deverá ler os numeros no
+do{                                                 // vetor global e inserir os nomes adequados na interface.
+        fscanf(info, "%d", &aux);                   // Os nomes são inseridos na matriz reagname[10][30].
+        if(aux == reagente){                        //
             fgets(reagname[i], 30, info);
             fclose(reag);
             return void;
@@ -82,12 +82,35 @@ do{
     return ;
 }
 
-void start_menu(lista *menu){
-    FILE *file;
-    int x;
-    file = fopen(startlist, "r");
-    
-    fscanf(file, "%d", &x);
+void info_reag(int reagente){                       //
+FILE *reag;                                         //  Esta função é ativada com o clique direito sobre um reagente.
+int aux; char descarta[30];                         // Ela coloca as informações do elemento correspondente no vetor
+reag = fopen("reaglist", "r");                      // de reagentes, e coloca-os nos vetores de informação antes da
+do{                                                 // janela de informações mostrá-los.
+        fscanf(info, "%d", &aux);                   //
+        if(aux == reagente){
+            fgets(infoname, 30, info);
+            fgets(infosymbol, 30, info);
+            fgets(infotext, 30, info);
+            fclose(reag);
+            return void;
+        }
+
+        
+        fgets(confere, 30, info);
+        fgets(confere, 30, info);
+        fgets(confere, 30, info);
+    }while(aux != 0);
+    fcloe(reag);
+    return ;
+}
+
+void start_menu(lista *menu){                       //
+    FILE *file;                                     //  Esta função deve ser chamada no inicio da fase. Ela lÊ os
+    int x;                                          // parametros iniciais e os insere no menu, em seguida lê o objetivo
+    file = fopen(startlist, "r");                   // da fase e também o inicializa, e por fim faz o mesmo nos
+                                                    // reagentes, já os nomeando pela função nomeia_reag.
+    fscanf(file, "%d", &x);                         //
     while(x != -1){
         insert(x, menu);
         fscanf(file, "%d", &x);
@@ -117,12 +140,12 @@ void start_menu(lista *menu){
 }
 
 
-char * nomeia(int num){
-FILE *info;
-    int aux; //Usado em ordenação e conferir entradas
-    char confere[1]; // Usado nos do/while e conferir reagente
-    char nome[30];
-    confere[0] = NULL;
+char * nomeia(int num){                                             //
+FILE *info;                                                         //  Esta função recebe o numero de um elemento criado
+    int aux; //Usado em ordenação e conferir entradas               // e devolve o nome. É feita para incializar após a
+    char confere[1]; // Usado nos do/while e conferir reagente      // criação de elementos novos, para então nomeá-los
+    char nome[30];                                                  // na interface. (out1name/out2name recebem o resultado)
+    confere[0] = NULL;                                              //
 
     file = fopen(checklist, "r");
 
@@ -143,12 +166,35 @@ FILE *info;
     return NULL;
 }
 
-int checagem(int in1, int in2, int reag){
-    FILE *file;
-    int aux; //Usado em ordenação e conferir entradas
-    
-    
-    if(in1 > in2){
+void info_elem(int elem){                   //
+FILE *reag;                                 //  Esta função é ativada ao clicar com o direito em um elemento.
+int aux; char descarta[30];                 // Ela buscará todas as informações correspondente ao numero (int elem) que
+reag = fopen(infolist, "r");                // ela recebe, e dará o nome, simbolo e descrição antes da janela de
+do{                                         // informações carregar.
+        fscanf(info, "%d", &aux);           //
+        if(aux == elem){
+            fgets(infoname, 30, info);
+            fgets(infosymbol, 30, info);
+            fgets(infotext, 30, info);
+            fclose(reag);
+            return void;
+        }
+
+        
+        fgets(confere, 30, info);
+        fgets(confere, 30, info);
+        fgets(confere, 30, info);
+    }while(aux != 0);
+    fcloe(reag);
+    return ;
+}
+
+int checagem(int in1, int in2, int reag){                       //
+    FILE *file;                                                 //  Esta função é executada toda a vez em que os espaços
+    int aux; //Usado em ordenação e conferir entradas           // para elementos são preenchidos. Ela ordena os elementos
+                                                                // e procura por resultados da combinação inserida.
+                                                                //  A função devolve sucesso ou falha
+    if(in1 > in2){                                              //
         aux = in1;
         in1 = in2;
         in2 = aux;
@@ -196,9 +242,9 @@ int checagem(int in1, int in2, int reag){
     return 0;
 }
 
-lista inicializa_lista(){
-    
-    lista *l = malloc(sizeof(lista));
-    l -> prox = NULL;
+lista inicializa_lista(){                                   //
+                                                            //  Esta função inicializa a lista dinamica de elementos
+    lista *l = malloc(sizeof(lista));                       // e deve ser chamada no inicio do jogo (ou fase?)
+    l -> prox = NULL;                                       //
     return *l;
 }
