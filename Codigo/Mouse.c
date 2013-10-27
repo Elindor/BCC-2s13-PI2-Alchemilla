@@ -1,7 +1,7 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 #include <stdio.h>
-//#include <stdbool.h>
+#include <stdbool.h>
 
 int larguraTela = 800;
 int alturaTela = 600;
@@ -14,6 +14,8 @@ ALLEGRO_BITMAP *botaoIntro = 0;
 void fadeInOut(ALLEGRO_BITMAP *img, int velocidade, int restTime);
 void intro();
 bool checkSair(ALLEGRO_EVENT *evento, ALLEGRO_TIMEOUT *timeout);
+bool checkBotao(ALLEGRO_BITMAP *botao, float x, float y, ALLEGRO_EVENT *evento);
+bool clickBotao(ALLEGRO_BITMAP *botao, float x, float y, ALLEGRO_EVENT *evento);
 bool init();
 void finish();
 
@@ -24,38 +26,19 @@ int main(){
         return 0;
     }
 
+    ALLEGRO_EVENT evento;
+    ALLEGRO_TIMEOUT timeout;
+
+    al_init_timeout(&timeout, 0.005);
+
     //Codigo
     al_register_event_source(filaEventos, al_get_mouse_event_source());
 
-    bool botaoClick = false, noBotao = false;
-
-    while(!botaoClick){
+    while(!clickBotao(botaoIntro, larguraTela/2, alturaTela/2, &evento)){
         ALLEGRO_EVENT evento;
         ALLEGRO_TIMEOUT timeout;
-        al_init_timeout(&timeout, 0.001);
 
         al_init_timeout(&timeout, 0.001);
-        int checkEvento = al_wait_for_event_until(filaEventos, &evento, &timeout);
-
-        if(checkEvento && evento.type == ALLEGRO_EVENT_MOUSE_AXES){
-            if(evento.mouse.x >= larguraTela/2 - al_get_bitmap_width(botaoIntro)/2 &&
-            evento.mouse.x <= larguraTela/2 + al_get_bitmap_width(botaoIntro)/2 &&
-            evento.mouse.y >= alturaTela/2 - al_get_bitmap_height(botaoIntro)/2 &&
-            evento.mouse.y <= alturaTela/2 + al_get_bitmap_height(botaoIntro)/2)
-                noBotao = true;
-
-            else
-                noBotao = false;
-        }
-
-        else if(checkEvento && evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP){
-            if(evento.mouse.x >= larguraTela/2 - al_get_bitmap_width(botaoIntro)/2 &&
-            evento.mouse.x <= larguraTela/2 + al_get_bitmap_width(botaoIntro)/2 &&
-            evento.mouse.y >= alturaTela/2 - al_get_bitmap_height(botaoIntro)/2 &&
-            evento.mouse.y <= alturaTela/2 + al_get_bitmap_height(botaoIntro)/2){
-                botaoClick = true;
-            }
-        }
 
         if(checkSair(&evento, &timeout))
             return 0;
@@ -64,7 +47,7 @@ int main(){
 
         al_set_target_bitmap(al_get_backbuffer(janela));
 
-        if(noBotao == true)
+        if(checkBotao(botaoIntro, larguraTela/2, alturaTela/2, &evento))
             al_draw_tinted_bitmap(botaoIntro, al_map_rgba(128, 128, 128, 0), larguraTela/3, alturaTela/3, 0);
 
         else
@@ -175,6 +158,37 @@ bool checkSair(ALLEGRO_EVENT *evento, ALLEGRO_TIMEOUT *timeout){
     if(checkEvento && evento->type == ALLEGRO_EVENT_DISPLAY_CLOSE){
         finish();
         return true;
+    }
+
+    return false;
+}
+
+bool checkBotao(ALLEGRO_BITMAP *botao, float x, float y, ALLEGRO_EVENT *evento){
+    al_register_event_source(filaEventos, al_get_mouse_event_source());
+
+    al_wait_for_event_timed(filaEventos, evento, 0.001);
+
+    if(evento->mouse.x >= x - al_get_bitmap_width(botao)/2 &&
+    evento->mouse.x <= x + al_get_bitmap_width(botao)/2 &&
+    evento->mouse.y >= y - al_get_bitmap_height(botao)/2 &&
+    evento->mouse.y <= y + al_get_bitmap_height(botao)/2)
+        return true;
+
+    return false;
+}
+
+bool clickBotao(ALLEGRO_BITMAP *botao, float x, float y, ALLEGRO_EVENT *evento){
+    al_register_event_source(filaEventos, al_get_mouse_event_source());
+
+    al_wait_for_event_timed(filaEventos, evento, 0.001);
+
+    if(evento->type == ALLEGRO_EVENT_MOUSE_BUTTON_UP){
+        if(evento->mouse.x >= x - al_get_bitmap_width(botao)/2 &&
+        evento->mouse.x <= x + al_get_bitmap_width(botao)/2 &&
+        evento->mouse.y >= y - al_get_bitmap_height(botao)/2 &&
+        evento->mouse.y <= y + al_get_bitmap_height(botao)/2){
+            return true;
+        }
     }
 
     return false;
