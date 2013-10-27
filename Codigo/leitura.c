@@ -64,20 +64,21 @@ void insert(int num, lista *menu){
 
 void nomeia_reag(int reagente, int i){
 FILE *reag;
-int aux; char confere;
+int aux; char descarta[30];
 reag = fopen("reaglist", "r");
 do{
         fscanf(info, "%d", &aux);
         if(aux == reagente){
             fgets(reagname[i], 30, info);
-            fclose(info);
+            fclose(reag);
             return void;
         }
 
-        do{
-            fgets(confere, 1, info);
-        }while(confere[1] != '-' && confere[1] != '!');
-    }while(confere[1] != '!');
+        
+        fgets(confere, 30, info);
+        fgets(confere, 30, info);
+    }while(aux != 0);
+    fcloe(reag);
     return ;
 }
 
