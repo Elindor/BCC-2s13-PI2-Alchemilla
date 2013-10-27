@@ -1,7 +1,7 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 #include <stdio.h>
-#include <stdbool.h>
+//#include <stdbool.h>
 
 int larguraTela = 800;
 int alturaTela = 600;
@@ -13,7 +13,7 @@ ALLEGRO_BITMAP *botaoIntro = 0;
 
 void fadeInOut(ALLEGRO_BITMAP *img, int velocidade, int restTime);
 void intro();
-bool botaoSair();
+bool checkSair(ALLEGRO_EVENT *evento, ALLEGRO_TIMEOUT *timeout);
 bool init();
 void finish();
 
@@ -27,38 +27,38 @@ int main(){
     //Codigo
     al_register_event_source(filaEventos, al_get_mouse_event_source());
 
-    bool sair = false, noBotao = false;
+    bool botaoClick = false, noBotao = false;
 
-    while(!sair){
-        while(!al_is_event_queue_empty(filaEventos)){
-            ALLEGRO_EVENT evento;
-            al_wait_for_event(filaEventos, &evento);
+    while(!botaoClick){
+        ALLEGRO_EVENT evento;
+        ALLEGRO_TIMEOUT timeout;
+        al_init_timeout(&timeout, 0.001);
 
-            if(evento.type == ALLEGRO_EVENT_MOUSE_AXES){
-                if(evento.mouse.x >= larguraTela/2 - al_get_bitmap_width(botaoIntro)/2 &&
-                evento.mouse.x <= larguraTela/2 + al_get_bitmap_width(botaoIntro)/2 &&
-                evento.mouse.y >= alturaTela/2 - al_get_bitmap_height(botaoIntro)/2 &&
-                evento.mouse.y <= alturaTela/2 + al_get_bitmap_height(botaoIntro)/2)
-                    noBotao = true;
+        al_init_timeout(&timeout, 0.001);
+        int checkEvento = al_wait_for_event_until(filaEventos, &evento, &timeout);
 
-                else
-                    noBotao = false;
-            }
+        if(checkEvento && evento.type == ALLEGRO_EVENT_MOUSE_AXES){
+            if(evento.mouse.x >= larguraTela/2 - al_get_bitmap_width(botaoIntro)/2 &&
+            evento.mouse.x <= larguraTela/2 + al_get_bitmap_width(botaoIntro)/2 &&
+            evento.mouse.y >= alturaTela/2 - al_get_bitmap_height(botaoIntro)/2 &&
+            evento.mouse.y <= alturaTela/2 + al_get_bitmap_height(botaoIntro)/2)
+                noBotao = true;
 
-            else if(evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP){
-                if(evento.mouse.x >= larguraTela/2 - al_get_bitmap_width(botaoIntro)/2 &&
-                evento.mouse.x <= larguraTela/2 + al_get_bitmap_width(botaoIntro)/2 &&
-                evento.mouse.y >= alturaTela/2 - al_get_bitmap_height(botaoIntro)/2 &&
-                evento.mouse.y <= alturaTela/2 + al_get_bitmap_height(botaoIntro)/2){
-                    sair = true;
-                }
+            else
+                noBotao = false;
+        }
+
+        else if(checkEvento && evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP){
+            if(evento.mouse.x >= larguraTela/2 - al_get_bitmap_width(botaoIntro)/2 &&
+            evento.mouse.x <= larguraTela/2 + al_get_bitmap_width(botaoIntro)/2 &&
+            evento.mouse.y >= alturaTela/2 - al_get_bitmap_height(botaoIntro)/2 &&
+            evento.mouse.y <= alturaTela/2 + al_get_bitmap_height(botaoIntro)/2){
+                botaoClick = true;
             }
         }
 
-        if(botaoSair()){
-            finish();
+        if(checkSair(&evento, &timeout))
             return 0;
-        }
 
         al_clear_to_color(al_map_rgb(0, 0, 0));
 
@@ -130,18 +130,18 @@ bool init(){
         return false;
     }
 
-	return true;
+    return true;
 }
 
 void finish(){
-	al_destroy_bitmap(background);
+    al_destroy_bitmap(background);
     al_destroy_bitmap(botaoIntro);
     al_destroy_display(janela);
     al_destroy_event_queue(filaEventos);
 }
 
 void intro(){
-    fadeInOut(background, 8, 2);        //Fade in e fade out +- 0.5 seg cada + 2 segs em al_rest
+    fadeInOut(background, 8, 1);        //Fade in e fade out +- 0.5 seg cada + 1 seg em al_rest
 }
 
 void fadeInOut(ALLEGRO_BITMAP *img, int velocidade, int restTime){
@@ -166,19 +166,16 @@ void fadeInOut(ALLEGRO_BITMAP *img, int velocidade, int restTime){
     }
 }
 
-bool botaoSair(){
+bool checkSair(ALLEGRO_EVENT *evento, ALLEGRO_TIMEOUT *timeout){
 
     al_register_event_source(filaEventos, al_get_display_event_source(janela));
 
-    ALLEGRO_EVENT evento;
+    int checkEvento = al_wait_for_event_until(filaEventos, evento, timeout);
 
-    ALLEGRO_TIMEOUT timeout;
-
-    al_init_timeout(&timeout, 0.001);
-    int checkEvento = al_wait_for_event_until(filaEventos, &evento, &timeout);
-
-    if(checkEvento && evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
+    if(checkEvento && evento->type == ALLEGRO_EVENT_DISPLAY_CLOSE){
+        finish();
         return true;
+    }
 
     return false;
 }
