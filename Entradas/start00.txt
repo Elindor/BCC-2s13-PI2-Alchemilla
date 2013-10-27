@@ -1,4 +1,4 @@
-01        // <- Número do elemento a ser adicionado
+﻿01        // <- Número do elemento a ser adicionado
 02
 -1        // <- negativo = separação de setor
 09        // número do elemento objetivo

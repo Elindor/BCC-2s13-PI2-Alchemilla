@@ -1,24 +1,44 @@
-01 02 0    // <- Entrada total. Primeiro/segundo elemento (em int), reagente. O caractere '0' equivale sempre ao vázio.
+﻿01 02 0    // <- Entrada total. Primeiro/segundo elemento (em int), reagente. O caractere '0' equivale sempre ao vázio.
+
 03 0       // <- Saída 1 e dois. A resposta aqui dá um numero, que é puxado pra saida de dados. Só vai pro menu quando clica na saída, chamando outra lista (stageNN)
+
 04         // <- Bonus. Nem todos tem, maioria serão um '.' .
+
 -1
+
 01 04 1
+
 05 0
 0
+
 -1
+
 02 04 1
+
 06 0
+
 0
+
 -1
+
 02 05 0
+
 07 0
 0
+
 -1
+
 01 06 0
+
 08 0
 0
+
 -1
+
 07 08 0
+
 09 0
+
 0
+
 -2

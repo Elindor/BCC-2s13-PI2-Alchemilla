@@ -13,15 +13,16 @@ ALLEGRO_BITMAP *botaoIntro = 0;
 
 void fadeInOut(ALLEGRO_BITMAP *img, int velocidade, int restTime);
 void intro();
+bool botaoSair();
 bool init();
 void finish();
 
 int main(){
 
-	if(init() == false){
-		printf("Erro\n");
-		return 0;
-	}
+    if(init() == false){
+        printf("Erro\n");
+        return 0;
+    }
 
     //Codigo
     al_register_event_source(filaEventos, al_get_mouse_event_source());
@@ -54,30 +55,32 @@ int main(){
             }
         }
 
+        if(botaoSair()){
+            finish();
+            return 0;
+        }
+
         al_clear_to_color(al_map_rgb(0, 0, 0));
 
         al_set_target_bitmap(al_get_backbuffer(janela));
 
-        //draw bitmap e draw tinted bitmap sao orientados a aprtir do pixel (0,0), entao p/
-        //"centralizar", dividir por 2 (pra ficar no centro da tela, portanto, dividir por 4)
         if(noBotao == true)
-            al_draw_tinted_bitmap(botaoIntro, al_map_rgba(128, 128, 128, 0), larguraTela/4, alturaTela/4, 0);
+            al_draw_tinted_bitmap(botaoIntro, al_map_rgba(128, 128, 128, 0), larguraTela/3, alturaTela/3, 0);
 
         else
-        	al_draw_bitmap(botaoIntro, larguraTela/4, alturaTela/4, 0);
+            al_draw_bitmap(botaoIntro, larguraTela/3, alturaTela/3, 0);
 
         al_flip_display();
     }
 
     intro();
 
-	finish();
+    finish();
 
     return 0;
 }
 
 bool init(){
-	//inits (Y U NO funciona em uma funcao separada???)
     if(!al_init()){
         fprintf(stderr, "Allegro nao foi carregado.\n");
         return false;
@@ -108,13 +111,13 @@ bool init(){
         return false;
     }
 
-    background = al_load_bitmap("the game.png");
+    background = al_load_bitmap("Imagem/the game.png");
     if(!background){
         fprintf(stderr, "Bitmap nao foi criado.\n");
         return false;
     }
 
-    botaoIntro = al_load_bitmap("botao.png");
+    botaoIntro = al_load_bitmap("Imagem/botao.png");
     if(!botaoIntro){
         fprintf(stderr, "Botao nao foi criado.\n");
         return false;
@@ -161,4 +164,21 @@ void fadeInOut(ALLEGRO_BITMAP *img, int velocidade, int restTime){
         al_flip_display();
         al_rest(0.015);
     }
+}
+
+bool botaoSair(){
+
+    al_register_event_source(filaEventos, al_get_display_event_source(janela));
+
+    ALLEGRO_EVENT evento;
+
+    ALLEGRO_TIMEOUT timeout;
+
+    al_init_timeout(&timeout, 0.001);
+    int checkEvento = al_wait_for_event_until(filaEventos, &evento, &timeout);
+
+    if(checkEvento && evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
+        return true;
+
+    return false;
 }
