@@ -71,26 +71,26 @@ int main(){
         }
 
         //Checagens de maouse sobre botão
-        if(checkBotao(botao1, 774.5, 76, &evento))        //Caso o mouse esteja em cima do botão
-            al_draw_tinted_bitmap(botao1, al_map_rgba(128, 128, 128, 0), 774.5, 76, 0);   //Draw com mask
+        if(checkBotao(botao1, 824.5, 126, &evento))        //Caso o mouse esteja em cima do botão
+            al_draw_tinted_bitmap(botao1, al_map_rgba(128, 128, 128, 128), 774.5, 76, 0);   //Draw com mask
 
         else
             al_draw_bitmap(botao1, 774.5, 76, 0);         //Draw padrão
 
-        if(checkBotao(botao2, 775, 165, &evento))        //Caso o mouse esteja em cima do botão
-            al_draw_tinted_bitmap(botao2, al_map_rgba(128, 128, 128, 0), 775, 165, 0);   //Draw com mask
+        if(checkBotao(botao2, 825, 215, &evento))        //Caso o mouse esteja em cima do botão
+            al_draw_tinted_bitmap(botao2, al_map_rgba(128, 128, 128, 128), 775, 165, 0);   //Draw com mask
 
         else
             al_draw_bitmap(botao2, 775, 165, 0);         //Draw padrão
 
-        if(checkBotao(botao3, 775, 255, &evento))        //Caso o mouse esteja em cima do botão
-            al_draw_tinted_bitmap(botao3, al_map_rgba(128, 128, 128, 0), 775, 255, 0);   //Draw com mask
+        if(checkBotao(botao3,825, 305, &evento))        //Caso o mouse esteja em cima do botão
+            al_draw_tinted_bitmap(botao3, al_map_rgba(128, 128, 128, 128), 775, 255, 0);   //Draw com mask
 
         else
             al_draw_bitmap(botao3, 775, 255, 0);         //Draw padrão
 
-        if(checkBotao(botao4, 774.5, 343, &evento))        //Caso o mouse esteja em cima do botão
-            al_draw_tinted_bitmap(botao4, al_map_rgba(128, 128, 128, 0), 774.5, 343, 0);   //Draw com mask
+        if(checkBotao(botao4, 824.5, 393, &evento))        //Caso o mouse esteja em cima do botão
+            al_draw_tinted_bitmap(botao4, al_map_rgba(128, 128, 128, 128), 774.5, 343, 0);   //Draw com mask
 
         else
             al_draw_bitmap(botao4, 774.5, 343, 0);         //Draw padrão
