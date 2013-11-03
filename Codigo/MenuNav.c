@@ -2,6 +2,8 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
+#include <allegro5/allegro_audio.h>
+#include <allegro5/allegro_acodec.h>
 
 #include <stdio.h>
 //#include <stdbool.h>
@@ -29,6 +31,11 @@ ALLEGRO_FONT *fonte = NULL;
 
 ALLEGRO_BITMAP *botao = NULL;
 
+ALLEGRO_AUDIO_STREAM *bgm = NULL;
+
+ALLEGRO_SAMPLE *somNoBotao = NULL;
+ALLEGRO_SAMPLE *somClickBotao = NULL;
+
 ALLEGRO_EVENT evento;
 
 //Protótipos
@@ -52,6 +59,9 @@ int main(){
         return -1;
     }
 
+    al_attach_audio_stream_to_mixer(bgm, al_get_default_mixer());
+    al_set_audio_stream_playing(bgm, true);
+
     while(!checkSair(&evento, mainFila)){       //Enquanto o botão não for clicado
 
         al_clear_to_color(al_map_rgb(0, 0, 0));                                 //Limpa a tela
@@ -62,9 +72,7 @@ int main(){
         }
 
         else if(clickBotao(741, 909, 187, 243, &evento, mainFila)){
-            introInit();
-            fadeInOut(introImg, 10, 1);
-            introFinish();
+            intro();
         }
 
         else if(clickBotao(741, 909, 277, 333, &evento, mainFila)){
@@ -130,6 +138,21 @@ bool mainInit(){                                                                
         return false;
     }
 
+    if(!al_install_audio()){
+        fprintf(stderr, "Erro ao instalar audio.\n");
+        return false;
+    }
+
+    if(!al_init_acodec_addon()){
+        fprintf(stderr, "Erro ao instalar codec de audio.\n");
+        return false;
+    }
+
+
+    if(!al_reserve_samples(1)){
+        fprintf(stderr, "Erro ao alocar canais de audio.\n");
+        return false;
+    }
 
     janela = al_create_display(larguraTela, alturaTela);                            //Cria a janela
     if(!janela){                                                                    //Se a janela não for criada
@@ -171,6 +194,20 @@ bool mainInit(){                                                                
         return false;
     }
 
+    bgm = al_load_audio_stream("Audio/bgm.ogg", 4, 1024);
+    if(!bgm){
+        fprintf(stderr, "Erro ao criar bgm.\n");
+        al_destroy_display(janela);
+        return false;
+    }
+
+    somClickBotao = al_load_sample("Audio/badDisk.wav");
+    if(!somClickBotao){
+        fprintf(stderr, "Erro ao criar somClickBotao.\n");
+        al_destroy_display(janela);
+        return false;
+    }
+
     return true;                                                                    //Tudo em ordem
 }
 
@@ -179,6 +216,9 @@ void mainFinish(){                          //Desaloca a memória
     al_destroy_display(janela);
     al_destroy_event_queue(mainFila);
     al_destroy_font(fonte);
+    al_destroy_audio_stream(bgm);
+    al_destroy_sample(somNoBotao);
+    al_destroy_sample(somClickBotao);
 }
 
 bool intro(){                       //Chamada simplificada de fadeInOut
@@ -251,6 +291,7 @@ bool clickBotao(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, A
         evento->mouse.x <= xb &&
         evento->mouse.y >= ya &&
         evento->mouse.y <= yb){
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
             return true;
         }
     }
