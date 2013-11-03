@@ -4,7 +4,7 @@
 #include <allegro5/allegro_ttf.h>
 
 #include <stdio.h>
-#include <stdbool.h>
+//#include <stdbool.h>
 
 //Define endereço p/ botões de mouse
 #define LMB 0x01
@@ -18,7 +18,8 @@ ALLEGRO_DISPLAY *janela = NULL;
 
 ALLEGRO_BITMAP *introImg = NULL;
 
-ALLEGRO_EVENT_QUEUE *filaEventos = NULL;
+ALLEGRO_EVENT_QUEUE *mainFila = NULL;
+ALLEGRO_EVENT_QUEUE *selectFila = NULL;
 
 ALLEGRO_BITMAP *menuA = NULL;
 
@@ -32,10 +33,10 @@ ALLEGRO_EVENT evento;
 
 //Protótipos
 void fadeInOut(ALLEGRO_BITMAP *img, int velocidade, int restTime);                  //Função de fade in, espera e fade out
-int intro();                                                                       //Chamada simplificada de fadeInOut
-bool checkSair(ALLEGRO_EVENT *evento);                                              //Verifica se o ícone de fechar programa foi acionado
-bool checkBotao(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento);    //Verifica se o mouse está sobre o botão
-bool clickBotao(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento);    //Verifica se o botão foi clicado
+bool intro();                                                                       //Chamada simplificada de fadeInOut
+bool checkSair(ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila);                                              //Verifica se o ícone de fechar programa foi acionado
+bool checkBotao(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila);    //Verifica se o mouse está sobre o botão
+bool clickBotao(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila);    //Verifica se o botão foi clicado
 bool mainInit();                                                                        //Inicia os componentes
 bool introInit();
 bool selectInit();
@@ -51,57 +52,62 @@ int main(){
         return -1;
     }
 
-    while(!checkSair(&evento)){       //Enquanto o botão não for clicado
+    while(!checkSair(&evento, mainFila)){       //Enquanto o botão não for clicado
 
         al_clear_to_color(al_map_rgb(0, 0, 0));                                 //Limpa a tela
         al_draw_bitmap(menuA, 0, 0, 0);
 
-        if(clickBotao(740, 909, 98, 154, &evento)){
+        if(clickBotao(740, 909, 98, 154, &evento, mainFila)){
             selectMenu();
         }
 
-        else if(clickBotao(741, 909, 187, 243, &evento)){
-            intro();
+        else if(clickBotao(741, 909, 187, 243, &evento, mainFila)){
+            introInit();
+            fadeInOut(introImg, 10, 1);
+            introFinish();
         }
 
-        else if(clickBotao(741, 909, 277, 333, &evento)){
+        else if(clickBotao(741, 909, 277, 333, &evento, mainFila)){
             intro();
             mainFinish();
             return 0;
         }
 
-        else if(clickBotao(740, 909, 365, 421, &evento)){
+        else if(clickBotao(740, 909, 365, 421, &evento, mainFila)){
             mainFinish();
             return 0;
         }
 
         //Checagens de maouse sobre botão
-        if(checkBotao(740, 909, 98, 154, &evento))        //Caso o mouse esteja em cima do botão
+        if(checkBotao(740, 909, 98, 154, &evento, mainFila))        //Caso o mouse esteja em cima do botão
             al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 824.5, 98, ALLEGRO_ALIGN_CENTRE, "Jogar");
 
         else
             al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 824.5, 98, ALLEGRO_ALIGN_CENTRE, "Jogar");
 
-        if(checkBotao(741, 909, 187, 243, &evento))        //Caso o mouse esteja em cima do botão
+        if(checkBotao(741, 909, 187, 243, &evento, mainFila))        //Caso o mouse esteja em cima do botão
             al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 825, 187, ALLEGRO_ALIGN_CENTRE, "Intro");
 
         else
             al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 825, 187, ALLEGRO_ALIGN_CENTRE, "Intro");
 
-        if(checkBotao(741, 909, 277, 333, &evento))        //Caso o mouse esteja em cima do botão
+        if(checkBotao(741, 909, 277, 333, &evento, mainFila))        //Caso o mouse esteja em cima do botão
            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 825, 277, ALLEGRO_ALIGN_CENTRE, "Intro e sair");
 
         else  
             al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 825, 277, ALLEGRO_ALIGN_CENTRE, "Intro e sair");
 
-        if(checkBotao(740, 909, 365, 421, &evento))        //Caso o mouse esteja em cima do botão
+        if(checkBotao(740, 909, 365, 421, &evento, mainFila))        //Caso o mouse esteja em cima do botão
             al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 824.5, 365, ALLEGRO_ALIGN_CENTRE, "Sair");
 
         else
             al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 824.5, 365, ALLEGRO_ALIGN_CENTRE, "Sair");
 
         al_flip_display();                                                      //Atualiza a tela
+        al_drop_next_event(mainFila);
     }
+
+    mainFinish();
 
     return 0;
 }
@@ -145,8 +151,8 @@ bool mainInit(){                                                                
         return false;
     }
 
-    filaEventos = al_create_event_queue();                                          //Cria fila de eventos
-    if(!filaEventos){                                                               //Fila não criada
+    mainFila = al_create_event_queue();                                          //Cria fila de eventos
+    if(!mainFila){                                                               //Fila não criada
         fprintf(stderr, "Fila de eventos nao foi criada.\n");
         al_destroy_display(janela);
         return false;
@@ -171,19 +177,21 @@ bool mainInit(){                                                                
 void mainFinish(){                          //Desaloca a memória
     al_destroy_bitmap(menuA);
     al_destroy_display(janela);
-    al_destroy_event_queue(filaEventos);
+    al_destroy_event_queue(mainFila);
     al_destroy_font(fonte);
 }
 
-int intro(){                       //Chamada simplificada de fadeInOut
+bool intro(){                       //Chamada simplificada de fadeInOut
     if(!introInit()){
         printf("Erro.\n");
-        return -1;
+        return false;
     }
 
     fadeInOut(introImg, 8, 2);        //Fade in e fade out +- 0.5 seg cada + 2 segs em al_rest
 
     introFinish();
+
+    return true;
 }
 
 void fadeInOut(ALLEGRO_BITMAP *img, int velocidade, int restTime){              //Função de fade in, espera e fade out
@@ -206,44 +214,45 @@ void fadeInOut(ALLEGRO_BITMAP *img, int velocidade, int restTime){              
     }
 }
 
-bool checkSair(ALLEGRO_EVENT *evento){                                      //Verifica se o ícone de fechar programa foi acionado
-    al_register_event_source(filaEventos, al_get_display_event_source(janela)); //Registra a fonte do evento (janela)
+bool checkSair(ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila){                                      //Verifica se o ícone de fechar programa foi acionado
+    al_register_event_source(fila, al_get_display_event_source(janela)); //Registra a fonte do evento (janela)
 
-    al_wait_for_event_timed(filaEventos, evento, 0.05);                         //Espera 0.05 até que algum evento apareça
+    al_wait_for_event_timed(fila, evento, 0.05);                         //Espera 0.05 até que algum evento apareça
 
     if(evento->type == ALLEGRO_EVENT_DISPLAY_CLOSE){                            //Se o tipo do evento for fechar a janela
-        mainFinish();
         return true;
     }
 
     return false;
 }
 
-bool checkBotao(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento){    //Verifica se o mouse está sobre o botão
-    al_register_event_source(filaEventos, al_get_mouse_event_source());                 //Registra fonte dos eventos (mouse)
+bool checkBotao(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila){    //Verifica se o mouse está sobre o botão
+    al_register_event_source(fila, al_get_mouse_event_source());                 //Registra fonte dos eventos (mouse)
 
-    al_wait_for_event_timed(filaEventos, evento, 0.001);                                //Espera 0.001 até que algum evento apareça
+    al_wait_for_event_timed(fila, evento, 0.001);                                //Espera 0.001 até que algum evento apareça
 
     if(evento->mouse.x >= xa &&                                                         //Calcula a "hitbox" do bitmap
     evento->mouse.x <= xb &&                                                            //Draw bitmap tem como referencia o pixel esquerdo superior,
     evento->mouse.y >= ya &&                                                            //mas para comparar área, usa-se o pixel central
-    evento->mouse.y <= yb)
+    evento->mouse.y <= yb){
         return true;
+    }
 
     return false;                                                       //Caso o mouse não esteja nessa "hitbox"
 }
 
-bool clickBotao(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento){    //Verifica se o botão foi clicado
-    al_register_event_source(filaEventos, al_get_mouse_event_source());                 //Registra fonte dos eventos (mouse)
+bool clickBotao(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila){    //Verifica se o botão foi clicado
+    al_register_event_source(fila, al_get_mouse_event_source());                 //Registra fonte dos eventos (mouse)
     
-    al_wait_for_event_timed(filaEventos, evento, 0.001);                                //Espera 0.001 até que algum evento apareça
+    al_wait_for_event_timed(fila, evento, 0.001);                                //Espera 0.001 até que algum evento apareça
 
     if(evento->type == ALLEGRO_EVENT_MOUSE_BUTTON_UP && evento->mouse.button == LMB){   //Além de calcular a hitbox, verifica o evento foi um clique
         if(evento->mouse.x >= xa &&                                                     //E se foi com o botão esquerdo do mouse
         evento->mouse.x <= xb &&
         evento->mouse.y >= ya &&
-        evento->mouse.y <= yb)
+        evento->mouse.y <= yb){
             return true;
+        }
     }
 
     return false;
@@ -276,12 +285,23 @@ bool selectInit(){
         return false;
     }
 
+    selectFila = al_create_event_queue();                                          //Cria fila de eventos
+    if(!selectFila){                                                               //Fila não criada
+        fprintf(stderr, "Fila de eventos nao foi criada.\n");
+        al_destroy_bitmap(menuB);
+        al_destroy_bitmap(botao);
+        mainFinish();
+        return false;
+    }
+
+
     return true;
 }
 
 void selectFinish(){
     al_destroy_bitmap(menuB);
     al_destroy_bitmap(botao);
+    al_destroy_event_queue(selectFila);
 }
 
 void introFinish(){
@@ -296,44 +316,44 @@ int selectMenu(){
     }
 
     while(1){
-        if(checkSair(&evento)){
+        if(checkSair(&evento, selectFila)){
             break;
         }
 
         al_clear_to_color(al_map_rgb(0, 0, 0));
         al_draw_bitmap(menuB, 0, 0, 0);
 
-        if(checkBotao(742, 911, 114, 170, &evento))        //Caso o mouse esteja em cima do botão
+        if(checkBotao(742, 911, 114, 170, &evento, selectFila))        //Caso o mouse esteja em cima do botão
             al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 826.5, 114, ALLEGRO_ALIGN_CENTRE, "Fase 1");
 
         else
             al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 826.5, 114, ALLEGRO_ALIGN_CENTRE, "Fase 1");
 
-        if(checkBotao(741, 910, 204, 260, &evento))        //Caso o mouse esteja em cima do botão
+        if(checkBotao(741, 910, 204, 260, &evento, selectFila))        //Caso o mouse esteja em cima do botão
             al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 825.5, 204, ALLEGRO_ALIGN_CENTRE, "Fase 2");
 
         else
             al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 825.5, 204, ALLEGRO_ALIGN_CENTRE, "Fase 2");
 
-        if(checkBotao(740, 909, 293, 349, &evento))        //Caso o mouse esteja em cima do botão
+        if(checkBotao(740, 909, 293, 349, &evento, selectFila))        //Caso o mouse esteja em cima do botão
             al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 824.5, 293, ALLEGRO_ALIGN_CENTRE, "Fase 3");
 
         else
             al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 824.5, 293, ALLEGRO_ALIGN_CENTRE, "Fase 3");
 
-        if(checkBotao(739, 908, 382, 438, &evento))        //Caso o mouse esteja em cima do botão
+        if(checkBotao(739, 908, 382, 438, &evento, selectFila))        //Caso o mouse esteja em cima do botão
             al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 823.5, 382, ALLEGRO_ALIGN_CENTRE, "Fase 4");
 
         else
             al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 823.5, 382, ALLEGRO_ALIGN_CENTRE, "Fase 4");
 
-        if(checkBotao(739, 908, 471, 527, &evento))        //Caso o mouse esteja em cima do botão
+        if(checkBotao(739, 908, 471, 527, &evento, selectFila))        //Caso o mouse esteja em cima do botão
             al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 823.5, 471, ALLEGRO_ALIGN_CENTRE, "Fase 5");
 
         else
             al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 823.5, 471, ALLEGRO_ALIGN_CENTRE, "Fase 5");
 
-        if(checkBotao(739, 908, 560, 616, &evento))        //Caso o mouse esteja em cima do botão
+        if(checkBotao(739, 908, 560, 616, &evento, selectFila))        //Caso o mouse esteja em cima do botão
             al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 823.5, 560, ALLEGRO_ALIGN_CENTRE, "Fase 6");
 
         else
@@ -341,13 +361,13 @@ int selectMenu(){
 
         //////////////////////////////////////////
 
-        if(checkBotao(0, 100, 0, 100, &evento))
+        if(checkBotao(0, 100, 0, 100, &evento, selectFila))
             al_draw_tinted_bitmap(botao, (al_map_rgba(128, 128, 128, 0)), 0, 0, 0);
 
         else
             al_draw_bitmap(botao, 0, 0, 0);
 
-        if(clickBotao(0, 100, 0, 100, &evento)){
+        if(clickBotao(0, 100, 0, 100, &evento, selectFila)){
             break;
         }
 
