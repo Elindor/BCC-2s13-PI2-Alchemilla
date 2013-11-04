@@ -1,7 +1,7 @@
 #include "struct.h"
 
 
-int out1, out2; char out1name, out2name; //Variaveis globais, os numeros pra saida da tela de elementos.
+int in1, in2, inreag, out1, out2; char out1name, out2name, in1name, in2name, inreagname; //Variaveis globais, os numeros pra saida da tela de elementos.
 int fase; //Variavel global, a fase do jogo.
 char checklist[12], startlist[12], itemlist[12], infolist[11]; //Nomes dos arquivos que serão usados
 int target; char targetname[30]; //Objetivo da fase
