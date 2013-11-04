@@ -12,8 +12,7 @@ void nomeia_reag(int reagente, int i);
 void info_elem(int elem);
 void info_reag(int reagente);
 
-extern int out1, out2, fase, target, reagentes[10]; 
-extern char out1name, out2name, checklist[12], startlist[12], itemlist[12], infolist[11], targetname[30], reagname[30][10], infoname[30], infosymbol[30], infotext[500];
-
+extern int out1, out2, fase, int in1, in2, inreag, target, reagentes[10]; 
+extern char out1name, out2name, checklist[12], startlist[12], itemlist[12], infolist[11], targetname[30], reagname[30][10], infoname[30], infosymbol[30], infotext[500], in1name, in2name, inreagname;
 
 #endif
