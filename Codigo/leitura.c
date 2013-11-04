@@ -21,6 +21,26 @@ void filenamesgen(){
     sprintf(infolist, "info%02d.txt", fase);
 }
 
+void useElement(int elem, lista *menu){         //
+    if(in2 != 0)                                //  Esta fuinção é responsável por ler um struct(clicado) e adicioná-lo
+        return;                                 // nos espaços de entrada da reação. Ele recebe o numero clicado da lista
+                                                // (por ordem), procura até chegar na informação do struct, e então coloca
+    for(int i = 1; i < elem; i++){              // adequadamente no espaço correto.
+        if(menu -> prox = NULL)                 //
+            return;
+        menu = menu -> prox;
+    }
+
+    if(in1 == 0){
+        in1 = menu -> Elnum;
+        in1name = menu -> ElName;
+    }
+    else{
+        in2 = menu -> Elnum;
+        in2name = menu -> ElName;
+    }
+}
+
 
 
 void insert(int num, lista *menu){              //
@@ -82,6 +102,8 @@ do{                                                 // vetor global e inserir os
     return ;
 }
 
+
+
 void info_reag(int reagente){                       //
 FILE *reag;                                         //  Esta função é ativada com o clique direito sobre um reagente.
 int aux; char descarta[30];                         // Ela coloca as informações do elemento correspondente no vetor
@@ -121,13 +143,13 @@ void start_menu(lista *menu){                       //
     
     fscanf(file, "%d", &x); // Só pra tirar o próximo -1
     for(int i; i < 10; i++){
-        tabreagentes[i] = 0;
-
+        reagentes[i] = 0;
+        reagname[i][30] = NULL
     }
     i = 0;
     fscanf(file, "%d", &x);
     while(x != -1){
-        tabreagentes[i] = x;
+        reagentes[i] = x;
         nomeia_reag(x, i);
         i++;
         fscanf(file, "%d", &x);
