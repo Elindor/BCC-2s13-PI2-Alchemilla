@@ -4,8 +4,12 @@ int gameMenu(int NSNumeroDaFase){
     filenamesgen();
     start_menu(*menu);
 
+     while(1){
+        if(checkSair(&evento, selectFila)){
+            break;
+        }
 
-    while(1){
+
         else if(clickBotao(201, 317, 597, 712, &evento)){   // Reag1
                     inreag = reagentes[0];
                     inreagname = reagname[0];
@@ -243,6 +247,7 @@ int gameMenu(int NSNumeroDaFase){
             else
                 al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 526, ALLEGRO_ALIGN_CENTRE, "%s", menu -> prox -> prox -> prox -> prox -> prox -> prox -> prox -> prox -> prox -> ElName);
     
-    }
+    
+    al_flip_display();
 
 }
