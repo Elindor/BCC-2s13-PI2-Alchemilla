@@ -1,3 +1,5 @@
+#include "header.h"
+
 //Define endereço p/ botões de mouse
 #define LMB 0x01
 #define RMB 0x02
