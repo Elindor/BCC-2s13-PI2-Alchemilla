@@ -7,7 +7,7 @@ void filenamesgen();
 void insert(int num, lista *menu);
 void start_menu(lista *menu);
 char * nomeia(int num);
-int checagem(int in1, int in2, int reag);
+int checagem(int in1, int in2, int reag, lista *menu);
 lista inicializa_lista();
 void nomeia_reag(int reagente, int i);
 void info_elem(int elem);
