@@ -4,6 +4,8 @@
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_audio.h>
 #include <allegro5/allegro_acodec.h>
+#include "leitura.h"
+#include "struct.h"
 
 #include <stdio.h>
 //#include <stdbool.h>
