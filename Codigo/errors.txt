@@ -1,0 +1,111 @@
+1>------ Build started: Project: Alchemilla, Configuration: Debug Win32 ------
+1>  leitura.c
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(34): error C2440: '=' : cannot convert from 'char [30]' to 'char'
+1>          There is no context in which this conversion is possible
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(37): error C2039: 'Elnum' : is not a member of 'element'
+1>          d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\struct.h(5) : see declaration of 'element'
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(38): error C2440: '=' : cannot convert from 'char [30]' to 'char'
+1>          There is no context in which this conversion is possible
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(53): error C2440: '=' : cannot convert from 'void *' to 'lista *'
+1>          Conversion from 'void*' to pointer to non-'void' requires an explicit cast
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(86): error C2065: 'info' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(88): error C2065: 'info' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(94): error C2065: 'info' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(95): error C2065: 'info' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(106): error C2065: 'info' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(108): error C2065: 'info' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(109): error C2065: 'info' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(110): error C2065: 'info' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(116): error C2065: 'info' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(117): error C2065: 'info' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(118): error C2065: 'info' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(166): error C2065: 'file' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(173): error C2440: 'return' : cannot convert from 'char' to 'char *'
+1>          Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or function-style cast
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(190): error C2065: 'info' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(192): error C2065: 'info' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(193): error C2065: 'info' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(194): error C2065: 'info' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(196): error C2062: type 'void' unexpected
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(200): error C2065: 'info' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(201): error C2065: 'info' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(202): error C2065: 'info' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(204): error C3861: 'fcloe': identifier not found
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(241): error C2660: 'insert' : function does not take 1 arguments
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(253): error C2065: 'x' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(254): error C2065: 'x' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(256): error C2065: 'x' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(263): error C2440: 'initializing' : cannot convert from 'void *' to 'lista *'
+1>          Conversion from 'void*' to pointer to non-'void' requires an explicit cast
+1>  allegroFuncoes.c
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(9): error C2143: syntax error : missing ';' before '*'
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(9): error C2065: 'NULL' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(11): error C2143: syntax error : missing ';' before '*'
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(11): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(11): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(11): error C2065: 'NULL' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(13): error C2143: syntax error : missing ';' before '*'
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(13): error C2065: 'NULL' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(14): error C2143: syntax error : missing ';' before '*'
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(14): error C2086: 'int ALLEGRO_EVENT_QUEUE' : redefinition
+1>          d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(13) : see declaration of 'ALLEGRO_EVENT_QUEUE'
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(14): error C2065: 'NULL' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(16): error C2143: syntax error : missing ';' before '*'
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(16): error C2086: 'int ALLEGRO_BITMAP' : redefinition
+1>          d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(11) : see declaration of 'ALLEGRO_BITMAP'
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(16): error C2065: 'NULL' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(18): error C2143: syntax error : missing ';' before '*'
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(18): error C2086: 'int ALLEGRO_BITMAP' : redefinition
+1>          d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(11) : see declaration of 'ALLEGRO_BITMAP'
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(18): error C2065: 'NULL' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(20): error C2143: syntax error : missing ';' before '*'
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(20): error C2065: 'NULL' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(22): error C2143: syntax error : missing ';' before '*'
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(22): error C2086: 'int ALLEGRO_BITMAP' : redefinition
+1>          d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(11) : see declaration of 'ALLEGRO_BITMAP'
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(22): error C2065: 'NULL' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(24): error C2143: syntax error : missing ';' before '*'
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(24): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(24): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(24): error C2065: 'NULL' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(26): error C2143: syntax error : missing ';' before '*'
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(26): error C2065: 'NULL' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(27): error C2143: syntax error : missing ';' before '*'
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(27): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(27): error C2086: 'int ALLEGRO_SAMPLE' : redefinition
+1>          d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(26) : see declaration of 'ALLEGRO_SAMPLE'
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(27): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(27): error C2065: 'NULL' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(29): error C2146: syntax error : missing ';' before identifier 'evento'
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(34): error C2065: 'img' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(34): error C2062: type 'int' unexpected
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(36): error C2065: 'fila' : undeclared identifier
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(36): error C2078: too many initializers
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(37): error C2061: syntax error : identifier 'ALLEGRO_EVENT'
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(38): error C2061: syntax error : identifier 'ALLEGRO_EVENT'
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(50): error C3861: 'printf': identifier not found
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(54): error C3861: 'al_attach_audio_stream_to_mixer': identifier not found
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(54): error C3861: 'al_get_default_mixer': identifier not found
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(55): error C3861: 'al_set_audio_stream_playing': identifier not found
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(57): error C2064: term does not evaluate to a function taking 2 arguments
+1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(57): fatal error C1903: unable to recover from previous error(s); stopping compilation
+1>  Generating Code...
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========

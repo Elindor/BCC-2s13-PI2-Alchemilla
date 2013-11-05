@@ -1,4 +1,6 @@
 #include "struct.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 
 int in1, in2, inreag, out1, out2; char out1name, out2name, in1name, in2name, inreagname; //Variaveis globais, os numeros pra saida da tela de elementos.
@@ -8,11 +10,7 @@ int target; char targetname[30]; //Objetivo da fase
 int reagentes[10];        //reagentes ativos
 char reagname[30][10];    //e seus nomes
 char infoname[30], infosymbol[30], infotext[500];    // Para janela de informações
-
-
-
-
-
+char confere;
 
 void filenamesgen(){
     sprintf (checklist, "check%02d.txt", fase); //
@@ -32,7 +30,7 @@ void useElement(int elem, lista *menu){         //
     }
 
     if(in1 == 0){
-        in1 = menu -> Elnum;
+        in1 = menu -> ElNum;
         in1name = menu -> ElName;
     }
     else{
@@ -40,8 +38,6 @@ void useElement(int elem, lista *menu){         //
         in2name = menu -> ElName;
     }
 }
-
-
 
 void insert(int num, lista *menu){              //
     lista *p, *q;                               //  Esta função é responsável por inserir elementos na lista dinamica
@@ -83,53 +79,51 @@ void insert(int num, lista *menu){              //
 }
 
 void nomeia_reag(int reagente, int i){              //
-FILE *reag;                                         //  Esta função é chamada dentro da função start_menu.
-int aux; char descarta[30];                         // Ela recebe os reagentes da lista de entrada, e insere-os num
-reag = fopen("reaglist", "r");                      // vetor global, e então esta função aqui deverá ler os numeros no
-do{                                                 // vetor global e inserir os nomes adequados na interface.
-        fscanf(info, "%d", &aux);                   // Os nomes são inseridos na matriz reagname[10][30].
-        if(aux == reagente){                        //
-            fgets(reagname[i], 30, info);
-            fclose(reag);
-            return void;
-        }
-
-        
-        fgets(confere, 30, info);
-        fgets(confere, 30, info);
-    }while(aux != 0);
-    fcloe(reag);
-    return ;
+    FILE *reag;                                         //  Esta função é chamada dentro da função start_menu.
+    int aux; char descarta[30];                         // Ela recebe os reagentes da lista de entrada, e insere-os num
+    reag = fopen("reaglist", "r");                      // vetor global, e então esta função aqui deverá ler os numeros no
+    do{                                                 // vetor global e inserir os nomes adequados na interface.
+            fscanf(info, "%d", &aux);                   // Os nomes são inseridos na matriz reagname[10][30].
+            if(aux == reagente){                        //
+                fgets(reagname[i], 30, info);
+                fclose(reag);
+                return;
+            }
+    
+            
+            fgets(confere, 30, info);
+            fgets(confere, 30, info);
+        }while(aux != 0);
+        fclose(reag);
+        return;
 }
 
-
-
 void info_reag(int reagente){                       //
-FILE *reag;                                         //  Esta função é ativada com o clique direito sobre um reagente.
-int aux; char descarta[30];                         // Ela coloca as informações do elemento correspondente no vetor
-reag = fopen("reaglist", "r");                      // de reagentes, e coloca-os nos vetores de informação antes da
-do{                                                 // janela de informações mostrá-los.
-        fscanf(info, "%d", &aux);                   //
-        if(aux == reagente){
-            fgets(infoname, 30, info);
-            fgets(infosymbol, 30, info);
-            fgets(infotext, 30, info);
-            fclose(reag);
-            return void;
-        }
-
-        
-        fgets(confere, 30, info);
-        fgets(confere, 30, info);
-        fgets(confere, 30, info);
-    }while(aux != 0);
-    fcloe(reag);
-    return ;
+    FILE *reag;                                         //  Esta função é ativada com o clique direito sobre um reagente.
+    int aux; char descarta[30];                         // Ela coloca as informações do elemento correspondente no vetor
+    reag = fopen("reaglist", "r");                      // de reagentes, e coloca-os nos vetores de informação antes da
+    do{                                                 // janela de informações mostrá-los.
+            fscanf(info, "%d", &aux);                   //
+            if(aux == reagente){
+                fgets(infoname, 30, info);
+                fgets(infosymbol, 30, info);
+                fgets(infotext, 30, info);
+                fclose(reag);
+                return;
+            }
+    
+            
+            fgets(confere, 30, info);
+            fgets(confere, 30, info);
+            fgets(confere, 30, info);
+        }while(aux != 0);
+        fclose(reag);
+        return;
 }
 
 void start_menu(lista *menu){                       //
     FILE *file;                                     //  Esta função deve ser chamada no inicio da fase. Ela lÊ os
-    int x;                                          // parametros iniciais e os insere no menu, em seguida lê o objetivo
+    int x, i;                                          // parametros iniciais e os insere no menu, em seguida lê o objetivo
     file = fopen(startlist, "r");                   // da fase e também o inicializa, e por fim faz o mesmo nos
                                                     // reagentes, já os nomeando pela função nomeia_reag.
     fscanf(file, "%d", &x);                         //
@@ -142,10 +136,11 @@ void start_menu(lista *menu){                       //
     //fscanf(file, "%s", targetname); //pega nome do objetivo p/ global
     
     fscanf(file, "%d", &x); // Só pra tirar o próximo -1
-    for(int i; i < 10; i++){
+    for(i = 0; i < 10; i++){
         reagentes[i] = 0;
-        reagname[i][30] = NULL
+        reagname[i][30] = NULL;
     }
+
     i = 0;
     fscanf(file, "%d", &x);
     while(x != -1){
@@ -158,9 +153,8 @@ void start_menu(lista *menu){                       //
     
     fclose(file);
     
-    return ;
+    return;
 }
-
 
 char * nomeia(int num){                                             //
 FILE *info;                                                         //  Esta função recebe o numero de um elemento criado
