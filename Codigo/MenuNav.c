@@ -4,11 +4,9 @@
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_audio.h>
 #include <allegro5/allegro_acodec.h>
-#include "leitura.h"
-#include "struct.h"
 
 #include <stdio.h>
-//#include <stdbool.h>
+#include <stdbool.h>
 
 //Define endereço p/ botões de mouse
 #define LMB 0x01
@@ -38,8 +36,6 @@ ALLEGRO_AUDIO_STREAM *bgm = NULL;
 ALLEGRO_SAMPLE *somNoBotao = NULL;
 ALLEGRO_SAMPLE *somClickBotao = NULL;
 
-ALLEGRO_EVENT evento;
-
 //Protótipos
 void fadeInOut(ALLEGRO_BITMAP *img, int velocidade, int restTime);                  //Função de fade in, espera e fade out
 bool intro();                                                                       //Chamada simplificada de fadeInOut
@@ -64,7 +60,12 @@ int main(){
     al_attach_audio_stream_to_mixer(bgm, al_get_default_mixer());
     al_set_audio_stream_playing(bgm, true);
 
-    while(!checkSair(&evento, mainFila)){       //Enquanto o botão não for clicado
+    while(1){       //Enquanto o botão não for clicado
+
+        ALLEGRO_EVENT evento;
+
+        if(checkSair(&evento, mainFila))
+            break;
 
         al_clear_to_color(al_map_rgb(0, 0, 0));                                 //Limpa a tela
         al_draw_bitmap(menuA, 0, 0, 0);
@@ -114,7 +115,10 @@ int main(){
             al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 824.5, 365, ALLEGRO_ALIGN_CENTRE, "Sair");
 
         al_flip_display();                                                      //Atualiza a tela
-        al_drop_next_event(mainFila);
+        
+        do{
+            al_wait_for_event(mainFila, &evento);
+        }while(evento.type == ALLEGRO_EVENT_TIMER);
     }
 
     mainFinish();
@@ -359,6 +363,9 @@ int selectMenu(){
     }
 
     while(1){
+
+        ALLEGRO_EVENT evento;
+
         if(checkSair(&evento, selectFila)){
             break;
         }
