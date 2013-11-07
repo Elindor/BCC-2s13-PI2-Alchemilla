@@ -157,7 +157,7 @@ void start_menu(lista *menu){                       //
     return;
 }
 
-char * nomeia(int num){                                             //
+void nomeia(int num, int casa){                                             //
 FILE *info;                                                         //  Esta função recebe o numero de um elemento criado
     int aux; //Usado em ordenação e conferir entradas               // e devolve o nome. É feita para incializar após a
     char confere[1]; // Usado nos do/while e conferir reagente      // criação de elementos novos, para então nomeá-los
@@ -170,8 +170,13 @@ FILE *info;                                                         //  Esta fun
         fscanf(info, "%d", &aux);
         if(aux == num){
             fgets(nome, 30, info);
+            if(casa == 1)
+            	out1name = nome;
+            else if(casa == 2)
+            	out2name = nome;
+            	
             fclose(info);
-            return (char *)nome;		//retorna var temporaria???
+            return ;		//retorna var temporaria???
         }
 
         do{
@@ -180,7 +185,7 @@ FILE *info;                                                         //  Esta fun
     }while(confere[1] != '!');
 
     fclose(info);
-    return NULL;
+    return void;
 }
 
 void info_elem(int elem){                   //
@@ -230,11 +235,13 @@ int checagem(int in1, int in2, int reag, lista *menu){                       //
                     fscanf(file, "%d", &aux);
                     if(aux != 0){
                         out1 = aux;
+                        void nomeia(out1, 1);
                     }
                     
                     fscanf(file, "%d", &aux);
                     if(aux != 0){
                         out2 = aux;
+                        void nomeia(out2, 2);
                     }
                     
                     fscanf(file, "%d", &aux);
