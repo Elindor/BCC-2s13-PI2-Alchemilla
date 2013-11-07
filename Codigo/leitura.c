@@ -1,6 +1,7 @@
 #include "struct.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 
 int in1, in2, inreag, out1, out2; char out1name[30], out2name[30], in1name[30], in2name[30], inreagname[30]; //Variaveis globais, os numeros pra saida da tela de elementos.
@@ -10,7 +11,7 @@ int target; char targetname[30]; //Objetivo da fase
 int reagentes[10];        //reagentes ativos
 char reagname[30][10];    //e seus nomes
 char infoname[30], infosymbol[30], infotext[500];    // Para janela de informações
-char confere;
+char confere[30];
 
 void filenamesgen(){
     sprintf (checklist, "check%02d.txt", fase); //
@@ -24,18 +25,18 @@ void useElement(int elem, lista *menu){         //
         return;                                 // nos espaços de entrada da reação. Ele recebe o numero clicado da lista
                                                 // (por ordem), procura até chegar na informação do struct, e então coloca
     for(int i = 1; i < elem; i++){              // adequadamente no espaço correto.
-        if(menu -> prox = NULL)                 //
+        if(menu -> prox == NULL)                 //
             return;
         menu = menu -> prox;
     }
 
     if(in1 == 0){
         in1 = menu -> ElNum;
-        in1name = menu -> ElName;
+		strcpy(in1name, menu->ElName);
     }
     else{
         in2 = menu -> ElNum;
-        in2name = menu -> ElName;
+        strcpy(in1name, menu->ElName);
     }
 }
 
@@ -80,7 +81,7 @@ void insert(int num, lista *menu){              //
 
 void nomeia_reag(int reagente, int i){              //
     FILE *reag;                                         //  Esta função é chamada dentro da função start_menu.
-    int aux; char descarta[30];                         // Ela recebe os reagentes da lista de entrada, e insere-os num
+    int aux;                         // Ela recebe os reagentes da lista de entrada, e insere-os num
     reag = fopen("reaglist", "r");                      // vetor global, e então esta função aqui deverá ler os numeros no
     do{                                                 // vetor global e inserir os nomes adequados na interface.
             fscanf(reag, "%d", &aux);                   // Os nomes são inseridos na matriz reagname[10][30].
@@ -100,7 +101,7 @@ void nomeia_reag(int reagente, int i){              //
 
 void info_reag(int reagente){                       //
     FILE *reag;                                         //  Esta função é ativada com o clique direito sobre um reagente.
-    int aux; char descarta[30];                         // Ela coloca as informações do elemento correspondente no vetor
+    int aux;                         // Ela coloca as informações do elemento correspondente no vetor
     reag = fopen("reaglist", "r");                      // de reagentes, e coloca-os nos vetores de informação antes da
     do{                                                 // janela de informações mostrá-los.
             fscanf(reag, "%d", &aux);                   //
@@ -170,7 +171,7 @@ FILE *info;                                                         //  Esta fun
         if(aux == num){
             fgets(nome, 30, info);
             fclose(info);
-            return *nome;
+            return (char *)nome;		//retorna var temporaria???
         }
 
         do{
@@ -184,7 +185,7 @@ FILE *info;                                                         //  Esta fun
 
 void info_elem(int elem){                   //
 FILE *reag;                                 //  Esta função é ativada ao clicar com o direito em um elemento.
-int aux; char descarta[30];                 // Ela buscará todas as informações correspondente ao numero (int elem) que
+int aux;                 // Ela buscará todas as informações correspondente ao numero (int elem) que
 reag = fopen(infolist, "r");                // ela recebe, e dará o nome, simbolo e descrição antes da janela de
 do{                                         // informações carregar.
         fscanf(reag, "%d", &aux);           //
@@ -193,7 +194,7 @@ do{                                         // informações carregar.
             fgets(infosymbol, 30, reag);
             fgets(infotext, 30, reag);
             fclose(reag);
-            return void;
+            return;
         }
 
         

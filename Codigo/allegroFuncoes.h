@@ -16,29 +16,4 @@ void introFinish();
 void selectFinish();
 int selectMenu();
 
-extern int larguraTela = 1000 ;
-extern int alturaTela = 750;
-
-extern ALLEGRO_DISPLAY *janela = NULL;
-
-extern ALLEGRO_BITMAP *introImg = NULL;
-
-extern ALLEGRO_EVENT_QUEUE *mainFila = NULL;
-extern ALLEGRO_EVENT_QUEUE *selectFila = NULL;
-
-extern ALLEGRO_BITMAP *menuA = NULL;
-
-extern ALLEGRO_BITMAP *menuB = NULL;
-
-extern ALLEGRO_FONT *fonte = NULL;
-
-extern ALLEGRO_BITMAP *botao = NULL;
-
-extern ALLEGRO_AUDIO_STREAM *bgm = NULL;
-
-extern ALLEGRO_SAMPLE *somNoBotao = NULL;
-extern ALLEGRO_SAMPLE *somClickBotao = NULL;
-
-extern ALLEGRO_EVENT evento;
-
 #endif

@@ -1,111 +1,105 @@
-1>------ Build started: Project: Alchemilla, Configuration: Debug Win32 ------
-1>  leitura.c
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(34): error C2440: '=' : cannot convert from 'char [30]' to 'char'
-1>          There is no context in which this conversion is possible
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(37): error C2039: 'Elnum' : is not a member of 'element'
-1>          d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\struct.h(5) : see declaration of 'element'
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(38): error C2440: '=' : cannot convert from 'char [30]' to 'char'
-1>          There is no context in which this conversion is possible
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(53): error C2440: '=' : cannot convert from 'void *' to 'lista *'
-1>          Conversion from 'void*' to pointer to non-'void' requires an explicit cast
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(86): error C2065: 'info' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(88): error C2065: 'info' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(94): error C2065: 'info' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(95): error C2065: 'info' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(106): error C2065: 'info' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(108): error C2065: 'info' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(109): error C2065: 'info' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(110): error C2065: 'info' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(116): error C2065: 'info' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(117): error C2065: 'info' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(118): error C2065: 'info' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(166): error C2065: 'file' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(173): error C2440: 'return' : cannot convert from 'char' to 'char *'
+leitura.c(174): error C2440: 'return' : cannot convert from 'char' to 'char *'
 1>          Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or function-style cast
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(190): error C2065: 'info' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(192): error C2065: 'info' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(193): error C2065: 'info' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(194): error C2065: 'info' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(196): error C2062: type 'void' unexpected
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(200): error C2065: 'info' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(201): error C2065: 'info' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(202): error C2065: 'info' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(204): error C3861: 'fcloe': identifier not found
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(241): error C2660: 'insert' : function does not take 1 arguments
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(253): error C2065: 'x' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(254): error C2065: 'x' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(256): error C2065: 'x' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\leitura.c(263): error C2440: 'initializing' : cannot convert from 'void *' to 'lista *'
-1>          Conversion from 'void*' to pointer to non-'void' requires an explicit cast
-1>  allegroFuncoes.c
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(9): error C2143: syntax error : missing ';' before '*'
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(9): error C2065: 'NULL' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(11): error C2143: syntax error : missing ';' before '*'
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(11): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(11): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(11): error C2065: 'NULL' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(13): error C2143: syntax error : missing ';' before '*'
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(13): error C2065: 'NULL' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(14): error C2143: syntax error : missing ';' before '*'
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(14): error C2086: 'int ALLEGRO_EVENT_QUEUE' : redefinition
-1>          d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(13) : see declaration of 'ALLEGRO_EVENT_QUEUE'
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(14): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(14): error C2065: 'NULL' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(16): error C2143: syntax error : missing ';' before '*'
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(16): error C2086: 'int ALLEGRO_BITMAP' : redefinition
-1>          d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(11) : see declaration of 'ALLEGRO_BITMAP'
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(16): error C2065: 'NULL' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(18): error C2143: syntax error : missing ';' before '*'
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(18): error C2086: 'int ALLEGRO_BITMAP' : redefinition
-1>          d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(11) : see declaration of 'ALLEGRO_BITMAP'
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(18): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(18): error C2065: 'NULL' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(20): error C2143: syntax error : missing ';' before '*'
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(20): error C2065: 'NULL' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(22): error C2143: syntax error : missing ';' before '*'
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(22): error C2086: 'int ALLEGRO_BITMAP' : redefinition
-1>          d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(11) : see declaration of 'ALLEGRO_BITMAP'
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(22): error C2065: 'NULL' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(24): error C2143: syntax error : missing ';' before '*'
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(24): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(24): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(24): error C2065: 'NULL' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(26): error C2143: syntax error : missing ';' before '*'
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(26): error C2065: 'NULL' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(27): error C2143: syntax error : missing ';' before '*'
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(27): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(27): error C2086: 'int ALLEGRO_SAMPLE' : redefinition
-1>          d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(26) : see declaration of 'ALLEGRO_SAMPLE'
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(27): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(27): error C2065: 'NULL' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(29): error C2146: syntax error : missing ';' before identifier 'evento'
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(34): error C2065: 'img' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(34): error C2062: type 'int' unexpected
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(36): error C2065: 'fila' : undeclared identifier
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(36): error C2078: too many initializers
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(37): error C2061: syntax error : identifier 'ALLEGRO_EVENT'
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(38): error C2061: syntax error : identifier 'ALLEGRO_EVENT'
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(50): error C3861: 'printf': identifier not found
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(54): error C3861: 'al_attach_audio_stream_to_mixer': identifier not found
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(54): error C3861: 'al_get_default_mixer': identifier not found
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(55): error C3861: 'al_set_audio_stream_playing': identifier not found
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(57): error C2064: term does not evaluate to a function taking 2 arguments
-1>d:\bkp manoel\disco d\danilo\trabalhos\senac bcc\2º semestre\pi2\alchemilla\alchemilla\codigo\allegrofuncoes.c(57): fatal error C1903: unable to recover from previous error(s); stopping compilation
-1>  Generating Code...
-========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========
+
+codigo\allegrofuncoes.c(446): error C2065: 'fase' : undeclared identifier
+codigo\allegrofuncoes.c(447): error C2065: 'lista' : undeclared identifier
+codigo\allegrofuncoes.c(447): error C2146: syntax error : missing ';' before identifier 'menu'
+codigo\allegrofuncoes.c(447): error C2065: 'menu' : undeclared identifier
+codigo\allegrofuncoes.c(448): error C3861: 'filenamesgen': identifier not found
+codigo\allegrofuncoes.c(449): error C2065: 'menu' : undeclared identifier
+codigo\allegrofuncoes.c(449): error C3861: 'start_menu': identifier not found
+codigo\allegrofuncoes.c(460): error C2660: 'clickBotao' : function does not take 5 arguments
+codigo\allegrofuncoes.c(461): error C2065: 'inreag' : undeclared identifier
+codigo\allegrofuncoes.c(461): error C2065: 'reagentes' : undeclared identifier
+codigo\allegrofuncoes.c(462): error C2065: 'inreagname' : undeclared identifier
+codigo\allegrofuncoes.c(462): error C2065: 'reagname' : undeclared identifier
+codigo\allegrofuncoes.c(463): error C2065: 'in1' : undeclared identifier
+codigo\allegrofuncoes.c(463): error C2065: 'in2' : undeclared identifier
+codigo\allegrofuncoes.c(463): error C2065: 'inreag' : undeclared identifier
+codigo\allegrofuncoes.c(463): error C3861: 'checagem': identifier not found
+codigo\allegrofuncoes.c(466): error C2660: 'clickBotao' : function does not take 5 arguments
+codigo\allegrofuncoes.c(467): error C2065: 'inreag' : undeclared identifier
+codigo\allegrofuncoes.c(467): error C2065: 'reagentes' : undeclared identifier
+codigo\allegrofuncoes.c(468): error C2065: 'inreagname' : undeclared identifier
+codigo\allegrofuncoes.c(468): error C2065: 'reagname' : undeclared identifier
+codigo\allegrofuncoes.c(469): error C2065: 'in1' : undeclared identifier
+codigo\allegrofuncoes.c(469): error C2065: 'in2' : undeclared identifier
+codigo\allegrofuncoes.c(469): error C2065: 'inreag' : undeclared identifier
+codigo\allegrofuncoes.c(469): error C3861: 'checagem': identifier not found
+codigo\allegrofuncoes.c(472): error C2660: 'clickBotao' : function does not take 5 arguments
+codigo\allegrofuncoes.c(473): error C2065: 'inreag' : undeclared identifier
+codigo\allegrofuncoes.c(473): error C2065: 'reagentes' : undeclared identifier
+codigo\allegrofuncoes.c(474): error C2065: 'inreagname' : undeclared identifier
+codigo\allegrofuncoes.c(474): error C2065: 'reagname' : undeclared identifier
+codigo\allegrofuncoes.c(475): error C2065: 'in1' : undeclared identifier
+codigo\allegrofuncoes.c(475): error C2065: 'in2' : undeclared identifier
+codigo\allegrofuncoes.c(475): error C2065: 'inreag' : undeclared identifier
+codigo\allegrofuncoes.c(475): error C3861: 'checagem': identifier not found
+codigo\allegrofuncoes.c(478): error C2660: 'clickBotao' : function does not take 5 arguments
+codigo\allegrofuncoes.c(479): error C2065: 'inreag' : undeclared identifier
+codigo\allegrofuncoes.c(479): error C2065: 'reagentes' : undeclared identifier
+codigo\allegrofuncoes.c(480): error C2065: 'inreagname' : undeclared identifier
+codigo\allegrofuncoes.c(480): error C2065: 'reagname' : undeclared identifier
+codigo\allegrofuncoes.c(481): error C2065: 'in1' : undeclared identifier
+codigo\allegrofuncoes.c(481): error C2065: 'in2' : undeclared identifier
+codigo\allegrofuncoes.c(481): error C2065: 'inreag' : undeclared identifier
+codigo\allegrofuncoes.c(481): error C3861: 'checagem': identifier not found
+codigo\allegrofuncoes.c(484): error C2660: 'clickBotao' : function does not take 5 arguments
+codigo\allegrofuncoes.c(485): error C2065: 'inreag' : undeclared identifier
+codigo\allegrofuncoes.c(485): error C2065: 'reagentes' : undeclared identifier
+codigo\allegrofuncoes.c(486): error C2065: 'inreagname' : undeclared identifier
+codigo\allegrofuncoes.c(486): error C2065: 'reagname' : undeclared identifier
+codigo\allegrofuncoes.c(487): error C2065: 'in1' : undeclared identifier
+codigo\allegrofuncoes.c(487): error C2065: 'in2' : undeclared identifier
+codigo\allegrofuncoes.c(487): error C2065: 'inreag' : undeclared identifier
+codigo\allegrofuncoes.c(487): error C3861: 'checagem': identifier not found
+codigo\allegrofuncoes.c(491): error C2660: 'clickBotao' : function does not take 5 arguments
+codigo\allegrofuncoes.c(492): error C2065: 'in1' : undeclared identifier
+codigo\allegrofuncoes.c(493): error C2065: 'in1name' : undeclared identifier
+codigo\allegrofuncoes.c(496): error C2660: 'clickBotao' : function does not take 5 arguments
+codigo\allegrofuncoes.c(497): error C2065: 'in2' : undeclared identifier
+codigo\allegrofuncoes.c(498): error C2065: 'in2name' : undeclared identifier
+codigo\allegrofuncoes.c(499): error C2143: syntax error : missing ';' before '}'
+codigo\allegrofuncoes.c(501): error C2660: 'clickBotao' : function does not take 5 arguments
+codigo\allegrofuncoes.c(502): error C2065: 'inreag' : undeclared identifier
+codigo\allegrofuncoes.c(503): error C2065: 'inreagname' : undeclared identifier
+codigo\allegrofuncoes.c(504): error C2065: 'in1' : undeclared identifier
+codigo\allegrofuncoes.c(504): error C2065: 'in2' : undeclared identifier
+codigo\allegrofuncoes.c(504): error C2065: 'inreag' : undeclared identifier
+codigo\allegrofuncoes.c(504): error C3861: 'checagem': identifier not found
+codigo\allegrofuncoes.c(507): error C2660: 'clickBotao' : function does not take 5 arguments
+codigo\allegrofuncoes.c(508): error C2065: 'out1' : undeclared identifier
+codigo\allegrofuncoes.c(508): error C2065: 'menu' : undeclared identifier
+codigo\allegrofuncoes.c(508): error C3861: 'insert': identifier not found
+codigo\allegrofuncoes.c(509): error C2065: 'out1' : undeclared identifier
+codigo\allegrofuncoes.c(510): error C2065: 'out1name' : undeclared identifier
+codigo\allegrofuncoes.c(513): error C2660: 'clickBotao' : function does not take 5 arguments
+codigo\allegrofuncoes.c(514): error C2065: 'out2' : undeclared identifier
+codigo\allegrofuncoes.c(514): error C2065: 'menu' : undeclared identifier
+codigo\allegrofuncoes.c(514): error C3861: 'insert': identifier not found
+codigo\allegrofuncoes.c(515): error C2065: 'out2' : undeclared identifier
+codigo\allegrofuncoes.c(516): error C2065: 'out2name' : undeclared identifier
+codigo\allegrofuncoes.c(520): error C2660: 'clickBotao' : function does not take 5 arguments
+codigo\allegrofuncoes.c(521): error C2065: 'menu' : undeclared identifier
+codigo\allegrofuncoes.c(521): error C3861: 'useElement': identifier not found
+codigo\allegrofuncoes.c(522): error C2065: 'in1' : undeclared identifier
+codigo\allegrofuncoes.c(522): error C2065: 'in2' : undeclared identifier
+codigo\allegrofuncoes.c(522): error C2065: 'inreag' : undeclared identifier
+codigo\allegrofuncoes.c(522): error C3861: 'checagem': identifier not found
+codigo\allegrofuncoes.c(525): error C2660: 'clickBotao' : function does not take 5 arguments
+codigo\allegrofuncoes.c(526): error C2065: 'menu' : undeclared identifier
+codigo\allegrofuncoes.c(526): error C3861: 'useElement': identifier not found
+codigo\allegrofuncoes.c(527): error C2065: 'in1' : undeclared identifier
+codigo\allegrofuncoes.c(527): error C2065: 'in2' : undeclared identifier
+codigo\allegrofuncoes.c(527): error C2065: 'inreag' : undeclared identifier
+codigo\allegrofuncoes.c(527): error C3861: 'checagem': identifier not found
+codigo\allegrofuncoes.c(530): error C2660: 'clickBotao' : function does not take 5 arguments
+codigo\allegrofuncoes.c(531): error C2065: 'menu' : undeclared identifier
+codigo\allegrofuncoes.c(531): error C3861: 'useElement': identifier not found
+codigo\allegrofuncoes.c(532): error C2065: 'in1' : undeclared identifier
+codigo\allegrofuncoes.c(532): error C2065: 'in2' : undeclared identifier
+codigo\allegrofuncoes.c(532): error C2065: 'inreag' : undeclared identifier
+codigo\allegrofuncoes.c(532): error C3861: 'checagem': identifier not found
+codigo\allegrofuncoes.c(535): error C2660: 'clickBotao' : function does not take 5 arguments
+codigo\allegrofuncoes.c(536): error C2065: 'menu' : undeclared identifier
+codigo\allegrofuncoes.c(536): fatal error C1003: error count exceeds 100; stopping compilation

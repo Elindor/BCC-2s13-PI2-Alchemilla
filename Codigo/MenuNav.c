@@ -118,7 +118,7 @@ int main(){
         
         do{
             al_wait_for_event(mainFila, &evento);
-        }while(evento.type == ALLEGRO_EVENT_TIMER);
+        }while(evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP);
     }
 
     mainFinish();

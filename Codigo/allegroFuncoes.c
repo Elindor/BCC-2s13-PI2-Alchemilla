@@ -28,11 +28,7 @@ ALLEGRO_AUDIO_STREAM *bgm = NULL;
 ALLEGRO_SAMPLE *somNoBotao = NULL;
 ALLEGRO_SAMPLE *somClickBotao = NULL;
 
-ALLEGRO_EVENT evento;
-
 //Protótipos
-int mainMenu();
-int gameMenu(int NSNumeroDaFase);
 void fadeInOut(ALLEGRO_BITMAP *img, int velocidade, int restTime);                  //Função de fade in, espera e fade out
 bool intro();                                                                       //Chamada simplificada de fadeInOut
 bool checkSair(ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila);                                              //Verifica se o ícone de fechar programa foi acionado
@@ -45,6 +41,7 @@ void mainFinish();                                                              
 void introFinish();
 void selectFinish();
 int selectMenu();
+int gameMenu(int NSNumeroDaFase);
 
 int mainMenu(){
 
@@ -56,7 +53,12 @@ int mainMenu(){
     al_attach_audio_stream_to_mixer(bgm, al_get_default_mixer());
     al_set_audio_stream_playing(bgm, true);
 
-    while(!checkSair(&evento, mainFila)){       //Enquanto o botão não for clicado
+    while(1){       //Enquanto o botão não for clicado
+
+        ALLEGRO_EVENT evento;
+
+        if(checkSair(&evento, mainFila))
+            break;
 
         al_clear_to_color(al_map_rgb(0, 0, 0));                                 //Limpa a tela
         al_draw_bitmap(menuA, 0, 0, 0);
@@ -106,7 +108,10 @@ int mainMenu(){
             al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 824.5, 365, ALLEGRO_ALIGN_CENTRE, "Sair");
 
         al_flip_display();                                                      //Atualiza a tela
-        al_drop_next_event(mainFila);
+        
+        do{
+            al_wait_for_event(mainFila, &evento);
+        }while(evento.type == ALLEGRO_EVENT_TIMER);
     }
 
     mainFinish();
@@ -351,6 +356,9 @@ int selectMenu(){
     }
 
     while(1){
+
+        ALLEGRO_EVENT evento;
+
         if(checkSair(&evento, selectFila)){
             break;
         }
@@ -406,6 +414,26 @@ int selectMenu(){
             break;
         }
 
+		///////////////////////////////////////////////
+
+		if(clickBotao(742, 911, 114, 170, &evento, selectFila))
+			gameMenu(1);
+
+		else if(clickBotao(741, 910, 204, 260, &evento, selectFila))
+			gameMenu(2);
+
+		else if(clickBotao(740, 909, 293, 349, &evento, selectFila))
+			gameMenu(3);
+
+		else if(clickBotao(739, 908, 382, 438, &evento, selectFila))
+			gameMenu(4);
+
+		else if(clickBotao(739, 908, 471, 527, &evento, selectFila))
+			gameMenu(5);
+
+		else if(clickBotao(739, 908, 560, 616, &evento, selectFila))
+			gameMenu(6);
+
         al_flip_display();
     }
 
@@ -421,6 +449,9 @@ int gameMenu(int NSNumeroDaFase){
     start_menu(*menu);
 
      while(1){
+
+        ALLEGRO_EVENT evento;
+
         if(checkSair(&evento, selectFila)){
             break;
         }

@@ -5,6 +5,9 @@ int gameMenu(int NSNumeroDaFase){
     start_menu(*menu);
 
      while(1){
+
+        ALLEGRO_EVENT evento;
+
         if(checkSair(&evento, selectFila)){
             break;
         }
