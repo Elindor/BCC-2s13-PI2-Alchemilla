@@ -235,13 +235,13 @@ int checagem(int in1, int in2, int reag, lista *menu){                       //
                     fscanf(file, "%d", &aux);
                     if(aux != 0){
                         out1 = aux;
-                        void nomeia(out1, 1);
+                        nomeia(out1, 1);
                     }
                     
                     fscanf(file, "%d", &aux);
                     if(aux != 0){
                         out2 = aux;
-                        void nomeia(out2, 2);
+                        nomeia(out2, 2);
                     }
                     
                     fscanf(file, "%d", &aux);
