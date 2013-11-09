@@ -420,7 +420,7 @@ int selectMenu(){
 		///////////////////////////////////////////////
 
 		if(clickBotao(742, 911, 114, 170, &evento, selectFila))
-			gameMenu(1);
+			gameMenu(0);
 
 		else if(clickBotao(741, 910, 204, 260, &evento, selectFila))
 			gameMenu(2);
@@ -447,13 +447,13 @@ int selectMenu(){
 
 int gameMenu(int NSNumeroDaFase){
     fase = NSNumeroDaFase;
-    lista menu;
+    lista menu = inicializa_lista();
     filenamesgen();
-    start_menu(*menu);
+    start_menu(&menu);
     
     if(!gameInit()){
     	fprintf(stderr, "Erro");
-    	return 0;
+    	return -1;
     }
 
 	while(1){
@@ -464,242 +464,245 @@ int gameMenu(int NSNumeroDaFase){
             break;
         }
 
+    /////////////////////////////////////////////////////////////
 
         else if(clickBotao(201, 317, 597, 712, &evento, gameFila)){   // Reag1
-                    inreag = reagentes[0];
-                    inreagname = reagname[0];
-                    checagem (in1, in2, inreag);
-                }
+            inreag = reagentes[0];
+            strcpy(inreagname, reagname[0]);
+            checagem (in1, in2, inreag, &menu);
+        }
 
         else if(clickBotao(320, 438, 597, 712, &evento, gameFila)){   // Reag2
-                    inreag = reagentes[1];
-                    inreagname = reagname[1];
-                    checagem (in1, in2, inreag);
-                }
+            inreag = reagentes[1];
+            strcpy(inreagname, reagname[1]);
+            checagem (in1, in2, inreag, &menu);
+        }
 
         else if(clickBotao(441, 560, 597, 712, &evento, gameFila)){   // Reag3
-                    inreag = reagentes[2];
-                    inreagname = reagname[2];
-                    checagem (in1, in2, inreag);
-                }
+            inreag = reagentes[2];
+            strcpy(inreagname, reagname[2]);
+            checagem (in1, in2, inreag, &menu);
+        }
 
         else if(clickBotao(563, 679, 597, 712, &evento, gameFila)){   // Reag4
-                    inreag = reagentes[3];
-                    inreagname = reagname[3];
-                    checagem (in1, in2, inreag);
-                }
+            inreag = reagentes[3];
+            strcpy(inreagname, reagname[3]);
+            checagem (in1, in2, inreag, &menu);
+        }
 
         else if(clickBotao(682, 802, 597, 712, &evento, gameFila)){   // Reag5
-                    inreag = reagentes[4];
-                    inreagname = reagname[4];
-                    checagem (in1, in2, inreag);
-                }
+            inreag = reagentes[4];
+            strcpy(inreagname, reagname[4]);
+            checagem (in1, in2, inreag, &menu);
+        }
 
 
         else if(clickBotao(104, 298, 140, 190, &evento, gameFila)){  // In1
-                    in1 = 0;
-                    in1name = NULL;
-                }
+            in1 = 0;
+            in1name[0] = '\0';
+        }
 
         else if(clickBotao(424, 618, 140, 190, &evento, gameFila)){  // In2
-                    in2 = 0;
-                    in2name = NULL;
-                }
+            in2 = 0;
+            in2name[0] = '\0';
+        }
 
         else if(clickBotao(267, 461, 210, 260, &evento, gameFila)){  // InReag (Deveria ser 466 por grafico)
-                    inreag = 0;
-                    inreagname = NULL;
-                    checagem (in1, in2, inreag);
-                }
+            inreag = 0;
+            inreagname[0] = '\0';
+            checagem (in1, in2, inreag, &menu);
+        }
 
         else if(clickBotao(133, 332, 333, 383, &evento, gameFila)){  // Out1
-                    insert(out1, *menu);
-                    out1 = 0;
-                    out1name = NULL;
-                }
+            insert(out1, &menu);
+            out1 = 0;
+            out1name[0] = '\0';
+        }
 
         else if(clickBotao(383, 582, 333, 383, &evento, gameFila)){  // Out2
-                    insert(out2, *menu);
-                    out2 = 0;
-                    out2name = NULL;
-                }
+            insert(out2, &menu);
+            out2 = 0;
+            out2name[0] = '\0';
+        }
 
 
         else if(clickBotao(733, 930, 120, 160, &evento, gameFila)){  // Struct1
-                    useElement(1, *menu);
-                    checagem (in1, in2, inreag);
-                }
+                useElement(1, &menu);
+                checagem (in1, in2, inreag, &menu);
+            }
 
         else if(clickBotao(733, 930, 162, 208, &evento, gameFila)){  // Struct2
-                    useElement(2, *menu);
-                    checagem (in1, in2, inreag);
-                }
+            useElement(2, &menu);
+            checagem (in1, in2, inreag, &menu);
+        }
 
         else if(clickBotao(733, 930, 210, 251, &evento, gameFila)){  // Struct3
-                    useElement(3, *menu);
-                    checagem (in1, in2, inreag);
-                }
+            useElement(3, &menu);
+            checagem (in1, in2, inreag, &menu);
+        }
 
         else if(clickBotao(733, 930, 253, 297, &evento, gameFila)){  // Struct4
-                    useElement(4, *menu);
-                    checagem (in1, in2, inreag);
-                }
+            useElement(4, &menu);
+            checagem (in1, in2, inreag, &menu);
+        }
 
         else if(clickBotao(733, 930, 299, 342, &evento, gameFila)){  // Struct5
-                    useElement(5, *menu);
-                    checagem (in1, in2, inreag);
-                }
+            useElement(5, &menu);
+            checagem (in1, in2, inreag, &menu);
+        }
 
         else if(clickBotao(733, 930, 344, 387, &evento, gameFila)){  // Struct6
-                    useElement(6, *menu);
-                    checagem (in1, in2, inreag);
-                }
+            useElement(6, &menu);
+            checagem (in1, in2, inreag, &menu);
+        }
 
         else if(clickBotao(733, 930, 389, 432, &evento, gameFila)){  // Struct7
-                    useElement(7, *menu);
-                    checagem (in1, in2, inreag);
-                }
+            useElement(7, &menu);
+            checagem (in1, in2, inreag, &menu);
+        }
 
         else if(clickBotao(733, 930, 434, 477, &evento, gameFila)){  // Struct8
-                    useElement(8, *menu);
-                    checagem (in1, in2, inreag);
-                }
+            useElement(8, &menu);
+            checagem (in1, in2, inreag, &menu);
+        }
 
         else if(clickBotao(733, 930, 479, 524, &evento, gameFila)){  // Struct9
-                    useElement(9, *menu);
-                    checagem (in1, in2, inreag);
-                }
+            useElement(9, &menu);
+            checagem (in1, in2, inreag, &menu);
+        }
 
         else if(clickBotao(733, 930, 526, 564, &evento, gameFila)){  // Struct10
-                    useElement(10, *menu);
-                    checagem (in1, in2, inreag);
-                }
+            useElement(10, &menu);
+            checagem (in1, in2, inreag, &menu);
+        }
 
                 /*---------------------------------------*/
 
         if(checkBotao(201, 317, 597, 712, &evento, gameFila))   // Reag1
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 259, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu -> ElName);
-            else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 259, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu -> ElName);
+             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 259, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
+        else
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 259, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
 
 
         if(checkBotao(320, 438, 597, 712, &evento, gameFila))   // Reag2
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 379, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu -> ElName);
-            else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 379, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu -> ElName);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 379, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
+        else
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 379, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
 
 
         if(checkBotao(441, 560, 597, 712, &evento, gameFila))   // Reag3
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 500.5, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu -> ElName);
-            else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 500.5, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu -> ElName);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 500.5, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
+        else
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 500.5, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
 
 
         if(checkBotao(563, 679, 597, 712, &evento, gameFila))   // Reag4
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 621, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu -> ElName);
-            else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 621, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu -> ElName);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 621, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
+        else
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 621, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
 
 
         if(checkBotao(682, 802, 597, 712, &evento, gameFila))   // Reag5
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 742, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu -> ElName);
-            else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 742, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu -> ElName);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 742, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
+        else
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 742, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
                 
 
         if(checkBotao(104, 298, 140, 190, &evento, gameFila))  // In1
                 al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 201, 140, ALLEGRO_ALIGN_CENTRE, "%s", in1name);
-            else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 201, 140, ALLEGRO_ALIGN_CENTRE, "%s", in1name);    
+        else
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 201, 140, ALLEGRO_ALIGN_CENTRE, "%s", in1name);    
 
 
         if(checkBotao(424, 618, 140, 190, &evento, gameFila))  // In2
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 521, 140, ALLEGRO_ALIGN_CENTRE, "%s", in2name);
-            else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 521, 140, ALLEGRO_ALIGN_CENTRE, "%s", in2name);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 521, 140, ALLEGRO_ALIGN_CENTRE, "%s", in2name);
+        else
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 521, 140, ALLEGRO_ALIGN_CENTRE, "%s", in2name);
 
 
         if(checkBotao(267, 461, 210, 260, &evento, gameFila))  // InReag (Deveria ser 466 por grafico)
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 364, 210, ALLEGRO_ALIGN_CENTRE, "%s", inreagname);
-            else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 364, 210, ALLEGRO_ALIGN_CENTRE, "%s", inreagname);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 364, 210, ALLEGRO_ALIGN_CENTRE, "%s", inreagname);
+        else
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 364, 210, ALLEGRO_ALIGN_CENTRE, "%s", inreagname);
 
 
         if(checkBotao(133, 331, 333, 383, &evento, gameFila))  // Out1
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 232, 333, ALLEGRO_ALIGN_CENTRE, "%s", out1name);
-            else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 232, 333, ALLEGRO_ALIGN_CENTRE, "%s", out1name);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 232, 333, ALLEGRO_ALIGN_CENTRE, "%s", out1name);
+        else
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 232, 333, ALLEGRO_ALIGN_CENTRE, "%s", out1name);
 
 
         if(checkBotao(384, 582, 333, 383, &evento, gameFila))  // Out2
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 482, 333, ALLEGRO_ALIGN_CENTRE, "%s", out2name);
-            else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 482, 333, ALLEGRO_ALIGN_CENTRE, "%s", out2name);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 482, 333, ALLEGRO_ALIGN_CENTRE, "%s", out2name);
+        else
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 482, 333, ALLEGRO_ALIGN_CENTRE, "%s", out2name);
 
 
 
 
         if(checkBotao(733, 930, 120, 160, &evento, gameFila))  // Struct1
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 120, ALLEGRO_ALIGN_CENTRE, "%s", menu -> ElName);
-            else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 120, ALLEGRO_ALIGN_CENTRE, "%s", menu -> ElName);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 120, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
+        else
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 120, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
 
 
         if(checkBotao(733, 930, 162, 208, &evento, gameFila))  // Struct2
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 162, ALLEGRO_ALIGN_CENTRE, "%s", menu -> prox -> ElName);
-            else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 162, ALLEGRO_ALIGN_CENTRE, "%s", menu -> prox -> ElName);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 162, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->ElName);
+        else
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 162, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->ElName);
 
 
         if(checkBotao(733, 930, 210, 251, &evento, gameFila))  // Struct3
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 210, ALLEGRO_ALIGN_CENTRE, "%s", menu -> prox -> prox -> ElName);
-            else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 210, ALLEGRO_ALIGN_CENTRE, "%s", menu -> prox -> prox -> ElName);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 210, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->ElName);
+        else
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 210, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->ElName);
 
 
         if(checkBotao(733, 930, 253, 297, &evento, gameFila))  // Struct4
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 253, ALLEGRO_ALIGN_CENTRE, "%s", menu -> prox -> prox -> prox -> ElName);
-            else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 253, ALLEGRO_ALIGN_CENTRE, "%s", menu -> prox -> prox -> prox -> ElName);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 253, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->ElName);
+        else
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 253, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->ElName);
 
 
         if(checkBotao(733, 930, 299, 342, &evento, gameFila))  // Struct5
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 299, ALLEGRO_ALIGN_CENTRE, "%s", menu -> prox -> prox -> prox -> prox -> ElName);
-            else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 299, ALLEGRO_ALIGN_CENTRE, "%s", menu -> prox -> prox -> prox -> prox -> ElName);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 299, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->ElName);
+        else
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 299, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->ElName);
 
 
         if(checkBotao(733, 930, 344, 387, &evento, gameFila))  // Struct6
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 344, ALLEGRO_ALIGN_CENTRE, "%s", menu -> prox -> prox -> prox -> prox -> prox -> ElName);
-            else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 344, ALLEGRO_ALIGN_CENTRE, "%s", menu -> prox -> prox -> prox -> prox -> prox -> ElName);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 344, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->ElName);
+        else
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 344, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->ElName);
 
 
         if(checkBotao(733, 930, 389, 432, &evento, gameFila))  // Struct7
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 389, ALLEGRO_ALIGN_CENTRE, "%s", menu -> prox -> prox -> prox -> prox -> prox -> prox -> ElName);
-            else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 389, ALLEGRO_ALIGN_CENTRE, "%s", menu -> prox -> prox -> prox -> prox -> prox -> prox -> ElName);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 389, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->ElName);
+        else
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 389, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->ElName);
 
 
         if(checkBotao(733, 930, 434, 477, &evento, gameFila))  // Struct8
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 434, ALLEGRO_ALIGN_CENTRE, "%s", menu -> prox -> prox -> prox -> prox -> prox -> prox -> prox -> ElName);
-            else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 434, ALLEGRO_ALIGN_CENTRE, "%s", menu -> prox -> prox -> prox -> prox -> prox -> prox -> prox -> ElName);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 434, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->ElName);
+        else
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 434, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->ElName);
 
 
         if(checkBotao(733, 930, 479, 524, &evento, gameFila))  // Struct9
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 479, ALLEGRO_ALIGN_CENTRE, "%s", menu -> prox -> prox -> prox -> prox -> prox -> prox -> prox -> prox -> ElName);
-            else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 479, ALLEGRO_ALIGN_CENTRE, "%s", menu -> prox -> prox -> prox -> prox -> prox -> prox -> prox -> prox -> ElName);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 479, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+        else
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 479, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->ElName);
 
 
         if(checkBotao(733, 930, 526, 564, &evento, gameFila))  // Struct10
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 526, ALLEGRO_ALIGN_CENTRE, "%s", menu -> prox -> prox -> prox -> prox -> prox -> prox -> prox -> prox -> prox -> ElName);
-            else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 526, ALLEGRO_ALIGN_CENTRE, "%s", menu -> prox -> prox -> prox -> prox -> prox -> prox -> prox -> prox -> prox -> ElName);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 526, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+        else
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 526, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
     
-    
-    al_flip_display();
+        al_flip_display();
+    }
+
+    return 0;
 
 }
 

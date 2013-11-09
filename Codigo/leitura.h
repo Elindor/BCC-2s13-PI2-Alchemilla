@@ -15,6 +15,6 @@ void info_reag(int reagente);
 void useElement(int elem, lista *menu);
 
 extern int out1, out2, fase, in1, in2, inreag, target, reagentes[10]; 
-extern char out1name, out2name, checklist[12], startlist[12], itemlist[12], infolist[11], targetname[30], reagname[30][10], infoname[30], infosymbol[30], infotext[500], in1name, in2name, inreagname, confere;
+extern char out1name[30], out2name[30], checklist[12], startlist[12], itemlist[12], infolist[11], targetname[30], reagname[30][10], infoname[30], infosymbol[30], infotext[500], in1name[30], in2name[30], inreagname[30], confere[30];
 
 #endif
