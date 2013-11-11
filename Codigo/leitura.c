@@ -6,7 +6,7 @@
 
 int in1, in2, inreag, out1, out2; char out1name[30], out2name[30], in1name[30], in2name[30], inreagname[30]; //Variaveis globais, os numeros pra saida da tela de elementos.
 int fase; //Variavel global, a fase do jogo.
-char checklist[20], startlist[20], itemlist[20], infolist[19]; //Nomes dos arquivos que serão usados
+char checklist[21], startlist[21], itemlist[21], infolist[20]; //Nomes dos arquivos que serão usados
 int target; char targetname[30]; //Objetivo da fase
 int reagentes[10];        //reagentes ativos
 char reagname[30][10];    //e seus nomes
