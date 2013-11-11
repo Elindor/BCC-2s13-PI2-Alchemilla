@@ -17,8 +17,8 @@ ALLEGRO_EVENT_QUEUE *selectFila = NULL;
 ALLEGRO_EVENT_QUEUE *gameFila = NULL;
 
 ALLEGRO_BITMAP *menuA = NULL;
-
 ALLEGRO_BITMAP *menuB = NULL;
+ALLEGRO_BITMAP *inGameBackground = NULL;
 
 ALLEGRO_FONT *fonte = NULL;
 
@@ -29,22 +29,7 @@ ALLEGRO_AUDIO_STREAM *bgm = NULL;
 ALLEGRO_SAMPLE *somNoBotao = NULL;
 ALLEGRO_SAMPLE *somClickBotao = NULL;
 
-//Protótipos
-void fadeInOut(ALLEGRO_BITMAP *img, int velocidade, int restTime);                  //Função de fade in, espera e fade out
-bool intro();                                                                       //Chamada simplificada de fadeInOut
-bool checkSair(ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila);                                              //Verifica se o ícone de fechar programa foi acionado
-bool checkBotao(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila);    //Verifica se o mouse está sobre o botão
-bool clickBotao(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila);    //Verifica se o botão foi clicado
-bool mainInit();                                                                        //Inicia os componentes
-bool introInit();
-bool selectInit();
-void mainFinish();                                                                      //Limpa os componentes
-void introFinish();
-void selectFinish();
-int selectMenu();
-bool gameInit();
-void gameFinish();
-int gameMenu(int NSNumeroDaFase);
+lista menu;
 
 int mainMenu(){
 
@@ -67,7 +52,8 @@ int mainMenu(){
         al_draw_bitmap(menuA, 0, 0, 0);
 
         if(clickBotao(740, 909, 98, 154, &evento, mainFila)){
-            selectMenu();
+            if(selectMenu() == 1)
+                break;
         }
 
         else if(clickBotao(741, 909, 187, 243, &evento, mainFila)){
@@ -363,7 +349,8 @@ int selectMenu(){
         ALLEGRO_EVENT evento;
 
         if(checkSair(&evento, selectFila)){
-            break;
+            selectFinish();
+            return 1;
         }
 
         al_clear_to_color(al_map_rgb(0, 0, 0));
@@ -420,22 +407,40 @@ int selectMenu(){
 		///////////////////////////////////////////////
 
 		if(clickBotao(742, 911, 114, 170, &evento, selectFila))
-			gameMenu(0);
+			if(gameMenu(0) == 1){
+                selectFinish();
+                return 1;
+            }
 
 		else if(clickBotao(741, 910, 204, 260, &evento, selectFila))
-			gameMenu(2);
+			if(gameMenu(2) == 1){
+                selectFinish();
+                return 1;
+            }
 
 		else if(clickBotao(740, 909, 293, 349, &evento, selectFila))
-			gameMenu(3);
+			if(gameMenu(3) == 1){
+                selectFinish();
+                return 1;
+            }
 
 		else if(clickBotao(739, 908, 382, 438, &evento, selectFila))
-			gameMenu(4);
+			if(gameMenu(4) == 1){
+                selectFinish();
+                return 1;
+            }
 
 		else if(clickBotao(739, 908, 471, 527, &evento, selectFila))
-			gameMenu(5);
+			if(gameMenu(5) == 1){
+                selectFinish();
+                return 1;
+            }
 
 		else if(clickBotao(739, 908, 560, 616, &evento, selectFila))
-			gameMenu(6);
+			if(gameMenu(6) == 1){
+                selectFinish();
+                return 1;
+            }
 
         al_flip_display();
     }
@@ -447,12 +452,9 @@ int selectMenu(){
 
 int gameMenu(int NSNumeroDaFase){
     fase = NSNumeroDaFase;
-    lista menu = inicializa_lista();
-    filenamesgen();
-    start_menu(&menu);
     
     if(!gameInit()){
-    	fprintf(stderr, "Erro");
+    	fprintf(stderr, "Erro,\n");
     	return -1;
     }
 
@@ -460,13 +462,17 @@ int gameMenu(int NSNumeroDaFase){
 
         ALLEGRO_EVENT evento;
 
-        if(checkSair(&evento, selectFila)){
-            break;
+        if(checkSair(&evento, gameFila)){
+            gameFinish();
+            return 1;
         }
+
+        al_clear_to_color(al_map_rgb(0, 0, 0));
+        al_draw_bitmap(inGameBackground, 0, 0, 0);
 
     /////////////////////////////////////////////////////////////
 
-        else if(clickBotao(201, 317, 597, 712, &evento, gameFila)){   // Reag1
+        if(clickBotao(201, 317, 597, 712, &evento, gameFila)){   // Reag1
             inreag = reagentes[0];
             strcpy(inreagname, reagname[0]);
             checagem (in1, in2, inreag, &menu);
@@ -702,6 +708,8 @@ int gameMenu(int NSNumeroDaFase){
         al_flip_display();
     }
 
+    gameFinish();
+
     return 0;
 
 }
@@ -713,13 +721,24 @@ bool gameInit(){
 		mainFinish();
 		return false;
 	}
-	//
-	//
+
+    inGameBackground = al_load_bitmap("Imagem/inGameBackground.png");
+    if(!inGameBackground){
+        fprintf(stderr, "Erro ao carregar inGameBackground.\n");
+        al_destroy_event_queue(gameFila);
+        mainFinish();
+        return false;
+    }
+
+    menu = inicializa_lista();
+    filenamesgen();
+    start_menu(&menu);
+
 	return true;
 }
 
 void gameFinish(){
 	al_destroy_event_queue(gameFila);
-	//
-	//
+	al_destroy_bitmap(inGameBackground);
+    termina_lista(&menu);
 }

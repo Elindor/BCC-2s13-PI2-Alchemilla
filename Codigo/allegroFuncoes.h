@@ -14,6 +14,8 @@ bool selectInit();
 void mainFinish();                                                                      //Limpa os componentes
 void introFinish();
 void selectFinish();
+bool gameInit();
+void gameFinish();
 int selectMenu();
 
 #endif

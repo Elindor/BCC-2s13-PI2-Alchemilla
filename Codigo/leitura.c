@@ -6,7 +6,7 @@
 
 int in1, in2, inreag, out1, out2; char out1name[30], out2name[30], in1name[30], in2name[30], inreagname[30]; //Variaveis globais, os numeros pra saida da tela de elementos.
 int fase; //Variavel global, a fase do jogo.
-char checklist[12], startlist[12], itemlist[12], infolist[11]; //Nomes dos arquivos que serão usados
+char checklist[20], startlist[20], itemlist[20], infolist[19]; //Nomes dos arquivos que serão usados
 int target; char targetname[30]; //Objetivo da fase
 int reagentes[10];        //reagentes ativos
 char reagname[30][10];    //e seus nomes
@@ -150,7 +150,6 @@ void start_menu(lista *menu){                       //
         i++;
         fscanf(file, "%d", &x);
     }
-    printf("EXIT");
     
     fclose(file);
 }
@@ -265,8 +264,21 @@ int checagem(int in1, int in2, int reag, lista *menu){                       //
 }
 
 lista inicializa_lista(){
-                                                            //  Esta função inicializa a lista dinamica de elementos
-    lista *l = (lista*)malloc(sizeof(lista));                       // e deve ser chamada no inicio do jogo (ou fase?)
-    l -> prox = NULL;                                       //
+                                                    //  Esta função inicializa a lista dinamica de elementos
+    lista *l = (lista*)malloc(sizeof(lista));       // e deve ser chamada no inicio do jogo (ou fase?)
+    l -> prox = NULL;                               //
     return *l;
+}
+
+void termina_lista(lista *l){
+    free(l->prox->prox->prox->prox->prox->prox->prox->prox->prox);
+    free(l->prox->prox->prox->prox->prox->prox->prox->prox);
+    free(l->prox->prox->prox->prox->prox->prox->prox);
+    free(l->prox->prox->prox->prox->prox->prox);
+    free(l->prox->prox->prox->prox->prox);
+    free(l->prox->prox->prox->prox);
+    free(l->prox->prox->prox);
+    free(l->prox->prox);
+    free(l->prox);
+    free(l);
 }
