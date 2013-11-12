@@ -279,7 +279,7 @@ bool clickBotao(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, A
         evento->mouse.x <= xb &&
         evento->mouse.y >= ya &&
         evento->mouse.y <= yb){
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+           al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
             return true;
         }
     }
@@ -356,9 +356,10 @@ int selectMenu(){
         al_clear_to_color(al_map_rgb(0, 0, 0));
         al_draw_bitmap(menuB, 0, 0, 0);
 
-        if(checkBotao(742, 911, 114, 170, &evento, selectFila))        //Caso o mouse esteja em cima do botão
+        if(checkBotao(742, 911, 114, 170, &evento, selectFila)){        //Caso o mouse esteja em cima do botão
+                printf("HU3");
             al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 826.5, 114, ALLEGRO_ALIGN_CENTRE, "Fase 1");
-
+        }
         else
             al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 826.5, 114, ALLEGRO_ALIGN_CENTRE, "Fase 1");
 
@@ -406,11 +407,13 @@ int selectMenu(){
 
 		///////////////////////////////////////////////
 
-		if(clickBotao(742, 911, 114, 170, &evento, selectFila))
+		if(clickBotao(742, 911, 114, 170, &evento, selectFila)){
+            printf("Bla");
 			if(gameMenu(0) == 1){
                 selectFinish();
                 return 1;
             }
+        }
 
 		else if(clickBotao(741, 910, 204, 260, &evento, selectFila))
 			if(gameMenu(2) == 1){
@@ -452,7 +455,7 @@ int selectMenu(){
 
 int gameMenu(int NSNumeroDaFase){
     fase = NSNumeroDaFase;
-    
+
     if(!gameInit()){
     	fprintf(stderr, "Erro,\n");
     	return -1;
