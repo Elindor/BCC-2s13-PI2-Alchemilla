@@ -69,7 +69,7 @@ void insert(int num, lista *menu){              //
                 return;
             }
             else{
-                fgets(nova -> ElName, 30, file); fgets(nova -> ElName, 30, file); 
+                fgets(kill, 30, file); fgets(kill, 30, file); 
             }
         }
 
@@ -101,7 +101,7 @@ void nomeia_reag(int reagente, int i){              //
 
 void info_reag(int reagente){                           //
     FILE *reag;                                         //  Esta função é ativada com o clique direito sobre um reagente.
-    int aux; char confere[30];                                          // Ela coloca as informações do elemento correspondente no vetor
+    int aux; char kill[30];                                          // Ela coloca as informações do elemento correspondente no vetor
     reag = fopen("Entradas/reaglist.txt", "r");         // de reagentes, e coloca-os nos vetores de informação antes da
     do{                                                 // janela de informações mostrá-los.
             fscanf(reag, "%d", &aux);                   //
@@ -113,9 +113,9 @@ void info_reag(int reagente){                           //
                 return;
             }
             
-            fgets(confere, 30, reag);
-            fgets(confere, 30, reag);
-            fgets(confere, 30, reag);
+            fgets(kill, 30, reag);
+            fgets(kill, 30, reag);
+            fgets(kill, 30, reag);
         }while(aux != 0);
         fclose(reag);
         return;
