@@ -356,10 +356,9 @@ int selectMenu(){
         al_clear_to_color(al_map_rgb(0, 0, 0));
         al_draw_bitmap(menuB, 0, 0, 0);
 
-        if(checkBotao(742, 911, 114, 170, &evento, selectFila)){        //Caso o mouse esteja em cima do botão
-                printf("HU3");
+        if(checkBotao(742, 911, 114, 170, &evento, selectFila))        //Caso o mouse esteja em cima do botão
             al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 826.5, 114, ALLEGRO_ALIGN_CENTRE, "Fase 1");
-        }
+
         else
             al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 826.5, 114, ALLEGRO_ALIGN_CENTRE, "Fase 1");
 
@@ -407,13 +406,11 @@ int selectMenu(){
 
 		///////////////////////////////////////////////
 
-		if(clickBotao(742, 911, 114, 170, &evento, selectFila)){
-            printf("Bla");
+		if(clickBotao(742, 911, 114, 170, &evento, selectFila))
 			if(gameMenu(0) == 1){
                 selectFinish();
                 return 1;
             }
-        }
 
 		else if(clickBotao(741, 910, 204, 260, &evento, selectFila))
 			if(gameMenu(2) == 1){
@@ -460,6 +457,8 @@ int gameMenu(int NSNumeroDaFase){
     	fprintf(stderr, "Erro,\n");
     	return -1;
     }
+
+    printf("GameInit carregado.\n");
 
 	while(1){
 
@@ -725,6 +724,8 @@ bool gameInit(){
 		return false;
 	}
 
+    printf("Fila de eventos carregada.\n");
+
     inGameBackground = al_load_bitmap("Imagem/inGameBackground.png");
     if(!inGameBackground){
         fprintf(stderr, "Erro ao carregar inGameBackground.\n");
@@ -733,9 +734,12 @@ bool gameInit(){
         return false;
     }
 
+    printf("Background carregado.\n");
+
     menu = inicializa_lista();
     filenamesgen();
     start_menu(&menu);
+    printf("Elementos criados.\n");
 
 	return true;
 }

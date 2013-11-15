@@ -1,7 +1,4 @@
-#include "struct.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "header.h"
 
 
 int in1, in2, inreag, out1, out2; char out1name[30], out2name[30], in1name[30], in2name[30], inreagname[30]; //Variaveis globais, os numeros pra saida da tela de elementos.
@@ -50,88 +47,128 @@ void insert(int num, lista *menu){              //
         p = q;
         q = q -> prox;
     }
-    lista *nova;
-    nova = malloc(sizeof (lista));
+    printf("0.1\n");
+
+    lista *nova = (lista *)malloc(sizeof(lista));
     p -> prox = nova;
+    printf("0.2\n");
+
     FILE *file;
     int x; char kill[30];
+
     file = fopen(itemlist, "r");
+    if(!file){
+        fprintf(stderr, "Erro ao abrir itemlist.\n");
+        return;
+    }
+    printf("0.3\n");
+
+    //PROBLEMA!!!
     do{
         fscanf(file, "%d", &x); // procura traços / saidas.
+
         if(x == -1){
             fscanf(file, "%d", &x); //verifica primeiro numero -> checa com valor num.
             if(x == num){
                 nova -> ElNum = num;
                 fgets(nova -> ElName, 30, file);
                 fscanf(file, "%d", &nova -> ElType);
+                nova = nova->prox;
                 nova -> prox = NULL;
-                fclose(file);
-                return;
             }
-            else{
-                fgets(kill, 30, file); fgets(kill, 30, file); 
-            }
+
+            else
+                fgets(kill, 30, file);
         }
 
+        printf("0.3.1\n");
     }while(x != -2);
+
+    printf("0.4\n");
+
     fclose(file);
-    return ;
+    return;
 }
 
 void nomeia_reag(int reagente, int i){              //
     FILE *reag;                                         //  Esta função é chamada dentro da função start_menu.
     int aux; char confere[30];                         // Ela recebe os reagentes da lista de entrada, e insere-os num
+
     reag = fopen("Entradas/reaglist.txt", "r");                      // vetor global, e então esta função aqui deverá ler os numeros no
-    do{                                                 // vetor global e inserir os nomes adequados na interface.
-            fscanf(reag, "%d", &aux);                   // Os nomes são inseridos na matriz reagname[10][30].
-            if(aux == reagente){                        //
-                fgets(reagname[i], 30, reag);
-                fclose(reag);
-                return;
-            }
-            else
-                fgets(confere, 30, reag); 
-            
-            fgets(confere, 30, reag);
-            fgets(confere, 30, reag);
-        }while(aux != 0);
-        fclose(reag);
+    if(!reag){
+        fprintf(stderr, "Erro ao abrir reaglist.\n");
         return;
+    }
+
+    do{                                                 // vetor global e inserir os nomes adequados na interface.
+        fscanf(reag, "%d", &aux);                   // Os nomes são inseridos na matriz reagname[10][30].
+        if(aux == reagente){                        //
+            fgets(reagname[i], 30, reag);
+            fclose(reag);
+            return;
+        }
+
+        else
+            fgets(confere, 30, reag); 
+            
+        fgets(confere, 30, reag);
+        fgets(confere, 30, reag);
+    }while(aux != 0);
+
+    fclose(reag);
+
+    return;
 }
 
 void info_reag(int reagente){                           //
     FILE *reag;                                         //  Esta função é ativada com o clique direito sobre um reagente.
     int aux; char kill[30];                                          // Ela coloca as informações do elemento correspondente no vetor
+
     reag = fopen("Entradas/reaglist.txt", "r");         // de reagentes, e coloca-os nos vetores de informação antes da
-    do{                                                 // janela de informações mostrá-los.
-            fscanf(reag, "%d", &aux);                   //
-            if(aux == reagente){
-                fgets(infoname, 30, reag);
-                fgets(infosymbol, 30, reag);
-                fgets(infotext, 30, reag);
-                fclose(reag);
-                return;
-            }
-            
-            fgets(kill, 30, reag);
-            fgets(kill, 30, reag);
-            fgets(kill, 30, reag);
-        }while(aux != 0);
-        fclose(reag);
+    if(!reag){
+        fprintf(stderr, "Erro ao abrir reaglist.\n");
         return;
+    }
+
+    do{                                                 // janela de informações mostrá-los.
+        fscanf(reag, "%d", &aux);                   //
+        if(aux == reagente){
+            fgets(infoname, 30, reag);
+            fgets(infosymbol, 30, reag);
+            fgets(infotext, 30, reag);
+            fclose(reag);
+            return;
+        }
+            
+        fgets(kill, 30, reag);
+        fgets(kill, 30, reag);
+        fgets(kill, 30, reag);
+    }while(aux != 0);
+
+    fclose(reag);
+
+    return;
 }
 
 void start_menu(lista *menu){                       //
     FILE *file;                                     //  Esta função deve ser chamada no inicio da fase. Ela lÊ os
     int x, i;                                       // parametros iniciais e os insere no menu, em seguida lê o objetivo
-    file = fopen(startlist, "r");      // da fase e também o inicializa, e por fim faz o mesmo nos                                       // reagentes, já os nomeando pela função nomeia_reag.
+    file = fopen(startlist, "r");                   // da fase e também o inicializa, e por fim faz o mesmo nos      
+    if(!file){
+        fprintf(stderr, "Erro ao abrir starlist.\n");
+        return;
+    }                    
+                                                    // reagentes, já os nomeando pela função nomeia_reag.
     fscanf(file, "%d", &x);                         //
     while(x != -1){
         insert(x, menu);
         fscanf(file, "%d", &x);
     }
+    printf("1\n");
+
     fscanf(file, "%d", &target); //pega numero do objetivo p/ global
     fgets(targetname, 30, file);
+    printf("2\n");
     //fscanf(file, "%s", targetname); //pega nome do objetivo p/ global
     
     fscanf(file, "%d", &x); // Só pra tirar o próximo -1
@@ -139,6 +176,7 @@ void start_menu(lista *menu){                       //
         reagentes[i] = 0;
         reagname[i][30] = NULL;
     }
+    printf("3\n");
 
     i = 0;
     fscanf(file, "%d", &x);
@@ -148,8 +186,10 @@ void start_menu(lista *menu){                       //
         i++;
         fscanf(file, "%d", &x);
     }
+    printf("4\n");
     
     fclose(file);
+    printf("5\n");
 }
 
 void nomeia(int num, int casa){                                             //
@@ -160,6 +200,10 @@ void nomeia(int num, int casa){                                             //
     confere[0] = NULL;                                              //
 
     info = fopen(checklist, "r");
+    if(!info){
+        fprintf(stderr, "Erro ao abrir checklist.\n");
+        return;
+    }
 
     do{
         fscanf(info, "%d", &aux);
@@ -187,6 +231,11 @@ void info_elem(int elem){                   //
     FILE *reag;                                 //  Esta função é ativada ao clicar com o direito em um elemento.
     int aux;                 // Ela buscará todas as informações correspondente ao numero (int elem) que
     reag = fopen(infolist, "r");                // ela recebe, e dará o nome, simbolo e descrição antes da janela de
+    if(!reag){
+        fprintf(stderr, "Erro ao abrir infolist.\n");
+        return;
+    }
+
     do{                                         // informações carregar.
         fscanf(reag, "%d", &aux);           //
         if(aux == elem){
@@ -218,6 +267,10 @@ int checagem(int in1, int in2, int reag, lista *menu){                       //
     }
     
     file = fopen(checklist, "r");
+    if(!file){
+        fprintf(stderr, "Erro ao abrir checklist.\n");
+        return -1;
+    }
     
     do{
         fscanf(file, "%d", &aux);
