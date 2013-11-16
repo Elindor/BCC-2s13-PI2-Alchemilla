@@ -28,6 +28,8 @@ ALLEGRO_AUDIO_STREAM *bgm = NULL;
 
 ALLEGRO_SAMPLE *somNoBotao = NULL;
 ALLEGRO_SAMPLE *somClickBotao = NULL;
+bool playBgm = true;
+bool playFx = true;
 
 lista menu;
 
@@ -713,7 +715,6 @@ int gameMenu(int NSNumeroDaFase){
     gameFinish();
 
     return 0;
-
 }
 
 bool gameInit(){
@@ -749,3 +750,15 @@ void gameFinish(){
 	al_destroy_bitmap(inGameBackground);
     termina_lista(&menu);
 }
+
+/*bool opcaoInit(){
+
+}
+
+void opcaoFinish(){
+
+}
+
+int opcaoMenu(){
+
+}*/

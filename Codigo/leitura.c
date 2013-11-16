@@ -54,7 +54,8 @@ void insert(int num, lista *menu){              //
     printf("0.2\n");
 
     FILE *file;
-    int x; char kill[30];
+    int x;
+    char kill[30], c;
 
     file = fopen(itemlist, "r");
     if(!file){
@@ -67,12 +68,32 @@ void insert(int num, lista *menu){              //
     do{
         fscanf(file, "%d", &x); // procura traços / saidas.
 
+        do{
+            fscanf(file, "%c", &c);
+        }while(c != '\n');
+
+        printf("%d\n", x);
+
         if(x == -1){
-            fscanf(file, "%d", &x); //verifica primeiro numero -> checa com valor num.
+            fscanf(file, "%d\n", &x); //verifica primeiro numero -> checa com valor num.
+
+            do{
+                fscanf(file, "%c", &c);
+            }while(c != '\n');
+
+            printf("%d\n", x);
+
             if(x == num){
                 nova -> ElNum = num;
                 fgets(nova -> ElName, 30, file);
                 fscanf(file, "%d", &nova -> ElType);
+
+                printf("%d, %s, %d", nova->ElNum, nova->ElName, nova->ElType);
+
+                do{
+                    fscanf(file, "%c", &c);
+                }while(c != '\n');
+
                 nova = nova->prox;
                 nova -> prox = NULL;
             }
@@ -180,6 +201,7 @@ void start_menu(lista *menu){                       //
 
     i = 0;
     fscanf(file, "%d", &x);
+
     while(x != -1){
         reagentes[i] = x;
         nomeia_reag(x, i);
