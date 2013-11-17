@@ -17,6 +17,27 @@ void filenamesgen(){
     sprintf(infolist, "Entradas/info%02d.txt", fase);
 }
 
+int fgetline(FILE *fp, char s[], int lim)
+{
+char *t;
+int c, len=lim;
+ 
+t = s;
+while (--lim>1 && (c=getc(fp)) != EOF && c != '\n')
+{
+*s++ = c;
+if (c == '\n')
+*s++ = c;
+else if (lim == 1)
+{
+*s++ = '\n';
+fprintf(stderr, "WARNING. fgetline: Line too long, splitted.\n");
+}
+}
+*s = '\0';
+return s - t;
+}
+
 void useElement(int elem, lista *menu){         //
     if(in2 != 0)                                //  Esta fuinção é responsável por ler um struct(clicado) e adicioná-lo
         return;                                 // nos espaços de entrada da reação. Ele recebe o numero clicado da lista
@@ -55,66 +76,53 @@ void insert(int num, lista *menu){              //
 
     FILE *file;
     int x;
-    char kill[30], c;
+    char c, buff[30];
 
     file = fopen(itemlist, "r");
     if(!file){
         fprintf(stderr, "Erro ao abrir itemlist.\n");
         return;
-    }
+    } 
     printf("0.3\n");
     int a, b, y;
     //PROBLEMA!!!
-    fscanf(file, "%d", &y); // Mata um primeiro valor bugado.
-                printf("%d\n", y);
-        do{
-            fscanf(file, "%c", &c);
-        }while(c != '\n');
-    do{
-        
-                
-
-        fscanf(file, "%d", &x); // procura traços / saidas.
-
-        do{
-            fscanf(file, "%c", &c);
-        }while(c != '\n');
-
-        printf("%d\n", x);
+    fgetline(file, buff, 20);
+    printf("y = %s\r\n", buff);
+    y = atoi(buff);
+    do{      
+        fgetline(file, buff, 20);
+        printf("x = %s\r\n", buff);
+        x = atoi(buff);
 
         if(x == -1){
-            fscanf(file, "%d", &x); //verifica primeiro numero -> checa com valor num.
-
-            do{
-                fscanf(file, "%c", &c);
-            }while(c != '\n');
-
-            printf("%d\n", x);
+            fgetline(file, buff, 20);
+            printf("x/num = %s\r\n", buff);
+            x = atoi(buff);
 
             if(x == num){
                 printf("0.3.2\n");
                 nova -> ElNum = num;
                 char temp[30]; int tempo;
 
-                //fgets(temp, 30, file);
-                fgets(temp, 30, file);
-                strcpy(temp, nova -> ElName);
+                fgetline(file, buff, 20);
+                printf("Name = %s\r\n", buff);
+                strcpy(nova->ElName, buff);
                 printf("0.3.3\n");
-                printf("%c\n", temp[0]);
-                fscanf(file, "%d", &nova->ElType);
+                fgetline(file, buff, 20);
+                printf("x/TYPE = %s\r\n", buff);
+                nova->ElType = atoi(buff);
 
                 printf("%d, %s, %d\n", nova->ElNum, nova->ElName, nova->ElType);
 
                 nova -> prox = NULL;
+                                printf("0.3.4");
                 fclose(file);
+                printf("0.3.5");
                 return;
             }
 
             else{
-                fgets(kill, 30, file);fscanf(file, "%d", &x);
-                do{
-                    fscanf(file, "%c", &c);
-                }while(c != '\n');
+                fgetline(file, buff, 20);fgetline(file, buff, 20);
             }
         }
 
