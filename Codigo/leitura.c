@@ -17,25 +17,26 @@ void filenamesgen(){
     sprintf(infolist, "Entradas/info%02d.txt", fase);
 }
 
-int fgetline(FILE *fp, char s[], int lim)
-{
-char *t;
-int c, len=lim;
- 
-t = s;
-while (--lim>1 && (c=getc(fp)) != EOF && c != '\n')
-{
-*s++ = c;
-if (c == '\n')
-*s++ = c;
-else if (lim == 1)
-{
-*s++ = '\n';
-fprintf(stderr, "WARNING. fgetline: Line too long, splitted.\n");
-}
-}
-*s = '\0';
-return s - t;
+int fgetline(FILE *fp, char s[], int lim){
+	char *t;
+	int c, len=lim;
+
+	t = s;
+	
+	while (--lim>1 && (c=getc(fp)) != EOF && c != '\n'){
+	    *s++ = c;
+	    if (c == '\n')
+	        *s++ = c;
+
+	    else if (lim == 1){
+	        *s++ = '\n';
+	        fprintf(stderr, "WARNING. fgetline: Line too long, splitted.\n");
+		}
+	}
+
+	*s = '\0';
+
+	return s - t;
 }
 
 void useElement(int elem, lista *menu){         //
@@ -62,12 +63,14 @@ void insert(int num, lista *menu){              //
     lista *p, *q;                               //  Esta função é responsável por inserir elementos na lista dinamica
     p = menu;                                   // de elementos. Ela é ativada ao clicar em um botão de out(int num) e
     q = menu -> prox;                           // insere numa lista dinamica (lista *menu) todas as informações
+
     while(q != NULL){                           // correspondentes ao numero do elemento.
         if(q -> ElNum == num)                   //
             return;
         p = q;
         q = q -> prox;
     }
+
     printf("0.1\n");
     printf("Num: %d\n", num);
     lista *nova = (lista *)malloc(sizeof(lista));
@@ -83,12 +86,15 @@ void insert(int num, lista *menu){              //
         fprintf(stderr, "Erro ao abrir itemlist.\n");
         return;
     } 
+
     printf("0.3\n");
     int a, b, y;
+
     //PROBLEMA!!!
     fgetline(file, buff, 20);
     printf("y = %s\r\n", buff);
     y = atoi(buff);
+
     do{      
         fgetline(file, buff, 20);
         printf("x = %s\r\n", buff);
@@ -106,10 +112,13 @@ void insert(int num, lista *menu){              //
 
                 fgetline(file, buff, 20);
                 printf("Name = %s\r\n", buff);
+
                 strcpy(nova->ElName, buff);
                 printf("0.3.3\n");
+
                 fgetline(file, buff, 20);
                 printf("x/TYPE = %s\r\n", buff);
+
                 nova->ElType = atoi(buff);
 
                 printf("%d, %s, %d\n", nova->ElNum, nova->ElName, nova->ElType);
@@ -205,13 +214,16 @@ void start_menu(lista *menu){                       //
         return;
     }
     fscanf(file, "%d", &y); // Mata um primeiro valor bugado.
-    do{fscanf(file, "%c", &c); }while(c != '\n');  
-    printf("y = %d\n", y);
+    do{
+    	fscanf(file, "%c", &c);
+    }while(c != '\n');
 
+    printf("y = %d\n", y);
                                                     // reagentes, já os nomeando pela função nomeia_reag.
     fscanf(file, "%d", &x);                         //
     printf("x = %d\n", x);
     x = 1; // porque "sei lá que merda deu aqui"
+
     while(x != -1){
         insert(x, menu);
         fscanf(file, "%d", &x);

@@ -1,21 +1,24 @@
 #ifndef allegroFuncoes
 #define allegroFuncoes
-
+bool mainInit();                                                                        //Inicia os componentes
 int mainMenu();
-int gameMenu(int NSNumeroDaFase);
+void mainFinish();                                                                      //Limpa os componentes
+
+bool introInit();
 void fadeInOut(ALLEGRO_BITMAP *img, int velocidade, int restTime);                  //Função de fade in, espera e fade out
 bool intro();                                                                       //Chamada simplificada de fadeInOut
+void introFinish();
+
 bool checkSair(ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila);                                              //Verifica se o ícone de fechar programa foi acionado
 bool checkBotao(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila);    //Verifica se o mouse está sobre o botão
-bool clickBotao(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila);    //Verifica se o botão foi clicado
-bool mainInit();                                                                        //Inicia os componentes
-bool introInit();
-bool selectInit();
-void mainFinish();                                                                      //Limpa os componentes
-void introFinish();
-void selectFinish();
-bool gameInit();
-void gameFinish();
-int selectMenu();
+bool clickBotaoL(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila);    //Verifica se o botão foi clicado
+bool clickBotaoR(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila);    //Verifica se o botão foi clicado
 
+bool selectInit();
+int selectMenu();
+void selectFinish();
+
+bool gameInit();
+int gameMenu(int NSNumeroDaFase);
+void gameFinish();
 #endif
