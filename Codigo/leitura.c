@@ -235,7 +235,7 @@ void start_menu(lista *menu){                       //
         //printf("start x = %s\r\n", buff);
         x = atoi(buff);
     }
-    printf("1\n");
+    //printf("1\n");
 
     fscanf(file, "%d", &target); //pega numero do objetivo p/ global
     fgets(targetname, 30, file);
@@ -247,7 +247,7 @@ void start_menu(lista *menu){                       //
         reagentes[i] = 0;
         reagname[i][30] = NULL;
     }
-    printf("3\n");
+    //printf("3\n");
 
     i = 0;
     fscanf(file, "%d", &x);
@@ -394,7 +394,7 @@ lista inicializa_lista(){
 }
 
 void termina_lista(lista *l){
-    free(l->prox->prox->prox->prox->prox->prox->prox->prox->prox);
+    /*free(l->prox->prox->prox->prox->prox->prox->prox->prox->prox);
     free(l->prox->prox->prox->prox->prox->prox->prox->prox);
     free(l->prox->prox->prox->prox->prox->prox->prox);
     free(l->prox->prox->prox->prox->prox->prox);
@@ -403,5 +403,19 @@ void termina_lista(lista *l){
     free(l->prox->prox->prox);
     free(l->prox->prox);
     free(l->prox);
-    free(l);
+    free(l);*/
+
+    int count, n;
+    lista *a;
+
+    a = l;
+
+    for(count = 0; a->prox != NULL; a = a->prox)
+        count++;
+
+    for( ;count >= 0; count--){
+        for( ;a->prox != NULL; a = a->prox)
+
+        free(a);
+    }
 }

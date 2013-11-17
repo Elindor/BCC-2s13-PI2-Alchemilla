@@ -426,13 +426,13 @@ int selectMenu(){
 
         //////////////////////////////////////////
 
-        if(checkBotao(0, 100, 0, 100, &evento, selectFila))
+        if(checkBotao(0, 50, 0, 50, &evento, selectFila))
             al_draw_tinted_bitmap(botao, (al_map_rgba(128, 128, 128, 0)), 0, 0, 0);
 
         else
             al_draw_bitmap(botao, 0, 0, 0);
 
-        if(clickBotaoL(0, 100, 0, 100, &evento, selectFila)){
+        if(clickBotaoL(0, 50, 0, 50, &evento, selectFila)){
             break;
         }
 
@@ -508,7 +508,6 @@ bool gameInit(){
     menu = inicializa_lista();
     filenamesgen();
     start_menu(&menu);
-    printf("Elementos criados.\n");
 
 	return true;
 }
@@ -521,8 +520,6 @@ int gameMenu(int NSNumeroDaFase){
         return -1;
     }
 
-    printf("GameInit carregado.\n");
-
     while(1){
 
         ALLEGRO_EVENT evento;
@@ -534,16 +531,28 @@ int gameMenu(int NSNumeroDaFase){
 
         al_clear_to_color(al_map_rgb(0, 0, 0));
         al_draw_bitmap(inGameBackground, 0, 0, 0);
-        al_flip_display();
-        al_rest(5.0);
+
+        //Checagem para voltar à seleção de fase(funcionará direito quando for implementado os pop-ups)
+        if(checkBotao(0, 50, 0, 50, &evento, gameFila))
+            al_draw_tinted_bitmap(botao, (al_map_rgba(128, 128, 128, 0)), 0, 0, 0);
+
+        else
+            al_draw_bitmap(botao, 0, 0, 0);
+
+        if(clickBotaoL(0, 50, 0, 50, &evento, gameFila)){
+            break;
+        }
 
     /////////////////////////////////////////////////////////////
-        printf("1\n");
         if(clickBotaoL(201, 317, 597, 712, &evento, gameFila)){   // Reag1
             inreag = reagentes[0];
             strcpy(inreagname, reagname[0]);
             checagem (in1, in2, inreag, &menu);
         }
+
+        else if(clickBotaoR(201, 317, 597, 712, &evento, gameFila)){   // Reag1
+        }
+
 
         else if(clickBotaoL(320, 438, 597, 712, &evento, gameFila)){   // Reag2
             inreag = reagentes[1];
@@ -551,10 +560,17 @@ int gameMenu(int NSNumeroDaFase){
             checagem (in1, in2, inreag, &menu);
         }
 
+        else if(clickBotaoR(320, 438, 597, 712, &evento, gameFila)){   // Reag2
+        }
+
+
         else if(clickBotaoL(441, 560, 597, 712, &evento, gameFila)){   // Reag3
             inreag = reagentes[2];
             strcpy(inreagname, reagname[2]);
             checagem (in1, in2, inreag, &menu);
+        }
+
+        else if(clickBotaoR(441, 560, 597, 712, &evento, gameFila)){   // Reag3
         }
 
         else if(clickBotaoL(563, 679, 597, 712, &evento, gameFila)){   // Reag4
@@ -563,11 +579,19 @@ int gameMenu(int NSNumeroDaFase){
             checagem (in1, in2, inreag, &menu);
         }
 
+        else if(clickBotaoR(563, 679, 597, 712, &evento, gameFila)){   // Reag4
+        }
+
+
         else if(clickBotaoL(682, 802, 597, 712, &evento, gameFila)){   // Reag5
             inreag = reagentes[4];
             strcpy(inreagname, reagname[4]);
             checagem (in1, in2, inreag, &menu);
         }
+
+        else if(clickBotaoR(682, 802, 597, 712, &evento, gameFila)){   // Reag5
+        }
+
 
 
         else if(clickBotaoL(104, 298, 140, 190, &evento, gameFila)){  // In1
@@ -575,10 +599,18 @@ int gameMenu(int NSNumeroDaFase){
             in1name[0] = '\0';
         }
 
+        else if(clickBotaoR(104, 298, 140, 190, &evento, gameFila)){  // In1
+        }
+
+
         else if(clickBotaoL(424, 618, 140, 190, &evento, gameFila)){  // In2
             in2 = 0;
             in2name[0] = '\0';
         }
+
+        else if(clickBotaoR(424, 618, 140, 190, &evento, gameFila)){  // In2
+        }
+
 
         else if(clickBotaoL(267, 461, 210, 260, &evento, gameFila)){  // InReag (Deveria ser 466 por grafico)
             inreag = 0;
@@ -586,11 +618,19 @@ int gameMenu(int NSNumeroDaFase){
             checagem (in1, in2, inreag, &menu);
         }
 
+        else if(clickBotaoR(267, 461, 210, 260, &evento, gameFila)){  // InReag (Deveria ser 466 por grafico)
+        }
+
+
         else if(clickBotaoL(133, 332, 333, 383, &evento, gameFila)){  // Out1
             insert(out1, &menu);
             out1 = 0;
             out1name[0] = '\0';
         }
+
+        else if(clickBotaoR(133, 332, 333, 383, &evento, gameFila)){  // Out1
+        }
+
 
         else if(clickBotaoL(383, 582, 333, 383, &evento, gameFila)){  // Out2
             insert(out2, &menu);
@@ -599,64 +639,15 @@ int gameMenu(int NSNumeroDaFase){
         }
 
 
-        else if(clickBotaoL(733, 930, 120, 160, &evento, gameFila)){  // Struct1
-                useElement(1, &menu);
-                checagem (in1, in2, inreag, &menu);
-            }
-
-        else if(clickBotaoL(733, 930, 162, 208, &evento, gameFila)){  // Struct2
-            useElement(2, &menu);
-            checagem (in1, in2, inreag, &menu);
+        else if(clickBotaoL(383, 582, 333, 383, &evento, gameFila)){  // Out2
         }
 
-        else if(clickBotaoL(733, 930, 210, 251, &evento, gameFila)){  // Struct3
-            useElement(3, &menu);
-            checagem (in1, in2, inreag, &menu);
-        }
-
-        else if(clickBotaoL(733, 930, 253, 297, &evento, gameFila)){  // Struct4
-            useElement(4, &menu);
-            checagem (in1, in2, inreag, &menu);
-        }
-
-        else if(clickBotaoL(733, 930, 299, 342, &evento, gameFila)){  // Struct5
-            useElement(5, &menu);
-            checagem (in1, in2, inreag, &menu);
-        }
-
-        else if(clickBotaoL(733, 930, 344, 387, &evento, gameFila)){  // Struct6
-            useElement(6, &menu);
-            checagem (in1, in2, inreag, &menu);
-        }
-
-        else if(clickBotaoL(733, 930, 389, 432, &evento, gameFila)){  // Struct7
-            useElement(7, &menu);
-            checagem (in1, in2, inreag, &menu);
-        }
-
-        else if(clickBotaoL(733, 930, 434, 477, &evento, gameFila)){  // Struct8
-            useElement(8, &menu);
-            checagem (in1, in2, inreag, &menu);
-        }
-
-        else if(clickBotaoL(733, 930, 479, 524, &evento, gameFila)){  // Struct9
-            useElement(9, &menu);
-            checagem (in1, in2, inreag, &menu);
-        }
-
-        else if(clickBotaoL(733, 930, 526, 564, &evento, gameFila)){  // Struct10
-            useElement(10, &menu);
-            checagem (in1, in2, inreag, &menu);
-        }
-
-                /*---------------------------------------*/
-        printf("2\n");
+        /*---------------------------------------*/
         if(checkBotao(201, 317, 597, 712, &evento, gameFila))   // Reag1
              al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 259, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
         else
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 259, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
 
-        printf("3\n");
         if(checkBotao(320, 438, 597, 712, &evento, gameFila))   // Reag2
             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 379, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
         else
@@ -679,26 +670,22 @@ int gameMenu(int NSNumeroDaFase){
             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 742, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
         else
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 742, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
-                
-        printf("4\n");
+
         if(checkBotao(104, 298, 140, 190, &evento, gameFila))  // In1
                 al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 201, 140, ALLEGRO_ALIGN_CENTRE, "%s", in1name);
         else
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 201, 140, ALLEGRO_ALIGN_CENTRE, "%s", in1name);    
 
-        printf("5\n");
         if(checkBotao(424, 618, 140, 190, &evento, gameFila))  // In2
             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 521, 140, ALLEGRO_ALIGN_CENTRE, "%s", in2name);
         else
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 521, 140, ALLEGRO_ALIGN_CENTRE, "%s", in2name);
 
-        printf("6\n");
         if(checkBotao(267, 461, 210, 260, &evento, gameFila))  // InReag (Deveria ser 466 por grafico)
             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 364, 210, ALLEGRO_ALIGN_CENTRE, "%s", inreagname);
         else
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 364, 210, ALLEGRO_ALIGN_CENTRE, "%s", inreagname);
 
-        printf("7\n");
         if(checkBotao(133, 331, 333, 383, &evento, gameFila))  // Out1
             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 232, 333, ALLEGRO_ALIGN_CENTRE, "%s", out1name);
         else
@@ -711,67 +698,155 @@ int gameMenu(int NSNumeroDaFase){
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 482, 333, ALLEGRO_ALIGN_CENTRE, "%s", out2name);
 
 
-
-        printf("8\n");
+		//IT'S THE FINAL GAMBIARRA!
         if(checkBotao(733, 930, 120, 160, &evento, gameFila))  // Struct1
             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 120, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
         else
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 120, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
 
-        printf("9\n");
-        if(checkBotao(733, 930, 162, 208, &evento, gameFila))  // Struct2
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 162, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->ElName);
-        else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 162, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->ElName);
+        if(clickBotaoL(733, 930, 120, 160, &evento, gameFila)){  // Struct1
+                useElement(1, &menu);
+                checagem (in1, in2, inreag, &menu);
+        }
 
+        else if(clickBotaoR(733, 930, 120, 160, &evento, gameFila)){  // Struct1
+        }
 
-        if(checkBotao(733, 930, 210, 251, &evento, gameFila))  // Struct3
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 210, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->ElName);
-        else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 210, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->ElName);
+        if(menu.prox){
+            if(checkBotao(733, 930, 162, 208, &evento, gameFila))  // Struct2
+                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 162, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->ElName);
+            else
+                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 162, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->ElName);
 
+            if(clickBotaoL(733, 930, 162, 208, &evento, gameFila)){  // Struct2
+                useElement(2, &menu);
+                checagem (in1, in2, inreag, &menu);
+            }
 
-        if(checkBotao(733, 930, 253, 297, &evento, gameFila))  // Struct4
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 253, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->ElName);
-        else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 253, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->ElName);
+            else if(clickBotaoR(733, 930, 162, 208, &evento, gameFila)){  // Struct2
+            }
 
+            if(menu.prox->prox){
+                if(checkBotao(733, 930, 210, 251, &evento, gameFila))  // Struct3
+                    al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 210, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->ElName);
+                else
+                    al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 210, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->ElName);
 
-        if(checkBotao(733, 930, 299, 342, &evento, gameFila))  // Struct5
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 299, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->ElName);
-        else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 299, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->ElName);
+                if(clickBotaoL(733, 930, 210, 251, &evento, gameFila)){  // Struct3
+                    useElement(3, &menu);
+                    checagem (in1, in2, inreag, &menu);
+                }
 
+                else if(clickBotaoR(733, 930, 210, 251, &evento, gameFila)){  // Struct3
+                }
 
-        if(checkBotao(733, 930, 344, 387, &evento, gameFila))  // Struct6
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 344, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->ElName);
-        else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 344, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->ElName);
+                if(menu.prox->prox->prox){
+                    if(checkBotao(733, 930, 253, 297, &evento, gameFila))  // Struct4
+                        al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 253, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->ElName);
+                    else
+                        al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 253, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->ElName);
 
+                    if(clickBotaoL(733, 930, 253, 297, &evento, gameFila)){  // Struct4
+                        useElement(4, &menu);
+                        checagem (in1, in2, inreag, &menu);
+                    }
 
-        if(checkBotao(733, 930, 389, 432, &evento, gameFila))  // Struct7
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 389, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->ElName);
-        else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 389, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->ElName);
+                    else if(clickBotaoR(733, 930, 253, 297, &evento, gameFila)){  // Struct4
+                    }
 
+                    if(menu.prox->prox->prox->prox){
+                        if(checkBotao(733, 930, 299, 342, &evento, gameFila))  // Struct5
+                            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 299, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->ElName);
+                        else
+                            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 299, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->ElName);
 
-        if(checkBotao(733, 930, 434, 477, &evento, gameFila))  // Struct8
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 434, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->ElName);
-        else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 434, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->ElName);
+                        if(clickBotaoL(733, 930, 299, 342, &evento, gameFila)){  // Struct5
+                            useElement(5, &menu);
+                            checagem (in1, in2, inreag, &menu);
+                        }
 
+                        else if(clickBotaoR(733, 930, 299, 342, &evento, gameFila)){  // Struct5
+                        }
 
-        if(checkBotao(733, 930, 479, 524, &evento, gameFila))  // Struct9
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 479, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->ElName);
-        else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 479, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+                        if(menu.prox->prox->prox->prox->prox){
+                            if(checkBotao(733, 930, 344, 387, &evento, gameFila))  // Struct6
+                                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 344, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->ElName);
+                            else
+                                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 344, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->ElName);
 
-        printf("10\n");
-        if(checkBotao(733, 930, 526, 564, &evento, gameFila))  // Struct10
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 526, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
-        else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 526, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
-    
+                            if(clickBotaoL(733, 930, 344, 387, &evento, gameFila)){  // Struct6
+                                useElement(6, &menu);
+                                checagem (in1, in2, inreag, &menu);
+                            }
+
+                            else if(clickBotaoR(733, 930, 344, 387, &evento, gameFila)){  // Struct6
+                            }
+
+                            if(menu.prox->prox->prox->prox->prox->prox){
+                                if(checkBotao(733, 930, 389, 432, &evento, gameFila))  // Struct7
+                                    al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 389, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->ElName);
+                                else
+                                    al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 389, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->ElName);
+
+                                if(clickBotaoL(733, 930, 389, 432, &evento, gameFila)){  // Struct7
+                                    useElement(7, &menu);
+                                    checagem (in1, in2, inreag, &menu);
+                                }
+
+                                else if(clickBotaoR(733, 930, 389, 432, &evento, gameFila)){  // Struct7
+                                }
+
+                                if(menu.prox->prox->prox->prox->prox->prox->prox){
+                                    if(checkBotao(733, 930, 434, 477, &evento, gameFila))  // Struct8
+                                        al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 434, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->ElName);
+                                    else
+                                        al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 434, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->ElName);
+
+                                    if(clickBotaoL(733, 930, 434, 477, &evento, gameFila)){  // Struct8
+                                        useElement(8, &menu);
+                                        checagem (in1, in2, inreag, &menu);
+                                    }
+
+                                    else if(clickBotaoR(733, 930, 434, 477, &evento, gameFila)){  // Struct8
+                                    }
+
+                                    if(menu.prox->prox->prox->prox->prox->prox->prox->prox){
+                                        if(checkBotao(733, 930, 479, 524, &evento, gameFila))  // Struct9
+                                            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 479, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+                                        else
+                                            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 479, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+
+                                        if(clickBotaoL(733, 930, 479, 524, &evento, gameFila)){  // Struct9
+                                            useElement(9, &menu);
+                                            checagem (in1, in2, inreag, &menu);
+                                        }
+
+                                        else if(clickBotaoR(733, 930, 479, 524, &evento, gameFila)){  // Struct9
+                                        }
+
+                                        if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox){
+                                            if(checkBotao(733, 930, 526, 564, &evento, gameFila))  // Struct10
+                                                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 526, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+                                            else
+                                                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 526, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+
+                                            if(clickBotaoL(733, 930, 526, 564, &evento, gameFila)){  // Struct10
+                                                useElement(10, &menu);
+                                                checagem (in1, in2, inreag, &menu);
+                                            }
+
+                                            else if(clickBotaoR(733, 930, 526, 564, &evento, gameFila)){  // Struct10
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         al_flip_display();
     }
 
