@@ -48,7 +48,7 @@ void insert(int num, lista *menu){              //
         q = q -> prox;
     }
     printf("0.1\n");
-
+    printf("Num: %d\n", num);
     lista *nova = (lista *)malloc(sizeof(lista));
     p -> prox = nova;
     printf("0.2\n");
@@ -63,9 +63,16 @@ void insert(int num, lista *menu){              //
         return;
     }
     printf("0.3\n");
-
+    int a, b, y;
     //PROBLEMA!!!
     do{
+        fscanf(file, "%d", &y); // Mata um primeiro valor bugado.
+                printf("%d\n", y);
+        do{
+            fscanf(file, "%c", &c);
+        }while(c != '\n');
+                
+
         fscanf(file, "%d", &x); // procura traços / saidas.
 
         do{
@@ -75,7 +82,7 @@ void insert(int num, lista *menu){              //
         printf("%d\n", x);
 
         if(x == -1){
-            fscanf(file, "%d\n", &x); //verifica primeiro numero -> checa com valor num.
+            fscanf(file, "%d", &x); //verifica primeiro numero -> checa com valor num.
 
             do{
                 fscanf(file, "%c", &c);
@@ -84,22 +91,34 @@ void insert(int num, lista *menu){              //
             printf("%d\n", x);
 
             if(x == num){
+                printf("0.3.2\n");
                 nova -> ElNum = num;
-                fgets(nova -> ElName, 30, file);
-                fscanf(file, "%d", &nova -> ElType);
+                char temp[30]; int tempo;
 
-                printf("%d, %s, %d", nova->ElNum, nova->ElName, nova->ElType);
+                fgets(temp, 30, file);
+                strcpy(temp, nova -> ElName);
+                printf("0.3.3\n");
+                printf("%s\n", temp);
+                fscanf(file, "%d", &tempo);
+                nova -> ElType = tempo;
+
+                printf("%d, %s, %d\n", nova->ElNum, nova->ElName, nova->ElType);
 
                 do{
                     fscanf(file, "%c", &c);
                 }while(c != '\n');
 
-                nova = nova->prox;
                 nova -> prox = NULL;
+                fclose(file);
+                return ;
             }
 
-            else
-                fgets(kill, 30, file);
+            else{
+                fgets(kill, 30, file);fscanf(file, "%d", &x);
+                do{
+                    fscanf(file, "%c", &c);
+                }while(c != '\n');
+            }
         }
 
         printf("0.3.1\n");
@@ -173,14 +192,21 @@ void info_reag(int reagente){                           //
 
 void start_menu(lista *menu){                       //
     FILE *file;                                     //  Esta função deve ser chamada no inicio da fase. Ela lÊ os
-    int x, i;                                       // parametros iniciais e os insere no menu, em seguida lê o objetivo
+    int x, i, y; 
+    char c;                                      // parametros iniciais e os insere no menu, em seguida lê o objetivo
     file = fopen(startlist, "r");                   // da fase e também o inicializa, e por fim faz o mesmo nos      
     if(!file){
         fprintf(stderr, "Erro ao abrir starlist.\n");
         return;
-    }                    
+    }
+    fscanf(file, "%d", &y); // Mata um primeiro valor bugado.
+    do{fscanf(file, "%c", &c); }while(c != '\n');  
+    printf("y = %d\n", y);
+
                                                     // reagentes, já os nomeando pela função nomeia_reag.
     fscanf(file, "%d", &x);                         //
+    printf("x = %d\n", x);
+    x = 1; // porque "sei lá que merda deu aqui"
     while(x != -1){
         insert(x, menu);
         fscanf(file, "%d", &x);

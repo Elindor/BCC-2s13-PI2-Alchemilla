@@ -1,37 +1,38 @@
-﻿-1
-01
+﻿00
+-1
+1
 Azul
 1
 -1
-02
+2
 Amarelo
 1
 -1
-03
+3
 Verde
 1
 -1
-04
+4
 Pó Vermelho
 1
 -1
-05
+5
 Roxo
 1
 -1
-06
+6
 Laranja claro
 2
 -1
-07
+7
 Pasta cinzenta
 1
 -1
-08
+8
 Pasta Marrom
 2
 -1
-09
+9
 Preto
 2
 -2
