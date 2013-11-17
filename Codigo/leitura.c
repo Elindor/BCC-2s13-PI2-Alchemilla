@@ -207,25 +207,23 @@ void info_reag(int reagente){                           //
 void start_menu(lista *menu){                       //
     FILE *file;                                     //  Esta função deve ser chamada no inicio da fase. Ela lÊ os
     int x, i, y; 
-    char c;                                      // parametros iniciais e os insere no menu, em seguida lê o objetivo
+    char c, buff[30];                                      // parametros iniciais e os insere no menu, em seguida lê o objetivo
     file = fopen(startlist, "r");                   // da fase e também o inicializa, e por fim faz o mesmo nos      
     if(!file){
         fprintf(stderr, "Erro ao abrir starlist.\n");
         return;
     }
     fscanf(file, "%d", &y); // Mata um primeiro valor bugado.
-    do{
-    	fscanf(file, "%c", &c);
-    }while(c != '\n');
-
+    do{fscanf(file, "%c", &c); }while(c != '\n');  
     printf("y = %d\n", y);
-                                                    // reagentes, já os nomeando pela função nomeia_reag.
-    fscanf(file, "%d", &x);                         //
-    printf("x = %d\n", x);
-    x = 1; // porque "sei lá que merda deu aqui"
 
+                                                    // reagentes, já os nomeando pela função nomeia_reag.
+    fgetline(file, buff, 20);
+    printf("x = %s\r\n", buff);
+    x = atoi(buff);
     while(x != -1){
         insert(x, menu);
+        printf("insert sucess\n");
         fscanf(file, "%d", &x);
     }
     printf("1\n");
