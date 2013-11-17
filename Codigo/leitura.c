@@ -65,12 +65,13 @@ void insert(int num, lista *menu){              //
     printf("0.3\n");
     int a, b, y;
     //PROBLEMA!!!
-    do{
-        fscanf(file, "%d", &y); // Mata um primeiro valor bugado.
+    fscanf(file, "%d", &y); // Mata um primeiro valor bugado.
                 printf("%d\n", y);
         do{
             fscanf(file, "%c", &c);
         }while(c != '\n');
+    do{
+        
                 
 
         fscanf(file, "%d", &x); // procura traços / saidas.
@@ -95,22 +96,18 @@ void insert(int num, lista *menu){              //
                 nova -> ElNum = num;
                 char temp[30]; int tempo;
 
+                //fgets(temp, 30, file);
                 fgets(temp, 30, file);
                 strcpy(temp, nova -> ElName);
                 printf("0.3.3\n");
-                printf("%s\n", temp);
-                fscanf(file, "%d", &tempo);
-                nova -> ElType = tempo;
+                printf("%c\n", temp[0]);
+                fscanf(file, "%d", &nova->ElType);
 
                 printf("%d, %s, %d\n", nova->ElNum, nova->ElName, nova->ElType);
 
-                do{
-                    fscanf(file, "%c", &c);
-                }while(c != '\n');
-
                 nova -> prox = NULL;
                 fclose(file);
-                return ;
+                return;
             }
 
             else{
