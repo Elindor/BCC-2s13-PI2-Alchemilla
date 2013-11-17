@@ -215,16 +215,19 @@ void start_menu(lista *menu){                       //
     }
     fscanf(file, "%d", &y); // Mata um primeiro valor bugado.
     do{fscanf(file, "%c", &c); }while(c != '\n');  
-    printf("y = %d\n", y);
+    printf("start y = %d\n", y);
 
                                                     // reagentes, já os nomeando pela função nomeia_reag.
     fgetline(file, buff, 20);
-    printf("x = %s\r\n", buff);
+    printf("start x = %s\r\n", buff);
+    x = atoi(buff);
     x = atoi(buff);
     while(x != -1){
         insert(x, menu);
         printf("insert sucess\n");
-        fscanf(file, "%d", &x);
+        fgetline(file, buff, 20);
+        printf("start x = %s\r\n", buff);
+        x = atoi(buff);
     }
     printf("1\n");
 
