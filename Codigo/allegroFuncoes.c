@@ -534,9 +534,11 @@ int gameMenu(int NSNumeroDaFase){
 
         al_clear_to_color(al_map_rgb(0, 0, 0));
         al_draw_bitmap(inGameBackground, 0, 0, 0);
+        al_flip_display();
+        al_rest(5.0);
 
     /////////////////////////////////////////////////////////////
-
+        printf("1\n");
         if(clickBotaoL(201, 317, 597, 712, &evento, gameFila)){   // Reag1
             inreag = reagentes[0];
             strcpy(inreagname, reagname[0]);
@@ -648,13 +650,13 @@ int gameMenu(int NSNumeroDaFase){
         }
 
                 /*---------------------------------------*/
-
+        printf("2\n");
         if(checkBotao(201, 317, 597, 712, &evento, gameFila))   // Reag1
              al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 259, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
         else
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 259, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
 
-
+        printf("3\n");
         if(checkBotao(320, 438, 597, 712, &evento, gameFila))   // Reag2
             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 379, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
         else
@@ -678,25 +680,25 @@ int gameMenu(int NSNumeroDaFase){
         else
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 742, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
                 
-
+        printf("4\n");
         if(checkBotao(104, 298, 140, 190, &evento, gameFila))  // In1
                 al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 201, 140, ALLEGRO_ALIGN_CENTRE, "%s", in1name);
         else
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 201, 140, ALLEGRO_ALIGN_CENTRE, "%s", in1name);    
 
-
+        printf("5\n");
         if(checkBotao(424, 618, 140, 190, &evento, gameFila))  // In2
             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 521, 140, ALLEGRO_ALIGN_CENTRE, "%s", in2name);
         else
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 521, 140, ALLEGRO_ALIGN_CENTRE, "%s", in2name);
 
-
+        printf("6\n");
         if(checkBotao(267, 461, 210, 260, &evento, gameFila))  // InReag (Deveria ser 466 por grafico)
             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 364, 210, ALLEGRO_ALIGN_CENTRE, "%s", inreagname);
         else
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 364, 210, ALLEGRO_ALIGN_CENTRE, "%s", inreagname);
 
-
+        printf("7\n");
         if(checkBotao(133, 331, 333, 383, &evento, gameFila))  // Out1
             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 232, 333, ALLEGRO_ALIGN_CENTRE, "%s", out1name);
         else
@@ -710,13 +712,13 @@ int gameMenu(int NSNumeroDaFase){
 
 
 
-
+        printf("8\n");
         if(checkBotao(733, 930, 120, 160, &evento, gameFila))  // Struct1
             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 120, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
         else
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 120, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
 
-
+        printf("9\n");
         if(checkBotao(733, 930, 162, 208, &evento, gameFila))  // Struct2
             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 162, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->ElName);
         else
@@ -764,7 +766,7 @@ int gameMenu(int NSNumeroDaFase){
         else
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 479, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->ElName);
 
-
+        printf("10\n");
         if(checkBotao(733, 930, 526, 564, &evento, gameFila))  // Struct10
             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 526, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
         else

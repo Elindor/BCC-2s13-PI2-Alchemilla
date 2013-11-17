@@ -71,15 +71,15 @@ void insert(int num, lista *menu){              //
         q = q -> prox;
     }
 
-    printf("0.1\n");
-    printf("Num: %d\n", num);
+    /*printf("0.1\n");
+    printf("Num: %d\n", num);*/
     lista *nova = (lista *)malloc(sizeof(lista));
     p -> prox = nova;
-    printf("0.2\n");
+    //printf("0.2\n");
 
     FILE *file;
     int x;
-    char c, buff[30];
+    char buff[30];
 
     file = fopen(itemlist, "r");
     if(!file){
@@ -87,46 +87,46 @@ void insert(int num, lista *menu){              //
         return;
     } 
 
-    printf("0.3\n");
-    int a, b, y;
+    //printf("0.3\n");
+    int y;
 
     //PROBLEMA!!!
     fgetline(file, buff, 20);
-    printf("y = %s\r\n", buff);
+    //printf("y = %s\r\n", buff);
     y = atoi(buff);
 
     do{      
         fgetline(file, buff, 20);
-        printf("x = %s\r\n", buff);
+        //printf("x = %s\r\n", buff);
         x = atoi(buff);
 
         if(x == -1){
             fgetline(file, buff, 20);
-            printf("x/num = %s\r\n", buff);
+            //printf("x/num = %s\r\n", buff);
             x = atoi(buff);
 
             if(x == num){
-                printf("0.3.2\n");
+                //printf("0.3.2\n");
                 nova -> ElNum = num;
-                char temp[30]; int tempo;
 
                 fgetline(file, buff, 20);
-                printf("Name = %s\r\n", buff);
+                //printf("Name = %s\r\n", buff);
 
                 strcpy(nova->ElName, buff);
-                printf("0.3.3\n");
+                //printf("0.3.3\n");
 
                 fgetline(file, buff, 20);
-                printf("x/TYPE = %s\r\n", buff);
+                //printf("x/TYPE = %s\r\n", buff);
 
                 nova->ElType = atoi(buff);
 
-                printf("%d, %s, %d\n", nova->ElNum, nova->ElName, nova->ElType);
+                //printf("%d, %s, %d\n", nova->ElNum, nova->ElName, nova->ElType);
 
                 nova -> prox = NULL;
-                                printf("0.3.4");
+                //printf("0.3.4\n");
+
                 fclose(file);
-                printf("0.3.5");
+                //printf("0.3.5\n");
                 return;
             }
 
@@ -135,10 +135,10 @@ void insert(int num, lista *menu){              //
             }
         }
 
-        printf("0.3.1\n");
+        //printf("0.3.1\n");
     }while(x != -2);
 
-    printf("0.4\n");
+    //printf("0.4\n");
 
     fclose(file);
     return;
@@ -213,27 +213,33 @@ void start_menu(lista *menu){                       //
         fprintf(stderr, "Erro ao abrir starlist.\n");
         return;
     }
+
     fscanf(file, "%d", &y); // Mata um primeiro valor bugado.
-    do{fscanf(file, "%c", &c); }while(c != '\n');  
-    printf("start y = %d\n", y);
+    do{
+		fscanf(file, "%c", &c);
+	}while(c != '\n');  
+    //printf("start y = %d\n", y);
 
                                                     // reagentes, já os nomeando pela função nomeia_reag.
     fgetline(file, buff, 20);
-    printf("start x = %s\r\n", buff);
+    //printf("start x = %s\r\n", buff);
     x = atoi(buff);
-    x = atoi(buff);
+
+    //TNC VS!
+	x = 1;
+
     while(x != -1){
         insert(x, menu);
-        printf("insert sucess\n");
+        //printf("insert sucess\n");
         fgetline(file, buff, 20);
-        printf("start x = %s\r\n", buff);
+        //printf("start x = %s\r\n", buff);
         x = atoi(buff);
     }
     printf("1\n");
 
     fscanf(file, "%d", &target); //pega numero do objetivo p/ global
     fgets(targetname, 30, file);
-    printf("2\n");
+    //printf("2\n");
     //fscanf(file, "%s", targetname); //pega nome do objetivo p/ global
     
     fscanf(file, "%d", &x); // Só pra tirar o próximo -1
@@ -252,10 +258,10 @@ void start_menu(lista *menu){                       //
         i++;
         fscanf(file, "%d", &x);
     }
-    printf("4\n");
+    //printf("4\n");
     
     fclose(file);
-    printf("5\n");
+    //printf("5\n");
 }
 
 void nomeia(int num, int casa){                                             //
