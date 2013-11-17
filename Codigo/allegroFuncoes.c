@@ -8,6 +8,7 @@
 int larguraTela = 1000 ;
 int alturaTela = 750;
 
+//Variáveis globais
 ALLEGRO_DISPLAY *janela = NULL;
 
 ALLEGRO_BITMAP *introImg = NULL;
@@ -33,6 +34,111 @@ bool playFx = true;
 
 lista menu;
 
+//mainMenu
+bool mainInit(){                                                                        //Inicia os componentes
+    if(!al_init()){                                                                 //Se o allegro5 não for iniciado
+        fprintf(stderr, "Allegro nao foi carregado.\n");
+        return false;
+    }
+
+    if(!al_init_image_addon()){                                                     //Se o allegro_image não for iniciado
+        fprintf(stderr, "Allegro image nao foi carregado.\n");
+        return false;
+    }
+
+    al_init_font_addon();
+
+    if(!al_init_ttf_addon()){
+        fprintf(stderr, "Erro ao carregar plugin de ttf\n");
+        return false;
+    }
+
+    if(!al_install_audio()){
+        fprintf(stderr, "Erro ao instalar audio.\n");
+        return false;
+    }
+
+    if(!al_init_acodec_addon()){
+        fprintf(stderr, "Erro ao instalar codec de audio.\n");
+        return false;
+    }
+
+
+    if(!al_reserve_samples(1)){
+        fprintf(stderr, "Erro ao alocar canais de audio.\n");
+        return false;
+    }
+
+    janela = al_create_display(larguraTela, alturaTela);                            //Cria a janela
+    if(!janela){                                                                    //Se a janela não for criada
+        fprintf(stderr, "Janela nao foi criada.\n");
+        return false;
+    }
+
+    al_set_window_title(janela, "Alchemilla");                                      //Cria um título pra janela
+
+    if(!al_install_mouse()){                                                        //Se o mouse não for instalado corretamente
+        fprintf(stderr, "Falha ao instalar o mouse.\n");
+        al_destroy_display(janela);
+        return false;
+    }
+
+    if(!al_set_system_mouse_cursor(janela, ALLEGRO_SYSTEM_MOUSE_CURSOR_DEFAULT)){   //Se o cursor do mouse não for determinado
+        fprintf(stderr, "Falha ao atribuir ponteiro ao mouse.\n");
+        al_destroy_display(janela);
+        return false;
+    }
+
+    mainFila = al_create_event_queue();                                             //Cria fila de eventos
+    if(!mainFila){                                                                  //Fila não criada
+        fprintf(stderr, "Fila de eventos nao foi criada.\n");
+        al_destroy_display(janela);
+        return false;
+    }
+
+    fonte = al_load_font("Fonte/anirom.ttf", 22, 0);
+    if(!fonte){
+        fprintf(stderr, "Erro ao carregar fonte\n");
+        al_destroy_display(janela);
+        al_destroy_event_queue(mainFila);
+        return false;
+    }
+
+    menuA = al_load_bitmap("Imagem/MenuA.png");
+    if(!menuA){
+        fprintf(stderr, "MenuA nao foi criado.\n");
+        al_destroy_display(janela);
+        al_destroy_event_queue(mainFila);
+        al_destroy_font(fonte);
+        return false;
+    }
+
+    bgm = al_load_audio_stream("Audio/bgm.ogg", 4, 1024);
+    if(!bgm){
+        fprintf(stderr, "Erro ao criar bgm.\n");
+        al_destroy_display(janela);
+        al_destroy_event_queue(mainFila);
+        al_destroy_font(fonte);
+        al_destroy_bitmap(menuA);
+        return false;
+    }
+
+    somClickBotao = al_load_sample("Audio/badDisk.wav");
+    if(!somClickBotao){
+        fprintf(stderr, "Erro ao criar somClickBotao.\n");
+        al_destroy_display(janela);
+        al_destroy_event_queue(mainFila);
+        al_destroy_font(fonte);
+        al_destroy_bitmap(menuA);
+        al_destroy_audio_stream(bgm);
+        return false;
+    }
+
+    al_attach_audio_stream_to_mixer(bgm, al_get_default_mixer());
+
+    return true;                                                                    //Tudo em ordem
+}
+
 int mainMenu(){
 
     if(mainInit() == false){        //Caso algum componente nõo tenha sido carregado corretamente, 
@@ -40,7 +146,6 @@ int mainMenu(){
         return -1;
     }
 
-    al_attach_audio_stream_to_mixer(bgm, al_get_default_mixer());
     al_set_audio_stream_playing(bgm, true);
 
     while(1){       //Enquanto o botão não for clicado
@@ -53,22 +158,23 @@ int mainMenu(){
         al_clear_to_color(al_map_rgb(0, 0, 0));                                 //Limpa a tela
         al_draw_bitmap(menuA, 0, 0, 0);
 
-        if(clickBotao(740, 909, 98, 154, &evento, mainFila)){
-            if(selectMenu() == 1)
+        //Check
+        if(clickBotaoL(740, 909, 98, 154, &evento, mainFila)){
+            if(selectMenu() == 1)                                               //Se o retorno for devido ao click de sair do jogo
                 break;
         }
 
-        else if(clickBotao(741, 909, 187, 243, &evento, mainFila)){
+        else if(clickBotaoL(741, 909, 187, 243, &evento, mainFila)){
             intro();
         }
 
-        else if(clickBotao(741, 909, 277, 333, &evento, mainFila)){
+        else if(clickBotaoL(741, 909, 277, 333, &evento, mainFila)){
             intro();
             mainFinish();
             return 0;
         }
 
-        else if(clickBotao(740, 909, 365, 421, &evento, mainFila)){
+        else if(clickBotaoL(740, 909, 365, 421, &evento, mainFila)){
             mainFinish();
             return 0;
         }
@@ -110,97 +216,6 @@ int mainMenu(){
     return 0;
 }
 
-bool mainInit(){                                                                        //Inicia os componentes
-    if(!al_init()){                                                                 //Se o allegro5 não for iniciado
-        fprintf(stderr, "Allegro nao foi carregado.\n");
-        return false;
-    }
-
-    if(!al_init_image_addon()){                                                     //Se o allegro_image não for iniciado
-        fprintf(stderr, "Allegro image nao foi carregado.\n");
-        return false;
-    }
-
-    al_init_font_addon();
-
-    if(!al_init_ttf_addon()){
-        fprintf(stderr, "Erro ao carregar plugin de ttf\n");
-        return false;
-    }
-
-    if(!al_install_audio()){
-        fprintf(stderr, "Erro ao instalar audio.\n");
-        return false;
-    }
-
-    if(!al_init_acodec_addon()){
-        fprintf(stderr, "Erro ao instalar codec de audio.\n");
-        return false;
-    }
-
-
-    if(!al_reserve_samples(1)){
-        fprintf(stderr, "Erro ao alocar canais de audio.\n");
-        return false;
-    }
-
-    janela = al_create_display(larguraTela, alturaTela);                            //Cria a janela
-    if(!janela){                                                                    //Se a janela não for criada
-        fprintf(stderr, "Janela nao foi criada.\n");
-        return false;
-    }
-
-    al_set_window_title(janela, "Teste mouse+intro");                               //Cria um título pra janela
-
-    if(!al_install_mouse()){                                                        //Se o mouse não for instalado corretamente
-        fprintf(stderr, "Falha ao instalar o mouse.\n");
-        al_destroy_display(janela);
-        return false;
-    }
-
-    if(!al_set_system_mouse_cursor(janela, ALLEGRO_SYSTEM_MOUSE_CURSOR_DEFAULT)){   //Se o cursor do mouse não for determinado
-        fprintf(stderr, "Falha ao atribuir ponteiro ao mouse.\n");
-        al_destroy_display(janela);
-        return false;
-    }
-
-    mainFila = al_create_event_queue();                                          //Cria fila de eventos
-    if(!mainFila){                                                               //Fila não criada
-        fprintf(stderr, "Fila de eventos nao foi criada.\n");
-        al_destroy_display(janela);
-        return false;
-    }
-
-    fonte = al_load_font("Fonte/anirom.ttf", 22, 0);
-    if(!fonte){
-        fprintf(stderr, "Erro ao carregar fonte\n");
-        return false;
-    }
-
-    menuA = al_load_bitmap("Imagem/MenuA.png");
-    if(!menuA){
-        fprintf(stderr, "MenuA nao foi criado.\n");
-        al_destroy_display(janela);
-        return false;
-    }
-
-    bgm = al_load_audio_stream("Audio/bgm.ogg", 4, 1024);
-    if(!bgm){
-        fprintf(stderr, "Erro ao criar bgm.\n");
-        al_destroy_display(janela);
-        return false;
-    }
-
-    somClickBotao = al_load_sample("Audio/badDisk.wav");
-    if(!somClickBotao){
-        fprintf(stderr, "Erro ao criar somClickBotao.\n");
-        al_destroy_display(janela);
-        return false;
-    }
-
-    return true;                                                                    //Tudo em ordem
-}
-
 void mainFinish(){                          //Desaloca a memória
     al_destroy_bitmap(menuA);
     al_destroy_display(janela);
@@ -211,6 +226,7 @@ void mainFinish(){                          //Desaloca a memória
     al_destroy_sample(somClickBotao);
 }
 
+//Intro
 bool intro(){                       //Chamada simplificada de fadeInOut
     if(!introInit()){
         printf("Erro.\n");
@@ -244,6 +260,22 @@ void fadeInOut(ALLEGRO_BITMAP *img, int velocidade, int restTime){              
     }
 }
 
+bool introInit(){
+    introImg = al_load_bitmap("Imagem/the game.png");                             //Carrega introImg (perdi)
+    if(!introImg){                                                                //Se o introImg não for carregado
+        fprintf(stderr, "Bitmap nao foi criado.\n");
+        mainFinish();
+        return false;
+    }
+
+    return true;
+}
+
+void introFinish(){
+    al_destroy_bitmap(introImg);
+}
+
+//Mouse
 bool checkSair(ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila){                                      //Verifica se o ícone de fechar programa foi acionado
     al_register_event_source(fila, al_get_display_event_source(janela)); //Registra a fonte do evento (janela)
 
@@ -271,7 +303,7 @@ bool checkBotao(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, A
     return false;                                                       //Caso o mouse não esteja nessa "hitbox"
 }
 
-bool clickBotao(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila){    //Verifica se o botão foi clicado
+bool clickBotaoL(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila){    //Verifica se o botão foi clicado
     al_register_event_source(fila, al_get_mouse_event_source());                 //Registra fonte dos eventos (mouse)
     
     al_wait_for_event_timed(fila, evento, 0.001);                                //Espera 0.001 até que algum evento apareça
@@ -289,17 +321,25 @@ bool clickBotao(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, A
     return false;
 }
 
-bool introInit(){
-    introImg = al_load_bitmap("Imagem/the game.png");                             //Carrega introImg (perdi)
-    if(!introImg){                                                                //Se o introImg não for carregado
-        fprintf(stderr, "Bitmap nao foi criado.\n");
-        mainFinish();
-        return false;
+bool clickBotaoR(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila){    //Verifica se o botão foi clicado
+    al_register_event_source(fila, al_get_mouse_event_source());                 //Registra fonte dos eventos (mouse)
+    
+    al_wait_for_event_timed(fila, evento, 0.001);                                //Espera 0.001 até que algum evento apareça
+
+    if(evento->type == ALLEGRO_EVENT_MOUSE_BUTTON_UP && evento->mouse.button == RMB){   //Além de calcular a hitbox, verifica o evento foi um clique
+        if(evento->mouse.x >= xa &&                                                     //E se foi com o botão esquerdo do mouse
+        evento->mouse.x <= xb &&
+        evento->mouse.y >= ya &&
+        evento->mouse.y <= yb){
+           al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            return true;
+        }
     }
 
-    return true;
+    return false;
 }
 
+//selectMenu
 bool selectInit(){
     menuB = al_load_bitmap("Imagem/MenuB.png");
     if(!menuB){
@@ -327,16 +367,6 @@ bool selectInit(){
 
 
     return true;
-}
-
-void selectFinish(){
-    al_destroy_bitmap(menuB);
-    al_destroy_bitmap(botao);
-    al_destroy_event_queue(selectFila);
-}
-
-void introFinish(){
-    al_destroy_bitmap(introImg);
 }
 
 int selectMenu(){
@@ -402,44 +432,44 @@ int selectMenu(){
         else
             al_draw_bitmap(botao, 0, 0, 0);
 
-        if(clickBotao(0, 100, 0, 100, &evento, selectFila)){
+        if(clickBotaoL(0, 100, 0, 100, &evento, selectFila)){
             break;
         }
 
-		///////////////////////////////////////////////
+        ///////////////////////////////////////////////
 
-		if(clickBotao(742, 911, 114, 170, &evento, selectFila))
-			if(gameMenu(0) == 1){
+        if(clickBotaoL(742, 911, 114, 170, &evento, selectFila))
+            if(gameMenu(0) == 1){       //Se o retorno for devido ao click de sair do jogo
                 selectFinish();
                 return 1;
             }
 
-		else if(clickBotao(741, 910, 204, 260, &evento, selectFila))
-			if(gameMenu(2) == 1){
+        else if(clickBotaoL(741, 910, 204, 260, &evento, selectFila))
+            if(gameMenu(2) == 1){       //Se o retorno for devido ao click de sair do jogo
                 selectFinish();
                 return 1;
             }
 
-		else if(clickBotao(740, 909, 293, 349, &evento, selectFila))
-			if(gameMenu(3) == 1){
+        else if(clickBotaoL(740, 909, 293, 349, &evento, selectFila))
+            if(gameMenu(3) == 1){       //Se o retorno for devido ao click de sair do jogo
                 selectFinish();
                 return 1;
             }
 
-		else if(clickBotao(739, 908, 382, 438, &evento, selectFila))
-			if(gameMenu(4) == 1){
+        else if(clickBotaoL(739, 908, 382, 438, &evento, selectFila))
+            if(gameMenu(4) == 1){       //Se o retorno for devido ao click de sair do jogo
                 selectFinish();
                 return 1;
             }
 
-		else if(clickBotao(739, 908, 471, 527, &evento, selectFila))
-			if(gameMenu(5) == 1){
+        else if(clickBotaoL(739, 908, 471, 527, &evento, selectFila))
+            if(gameMenu(5) == 1){       //Se o retorno for devido ao click de sair do jogo
                 selectFinish();
                 return 1;
             }
 
-		else if(clickBotao(739, 908, 560, 616, &evento, selectFila))
-			if(gameMenu(6) == 1){
+        else if(clickBotaoL(739, 908, 560, 616, &evento, selectFila))
+            if(gameMenu(6) == 1){       //Se o retorno for devido ao click de sair do jogo
                 selectFinish();
                 return 1;
             }
@@ -452,17 +482,48 @@ int selectMenu(){
     return 0;
 }
 
+void selectFinish(){
+    al_destroy_bitmap(menuB);
+    al_destroy_bitmap(botao);
+    al_destroy_event_queue(selectFila);
+}
+
+//gameMenu
+bool gameInit(){
+	gameFila = al_create_event_queue();
+	if(!gameFila){
+		fprintf(stderr, "Erro ao criar gameFila.\n");
+		mainFinish();
+		return false;
+	}
+
+    inGameBackground = al_load_bitmap("Imagem/inGameBackground.png");
+    if(!inGameBackground){
+        fprintf(stderr, "Erro ao carregar inGameBackground.\n");
+        al_destroy_event_queue(gameFila);
+        mainFinish();
+        return false;
+    }
+
+    menu = inicializa_lista();
+    filenamesgen();
+    start_menu(&menu);
+    printf("Elementos criados.\n");
+
+	return true;
+}
+
 int gameMenu(int NSNumeroDaFase){
     fase = NSNumeroDaFase;
 
     if(!gameInit()){
-    	fprintf(stderr, "Erro,\n");
-    	return -1;
+        fprintf(stderr, "Erro,\n");
+        return -1;
     }
 
     printf("GameInit carregado.\n");
 
-	while(1){
+    while(1){
 
         ALLEGRO_EVENT evento;
 
@@ -476,112 +537,112 @@ int gameMenu(int NSNumeroDaFase){
 
     /////////////////////////////////////////////////////////////
 
-        if(clickBotao(201, 317, 597, 712, &evento, gameFila)){   // Reag1
+        if(clickBotaoL(201, 317, 597, 712, &evento, gameFila)){   // Reag1
             inreag = reagentes[0];
             strcpy(inreagname, reagname[0]);
             checagem (in1, in2, inreag, &menu);
         }
 
-        else if(clickBotao(320, 438, 597, 712, &evento, gameFila)){   // Reag2
+        else if(clickBotaoL(320, 438, 597, 712, &evento, gameFila)){   // Reag2
             inreag = reagentes[1];
             strcpy(inreagname, reagname[1]);
             checagem (in1, in2, inreag, &menu);
         }
 
-        else if(clickBotao(441, 560, 597, 712, &evento, gameFila)){   // Reag3
+        else if(clickBotaoL(441, 560, 597, 712, &evento, gameFila)){   // Reag3
             inreag = reagentes[2];
             strcpy(inreagname, reagname[2]);
             checagem (in1, in2, inreag, &menu);
         }
 
-        else if(clickBotao(563, 679, 597, 712, &evento, gameFila)){   // Reag4
+        else if(clickBotaoL(563, 679, 597, 712, &evento, gameFila)){   // Reag4
             inreag = reagentes[3];
             strcpy(inreagname, reagname[3]);
             checagem (in1, in2, inreag, &menu);
         }
 
-        else if(clickBotao(682, 802, 597, 712, &evento, gameFila)){   // Reag5
+        else if(clickBotaoL(682, 802, 597, 712, &evento, gameFila)){   // Reag5
             inreag = reagentes[4];
             strcpy(inreagname, reagname[4]);
             checagem (in1, in2, inreag, &menu);
         }
 
 
-        else if(clickBotao(104, 298, 140, 190, &evento, gameFila)){  // In1
+        else if(clickBotaoL(104, 298, 140, 190, &evento, gameFila)){  // In1
             in1 = 0;
             in1name[0] = '\0';
         }
 
-        else if(clickBotao(424, 618, 140, 190, &evento, gameFila)){  // In2
+        else if(clickBotaoL(424, 618, 140, 190, &evento, gameFila)){  // In2
             in2 = 0;
             in2name[0] = '\0';
         }
 
-        else if(clickBotao(267, 461, 210, 260, &evento, gameFila)){  // InReag (Deveria ser 466 por grafico)
+        else if(clickBotaoL(267, 461, 210, 260, &evento, gameFila)){  // InReag (Deveria ser 466 por grafico)
             inreag = 0;
             inreagname[0] = '\0';
             checagem (in1, in2, inreag, &menu);
         }
 
-        else if(clickBotao(133, 332, 333, 383, &evento, gameFila)){  // Out1
+        else if(clickBotaoL(133, 332, 333, 383, &evento, gameFila)){  // Out1
             insert(out1, &menu);
             out1 = 0;
             out1name[0] = '\0';
         }
 
-        else if(clickBotao(383, 582, 333, 383, &evento, gameFila)){  // Out2
+        else if(clickBotaoL(383, 582, 333, 383, &evento, gameFila)){  // Out2
             insert(out2, &menu);
             out2 = 0;
             out2name[0] = '\0';
         }
 
 
-        else if(clickBotao(733, 930, 120, 160, &evento, gameFila)){  // Struct1
+        else if(clickBotaoL(733, 930, 120, 160, &evento, gameFila)){  // Struct1
                 useElement(1, &menu);
                 checagem (in1, in2, inreag, &menu);
             }
 
-        else if(clickBotao(733, 930, 162, 208, &evento, gameFila)){  // Struct2
+        else if(clickBotaoL(733, 930, 162, 208, &evento, gameFila)){  // Struct2
             useElement(2, &menu);
             checagem (in1, in2, inreag, &menu);
         }
 
-        else if(clickBotao(733, 930, 210, 251, &evento, gameFila)){  // Struct3
+        else if(clickBotaoL(733, 930, 210, 251, &evento, gameFila)){  // Struct3
             useElement(3, &menu);
             checagem (in1, in2, inreag, &menu);
         }
 
-        else if(clickBotao(733, 930, 253, 297, &evento, gameFila)){  // Struct4
+        else if(clickBotaoL(733, 930, 253, 297, &evento, gameFila)){  // Struct4
             useElement(4, &menu);
             checagem (in1, in2, inreag, &menu);
         }
 
-        else if(clickBotao(733, 930, 299, 342, &evento, gameFila)){  // Struct5
+        else if(clickBotaoL(733, 930, 299, 342, &evento, gameFila)){  // Struct5
             useElement(5, &menu);
             checagem (in1, in2, inreag, &menu);
         }
 
-        else if(clickBotao(733, 930, 344, 387, &evento, gameFila)){  // Struct6
+        else if(clickBotaoL(733, 930, 344, 387, &evento, gameFila)){  // Struct6
             useElement(6, &menu);
             checagem (in1, in2, inreag, &menu);
         }
 
-        else if(clickBotao(733, 930, 389, 432, &evento, gameFila)){  // Struct7
+        else if(clickBotaoL(733, 930, 389, 432, &evento, gameFila)){  // Struct7
             useElement(7, &menu);
             checagem (in1, in2, inreag, &menu);
         }
 
-        else if(clickBotao(733, 930, 434, 477, &evento, gameFila)){  // Struct8
+        else if(clickBotaoL(733, 930, 434, 477, &evento, gameFila)){  // Struct8
             useElement(8, &menu);
             checagem (in1, in2, inreag, &menu);
         }
 
-        else if(clickBotao(733, 930, 479, 524, &evento, gameFila)){  // Struct9
+        else if(clickBotaoL(733, 930, 479, 524, &evento, gameFila)){  // Struct9
             useElement(9, &menu);
             checagem (in1, in2, inreag, &menu);
         }
 
-        else if(clickBotao(733, 930, 526, 564, &evento, gameFila)){  // Struct10
+        else if(clickBotaoL(733, 930, 526, 564, &evento, gameFila)){  // Struct10
             useElement(10, &menu);
             checagem (in1, in2, inreag, &menu);
         }
@@ -717,40 +778,13 @@ int gameMenu(int NSNumeroDaFase){
     return 0;
 }
 
-bool gameInit(){
-	gameFila = al_create_event_queue();
-	if(!gameFila){
-		fprintf(stderr, "Erro ao criar gameFila.\n");
-		mainFinish();
-		return false;
-	}
-
-    printf("Fila de eventos carregada.\n");
-
-    inGameBackground = al_load_bitmap("Imagem/inGameBackground.png");
-    if(!inGameBackground){
-        fprintf(stderr, "Erro ao carregar inGameBackground.\n");
-        al_destroy_event_queue(gameFila);
-        mainFinish();
-        return false;
-    }
-
-    printf("Background carregado.\n");
-
-    menu = inicializa_lista();
-    filenamesgen();
-    start_menu(&menu);
-    printf("Elementos criados.\n");
-
-	return true;
-}
-
 void gameFinish(){
 	al_destroy_event_queue(gameFila);
 	al_destroy_bitmap(inGameBackground);
     termina_lista(&menu);
 }
 
+//opcaoMenu
 /*bool opcaoInit(){
 
 }
