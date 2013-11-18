@@ -6,7 +6,7 @@ int fase; //Variavel global, a fase do jogo.
 char checklist[21], startlist[21], itemlist[21], infolist[20]; //Nomes dos arquivos que serão usados
 int target; char targetname[30]; //Objetivo da fase
 int reagentes[10];        //reagentes ativos
-char reagname[30][10];    //e seus nomes
+char reagname[10][30];    //e seus nomes
 char infoname[30], infosymbol[30], infotext[500];    // Para janela de informações
 char confere[30];
 
@@ -31,6 +31,7 @@ int fgetline(FILE *fp, char s[], int lim){
 	    else if (lim == 1){
 	        *s++ = '\n';
 	        fprintf(stderr, "WARNING. fgetline: Line too long, splitted.\n");
+            return -1;
 		}
 	}
 
@@ -147,6 +148,7 @@ void insert(int num, lista *menu){              //
 void nomeia_reag(int reagente, int i){              //
     FILE *reag;                                         //  Esta função é chamada dentro da função start_menu.
     int aux; char confere[30];                         // Ela recebe os reagentes da lista de entrada, e insere-os num
+	char c;
 
     reag = fopen("Entradas/reaglist.txt", "r");                      // vetor global, e então esta função aqui deverá ler os numeros no
     if(!reag){
@@ -156,6 +158,11 @@ void nomeia_reag(int reagente, int i){              //
 
     do{                                                 // vetor global e inserir os nomes adequados na interface.
         fscanf(reag, "%d", &aux);                   // Os nomes são inseridos na matriz reagname[10][30].
+
+		do{
+			fscanf(reag, "%c", &c);
+		}while(c != '\n'); 
+
         if(aux == reagente){                        //
             fgets(reagname[i], 30, reag);
             fclose(reag);
@@ -238,6 +245,11 @@ void start_menu(lista *menu){                       //
     //printf("1\n");
 
     fscanf(file, "%d", &target); //pega numero do objetivo p/ global
+
+	do{
+		fscanf(file, "%c", &c);
+	}while(c != '\n'); 
+
     fgets(targetname, 30, file);
     //printf("2\n");
     //fscanf(file, "%s", targetname); //pega nome do objetivo p/ global
@@ -405,7 +417,7 @@ void termina_lista(lista *l){
     free(l->prox);
     free(l);*/
 
-    int count, n;
+    int count;
     lista *a;
 
     a = l;

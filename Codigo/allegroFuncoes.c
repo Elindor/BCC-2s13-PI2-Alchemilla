@@ -96,7 +96,7 @@ bool mainInit(){                                                                
         return false;
     }
 
-    fonte = al_load_font("Fonte/anirom.ttf", 22, 0);
+    fonte = al_load_font("Fonte/zekton.ttf", 26, 0);
     if(!fonte){
         fprintf(stderr, "Erro ao carregar fonte\n");
         al_destroy_display(janela);
@@ -181,28 +181,28 @@ int mainMenu(){
 
         //Checagens de maouse sobre botão
         if(checkBotao(740, 909, 98, 154, &evento, mainFila))        //Caso o mouse esteja em cima do botão
-            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 824.5, 98, ALLEGRO_ALIGN_CENTRE, "Jogar");
+            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 824.5, 108, ALLEGRO_ALIGN_CENTRE, "Jogar");
 
         else
-            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 824.5, 98, ALLEGRO_ALIGN_CENTRE, "Jogar");
+            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 824.5, 108, ALLEGRO_ALIGN_CENTRE, "Jogar");
 
         if(checkBotao(741, 909, 187, 243, &evento, mainFila))        //Caso o mouse esteja em cima do botão
-            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 825, 187, ALLEGRO_ALIGN_CENTRE, "Intro");
+            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 825, 197, ALLEGRO_ALIGN_CENTRE, "Intro");
 
         else
-            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 825, 187, ALLEGRO_ALIGN_CENTRE, "Intro");
+            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 825, 197, ALLEGRO_ALIGN_CENTRE, "Intro");
 
         if(checkBotao(741, 909, 277, 333, &evento, mainFila))        //Caso o mouse esteja em cima do botão
-           al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 825, 277, ALLEGRO_ALIGN_CENTRE, "Intro e sair");
+           al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 825, 287, ALLEGRO_ALIGN_CENTRE, "Intro e sair");
 
         else  
-            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 825, 277, ALLEGRO_ALIGN_CENTRE, "Intro e sair");
+            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 825, 287, ALLEGRO_ALIGN_CENTRE, "Intro e sair");
 
         if(checkBotao(740, 909, 365, 421, &evento, mainFila))        //Caso o mouse esteja em cima do botão
-            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 824.5, 365, ALLEGRO_ALIGN_CENTRE, "Sair");
+            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 824.5, 375, ALLEGRO_ALIGN_CENTRE, "Sair");
 
         else
-            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 824.5, 365, ALLEGRO_ALIGN_CENTRE, "Sair");
+            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 824.5, 375, ALLEGRO_ALIGN_CENTRE, "Sair");
 
         al_flip_display();                                                      //Atualiza a tela
         
@@ -389,40 +389,40 @@ int selectMenu(){
         al_draw_bitmap(menuB, 0, 0, 0);
 
         if(checkBotao(742, 911, 114, 170, &evento, selectFila))        //Caso o mouse esteja em cima do botão
-            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 826.5, 114, ALLEGRO_ALIGN_CENTRE, "Fase 1");
+            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 826.5, 124, ALLEGRO_ALIGN_CENTRE, "Fase 1");
 
         else
-            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 826.5, 114, ALLEGRO_ALIGN_CENTRE, "Fase 1");
+            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 826.5, 124, ALLEGRO_ALIGN_CENTRE, "Fase 1");
 
         if(checkBotao(741, 910, 204, 260, &evento, selectFila))        //Caso o mouse esteja em cima do botão
-            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 825.5, 204, ALLEGRO_ALIGN_CENTRE, "Fase 2");
+            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 825.5, 214, ALLEGRO_ALIGN_CENTRE, "Fase 2");
 
         else
-            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 825.5, 204, ALLEGRO_ALIGN_CENTRE, "Fase 2");
+            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 825.5, 214, ALLEGRO_ALIGN_CENTRE, "Fase 2");
 
         if(checkBotao(740, 909, 293, 349, &evento, selectFila))        //Caso o mouse esteja em cima do botão
-            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 824.5, 293, ALLEGRO_ALIGN_CENTRE, "Fase 3");
+            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 824.5, 303, ALLEGRO_ALIGN_CENTRE, "Fase 3");
 
         else
-            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 824.5, 293, ALLEGRO_ALIGN_CENTRE, "Fase 3");
+            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 824.5, 303, ALLEGRO_ALIGN_CENTRE, "Fase 3");
 
         if(checkBotao(739, 908, 382, 438, &evento, selectFila))        //Caso o mouse esteja em cima do botão
-            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 823.5, 382, ALLEGRO_ALIGN_CENTRE, "Fase 4");
+            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 823.5, 392, ALLEGRO_ALIGN_CENTRE, "Fase 4");
 
         else
-            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 823.5, 382, ALLEGRO_ALIGN_CENTRE, "Fase 4");
+            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 823.5, 392, ALLEGRO_ALIGN_CENTRE, "Fase 4");
 
         if(checkBotao(739, 908, 471, 527, &evento, selectFila))        //Caso o mouse esteja em cima do botão
-            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 823.5, 471, ALLEGRO_ALIGN_CENTRE, "Fase 5");
+            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 823.5, 481, ALLEGRO_ALIGN_CENTRE, "Fase 5");
 
         else
-            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 823.5, 471, ALLEGRO_ALIGN_CENTRE, "Fase 5");
+            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 823.5, 481, ALLEGRO_ALIGN_CENTRE, "Fase 5");
 
         if(checkBotao(739, 908, 560, 616, &evento, selectFila))        //Caso o mouse esteja em cima do botão
-            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 823.5, 560, ALLEGRO_ALIGN_CENTRE, "Fase 6");
+            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 823.5, 570, ALLEGRO_ALIGN_CENTRE, "Fase 6");
 
         else
-            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 823.5, 560, ALLEGRO_ALIGN_CENTRE, "Fase 6");
+            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 823.5, 570, ALLEGRO_ALIGN_CENTRE, "Fase 6");
 
         //////////////////////////////////////////
 
@@ -531,6 +531,7 @@ int gameMenu(int NSNumeroDaFase){
 
         al_clear_to_color(al_map_rgb(0, 0, 0));
         al_draw_bitmap(inGameBackground, 0, 0, 0);
+        al_draw_text(fonte, al_map_rgb(0, 0, 0), 831.5, 65, ALLEGRO_ALIGN_CENTRE, "Lista de Elementos");
 
         //Checagem para voltar à seleção de fase(funcionará direito quando for implementado os pop-ups)
         if(checkBotao(0, 50, 0, 50, &evento, gameFila))
@@ -644,32 +645,31 @@ int gameMenu(int NSNumeroDaFase){
 
         /*---------------------------------------*/
         if(checkBotao(201, 317, 597, 712, &evento, gameFila))   // Reag1
-             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 259, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
+             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 259, 637, ALLEGRO_ALIGN_CENTRE, "%s", reagname[0]);
         else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 259, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 259, 637, ALLEGRO_ALIGN_CENTRE, "%s", reagname[0]);
+
 
         if(checkBotao(320, 438, 597, 712, &evento, gameFila))   // Reag2
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 379, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 379, 597, ALLEGRO_ALIGN_CENTRE, "%s", reagname[1]);
         else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 379, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
-
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 379, 597, ALLEGRO_ALIGN_CENTRE, "%s", reagname[1]);
 
         if(checkBotao(441, 560, 597, 712, &evento, gameFila))   // Reag3
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 500.5, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 500.5, 597, ALLEGRO_ALIGN_CENTRE, "%s", reagname[2]);
         else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 500.5, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
-
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 500.5, 597, ALLEGRO_ALIGN_CENTRE, "%s", reagname[2]);
 
         if(checkBotao(563, 679, 597, 712, &evento, gameFila))   // Reag4
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 621, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 621, 597, ALLEGRO_ALIGN_CENTRE, "%s", reagname[3]);
         else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 621, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
-
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 621, 597, ALLEGRO_ALIGN_CENTRE, "%s", reagname[3]);
 
         if(checkBotao(682, 802, 597, 712, &evento, gameFila))   // Reag5
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 742, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 742, 597, ALLEGRO_ALIGN_CENTRE, "%s", reagname[4]);
         else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 742, 597, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 742, 597, ALLEGRO_ALIGN_CENTRE, "%s", reagname[4]);
+
 
         if(checkBotao(104, 298, 140, 190, &evento, gameFila))  // In1
                 al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 201, 140, ALLEGRO_ALIGN_CENTRE, "%s", in1name);
@@ -681,16 +681,17 @@ int gameMenu(int NSNumeroDaFase){
         else
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 521, 140, ALLEGRO_ALIGN_CENTRE, "%s", in2name);
 
+
         if(checkBotao(267, 461, 210, 260, &evento, gameFila))  // InReag (Deveria ser 466 por grafico)
             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 364, 210, ALLEGRO_ALIGN_CENTRE, "%s", inreagname);
         else
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 364, 210, ALLEGRO_ALIGN_CENTRE, "%s", inreagname);
 
+
         if(checkBotao(133, 331, 333, 383, &evento, gameFila))  // Out1
             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 232, 333, ALLEGRO_ALIGN_CENTRE, "%s", out1name);
         else
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 232, 333, ALLEGRO_ALIGN_CENTRE, "%s", out1name);
-
 
         if(checkBotao(384, 582, 333, 383, &evento, gameFila))  // Out2
             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 482, 333, ALLEGRO_ALIGN_CENTRE, "%s", out2name);
@@ -698,7 +699,7 @@ int gameMenu(int NSNumeroDaFase){
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 482, 333, ALLEGRO_ALIGN_CENTRE, "%s", out2name);
 
 
-		//IT'S THE FINAL GAMBIARRA!
+		//Gambiarra ahead!
         if(checkBotao(733, 930, 120, 160, &evento, gameFila))  // Struct1
             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 120, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
         else
@@ -714,9 +715,9 @@ int gameMenu(int NSNumeroDaFase){
 
         if(menu.prox){
             if(checkBotao(733, 930, 162, 208, &evento, gameFila))  // Struct2
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 162, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->ElName);
+                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 167, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->ElName);
             else
-                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 162, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->ElName);
+                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 167, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->ElName);
 
             if(clickBotaoL(733, 930, 162, 208, &evento, gameFila)){  // Struct2
                 useElement(2, &menu);
@@ -728,9 +729,9 @@ int gameMenu(int NSNumeroDaFase){
 
             if(menu.prox->prox){
                 if(checkBotao(733, 930, 210, 251, &evento, gameFila))  // Struct3
-                    al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 210, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->ElName);
+                    al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 215, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->ElName);
                 else
-                    al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 210, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->ElName);
+                    al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 215, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->ElName);
 
                 if(clickBotaoL(733, 930, 210, 251, &evento, gameFila)){  // Struct3
                     useElement(3, &menu);
