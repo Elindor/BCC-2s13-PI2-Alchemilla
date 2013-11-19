@@ -867,6 +867,10 @@ int gameMenu(int NSNumeroDaFase){
             }
         }
 
+        do{
+            al_wait_for_event(gameFila, &evento);
+        }while(evento.type == ALLEGRO_EVENT_TIMER);
+
         al_flip_display();
     }
 
