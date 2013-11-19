@@ -313,7 +313,7 @@ bool clickBotaoL(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, 
         evento->mouse.x <= xb &&
         evento->mouse.y >= ya &&
         evento->mouse.y <= yb){
-           al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
             return true;
         }
     }
@@ -632,9 +632,9 @@ int gameMenu(int NSNumeroDaFase){
 
         else if(clickBotaoL(133, 332, 333, 383, &evento, gameFila)){  // Out1
             if(out1 != 0)
-            insert(out1, &menu);
+            insert(out1, &menu, 1);
             out1 = 0;
-            out1name[0] = ' ';
+            out1name[0] = '\0';
         }
 
         else if(clickBotaoR(133, 332, 333, 383, &evento, gameFila)){  // Out1
@@ -643,7 +643,7 @@ int gameMenu(int NSNumeroDaFase){
 
         else if(clickBotaoL(383, 582, 333, 383, &evento, gameFila)){  // Out2
             if(out2 != 0)
-            insert(out2, &menu);
+            insert(out2, &menu, 1);
             out2 = 0;
             out2name[0] = ' ';
         }
@@ -706,6 +706,12 @@ int gameMenu(int NSNumeroDaFase){
             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 482, 333, ALLEGRO_ALIGN_CENTRE, "%s", out2name);
         else
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 482, 333, ALLEGRO_ALIGN_CENTRE, "%s", out2name);
+
+            //logtext1
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 50, 493, ALLEGRO_ALIGN_LEFT, "%s", logtext1);
+            
+            //logtext2
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 50, 545, ALLEGRO_ALIGN_LEFT, "%s", logtext2);
 
 
 		//Gambiarra ahead!
@@ -867,11 +873,7 @@ int gameMenu(int NSNumeroDaFase){
             }
         }
 
-        do{
-            al_wait_for_event(gameFila, &evento);
-        }while(evento.type == ALLEGRO_EVENT_TIMER);
-
-        al_flip_display();
+            al_flip_display();
     }
 
     gameFinish();

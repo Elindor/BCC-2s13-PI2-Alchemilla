@@ -9,6 +9,7 @@ int reagentes[10];        //reagentes ativos
 char reagname[10][30];    //e seus nomes
 char infoname[30], infosymbol[30], infotext[500];    // Para janela de informações
 char confere[30];
+char logtext1[40], logtext2[40];
 
 void filenamesgen(){
     sprintf (checklist, "Entradas/check%02d.txt", fase); //
@@ -61,7 +62,7 @@ void useElement(int elem, lista *menu){         //
 }
 
 
-void insert(int num, lista *menu){              //
+void insert(int num, lista *menu, int type){              //
     lista *p, *q;                               //  Esta função é responsável por inserir elementos na lista dinamica
     p = menu;                                   // de elementos. Ela é ativada ao clicar em um botão de out(int num) e
     q = menu -> prox;                           // insere numa lista dinamica (lista *menu) todas as informações
@@ -116,6 +117,11 @@ void insert(int num, lista *menu){              //
 
                 strcpy(nova->ElName, buff);
                 //printf("0.3.3\n");
+                strcpy(logtext1, logtext2);
+                if(type == 1)
+                    sprintf(logtext2,"Elemento Descuberto: %s.", buff);
+                if(type == 2)
+                    sprintf(logtext2,"Elemento Bônus Destrancado: %s!!!", buff);
 
                 fgetline(file, buff, 20);
                 //printf("x/TYPE = %s\r\n", buff);
@@ -237,7 +243,7 @@ void start_menu(lista *menu){                       //
 	x = 1;
 
     while(x != -1){
-        insert(x, menu);
+        insert(x, menu, 0);
         //printf("insert sucess\n");
         fgetline(file, buff, 20);
         //printf("start x = %s\r\n", buff);
@@ -283,7 +289,7 @@ void nomeia(int num, int casa){                                             //
     char nome[30], buff[20];                                                  // na interface. (out1name/out2name recebem o resultado)
     confere[0] = NULL;                                              //
 
-    info = fopen(checklist, "r");
+    info = fopen(itemlist, "r");
     if(!info){
         fprintf(stderr, "Erro ao abrir checklist.\n");
         return;
@@ -307,8 +313,8 @@ void nomeia(int num, int casa){                                             //
         do{
             fgetline(info, buff, 20);
             aux = atoi(buff);
-        }while(aux == -1);
-    }while(aux == -2);
+        }while(aux != -1);
+    }while(aux != -2);
 
     fclose(info);
     return;
@@ -397,7 +403,7 @@ printf("In1 = %d, In2 = %d, in reag = %d\n", in1, in2, reag);
                     printf("aux BONUS TRACK = %s\r\n", buff);
                     aux = atoi(buff);
                     if(aux != 0){
-                        insert(aux, menu);
+                        insert(aux, menu, 2);
                         
                     }
                     
