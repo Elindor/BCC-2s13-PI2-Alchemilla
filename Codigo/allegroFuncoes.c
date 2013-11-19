@@ -135,6 +135,8 @@ bool mainInit(){                                                                
     }
 
     al_attach_audio_stream_to_mixer(bgm, al_get_default_mixer());
+    al_set_audio_stream_playing(bgm, true);
+    al_set_audio_stream_playmode(bgm, ALLEGRO_PLAYMODE_LOOP);
 
     return true;                                                                    //Tudo em ordem
 }
@@ -145,8 +147,6 @@ int mainMenu(){
         printf("Erro\n");       //exibe mensagem de erro e fecha o prorama.
         return -1;
     }
-
-    al_set_audio_stream_playing(bgm, true);
 
     while(1){       //Enquanto o botão não for clicado
 
