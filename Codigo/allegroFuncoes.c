@@ -548,6 +548,8 @@ int gameMenu(int NSNumeroDaFase){
         if(clickBotaoL(201, 317, 597, 712, &evento, gameFila)){   // Reag1
             inreag = reagentes[0];
             strcpy(inreagname, reagname[0]);
+            printf("Colocou reagente: %d\n", reagentes[0]);
+            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
             checagem (in1, in2, inreag, &menu);
         }
 
@@ -558,6 +560,7 @@ int gameMenu(int NSNumeroDaFase){
         else if(clickBotaoL(320, 438, 597, 712, &evento, gameFila)){   // Reag2
             inreag = reagentes[1];
             strcpy(inreagname, reagname[1]);
+            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
             checagem (in1, in2, inreag, &menu);
         }
 
@@ -568,6 +571,7 @@ int gameMenu(int NSNumeroDaFase){
         else if(clickBotaoL(441, 560, 597, 712, &evento, gameFila)){   // Reag3
             inreag = reagentes[2];
             strcpy(inreagname, reagname[2]);
+            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
             checagem (in1, in2, inreag, &menu);
         }
 
@@ -577,6 +581,7 @@ int gameMenu(int NSNumeroDaFase){
         else if(clickBotaoL(563, 679, 597, 712, &evento, gameFila)){   // Reag4
             inreag = reagentes[3];
             strcpy(inreagname, reagname[3]);
+            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
             checagem (in1, in2, inreag, &menu);
         }
 
@@ -587,6 +592,7 @@ int gameMenu(int NSNumeroDaFase){
         else if(clickBotaoL(682, 802, 597, 712, &evento, gameFila)){   // Reag5
             inreag = reagentes[4];
             strcpy(inreagname, reagname[4]);
+            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
             checagem (in1, in2, inreag, &menu);
         }
 
@@ -616,6 +622,7 @@ int gameMenu(int NSNumeroDaFase){
         else if(clickBotaoL(267, 461, 210, 260, &evento, gameFila)){  // InReag (Deveria ser 466 por grafico)
             inreag = 0;
             inreagname[0] = '\0';
+            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
             checagem (in1, in2, inreag, &menu);
         }
 
@@ -624,9 +631,10 @@ int gameMenu(int NSNumeroDaFase){
 
 
         else if(clickBotaoL(133, 332, 333, 383, &evento, gameFila)){  // Out1
+            if(out1 != 0)
             insert(out1, &menu);
             out1 = 0;
-            out1name[0] = '\0';
+            out1name[0] = ' ';
         }
 
         else if(clickBotaoR(133, 332, 333, 383, &evento, gameFila)){  // Out1
@@ -634,9 +642,10 @@ int gameMenu(int NSNumeroDaFase){
 
 
         else if(clickBotaoL(383, 582, 333, 383, &evento, gameFila)){  // Out2
+            if(out2 != 0)
             insert(out2, &menu);
             out2 = 0;
-            out2name[0] = '\0';
+            out2name[0] = ' ';
         }
 
 
@@ -707,6 +716,7 @@ int gameMenu(int NSNumeroDaFase){
 
         if(clickBotaoL(733, 930, 120, 160, &evento, gameFila)){  // Struct1
                 useElement(1, &menu);
+                if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
                 checagem (in1, in2, inreag, &menu);
         }
 
@@ -721,6 +731,7 @@ int gameMenu(int NSNumeroDaFase){
 
             if(clickBotaoL(733, 930, 162, 208, &evento, gameFila)){  // Struct2
                 useElement(2, &menu);
+                if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
                 checagem (in1, in2, inreag, &menu);
             }
 
@@ -735,6 +746,7 @@ int gameMenu(int NSNumeroDaFase){
 
                 if(clickBotaoL(733, 930, 210, 251, &evento, gameFila)){  // Struct3
                     useElement(3, &menu);
+                    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
                     checagem (in1, in2, inreag, &menu);
                 }
 
@@ -749,6 +761,7 @@ int gameMenu(int NSNumeroDaFase){
 
                     if(clickBotaoL(733, 930, 253, 297, &evento, gameFila)){  // Struct4
                         useElement(4, &menu);
+                        if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
                         checagem (in1, in2, inreag, &menu);
                     }
 
@@ -763,6 +776,7 @@ int gameMenu(int NSNumeroDaFase){
 
                         if(clickBotaoL(733, 930, 299, 342, &evento, gameFila)){  // Struct5
                             useElement(5, &menu);
+                            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
                             checagem (in1, in2, inreag, &menu);
                         }
 
@@ -777,6 +791,7 @@ int gameMenu(int NSNumeroDaFase){
 
                             if(clickBotaoL(733, 930, 344, 387, &evento, gameFila)){  // Struct6
                                 useElement(6, &menu);
+                                if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
                                 checagem (in1, in2, inreag, &menu);
                             }
 
@@ -791,6 +806,7 @@ int gameMenu(int NSNumeroDaFase){
 
                                 if(clickBotaoL(733, 930, 389, 432, &evento, gameFila)){  // Struct7
                                     useElement(7, &menu);
+                                    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
                                     checagem (in1, in2, inreag, &menu);
                                 }
 
@@ -805,6 +821,7 @@ int gameMenu(int NSNumeroDaFase){
 
                                     if(clickBotaoL(733, 930, 434, 477, &evento, gameFila)){  // Struct8
                                         useElement(8, &menu);
+                                        if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
                                         checagem (in1, in2, inreag, &menu);
                                     }
 
@@ -819,6 +836,7 @@ int gameMenu(int NSNumeroDaFase){
 
                                         if(clickBotaoL(733, 930, 479, 524, &evento, gameFila)){  // Struct9
                                             useElement(9, &menu);
+                                            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
                                             checagem (in1, in2, inreag, &menu);
                                         }
 
@@ -833,6 +851,7 @@ int gameMenu(int NSNumeroDaFase){
 
                                             if(clickBotaoL(733, 930, 526, 564, &evento, gameFila)){  // Struct10
                                                 useElement(10, &menu);
+                                                if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
                                                 checagem (in1, in2, inreag, &menu);
                                             }
 

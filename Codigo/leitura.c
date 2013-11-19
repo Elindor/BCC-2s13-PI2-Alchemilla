@@ -41,7 +41,7 @@ int fgetline(FILE *fp, char s[], int lim){
 }
 
 void useElement(int elem, lista *menu){         //
-    if(in2 != 0)                                //  Esta fuinção é responsável por ler um struct(clicado) e adicioná-lo
+    if(in2 != 0 && in1 != 0)                                //  Esta fuinção é responsável por ler um struct(clicado) e adicioná-lo
         return;                                 // nos espaços de entrada da reação. Ele recebe o numero clicado da lista
                                                 // (por ordem), procura até chegar na informação do struct, e então coloca
     for(int i = 1; i < elem; i++){              // adequadamente no espaço correto.
@@ -52,13 +52,14 @@ void useElement(int elem, lista *menu){         //
 
     if(in1 == 0){
         in1 = menu -> ElNum;
-		strcpy(in1name, menu->ElName);
+        strcpy(in1name, menu->ElName);
     }
     else{
         in2 = menu -> ElNum;
-        strcpy(in1name, menu->ElName);
+        strcpy(in2name, menu->ElName);
     }
 }
+
 
 void insert(int num, lista *menu){              //
     lista *p, *q;                               //  Esta função é responsável por inserir elementos na lista dinamica
@@ -279,8 +280,7 @@ void start_menu(lista *menu){                       //
 void nomeia(int num, int casa){                                             //
     FILE *info;                                                         //  Esta função recebe o numero de um elemento criado
     int aux; //Usado em ordenação e conferir entradas               // e devolve o nome. É feita para incializar após a
-    char confere[1]; // Usado nos do/while e conferir reagente      // criação de elementos novos, para então nomeá-los
-    char nome[30];                                                  // na interface. (out1name/out2name recebem o resultado)
+    char nome[30], buff[20];                                                  // na interface. (out1name/out2name recebem o resultado)
     confere[0] = NULL;                                              //
 
     info = fopen(checklist, "r");
@@ -290,22 +290,25 @@ void nomeia(int num, int casa){                                             //
     }
 
     do{
-        fscanf(info, "%d", &aux);
+        fgetline(info, buff, 20);
+        printf("out nomeia = %s\r\n", buff);
+        aux = atoi(buff);
         if(aux == num){
-            fgets(nome, 30, info);
+            fgetline(info, nome, 30);
             if(casa == 1)
-            	strcpy(out1name, nome);
+                strcpy(out1name, nome);
             else if(casa == 2)
-            	strcpy(out2name, nome);
-            	
+                strcpy(out2name, nome);
+                
             fclose(info);
-            return ;		//retorna var temporaria???
+            return ;        //retorna var temporaria???
         }
 
         do{
-            fgets(confere, 1, info);
-        }while(confere[1] != '-' && confere[1] != '!');
-    }while(confere[1] != '!');
+            fgetline(info, buff, 20);
+            aux = atoi(buff);
+        }while(aux == -1);
+    }while(aux == -2);
 
     fclose(info);
     return;
@@ -340,43 +343,59 @@ void info_elem(int elem){                   //
 }
 
 int checagem(int in1, int in2, int reag, lista *menu){                       //
-    FILE *file;                                                 //  Esta função é executada toda a vez em que os espaços
+    FILE *file;  
+    char buff[20];                                               //  Esta função é executada toda a vez em que os espaços
     int aux, x; //Usado em ordenação e conferir entradas           // para elementos são preenchidos. Ela ordena os elementos
-                                                                // e procura por resultados da combinação inserida.
-                                                                //  A função devolve sucesso ou falha
+    if(in1 == in2)
+    return -1;                                                  // e procura por resultados da combinação inserida.
+    printf("Hutrês?\n");                                                            //  A função devolve sucesso ou falha
     if(in1 > in2){                                              //
         aux = in1;
         in1 = in2;
         in2 = aux;
     }
-    
+    printf("ordenado\n");
     file = fopen(checklist, "r");
     if(!file){
         fprintf(stderr, "Erro ao abrir checklist.\n");
         return -1;
     }
-    
+    fgetline(file, buff, 20);
+    printf("Killed = %s\r\n", buff);
+printf("In1 = %d, In2 = %d, in reag = %d\n", in1, in2, reag);
     do{
-        fscanf(file, "%d", &aux);
+        fgetline(file, buff, 20);
+        printf("aux 1 = %s\r\n", buff);
+        aux = atoi(buff);
         if(aux == in1){
-            fscanf(file, "%d", &aux);
+            fgetline(file, buff, 20);
+            printf("HU3 2 = %s\r\n", buff);
+            aux = atoi(buff);
             if(aux == in2){
-                fscanf(file, "%d", &aux);
+                fgetline(file, buff, 20);
+                printf("aux reag = %s\r\n", buff);
+                aux = atoi(buff);
                 if(aux == reag){
                     
-                    fscanf(file, "%d", &aux);
+                    fgetline(file, buff, 20);
+                    printf("aux OUT1 = %s\r\n", buff);
+                    aux = atoi(buff);
                     if(aux != 0){
                         out1 = aux;
                         nomeia(out1, 1);
                     }
                     
-                    fscanf(file, "%d", &aux);
+                    fgetline(file, buff, 20);
+                    printf("aux OUT2 = %s\r\n", buff);
+                    aux = atoi(buff);
                     if(aux != 0){
                         out2 = aux;
                         nomeia(out2, 2);
                     }
                     
-                    fscanf(file, "%d", &aux);
+                    fgetline(file, buff, 20);
+                    printf("aux BONUS TRACK = %s\r\n", buff);
+                    aux = atoi(buff);
                     if(aux != 0){
                         insert(aux, menu);
                         
@@ -390,10 +409,11 @@ int checagem(int in1, int in2, int reag, lista *menu){                       //
         }
         
         do{
-            fscanf(file, "%d", &x);
-        }while(x < 0);
+            fgetline(file, buff, 20);
+            aux = atoi(buff);
+        }while(aux > 0);
         
-    }while(x != -2);
+    }while(aux != -2);
     fclose(file);
     return 0;
 }
@@ -406,28 +426,18 @@ lista inicializa_lista(){
 }
 
 void termina_lista(lista *l){
-    /*free(l->prox->prox->prox->prox->prox->prox->prox->prox->prox);
-    free(l->prox->prox->prox->prox->prox->prox->prox->prox);
-    free(l->prox->prox->prox->prox->prox->prox->prox);
-    free(l->prox->prox->prox->prox->prox->prox);
-    free(l->prox->prox->prox->prox->prox);
-    free(l->prox->prox->prox->prox);
-    free(l->prox->prox->prox);
-    free(l->prox->prox);
-    free(l->prox);
-    free(l);*/
 
     int count;
-    lista *a;
+    lista *a, *b;
 
     a = l;
+    b = a -> prox;
 
-    for(count = 0; a->prox != NULL; a = a->prox)
-        count++;
-
-    for( ;count >= 0; count--){
-        for( ;a->prox != NULL; a = a->prox)
-
+    do{
+        b = a -> prox;
         free(a);
-    }
+        a = b;
+
+    }while(b -> prox != NULL);
+    free(a);
 }
