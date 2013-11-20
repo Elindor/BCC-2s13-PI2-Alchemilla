@@ -50,6 +50,10 @@ void useElement(int elem, lista *menu){         //
             return;
         menu = menu -> prox;
     }
+    if(menu -> ElNum == in1 || menu -> ElNum == in2)
+        return;
+
+    al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 
     if(in1 == 0){
         in1 = menu -> ElNum;

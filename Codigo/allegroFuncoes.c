@@ -32,6 +32,8 @@ ALLEGRO_SAMPLE *somClickBotao = NULL;
 bool playBgm = true;
 bool playFx = true;
 
+bool buttonPressed = false;
+
 lista menu;
 
 //mainMenu
@@ -160,21 +162,29 @@ int mainMenu(){
 
         //Check
         if(clickBotaoL(740, 909, 98, 154, &evento, mainFila)){
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
             if(selectMenu() == 1)                                               //Se o retorno for devido ao click de sair do jogo
                 break;
         }
 
         else if(clickBotaoL(741, 909, 187, 243, &evento, mainFila)){
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
             intro();
         }
 
         else if(clickBotaoL(741, 909, 277, 333, &evento, mainFila)){
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
             intro();
             mainFinish();
             return 0;
         }
 
         else if(clickBotaoL(740, 909, 365, 421, &evento, mainFila)){
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            
             mainFinish();
             return 0;
         }
@@ -313,7 +323,6 @@ bool clickBotaoL(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, 
         evento->mouse.x <= xb &&
         evento->mouse.y >= ya &&
         evento->mouse.y <= yb){
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
             return true;
         }
     }
@@ -331,7 +340,6 @@ bool clickBotaoR(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, 
         evento->mouse.x <= xb &&
         evento->mouse.y >= ya &&
         evento->mouse.y <= yb){
-           al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
             return true;
         }
     }
@@ -433,46 +441,66 @@ int selectMenu(){
             al_draw_bitmap(botao, 0, 0, 0);
 
         if(clickBotaoL(0, 50, 0, 50, &evento, selectFila)){
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
             break;
         }
 
         ///////////////////////////////////////////////
 
-        if(clickBotaoL(742, 911, 114, 170, &evento, selectFila))
+        if(clickBotaoL(742, 911, 114, 170, &evento, selectFila)){
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
             if(gameMenu(0) == 1){       //Se o retorno for devido ao click de sair do jogo
                 selectFinish();
                 return 1;
             }
+        }
 
-        else if(clickBotaoL(741, 910, 204, 260, &evento, selectFila))
+        else if(clickBotaoL(741, 910, 204, 260, &evento, selectFila)){
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
             if(gameMenu(2) == 1){       //Se o retorno for devido ao click de sair do jogo
                 selectFinish();
                 return 1;
             }
+        }
 
-        else if(clickBotaoL(740, 909, 293, 349, &evento, selectFila))
+        else if(clickBotaoL(740, 909, 293, 349, &evento, selectFila)){
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
             if(gameMenu(3) == 1){       //Se o retorno for devido ao click de sair do jogo
                 selectFinish();
                 return 1;
             }
+        }
 
-        else if(clickBotaoL(739, 908, 382, 438, &evento, selectFila))
+        else if(clickBotaoL(739, 908, 382, 438, &evento, selectFila)){
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
             if(gameMenu(4) == 1){       //Se o retorno for devido ao click de sair do jogo
                 selectFinish();
                 return 1;
             }
 
-        else if(clickBotaoL(739, 908, 471, 527, &evento, selectFila))
+        }
+
+        else if(clickBotaoL(739, 908, 471, 527, &evento, selectFila)){
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
             if(gameMenu(5) == 1){       //Se o retorno for devido ao click de sair do jogo
                 selectFinish();
                 return 1;
             }
+        }
 
-        else if(clickBotaoL(739, 908, 560, 616, &evento, selectFila))
+        else if(clickBotaoL(739, 908, 560, 616, &evento, selectFila)){
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
             if(gameMenu(6) == 1){       //Se o retorno for devido ao click de sair do jogo
                 selectFinish();
                 return 1;
             }
+        }
 
         al_flip_display();
     }
@@ -546,11 +574,13 @@ int gameMenu(int NSNumeroDaFase){
 
     /////////////////////////////////////////////////////////////
         if(clickBotaoL(201, 317, 597, 712, &evento, gameFila)){   // Reag1
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            
             inreag = reagentes[0];
             strcpy(inreagname, reagname[0]);
             printf("Colocou reagente: %d\n", reagentes[0]);
             if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-            checagem (in1, in2, inreag, &menu);
+                checagem (in1, in2, inreag, &menu);
         }
 
         else if(clickBotaoR(201, 317, 597, 712, &evento, gameFila)){   // Reag1
@@ -558,10 +588,12 @@ int gameMenu(int NSNumeroDaFase){
 
 
         else if(clickBotaoL(320, 438, 597, 712, &evento, gameFila)){   // Reag2
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
             inreag = reagentes[1];
             strcpy(inreagname, reagname[1]);
             if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-            checagem (in1, in2, inreag, &menu);
+                checagem (in1, in2, inreag, &menu);
         }
 
         else if(clickBotaoR(320, 438, 597, 712, &evento, gameFila)){   // Reag2
@@ -569,20 +601,24 @@ int gameMenu(int NSNumeroDaFase){
 
 
         else if(clickBotaoL(441, 560, 597, 712, &evento, gameFila)){   // Reag3
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
             inreag = reagentes[2];
             strcpy(inreagname, reagname[2]);
             if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-            checagem (in1, in2, inreag, &menu);
+                checagem (in1, in2, inreag, &menu);
         }
 
         else if(clickBotaoR(441, 560, 597, 712, &evento, gameFila)){   // Reag3
         }
 
         else if(clickBotaoL(563, 679, 597, 712, &evento, gameFila)){   // Reag4
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
             inreag = reagentes[3];
             strcpy(inreagname, reagname[3]);
             if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-            checagem (in1, in2, inreag, &menu);
+                checagem (in1, in2, inreag, &menu);
         }
 
         else if(clickBotaoR(563, 679, 597, 712, &evento, gameFila)){   // Reag4
@@ -590,10 +626,12 @@ int gameMenu(int NSNumeroDaFase){
 
 
         else if(clickBotaoL(682, 802, 597, 712, &evento, gameFila)){   // Reag5
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
             inreag = reagentes[4];
             strcpy(inreagname, reagname[4]);
             if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-            checagem (in1, in2, inreag, &menu);
+                checagem (in1, in2, inreag, &menu);
         }
 
         else if(clickBotaoR(682, 802, 597, 712, &evento, gameFila)){   // Reag5
@@ -602,6 +640,8 @@ int gameMenu(int NSNumeroDaFase){
 
 
         else if(clickBotaoL(104, 298, 140, 190, &evento, gameFila)){  // In1
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
             in1 = 0;
             in1name[0] = '\0';
         }
@@ -611,6 +651,8 @@ int gameMenu(int NSNumeroDaFase){
 
 
         else if(clickBotaoL(424, 618, 140, 190, &evento, gameFila)){  // In2
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
             in2 = 0;
             in2name[0] = '\0';
         }
@@ -620,10 +662,12 @@ int gameMenu(int NSNumeroDaFase){
 
 
         else if(clickBotaoL(267, 461, 210, 260, &evento, gameFila)){  // InReag (Deveria ser 466 por grafico)
+            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
             inreag = 0;
             inreagname[0] = '\0';
             if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-            checagem (in1, in2, inreag, &menu);
+                checagem (in1, in2, inreag, &menu);
         }
 
         else if(clickBotaoR(267, 461, 210, 260, &evento, gameFila)){  // InReag (Deveria ser 466 por grafico)
@@ -632,7 +676,7 @@ int gameMenu(int NSNumeroDaFase){
 
         else if(clickBotaoL(133, 332, 333, 383, &evento, gameFila)){  // Out1
             if(out1 != 0)
-            insert(out1, &menu, 1);
+                insert(out1, &menu, 1);
             out1 = 0;
             out1name[0] = '\0';
         }
@@ -643,7 +687,7 @@ int gameMenu(int NSNumeroDaFase){
 
         else if(clickBotaoL(383, 582, 333, 383, &evento, gameFila)){  // Out2
             if(out2 != 0)
-            insert(out2, &menu, 1);
+                insert(out2, &menu, 1);
             out2 = 0;
             out2name[0] = ' ';
         }
@@ -685,10 +729,12 @@ int gameMenu(int NSNumeroDaFase){
         else
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 201, 140, ALLEGRO_ALIGN_CENTRE, "%s", in1name);    
 
+        //if(!buttonPressed){
         if(checkBotao(424, 618, 140, 190, &evento, gameFila))  // In2
             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 521, 140, ALLEGRO_ALIGN_CENTRE, "%s", in2name);
         else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 521, 140, ALLEGRO_ALIGN_CENTRE, "%s", in2name);
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 521, 140, ALLEGRO_ALIGN_CENTRE, "%s", in2name);            
+        //}
 
 
         if(checkBotao(267, 461, 210, 260, &evento, gameFila))  // InReag (Deveria ser 466 por grafico)
@@ -723,7 +769,7 @@ int gameMenu(int NSNumeroDaFase){
         if(clickBotaoL(733, 930, 120, 160, &evento, gameFila)){  // Struct1
                 useElement(1, &menu);
                 if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-                checagem (in1, in2, inreag, &menu);
+                    checagem (in1, in2, inreag, &menu);
         }
 
         else if(clickBotaoR(733, 930, 120, 160, &evento, gameFila)){  // Struct1
@@ -738,7 +784,7 @@ int gameMenu(int NSNumeroDaFase){
             if(clickBotaoL(733, 930, 162, 208, &evento, gameFila)){  // Struct2
                 useElement(2, &menu);
                 if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-                checagem (in1, in2, inreag, &menu);
+                    checagem (in1, in2, inreag, &menu);
             }
 
             else if(clickBotaoR(733, 930, 162, 208, &evento, gameFila)){  // Struct2
@@ -753,7 +799,7 @@ int gameMenu(int NSNumeroDaFase){
                 if(clickBotaoL(733, 930, 210, 251, &evento, gameFila)){  // Struct3
                     useElement(3, &menu);
                     if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-                    checagem (in1, in2, inreag, &menu);
+                        checagem (in1, in2, inreag, &menu);
                 }
 
                 else if(clickBotaoR(733, 930, 210, 251, &evento, gameFila)){  // Struct3
@@ -768,7 +814,7 @@ int gameMenu(int NSNumeroDaFase){
                     if(clickBotaoL(733, 930, 253, 297, &evento, gameFila)){  // Struct4
                         useElement(4, &menu);
                         if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-                        checagem (in1, in2, inreag, &menu);
+                            checagem (in1, in2, inreag, &menu);
                     }
 
                     else if(clickBotaoR(733, 930, 253, 297, &evento, gameFila)){  // Struct4
@@ -783,7 +829,7 @@ int gameMenu(int NSNumeroDaFase){
                         if(clickBotaoL(733, 930, 299, 342, &evento, gameFila)){  // Struct5
                             useElement(5, &menu);
                             if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-                            checagem (in1, in2, inreag, &menu);
+                                checagem (in1, in2, inreag, &menu);
                         }
 
                         else if(clickBotaoR(733, 930, 299, 342, &evento, gameFila)){  // Struct5
@@ -798,7 +844,7 @@ int gameMenu(int NSNumeroDaFase){
                             if(clickBotaoL(733, 930, 344, 387, &evento, gameFila)){  // Struct6
                                 useElement(6, &menu);
                                 if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-                                checagem (in1, in2, inreag, &menu);
+                                    checagem (in1, in2, inreag, &menu);
                             }
 
                             else if(clickBotaoR(733, 930, 344, 387, &evento, gameFila)){  // Struct6
@@ -813,7 +859,7 @@ int gameMenu(int NSNumeroDaFase){
                                 if(clickBotaoL(733, 930, 389, 432, &evento, gameFila)){  // Struct7
                                     useElement(7, &menu);
                                     if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-                                    checagem (in1, in2, inreag, &menu);
+                                        checagem (in1, in2, inreag, &menu);
                                 }
 
                                 else if(clickBotaoR(733, 930, 389, 432, &evento, gameFila)){  // Struct7
@@ -828,7 +874,7 @@ int gameMenu(int NSNumeroDaFase){
                                     if(clickBotaoL(733, 930, 434, 477, &evento, gameFila)){  // Struct8
                                         useElement(8, &menu);
                                         if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-                                        checagem (in1, in2, inreag, &menu);
+                                            checagem (in1, in2, inreag, &menu);
                                     }
 
                                     else if(clickBotaoR(733, 930, 434, 477, &evento, gameFila)){  // Struct8
@@ -843,7 +889,7 @@ int gameMenu(int NSNumeroDaFase){
                                         if(clickBotaoL(733, 930, 479, 524, &evento, gameFila)){  // Struct9
                                             useElement(9, &menu);
                                             if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-                                            checagem (in1, in2, inreag, &menu);
+                                                checagem (in1, in2, inreag, &menu);
                                         }
 
                                         else if(clickBotaoR(733, 930, 479, 524, &evento, gameFila)){  // Struct9
@@ -858,7 +904,7 @@ int gameMenu(int NSNumeroDaFase){
                                             if(clickBotaoL(733, 930, 526, 564, &evento, gameFila)){  // Struct10
                                                 useElement(10, &menu);
                                                 if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-                                                checagem (in1, in2, inreag, &menu);
+                                                    checagem (in1, in2, inreag, &menu);
                                             }
 
                                             else if(clickBotaoR(733, 930, 526, 564, &evento, gameFila)){  // Struct10
@@ -873,7 +919,13 @@ int gameMenu(int NSNumeroDaFase){
             }
         }
 
-            al_flip_display();
+        /*if(evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN)
+            buttonPressed = true;
+
+        else
+            buttonPressed = false;*/
+
+        al_flip_display();
     }
 
     gameFinish();

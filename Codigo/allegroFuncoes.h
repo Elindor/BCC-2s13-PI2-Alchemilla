@@ -21,4 +21,6 @@ void selectFinish();
 bool gameInit();
 int gameMenu(int NSNumeroDaFase);
 void gameFinish();
+
+extern ALLEGRO_SAMPLE *somClickBotao;
 #endif
