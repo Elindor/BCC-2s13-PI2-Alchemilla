@@ -53,7 +53,7 @@ void useElement(int elem, lista *menu){         //
     if(menu -> ElNum == in1 || menu -> ElNum == in2)
         return;
 
-    al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+    //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 
     if(in1 == 0){
         in1 = menu -> ElNum;
@@ -123,7 +123,7 @@ void insert(int num, lista *menu, int type){              //
                 //printf("0.3.3\n");
                 strcpy(logtext1, logtext2);
                 if(type == 1)
-                    sprintf(logtext2,"Elemento Descuberto: %s.", buff);
+                    sprintf(logtext2,"Elemento Descoberto: %s.", buff);
                 if(type == 2)
                     sprintf(logtext2,"Elemento Bônus Destrancado: %s!!!", buff);
 
@@ -355,24 +355,30 @@ void info_elem(int elem){                   //
 int checagem(int in1, int in2, int reag, lista *menu){                       //
     FILE *file;  
     char buff[20];                                               //  Esta função é executada toda a vez em que os espaços
-    int aux, x; //Usado em ordenação e conferir entradas           // para elementos são preenchidos. Ela ordena os elementos
-    if(in1 == in2)
-    return -1;                                                  // e procura por resultados da combinação inserida.
-    printf("Hutrês?\n");                                                            //  A função devolve sucesso ou falha
+    int aux; //Usado em ordenação e conferir entradas           // para elementos são preenchidos. Ela ordena os elementos
+
+    if(in1 == in2){
+		return -1;                                                  // e procura por resultados da combinação inserida.
+		printf("Hutrês?\n");                                                            //  A função devolve sucesso ou falha
+	}
+
     if(in1 > in2){                                              //
         aux = in1;
         in1 = in2;
         in2 = aux;
     }
     printf("ordenado\n");
+
     file = fopen(checklist, "r");
     if(!file){
         fprintf(stderr, "Erro ao abrir checklist.\n");
         return -1;
     }
+
     fgetline(file, buff, 20);
     printf("Killed = %s\r\n", buff);
-printf("In1 = %d, In2 = %d, in reag = %d\n", in1, in2, reag);
+	printf("In1 = %d, In2 = %d, in reag = %d\n", in1, in2, reag);
+
     do{
         fgetline(file, buff, 20);
         printf("aux 1 = %s\r\n", buff);
@@ -424,6 +430,7 @@ printf("In1 = %d, In2 = %d, in reag = %d\n", in1, in2, reag);
         }while(aux > 0);
         
     }while(aux != -2);
+
     fclose(file);
     return 0;
 }
@@ -436,8 +443,6 @@ lista inicializa_lista(){
 }
 
 void termina_lista(lista *l){
-
-    int count;
     lista *a, *b;
 
     a = l;

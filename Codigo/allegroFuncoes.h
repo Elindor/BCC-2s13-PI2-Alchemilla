@@ -14,6 +14,8 @@ bool checkBotao(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, A
 bool clickBotaoL(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila);    //Verifica se o botão foi clicado
 bool clickBotaoR(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila);    //Verifica se o botão foi clicado
 
+void playSample(ALLEGRO_SAMPLE *sample);
+
 bool selectInit();
 int selectMenu();
 void selectFinish();

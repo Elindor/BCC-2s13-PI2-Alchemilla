@@ -36,6 +36,79 @@ bool buttonPressed = false;
 
 lista menu;
 
+//Mouse
+bool checkSair(ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila){                                      //Verifica se o ícone de fechar programa foi acionado
+    al_register_event_source(fila, al_get_display_event_source(janela)); //Registra a fonte do evento (janela)
+
+    al_wait_for_event_timed(fila, evento, 0.05);                         //Espera 0.05 até que algum evento apareça
+
+    if(evento->type == ALLEGRO_EVENT_DISPLAY_CLOSE){                            //Se o tipo do evento for fechar a janela
+        return true;
+    }
+
+    return false;
+}
+
+bool checkBotao(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila){    //Verifica se o mouse está sobre o botão
+    al_register_event_source(fila, al_get_mouse_event_source());                 //Registra fonte dos eventos (mouse)
+
+    al_wait_for_event_timed(fila, evento, 0.001);                                //Espera 0.001 até que algum evento apareça
+
+    if(evento->mouse.x >= xa &&                                                         //Calcula a "hitbox" do bitmap
+    evento->mouse.x <= xb &&                                                            //Draw bitmap tem como referencia o pixel esquerdo superior,
+    evento->mouse.y >= ya &&                                                            //mas para comparar área, usa-se o pixel central
+    evento->mouse.y <= yb){
+        return true;
+    }
+
+    return false;                                                       //Caso o mouse não esteja nessa "hitbox"
+}
+
+bool clickBotaoL(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila){    //Verifica se o botão foi clicado
+    al_register_event_source(fila, al_get_mouse_event_source());                 //Registra fonte dos eventos (mouse)
+    
+    al_wait_for_event_timed(fila, evento, 0.0001);                                //Espera 0.001 até que algum evento apareça
+
+    if(evento->type == ALLEGRO_EVENT_MOUSE_BUTTON_UP && evento->mouse.button == LMB){   //Além de calcular a hitbox, verifica o evento foi um clique
+        if(evento->mouse.x >= xa &&                                                     //E se foi com o botão esquerdo do mouse
+        evento->mouse.x <= xb &&
+        evento->mouse.y >= ya &&
+        evento->mouse.y <= yb){
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool clickBotaoR(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila){    //Verifica se o botão foi clicado
+    al_register_event_source(fila, al_get_mouse_event_source());                 //Registra fonte dos eventos (mouse)
+    
+    al_wait_for_event_timed(fila, evento, 0.0001);                                //Espera 0.001 até que algum evento apareça
+
+    if(evento->type == ALLEGRO_EVENT_MOUSE_BUTTON_UP && evento->mouse.button == RMB){   //Além de calcular a hitbox, verifica o evento foi um clique
+        if(evento->mouse.x >= xa &&                                                     //E se foi com o botão esquerdo do mouse
+        evento->mouse.x <= xb &&
+        evento->mouse.y >= ya &&
+        evento->mouse.y <= yb){
+            return true;
+        }
+    }
+
+    return false;
+}
+
+//Som
+void playSample(ALLEGRO_SAMPLE *sample){
+    if(!buttonPressed){
+        al_play_sample(sample, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+        printf("sample tocado.\n");
+    }
+
+    else
+        printf("sample não tocado.\n");
+}
+
 //mainMenu
 bool mainInit(){                                                                        //Inicia os componentes
     if(!al_init()){                                                                 //Se o allegro5 não for iniciado
@@ -162,20 +235,20 @@ int mainMenu(){
 
         //Check
         if(clickBotaoL(740, 909, 98, 154, &evento, mainFila)){
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            playSample(somClickBotao);
 
             if(selectMenu() == 1)                                               //Se o retorno for devido ao click de sair do jogo
                 break;
         }
 
         else if(clickBotaoL(741, 909, 187, 243, &evento, mainFila)){
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            playSample(somClickBotao);
 
             intro();
         }
 
         else if(clickBotaoL(741, 909, 277, 333, &evento, mainFila)){
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            playSample(somClickBotao);
 
             intro();
             mainFinish();
@@ -183,7 +256,7 @@ int mainMenu(){
         }
 
         else if(clickBotaoL(740, 909, 365, 421, &evento, mainFila)){
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            playSample(somClickBotao);
             
             mainFinish();
             return 0;
@@ -216,9 +289,16 @@ int mainMenu(){
 
         al_flip_display();                                                      //Atualiza a tela
         
-        do{
+        /*do{
             al_wait_for_event(mainFila, &evento);
-        }while(evento.type == ALLEGRO_EVENT_TIMER);
+        }while(evento.type == ALLEGRO_EVENT_TIMER);*/
+
+        if(evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP){
+            buttonPressed = true;
+        }
+
+        else
+            buttonPressed = false;
     }
 
     mainFinish();
@@ -283,68 +363,6 @@ bool introInit(){
 
 void introFinish(){
     al_destroy_bitmap(introImg);
-}
-
-//Mouse
-bool checkSair(ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila){                                      //Verifica se o ícone de fechar programa foi acionado
-    al_register_event_source(fila, al_get_display_event_source(janela)); //Registra a fonte do evento (janela)
-
-    al_wait_for_event_timed(fila, evento, 0.05);                         //Espera 0.05 até que algum evento apareça
-
-    if(evento->type == ALLEGRO_EVENT_DISPLAY_CLOSE){                            //Se o tipo do evento for fechar a janela
-        return true;
-    }
-
-    return false;
-}
-
-bool checkBotao(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila){    //Verifica se o mouse está sobre o botão
-    al_register_event_source(fila, al_get_mouse_event_source());                 //Registra fonte dos eventos (mouse)
-
-    al_wait_for_event_timed(fila, evento, 0.001);                                //Espera 0.001 até que algum evento apareça
-
-    if(evento->mouse.x >= xa &&                                                         //Calcula a "hitbox" do bitmap
-    evento->mouse.x <= xb &&                                                            //Draw bitmap tem como referencia o pixel esquerdo superior,
-    evento->mouse.y >= ya &&                                                            //mas para comparar área, usa-se o pixel central
-    evento->mouse.y <= yb){
-        return true;
-    }
-
-    return false;                                                       //Caso o mouse não esteja nessa "hitbox"
-}
-
-bool clickBotaoL(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila){    //Verifica se o botão foi clicado
-    al_register_event_source(fila, al_get_mouse_event_source());                 //Registra fonte dos eventos (mouse)
-    
-    al_wait_for_event_timed(fila, evento, 0.001);                                //Espera 0.001 até que algum evento apareça
-
-    if(evento->type == ALLEGRO_EVENT_MOUSE_BUTTON_UP && evento->mouse.button == LMB){   //Além de calcular a hitbox, verifica o evento foi um clique
-        if(evento->mouse.x >= xa &&                                                     //E se foi com o botão esquerdo do mouse
-        evento->mouse.x <= xb &&
-        evento->mouse.y >= ya &&
-        evento->mouse.y <= yb){
-            return true;
-        }
-    }
-
-    return false;
-}
-
-bool clickBotaoR(float xa, float xb, float ya, float yb, ALLEGRO_EVENT *evento, ALLEGRO_EVENT_QUEUE *fila){    //Verifica se o botão foi clicado
-    al_register_event_source(fila, al_get_mouse_event_source());                 //Registra fonte dos eventos (mouse)
-    
-    al_wait_for_event_timed(fila, evento, 0.001);                                //Espera 0.001 até que algum evento apareça
-
-    if(evento->type == ALLEGRO_EVENT_MOUSE_BUTTON_UP && evento->mouse.button == RMB){   //Além de calcular a hitbox, verifica o evento foi um clique
-        if(evento->mouse.x >= xa &&                                                     //E se foi com o botão esquerdo do mouse
-        evento->mouse.x <= xb &&
-        evento->mouse.y >= ya &&
-        evento->mouse.y <= yb){
-            return true;
-        }
-    }
-
-    return false;
 }
 
 //selectMenu
@@ -441,14 +459,14 @@ int selectMenu(){
             al_draw_bitmap(botao, 0, 0, 0);
 
         if(clickBotaoL(0, 50, 0, 50, &evento, selectFila)){
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            playSample(somClickBotao);
             break;
         }
 
         ///////////////////////////////////////////////
 
         if(clickBotaoL(742, 911, 114, 170, &evento, selectFila)){
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            playSample(somClickBotao);
 
             if(gameMenu(0) == 1){       //Se o retorno for devido ao click de sair do jogo
                 selectFinish();
@@ -457,7 +475,7 @@ int selectMenu(){
         }
 
         else if(clickBotaoL(741, 910, 204, 260, &evento, selectFila)){
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            playSample(somClickBotao);
 
             if(gameMenu(2) == 1){       //Se o retorno for devido ao click de sair do jogo
                 selectFinish();
@@ -466,7 +484,7 @@ int selectMenu(){
         }
 
         else if(clickBotaoL(740, 909, 293, 349, &evento, selectFila)){
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            playSample(somClickBotao);
 
             if(gameMenu(3) == 1){       //Se o retorno for devido ao click de sair do jogo
                 selectFinish();
@@ -475,7 +493,7 @@ int selectMenu(){
         }
 
         else if(clickBotaoL(739, 908, 382, 438, &evento, selectFila)){
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            playSample(somClickBotao);
 
             if(gameMenu(4) == 1){       //Se o retorno for devido ao click de sair do jogo
                 selectFinish();
@@ -485,7 +503,7 @@ int selectMenu(){
         }
 
         else if(clickBotaoL(739, 908, 471, 527, &evento, selectFila)){
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            playSample(somClickBotao);
 
             if(gameMenu(5) == 1){       //Se o retorno for devido ao click de sair do jogo
                 selectFinish();
@@ -494,13 +512,20 @@ int selectMenu(){
         }
 
         else if(clickBotaoL(739, 908, 560, 616, &evento, selectFila)){
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            playSample(somClickBotao);
 
             if(gameMenu(6) == 1){       //Se o retorno for devido ao click de sair do jogo
                 selectFinish();
                 return 1;
             }
         }
+
+        if(evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP){
+            buttonPressed = true;
+        }
+
+        else
+            buttonPressed = false;
 
         al_flip_display();
     }
@@ -569,12 +594,14 @@ int gameMenu(int NSNumeroDaFase){
             al_draw_bitmap(botao, 0, 0, 0);
 
         if(clickBotaoL(0, 50, 0, 50, &evento, gameFila)){
+            playSample(somClickBotao);
             break;
         }
 
     /////////////////////////////////////////////////////////////
         if(clickBotaoL(201, 317, 597, 712, &evento, gameFila)){   // Reag1
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            playSample(somClickBotao);
+            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
             
             inreag = reagentes[0];
             strcpy(inreagname, reagname[0]);
@@ -588,7 +615,8 @@ int gameMenu(int NSNumeroDaFase){
 
 
         else if(clickBotaoL(320, 438, 597, 712, &evento, gameFila)){   // Reag2
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            playSample(somClickBotao);
+            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 
             inreag = reagentes[1];
             strcpy(inreagname, reagname[1]);
@@ -601,7 +629,8 @@ int gameMenu(int NSNumeroDaFase){
 
 
         else if(clickBotaoL(441, 560, 597, 712, &evento, gameFila)){   // Reag3
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            playSample(somClickBotao);
+            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 
             inreag = reagentes[2];
             strcpy(inreagname, reagname[2]);
@@ -613,7 +642,8 @@ int gameMenu(int NSNumeroDaFase){
         }
 
         else if(clickBotaoL(563, 679, 597, 712, &evento, gameFila)){   // Reag4
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            playSample(somClickBotao);
+            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 
             inreag = reagentes[3];
             strcpy(inreagname, reagname[3]);
@@ -626,7 +656,8 @@ int gameMenu(int NSNumeroDaFase){
 
 
         else if(clickBotaoL(682, 802, 597, 712, &evento, gameFila)){   // Reag5
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            playSample(somClickBotao);
+            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 
             inreag = reagentes[4];
             strcpy(inreagname, reagname[4]);
@@ -640,7 +671,8 @@ int gameMenu(int NSNumeroDaFase){
 
 
         else if(clickBotaoL(104, 298, 140, 190, &evento, gameFila)){  // In1
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            playSample(somClickBotao);
+            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 
             in1 = 0;
             in1name[0] = '\0';
@@ -651,7 +683,8 @@ int gameMenu(int NSNumeroDaFase){
 
 
         else if(clickBotaoL(424, 618, 140, 190, &evento, gameFila)){  // In2
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            playSample(somClickBotao);
+            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 
             in2 = 0;
             in2name[0] = '\0';
@@ -662,7 +695,8 @@ int gameMenu(int NSNumeroDaFase){
 
 
         else if(clickBotaoL(267, 461, 210, 260, &evento, gameFila)){  // InReag (Deveria ser 466 por grafico)
-            al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+            playSample(somClickBotao);
+            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 
             inreag = 0;
             inreagname[0] = '\0';
@@ -675,6 +709,9 @@ int gameMenu(int NSNumeroDaFase){
 
 
         else if(clickBotaoL(133, 332, 333, 383, &evento, gameFila)){  // Out1
+            playSample(somClickBotao);
+            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
             if(out1 != 0)
                 insert(out1, &menu, 1);
             out1 = 0;
@@ -686,6 +723,9 @@ int gameMenu(int NSNumeroDaFase){
 
 
         else if(clickBotaoL(383, 582, 333, 383, &evento, gameFila)){  // Out2
+            playSample(somClickBotao);
+            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
             if(out2 != 0)
                 insert(out2, &menu, 1);
             out2 = 0;
@@ -693,7 +733,7 @@ int gameMenu(int NSNumeroDaFase){
         }
 
 
-        else if(clickBotaoL(383, 582, 333, 383, &evento, gameFila)){  // Out2
+        else if(clickBotaoR(383, 582, 333, 383, &evento, gameFila)){  // Out2
         }
 
         /*---------------------------------------*/
@@ -725,16 +765,15 @@ int gameMenu(int NSNumeroDaFase){
 
 
         if(checkBotao(104, 298, 140, 190, &evento, gameFila))  // In1
-                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 201, 140, ALLEGRO_ALIGN_CENTRE, "%s", in1name);
+            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 201, 140, ALLEGRO_ALIGN_CENTRE, "%s", in1name);
         else
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 201, 140, ALLEGRO_ALIGN_CENTRE, "%s", in1name);    
 
-        //if(!buttonPressed){
+
         if(checkBotao(424, 618, 140, 190, &evento, gameFila))  // In2
             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 521, 140, ALLEGRO_ALIGN_CENTRE, "%s", in2name);
         else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 521, 140, ALLEGRO_ALIGN_CENTRE, "%s", in2name);            
-        //}
+            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 521, 140, ALLEGRO_ALIGN_CENTRE, "%s", in2name);
 
 
         if(checkBotao(267, 461, 210, 260, &evento, gameFila))  // InReag (Deveria ser 466 por grafico)
@@ -767,9 +806,12 @@ int gameMenu(int NSNumeroDaFase){
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 120, ALLEGRO_ALIGN_CENTRE, "%s", menu.ElName);
 
         if(clickBotaoL(733, 930, 120, 160, &evento, gameFila)){  // Struct1
-                useElement(1, &menu);
-                if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-                    checagem (in1, in2, inreag, &menu);
+            playSample(somClickBotao);
+            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
+            useElement(1, &menu);
+            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
+                checagem (in1, in2, inreag, &menu);
         }
 
         else if(clickBotaoR(733, 930, 120, 160, &evento, gameFila)){  // Struct1
@@ -782,6 +824,9 @@ int gameMenu(int NSNumeroDaFase){
                 al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 167, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->ElName);
 
             if(clickBotaoL(733, 930, 162, 208, &evento, gameFila)){  // Struct2
+                playSample(somClickBotao);
+                //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
                 useElement(2, &menu);
                 if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
                     checagem (in1, in2, inreag, &menu);
@@ -797,6 +842,9 @@ int gameMenu(int NSNumeroDaFase){
                     al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 215, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->ElName);
 
                 if(clickBotaoL(733, 930, 210, 251, &evento, gameFila)){  // Struct3
+                    playSample(somClickBotao);
+                    //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
                     useElement(3, &menu);
                     if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
                         checagem (in1, in2, inreag, &menu);
@@ -812,6 +860,9 @@ int gameMenu(int NSNumeroDaFase){
                         al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 253, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->ElName);
 
                     if(clickBotaoL(733, 930, 253, 297, &evento, gameFila)){  // Struct4
+                        playSample(somClickBotao);
+                        //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
                         useElement(4, &menu);
                         if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
                             checagem (in1, in2, inreag, &menu);
@@ -827,6 +878,9 @@ int gameMenu(int NSNumeroDaFase){
                             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 299, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->ElName);
 
                         if(clickBotaoL(733, 930, 299, 342, &evento, gameFila)){  // Struct5
+                            playSample(somClickBotao);
+                            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
                             useElement(5, &menu);
                             if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
                                 checagem (in1, in2, inreag, &menu);
@@ -842,6 +896,9 @@ int gameMenu(int NSNumeroDaFase){
                                 al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 344, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->ElName);
 
                             if(clickBotaoL(733, 930, 344, 387, &evento, gameFila)){  // Struct6
+                                playSample(somClickBotao);
+                                //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
                                 useElement(6, &menu);
                                 if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
                                     checagem (in1, in2, inreag, &menu);
@@ -857,6 +914,9 @@ int gameMenu(int NSNumeroDaFase){
                                     al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 389, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->ElName);
 
                                 if(clickBotaoL(733, 930, 389, 432, &evento, gameFila)){  // Struct7
+                                    playSample(somClickBotao);
+                                    //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
                                     useElement(7, &menu);
                                     if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
                                         checagem (in1, in2, inreag, &menu);
@@ -872,6 +932,9 @@ int gameMenu(int NSNumeroDaFase){
                                         al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 434, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->ElName);
 
                                     if(clickBotaoL(733, 930, 434, 477, &evento, gameFila)){  // Struct8
+                                        playSample(somClickBotao);
+                                        //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
                                         useElement(8, &menu);
                                         if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
                                             checagem (in1, in2, inreag, &menu);
@@ -887,6 +950,9 @@ int gameMenu(int NSNumeroDaFase){
                                             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 479, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->ElName);
 
                                         if(clickBotaoL(733, 930, 479, 524, &evento, gameFila)){  // Struct9
+                                            playSample(somClickBotao);
+                                            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
                                             useElement(9, &menu);
                                             if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
                                                 checagem (in1, in2, inreag, &menu);
@@ -902,6 +968,9 @@ int gameMenu(int NSNumeroDaFase){
                                                 al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 526, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
 
                                             if(clickBotaoL(733, 930, 526, 564, &evento, gameFila)){  // Struct10
+                                                playSample(somClickBotao);
+                                                //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+
                                                 useElement(10, &menu);
                                                 if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
                                                     checagem (in1, in2, inreag, &menu);
@@ -919,11 +988,12 @@ int gameMenu(int NSNumeroDaFase){
             }
         }
 
-        /*if(evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN)
+        if(evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP){
             buttonPressed = true;
+        }
 
         else
-            buttonPressed = false;*/
+            buttonPressed = false;
 
         al_flip_display();
     }
