@@ -194,7 +194,7 @@ void nomeia_reag(int reagente, int i){              //
 void info_reag(int reagente){                           //
     FILE *reag;                                         //  Esta função é ativada com o clique direito sobre um reagente.
     int aux;
-    char buff[30];                                          // Ela coloca as informações do elemento correspondente no vetor
+    char buff[500];                                          // Ela coloca as informações do elemento correspondente no vetor
 
     reag = fopen("Entradas/reaglist.txt", "r");         // de reagentes, e coloca-os nos vetores de informação antes da
     if(!reag){
@@ -338,14 +338,17 @@ void info_elem(int elem){                   //
         return;
     }
 
+    fgetline(reag, buff, 30);
+
     do{                                         // informações carregar.
         fgetline(reag, buff, 30);
         aux = atoi(buff);
+        printf("%d\n", aux);
 
         if(aux == elem){
             fgetline(reag, infoname, 30);
             fgetline(reag, infosymbol, 30);
-            fgetline(reag, infotext, 30);
+            fgetline(reag, infotext, 500);
             fclose(reag);
             return;
         }
@@ -356,8 +359,10 @@ void info_elem(int elem){                   //
         fgetline(reag, buff, 500);
         fgetline(reag, buff, 10);
     }while(aux != 0);
+
     fclose(reag);
-    return ;
+
+    return;
 }
 
 int checagem(int in1, int in2, int reag, lista *menu){                       //

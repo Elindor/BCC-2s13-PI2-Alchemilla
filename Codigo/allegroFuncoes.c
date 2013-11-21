@@ -472,7 +472,7 @@ int selectMenu(){
         if(clickBotaoL(742, 911, 114, 170, &evento, selectFila)){
             playSample(somClickBotao);
 
-            if(gameMenu(0) == 1){       //Se o retorno for devido ao click de sair do jogo
+            if(gameMenu(1) == 1){       //Se o retorno for devido ao click de sair do jogo
                 selectFinish();
                 return 1;
             }
@@ -481,7 +481,7 @@ int selectMenu(){
         else if(clickBotaoL(741, 910, 204, 260, &evento, selectFila)){
             playSample(somClickBotao);
 
-            if(gameMenu(0) == 1){       //Se o retorno for devido ao click de sair do jogo
+            if(gameMenu(2) == 1){       //Se o retorno for devido ao click de sair do jogo
                 selectFinish();
                 return 1;
             }
@@ -601,39 +601,39 @@ int infoMenu(){
     for(i=0; i<100; i++){
     	linha1[i] = infotext[i];
 
-    	if(infotext[i] = '\0')
+    	if(infotext[i] == '\0')
     		break;
     }
 
     if(i == 100){
-    	for(; i<200 || infotext[i] != '\0'; i++){
+    	for(i = 100; i<200; i++){
     		linha2[i%100] = infotext[i];
 
-    		if(infotext[i] = '\0')
+    		if(infotext[i] == '\0')
     			break;
     	}
 
     	if(i == 200){
-    		for(; i<300 || infotext[i] != '\0'; i++){
+    		for(i = 200; i<300; i++){
     			linha3[i%100] = infotext[i];
 
-    			if(infotext[i] = '\0')
+    			if(infotext[i] == '\0')
     				break;
     		}
 
     		if(i == 300){
-    			for(; i<400 || infotext[i] != '\0'; i++){
+    			for(i = 300; i<400; i++){
     				linha4[i%100] = infotext[i];
 
-    				if(infotext[i] = '\0')
+    				if(infotext[i] == '\0')
     					break;
     			}
 
     			if(i == 400){
-    				for(; i<500 || infotext[i] != '\0'; i++){
+    				for(i = 400; i<500; i++){
     					linha5[i%100] = infotext[i];
 
-    					if(infotext[i] = '\0')
+    					if(infotext[i] == '\0')
     						break;
     				}
     			}
@@ -670,11 +670,11 @@ int infoMenu(){
         al_draw_textf(titleFont, (al_map_rgb(0, 0, 0)), 140, 160, ALLEGRO_ALIGN_LEFT, "%s", infoname);
         al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 885, 170, ALLEGRO_ALIGN_RIGHT, "%s", infosymbol);
 
-        al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 140, 250, ALLEGRO_ALIGN_LEFT, "%s", linha1);
-        al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 140, 275, ALLEGRO_ALIGN_LEFT, "%s", linha2);
-        al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 140, 300, ALLEGRO_ALIGN_LEFT, "%s", linha3);
-        al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 140, 325, ALLEGRO_ALIGN_LEFT, "%s", linha4);
-        al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 140, 350, ALLEGRO_ALIGN_LEFT, "%s", linha5);
+        al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 160, 300, ALLEGRO_ALIGN_LEFT, "%s", linha1);
+        al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 160, 325, ALLEGRO_ALIGN_LEFT, "%s", linha2);
+        al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 160, 350, ALLEGRO_ALIGN_LEFT, "%s", linha3);
+        al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 160, 375, ALLEGRO_ALIGN_LEFT, "%s", linha4);
+        al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 160, 400, ALLEGRO_ALIGN_LEFT, "%s", linha5);
 
         if(evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP){
             buttonPressed = true;

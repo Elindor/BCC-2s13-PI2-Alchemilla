@@ -20,6 +20,10 @@ bool selectInit();
 int selectMenu();
 void selectFinish();
 
+bool infoInit();
+int infoMenu();
+void infoFinish();
+
 bool gameInit();
 int gameMenu(int NSNumeroDaFase);
 void gameFinish();
