@@ -5,8 +5,8 @@ int in1, in2, inreag, out1, out2; char out1name[30], out2name[30], in1name[30], 
 int fase; //Variavel global, a fase do jogo.
 char checklist[21], startlist[21], itemlist[21], infolist[20]; //Nomes dos arquivos que serão usados
 int target; char targetname[30]; //Objetivo da fase
-int reagentes[10];        //reagentes ativos
-char reagname[10][30];    //e seus nomes
+int reagentes[5];        //reagentes ativos
+char reagname[5][30];    //e seus nomes
 char infoname[30], infosymbol[30], infotext[500];    // Para janela de informações
 char confere[30];
 char logtext1[40], logtext2[40];
@@ -45,7 +45,7 @@ void useElement(int elem, lista *menu){         //
     if(in2 != 0 && in1 != 0)                                //  Esta fuinção é responsável por ler um struct(clicado) e adicioná-lo
         return;                                 // nos espaços de entrada da reação. Ele recebe o numero clicado da lista
                                                 // (por ordem), procura até chegar na informação do struct, e então coloca
-    for(int i = 1; i < elem; i++){              // adequadamente no espaço correto.
+    for(int i = 0; i < elem; i++){              // adequadamente no espaço correto.
         if(menu -> prox == NULL)                 //
             return;
         menu = menu -> prox;
@@ -64,7 +64,6 @@ void useElement(int elem, lista *menu){         //
         strcpy(in2name, menu->ElName);
     }
 }
-
 
 void insert(int num, lista *menu, int type){              //
     lista *p, *q;                               //  Esta função é responsável por inserir elementos na lista dinamica
@@ -181,7 +180,7 @@ void nomeia_reag(int reagente, int i){              //
         }
 
         else
-            fgets(confere, 30, reag); 
+            fgets(confere, 30, reag);
             
         fgets(confere, 30, reag);
         fgets(confere, 30, reag);
@@ -194,7 +193,8 @@ void nomeia_reag(int reagente, int i){              //
 
 void info_reag(int reagente){                           //
     FILE *reag;                                         //  Esta função é ativada com o clique direito sobre um reagente.
-    int aux; char kill[30];                                          // Ela coloca as informações do elemento correspondente no vetor
+    int aux;
+    char buff[30];                                          // Ela coloca as informações do elemento correspondente no vetor
 
     reag = fopen("Entradas/reaglist.txt", "r");         // de reagentes, e coloca-os nos vetores de informação antes da
     if(!reag){
@@ -203,18 +203,20 @@ void info_reag(int reagente){                           //
     }
 
     do{                                                 // janela de informações mostrá-los.
-        fscanf(reag, "%d", &aux);                   //
+        fgetline(reag, buff, 20);
+        aux = atoi(buff);
+
         if(aux == reagente){
-            fgets(infoname, 30, reag);
-            fgets(infosymbol, 30, reag);
-            fgets(infotext, 30, reag);
+            fgetline(reag, infoname, 30);
+            fgetline(reag, infosymbol, 30);
+            fgetline(reag, infotext, 500);
             fclose(reag);
             return;
         }
             
-        fgets(kill, 30, reag);
-        fgets(kill, 30, reag);
-        fgets(kill, 30, reag);
+        fgetline(reag, buff, 30);
+        fgetline(reag, buff, 30);
+        fgetline(reag, buff, 500);
     }while(aux != 0);
 
     fclose(reag);
@@ -266,9 +268,9 @@ void start_menu(lista *menu){                       //
     //fscanf(file, "%s", targetname); //pega nome do objetivo p/ global
     
     fscanf(file, "%d", &x); // Só pra tirar o próximo -1
-    for(i = 0; i < 10; i++){
+    for(i = 0; i < 5; i++){
         reagentes[i] = 0;
-        reagname[i][30] = NULL;
+        reagname[i][0] = '\0';
     }
     //printf("3\n");
 
@@ -318,6 +320,7 @@ void nomeia(int num, int casa){                                             //
             fgetline(info, buff, 20);
             aux = atoi(buff);
         }while(aux != -1);
+        
     }while(aux != -2);
 
     fclose(info);
@@ -327,6 +330,8 @@ void nomeia(int num, int casa){                                             //
 void info_elem(int elem){                   //
     FILE *reag;                                 //  Esta função é ativada ao clicar com o direito em um elemento.
     int aux;                 // Ela buscará todas as informações correspondente ao numero (int elem) que
+    char buff[500];
+
     reag = fopen(infolist, "r");                // ela recebe, e dará o nome, simbolo e descrição antes da janela de
     if(!reag){
         fprintf(stderr, "Erro ao abrir infolist.\n");
@@ -334,19 +339,22 @@ void info_elem(int elem){                   //
     }
 
     do{                                         // informações carregar.
-        fscanf(reag, "%d", &aux);           //
+        fgetline(reag, buff, 30);
+        aux = atoi(buff);
+
         if(aux == elem){
-            fgets(infoname, 30, reag);
-            fgets(infosymbol, 30, reag);
-            fgets(infotext, 30, reag);
+            fgetline(reag, infoname, 30);
+            fgetline(reag, infosymbol, 30);
+            fgetline(reag, infotext, 30);
             fclose(reag);
             return;
         }
 
         
-        fgets(confere, 30, reag);
-        fgets(confere, 30, reag);
-        fgets(confere, 30, reag);
+        fgetline(reag, buff, 30);
+        fgetline(reag, buff, 30);
+        fgetline(reag, buff, 500);
+        fgetline(reag, buff, 10);
     }while(aux != 0);
     fclose(reag);
     return ;
@@ -435,24 +443,19 @@ int checagem(int in1, int in2, int reag, lista *menu){                       //
     return 0;
 }
 
-lista inicializa_lista(){
-                                                    //  Esta função inicializa a lista dinamica de elementos
+lista inicializa_lista(){                               //  Esta função inicializa a lista dinamica de elementos
     lista *l = (lista*)malloc(sizeof(lista));       // e deve ser chamada no inicio do jogo (ou fase?)
     l -> prox = NULL;                               //
     return *l;
 }
 
 void termina_lista(lista *l){
-    lista *a, *b;
+    while(l->prox != NULL){
+        lista *tira;
 
-    a = l;
-    b = a -> prox;
+        tira = l->prox;
+        l->prox = tira->prox;
 
-    do{
-        b = a -> prox;
-        free(a);
-        a = b;
-
-    }while(b -> prox != NULL);
-    free(a);
+        free(tira);
+    }
 }
