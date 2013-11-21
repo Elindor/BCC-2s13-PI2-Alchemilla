@@ -1,0 +1,100 @@
+1
+Água
+
+
+-
+2
+Carbonato de Cálcio
+
+
+-
+3
+Gás Hidrogenio
+
+
+-
+4
+Hidróxido de Cálcio
+
+
+-
+5
+Acetileno
+
+
+-
+6
+Eteno
+
+
+-
+7
+Etano
+
+
+-
+8
+Água Oxigenada
+
+
+-
+9
+Gás Oxigênio
+
+
+-
+10
+Etanol
+
+
+-
+11
+Dietil Éter
+
+
+-
+12
+Etenol
+
+
+-
+13
+Etanal
+
+
+-
+14
+Butil-Lítio
+
+
+-
+15
+Acetileto de litio
+
+
+-
+16
+But-3-in-oxido de Lítio
+
+
+-
+17
+But-3-in-2-ol
+
+
+-
+18
+Hidróxido de Lítio
+
+
+-
+19
+But-3-en-2-ol
+
+
+-
+20
+Sec-Butanol
+
+
+-

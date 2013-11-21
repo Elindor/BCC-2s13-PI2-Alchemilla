@@ -1,0 +1,70 @@
+1
+Bromo
+
+
+-
+2
+3,4-dimetil But-2-eno
+
+
+-
+3
+Acetona
+
+
+-
+4
+Bromânio
+
+
+-
+5
+Brometo
+
+
+-
+6
+2,3-dimetil-2,3-dibromo Butano
+
+
+-
+7
+Água
+
+
+-
+8
+2,3-dimetil 3-bromo Butan-2-ol
+
+
+-
+9
+2,3-dimetil Butan-2-ol
+
+
+-
+10
+Bromoacetona
+
+
+-
+11
+Ácido Bromídrico
+
+
+-
+12
+Ácido Sulfúrico
+
+
+-
+13
+2,3-dimetilbutan-2-tiol
+
+
+-
+14
+2'-[2-(2,3 dimetil Butil)]Tiopropanona
+
+
+-

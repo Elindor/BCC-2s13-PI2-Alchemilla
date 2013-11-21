@@ -1,0 +1,70 @@
+00
+-1
+1
+Cloro
+1
+-1
+2
+Metano
+1
+-1
+3
+Ácido Clorídrico
+2
+-1
+4
+Cloreto de Metila
+1
+-1
+5
+Dicloro Metano
+1
+-1
+6
+Clorofórmio
+1
+-1
+7
+Tetracloreto de Carbono
+2
+-1
+8
+Bromo
+1
+-1
+9
+Ácido bromídrico
+2
+-1
+10
+Brometo de Metila
+1
+-1
+11
+Dibromo Metano
+1
+-1
+12
+Bromofórmio
+1
+-1
+13
+Tetrabrometo de Carbono
+2
+-1
+14
+Magnésio
+1
+-1
+15
+Brometo de Metil Magnésio
+1
+-1
+16
+Brometo de Magnésio
+2
+-1
+17
+Etano
+3
+-2

@@ -1,0 +1,65 @@
+1
+Hidróxido de Sódio
+
+
+-
+2
+Ácido Clorídrico
+
+
+-
+3
+Calcio
+
+
+-
+4
+loreto de Sódio
+
+
+-
+5
+Água
+
+
+-
+6
+Sódio
+
+
+-
+7
+Gás Hidrogênio
+
+
+-
+8
+Gás Oxigenio
+
+
+-
+9
+Cloreto de Cálcio
+
+
+-
+10
+Hidróxido de Cálcio
+
+
+-
+11
+Óxido de Cálcio
+
+
+-
+12
+Hidreto de Sódio
+
+
+-
+13
+Hidreto de Cálcio
+
+
+!
