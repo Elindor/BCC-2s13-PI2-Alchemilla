@@ -17,11 +17,13 @@ ALLEGRO_EVENT_QUEUE *mainFila = NULL;
 ALLEGRO_EVENT_QUEUE *selectFila = NULL;
 ALLEGRO_EVENT_QUEUE *gameFila = NULL;
 ALLEGRO_EVENT_QUEUE *infoFila = NULL;
+ALLEGRO_EVENT_QUEUE *creditoFila = NULL;
 
 ALLEGRO_BITMAP *menuA = NULL;
 ALLEGRO_BITMAP *menuB = NULL;
 ALLEGRO_BITMAP *inGameBackground = NULL;
 ALLEGRO_BITMAP *infoBackground = NULL;
+ALLEGRO_BITMAP *creditoBackground = NULL;
 
 ALLEGRO_FONT *fonte = NULL;
 ALLEGRO_FONT *titleFont = NULL;
@@ -1391,4 +1393,68 @@ void opcaoFinish(){
 
 int opcaoMenu(){
 
+}*/
+
+//creditos
+/*bool creditoInit(){
+	creditoBackground = al_load_bitmap("Imagem/creditoBackground.png");
+	if(!creditoBackground){
+		fprintf(stderr, "Erro ao criar creditoBackground.\n");
+		return false;
+	}
+
+	creditoFila = al_create_event_queue();
+	if(!creditoFila){
+		fprintf(stderr, "Erro ao criar creditoFila.\n");
+		al_destroy_bitmap(creditoBackground);
+		return false;
+	}
+
+	return true;
+}
+
+int crditos(){
+	if(!creditoInit()){
+		fprintf(stderr, "Erro ao iniciar créditos.\n");
+		return -1;
+	}
+
+	while(1){
+		ALLEGRO_EVENT evento;
+
+        if(checkSair(&evento, creditoFila)){
+            selectFinish();
+            return 1;
+        }
+
+        if(checkBotao(0, 50, 0, 50, &evento, creditoFila))
+            al_draw_tinted_bitmap(botao, (al_map_rgba(128, 128, 128, 0)), 0, 0, 0);
+
+        else
+            al_draw_bitmap(botao, 0, 0, 0);
+
+        if(clickBotaoL(0, 50, 0, 50, &evento, creditoFila)){
+            playSample(somClickBotao);
+            break;
+        }
+
+        al_clear_to_color(al_map_rgb(0, 0, 0));
+        al_draw_bitmap(creditoBackground, 0, 0, 0);
+
+        if(evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP){
+            buttonPressed = true;
+        }
+
+        else
+            buttonPressed = false;
+
+        al_flip_display();
+	}
+
+	return 0;
+}
+
+void creditoFinish(){
+	al_destroy_bitmap(creditoBackground);
+	al_destroy_event_queue(creditoFila);
 }*/
