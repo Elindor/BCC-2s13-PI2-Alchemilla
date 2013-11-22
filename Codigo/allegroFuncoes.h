@@ -28,9 +28,9 @@ bool gameInit();
 int gameMenu(int NSNumeroDaFase);
 void gameFinish();
 
-/*bool creditoInit();
-int crditos();
-void creditoFinish();*/
+bool creditoInit();
+int creditos();
+void creditoFinish();
 
 extern ALLEGRO_SAMPLE *somClickBotao;
 #endif

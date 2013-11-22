@@ -256,9 +256,8 @@ int mainMenu(){
         else if(clickBotaoL(741, 909, 277, 333, &evento, mainFila)){
             playSample(somClickBotao);
 
-            intro();
-            mainFinish();
-            return 0;
+            if(creditos() == 1)
+            	break;
         }
 
         else if(clickBotaoL(740, 909, 365, 421, &evento, mainFila)){
@@ -282,10 +281,10 @@ int mainMenu(){
             al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 825, 197, ALLEGRO_ALIGN_CENTRE, "Intro");
 
         if(checkBotao(741, 909, 277, 333, &evento, mainFila))        //Caso o mouse esteja em cima do botão
-           al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 825, 287, ALLEGRO_ALIGN_CENTRE, "Intro e sair");
+           al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 825, 287, ALLEGRO_ALIGN_CENTRE, "Créditos");
 
         else  
-            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 825, 287, ALLEGRO_ALIGN_CENTRE, "Intro e sair");
+            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 825, 287, ALLEGRO_ALIGN_CENTRE, "Créditos");
 
         if(checkBotao(740, 909, 365, 421, &evento, mainFila))        //Caso o mouse esteja em cima do botão
             al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 824.5, 375, ALLEGRO_ALIGN_CENTRE, "Sair");
@@ -1396,8 +1395,8 @@ int opcaoMenu(){
 }*/
 
 //creditos
-/*bool creditoInit(){
-	creditoBackground = al_load_bitmap("Imagem/creditoBackground.png");
+bool creditoInit(){
+	creditoBackground = al_load_bitmap("Imagem/creditos.png");
 	if(!creditoBackground){
 		fprintf(stderr, "Erro ao criar creditoBackground.\n");
 		return false;
@@ -1413,7 +1412,7 @@ int opcaoMenu(){
 	return true;
 }
 
-int crditos(){
+int creditos(){
 	if(!creditoInit()){
 		fprintf(stderr, "Erro ao iniciar créditos.\n");
 		return -1;
@@ -1423,23 +1422,23 @@ int crditos(){
 		ALLEGRO_EVENT evento;
 
         if(checkSair(&evento, creditoFila)){
-            selectFinish();
+            creditoFinish();
             return 1;
-        }
-
-        if(checkBotao(0, 50, 0, 50, &evento, creditoFila))
-            al_draw_tinted_bitmap(botao, (al_map_rgba(128, 128, 128, 0)), 0, 0, 0);
-
-        else
-            al_draw_bitmap(botao, 0, 0, 0);
-
-        if(clickBotaoL(0, 50, 0, 50, &evento, creditoFila)){
-            playSample(somClickBotao);
-            break;
         }
 
         al_clear_to_color(al_map_rgb(0, 0, 0));
         al_draw_bitmap(creditoBackground, 0, 0, 0);
+
+        if(clickBotaoL(742, 915, 607, 663, &evento, creditoFila)){
+        	playSample(somClickBotao);
+        	break;
+        }
+
+        if(checkBotao(742, 915, 607, 663, &evento, creditoFila))
+            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 828.5, 615, ALLEGRO_ALIGN_CENTRE, "Voltar");
+
+        else
+        	al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 828.5, 615, ALLEGRO_ALIGN_CENTRE, "Voltar");
 
         if(evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP){
             buttonPressed = true;
@@ -1451,10 +1450,12 @@ int crditos(){
         al_flip_display();
 	}
 
+    creditoFinish();
+
 	return 0;
 }
 
 void creditoFinish(){
 	al_destroy_bitmap(creditoBackground);
 	al_destroy_event_queue(creditoFila);
-}*/
+}
