@@ -1,66 +1,66 @@
 ﻿
 1
 Hidróxido de Sódio
-
-
+NaOH
+O hidróxido de sódio, ou soda cáustica, é uma base usada na indústria, principalmente na fabricação de papel, tecidos, detergentes, alimentos e biodiesel. Por ser uma base forte, reage intensamente com Ácidos.
 -
 2
 Ácido Clorídrico
-
-
+HCl
+O Ácido cloridrico, ou em algumas circunstancias, o Ácido Muriático, é um ácido muito forte usado diversas vezes na industria como reagente. Por ser um ácido forte, reage com Bases.
 -
 3
 Calcio
-
-
+Ca
+O átomo Calcio, de numero atomico 20, é um metal alcalino-terroso branco, que amarela rapidamente em exposição ao ar. O calcio puro isolado possui carga 2+.
 -
 4
-loreto de Sódio
-
-
+Cloreto de Sódio
+NaCl
+Também conhecido como sal de cozinha, o Cloreto de Sódio é um sal usado como tempero amplamente usado na cozinha. Como todos os sais, pode ser formado da mistura de um ácido e uma base. 
 -
 5
 Água
-
-
+H20
+A Água é um solvente amplamente usado na quimica, diversas vezes até chamado de solvente universal. Suas moléculas são polares, de pouca condutividade, e ligam facilmente entre si, todas estas qualidades que a tornam especiais no mundo da quimica.
 -
 6
 Sódio
-
-
+Na
+O átimo Sódio, de numero atomico 11, é altamente reativo e corrosivo em contato com a pele. O quarto elemento mais comum da terra, possui carga 2- quando isulado e puro.
 -
 7
 Gás Hidrogênio
-
-
+H2
+O gás Hidrogênio é o gás mais leve, 14 vezesmais leve que a mistura que compõe o ar atmosférico. Jamais encontra-se hidrogenio puro, devido à facilidade com que ele liga-seconsigo mesmo ou com quase qualquer substancia do mundo.
 -
 8
 Gás Oxigenio
-
-
+O2
+O oxigenio, sempre encontrado em duplas e portanto gás quando puro, é um dos elementos mais importantes da quimica, sendo elemento diferencial na criação de óxidos, e essencial à vida através da respiração dos organismos aeróbicos.
 -
 9
 Cloreto de Cálcio
-
-
+CaCl2
+O Cloreto de Calcio é um sal, soluvel em agua, usado em maquinas de refrigeração, produção de queijo, e é componente do cimento. É usado junto com uma base forte na produção de Hidreto de Calcio.
 -
 10
 Hidróxido de Cálcio
-
-
+Ca(OH)2
+O Hidróxido de Cálcio, também conhecido como Cal Apagada, é um importante material na contrução, sendo usado na produção de argamassa, cimento, asfalto, e tinta. Também é usado em suplementos de calcio e depiladores. Além disso, é um reagente amplamente usado na quimica, com diversos usos.
 -
 11
 Óxido de Cálcio
-
-
+CaO
+O Óxido de Cálcio, ou apenas Cal, é uma das substancias mais importantes da industria. Usado na fabricação de argamassas e tinturas, é usado também em ceramicas, siderugicas, produção de papel, desodorantes, e como branqueador, alem de ser outro reagente amplamente usado na química.
 -
 12
 Hidreto de Sódio
-
-
+NaH
+O Hidreto de sódio é uma base fortíssima, insoluvem em solventes organicos e bastante perigoso, uma vez que pode queimar em contado com ar, especialmente quando há água presente, uma vez que a reação libera hidrogenio, que também é inflamavel, tornando-se uma bomba natural.
 -
 13
 Hidreto de Cálcio
-
-
+CaH2
+O Hidreto de Cálcio é um composto quimico cinza, ou raramente branco quando puro, que reage fortemente com agua liberando Hidrogenio, tornando-se portanto um agente de secagem fortíssimo.
 !

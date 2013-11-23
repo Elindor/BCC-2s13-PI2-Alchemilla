@@ -1,53 +1,53 @@
 ﻿
 1
 Cloro
-
-
+Cl2
+O gás cloro é o estado puro do Cloro, náo isolado. É abundante na atmosfeta e é essencial para diversas formas de vida. É usado para no tratamento de água para o consumo,e também na composição de diversos produtos de limpeza, como desinfetantes. É tóxico, e em altas concentrações é extremamente venenoso.
 -
 2
 Metano
-
-
+CH4
+O Metano é um gás incolor de estrutura tetraédrica. O mais simples dos hidrocarbonetos, é encontrado naturalmente na decomposição, na extração de combustiveis naturais, e em pantanos. Também chamado de Biogás, é um combustivel amplamente usado na sociedade.
 -
 3
 Ácido Clorídrico
-
-
+HCl
+O Ácido cloridrico, ou em algumas circunstancias, o Ácido Muriático, é um ácido muito forte usado diversas vezes na industria como reagente. Por ser um ácido forte, reage com Bases.
 -
 4
 Cloreto de Metila
-
-
+CH3Cl
+O Clorometano, ou Cloreto de Metila, é um solvente de odor doce embora toxico. Usado como solvente de graxas, óleos e resinas, sua maior importancia é como intermediário quimico para outros componentes.
 -
 5
 Dicloro Metano
-
-
+CH2Cl2
+O Dicloro Metano, é um dos mais comuns solventes, por ser pouco perigoso, muito embora altamente volátil. É usado na industria como desengordurante, para descafeinar café e extrair lúpulo para cerveja. É muito usado como propulsor de aerossóis. 
 -
 6
 Clorofórmio
-
-
+CHCl3
+O Clorofórmio é um liquido extremamente volátil, usado como anestésico externo aplicado em pele, embora muito tóxico se ingerido ou respirado, podendo desacordar ou matar, causando danos em todo o sistema central do corpo humano, além de ser cancerigeno.
 -
 7
 Tetracloreto de Carbono
-
-
+CCl4
+O Tetracloreto de Carbono é usado hoje em investigações cientificas e e durante muito tempo foi usado como extintor, pesticida e solvente, todos estes hoje em dia interrompidos, devido aos efeitos adversos causado na humanidade.
 -
 8
 Bromo
-
-
+Br2
+O bromo molecular possui poucas aplicações práticas. Ele éusado como aditivo de gasolinas que tenham chumbo, e na produção de produtos de pulverização. Sua maior importancia é como ingediente de reações para criar compostos com Bromo.
 -
 9
-Ácido bromídrico
-
-
+Ácido Bromídrico
+Hbr
+O Ácido Bromídrico é um ácido fortíssimo, com poucos usos além da sintese de outros brometos.
 -
 10
 Brometo de Metila
-
-
+CH3Br
+O Bromometano, ou brometo de metila, é um gás incolor tóxico que ao longo da história foi muito usado como inseticida e fungicida, embora o uso tenha sido descontinuado com o tempo até ser proibido. Hoje, é em geral apenas um intermediário quimico para a sintese de brometos.
 -
 11
 Dibromo Metano
