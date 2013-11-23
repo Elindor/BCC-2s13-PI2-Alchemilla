@@ -32,5 +32,9 @@ bool creditoInit();
 int creditos();
 void creditoFinish();
 
-extern ALLEGRO_SAMPLE *somClickBotao;
+bool optionsInit();
+int options();
+void optionsFinish();
+
+extern ALLEGRO_SAMPLE *somClickBotao, *somClickBotao2, *sucess;
 #endif

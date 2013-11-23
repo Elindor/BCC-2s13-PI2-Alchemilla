@@ -7,6 +7,7 @@
 //Define altura e largura da tela
 int larguraTela = 1000 ;
 int alturaTela = 750;
+bool playingBGM = true;
 
 //Variáveis globais
 ALLEGRO_DISPLAY *janela = NULL;
@@ -37,6 +38,8 @@ ALLEGRO_AUDIO_STREAM *bgm = NULL;
 
 ALLEGRO_SAMPLE *somNoBotao = NULL;
 ALLEGRO_SAMPLE *somClickBotao = NULL;
+ALLEGRO_SAMPLE *somClickBotao2 = NULL;
+ALLEGRO_SAMPLE *sucess = NULL;
 bool playBgm = true;
 bool playFx = true;
 
@@ -203,12 +206,34 @@ bool mainInit(){                                                                
         al_destroy_event_queue(mainFila);
         al_destroy_font(fonte);
         al_destroy_bitmap(menuA);
+        return false; 
+    }
+
+    somClickBotao = al_load_sample("Audio/rightClick.wav");
+    if(!somClickBotao){
+        fprintf(stderr, "Erro ao criar somClickBotao.\n");
+        al_destroy_display(janela);
+        al_destroy_event_queue(mainFila);
+        al_destroy_font(fonte);
+        al_destroy_bitmap(menuA);
+        al_destroy_audio_stream(bgm);
         return false;
     }
 
-    somClickBotao = al_load_sample("Audio/badDisk.wav");
+    somClickBotao2 = al_load_sample("Audio/leftClick.wav");
     if(!somClickBotao){
-        fprintf(stderr, "Erro ao criar somClickBotao.\n");
+        fprintf(stderr, "Erro ao criar somClickBotao2.\n");
+        al_destroy_display(janela);
+        al_destroy_event_queue(mainFila);
+        al_destroy_font(fonte);
+        al_destroy_bitmap(menuA);
+        al_destroy_audio_stream(bgm);
+        return false;
+    }
+
+    sucess = al_load_sample("Audio/chimes.wav");
+    if(!somClickBotao){
+        fprintf(stderr, "Erro ao criar sucess sound.\n");
         al_destroy_display(janela);
         al_destroy_event_queue(mainFila);
         al_destroy_font(fonte);
@@ -252,7 +277,8 @@ int mainMenu(){
         else if(clickBotaoL(741, 909, 187, 243, &evento, mainFila)){
             playSample(somClickBotao);
 
-            options();
+            if(options() == 1)
+                break;
         }
 
         else if(clickBotaoL(741, 909, 277, 333, &evento, mainFila)){
@@ -773,11 +799,14 @@ int gameMenu(int NSNumeroDaFase){
             strcpy(inreagname, reagname[0]);
             printf("Colocou reagente: %d\n", reagentes[0]);
             if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
+                al_wait_for_event_timed(gameFila, &evento, 0.1);    
+
                 checagem (in1, in2, inreag, &menu);
         }
 
         else if(clickBotaoR(201, 317, 597, 712, &evento, gameFila)){   // Reag1
         	if(reagentes[0] != 0){
+                playSample(somClickBotao2);
         		info_reag(reagentes[0]);
 
             	if(infoMenu() == 1){
@@ -794,12 +823,15 @@ int gameMenu(int NSNumeroDaFase){
 
             inreag = reagentes[1];
             strcpy(inreagname, reagname[1]);
-            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
+            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                al_wait_for_event_timed(gameFila, &evento, 0.1);    
                 checagem (in1, in2, inreag, &menu);
+            }
         }
 
         else if(clickBotaoR(320, 438, 597, 712, &evento, gameFila)){   // Reag2
         	if(reagentes[1] != 0){
+                playSample(somClickBotao2);
         		info_reag(reagentes[1]);
 
             	if(infoMenu() == 1){
@@ -816,12 +848,15 @@ int gameMenu(int NSNumeroDaFase){
 
             inreag = reagentes[2];
             strcpy(inreagname, reagname[2]);
-            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
+            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                al_wait_for_event_timed(gameFila, &evento, 0.1);    
                 checagem (in1, in2, inreag, &menu);
+            }
         }
 
         else if(clickBotaoR(441, 560, 597, 712, &evento, gameFila)){   // Reag3
         	if(reagentes[2] != 0){
+                playSample(somClickBotao2);
         		info_reag(reagentes[2]);
 
             	if(infoMenu() == 1){
@@ -837,12 +872,15 @@ int gameMenu(int NSNumeroDaFase){
 
             inreag = reagentes[3];
             strcpy(inreagname, reagname[3]);
-            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
+            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                al_wait_for_event_timed(gameFila, &evento, 0.1);    
                 checagem (in1, in2, inreag, &menu);
+            }
         }
 
         else if(clickBotaoR(563, 679, 597, 712, &evento, gameFila)){   // Reag4
         	if(reagentes[3] != 0){
+                playSample(somClickBotao2);
         		info_reag(reagentes[3]);
 
             	if(infoMenu() == 1){
@@ -859,12 +897,15 @@ int gameMenu(int NSNumeroDaFase){
 
             inreag = reagentes[4];
             strcpy(inreagname, reagname[4]);
-            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
+            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                al_wait_for_event_timed(gameFila, &evento, 0.1);    
                 checagem (in1, in2, inreag, &menu);
+            }
         }
 
         else if(clickBotaoR(682, 802, 597, 712, &evento, gameFila)){   // Reag5
         	if(reagentes[4] != 0){
+                playSample(somClickBotao2);
         		info_reag(reagentes[4]);
 
             	if(infoMenu() == 1){
@@ -895,7 +936,7 @@ int gameMenu(int NSNumeroDaFase){
         		}
 
         		info_elem(a->ElNum);
-
+                playSample(somClickBotao2);
         		if(infoMenu() == 1){
                 	gameFinish();
                 	return 1;
@@ -922,7 +963,7 @@ int gameMenu(int NSNumeroDaFase){
         		}
 
         		info_elem(a->ElNum);
-
+                playSample(somClickBotao2);
         		if(infoMenu() == 1){
                 	gameFinish();
                 	return 1;
@@ -937,14 +978,16 @@ int gameMenu(int NSNumeroDaFase){
 
             inreag = 0;
             inreagname[0] = '\0';
-            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
+            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                al_wait_for_event_timed(gameFila, &evento, 0.1);    
                 checagem (in1, in2, inreag, &menu);
+            }
         }
 
         else if(clickBotaoR(267, 461, 210, 260, &evento, gameFila)){  // InReag (Deveria ser 466 por grafico)
         	if(inreag != 0){
         		info_reag(inreag);
-
+                playSample(somClickBotao2);
             	if(infoMenu() == 1){
             	    gameFinish();
             	    return 1;
@@ -974,7 +1017,7 @@ int gameMenu(int NSNumeroDaFase){
         		}
 
         		info_elem(a->ElNum);
-
+                playSample(somClickBotao2);
         		if(infoMenu() == 1){
                 	gameFinish();
                 	return 1;
@@ -1005,7 +1048,7 @@ int gameMenu(int NSNumeroDaFase){
         		}
 
         		info_elem(a->ElNum);
-
+                playSample(somClickBotao2);
         		if(infoMenu() == 1){
                 	gameFinish();
                 	return 1;
@@ -1102,14 +1145,16 @@ int gameMenu(int NSNumeroDaFase){
     				    //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 				
     				    useElement(1, &menu);
-    				    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-    				        checagem (in1, in2, inreag, &menu);
+    				    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                            al_wait_for_event_timed(gameFila, &evento, 0.1);    
+                            checagem (in1, in2, inreag, &menu);
+                            }
     				}
 				
     				else if(clickBotaoR(733, 930, 120, 160, &evento, gameFila)){  // Struct1
     					if(menu.prox->ElNum != 0){
     						info_elem(menu.prox->ElNum);
-		
+		                  playSample(somClickBotao2);
     				    	if(infoMenu() == 1){
     				    	    gameFinish();
     				    	    return 1;
@@ -1128,14 +1173,16 @@ int gameMenu(int NSNumeroDaFase){
     			            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			            useElement(2, &menu);
-    			            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-    			                checagem (in1, in2, inreag, &menu);
+    			            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                                al_wait_for_event_timed(gameFila, &evento, 0.1);    
+                                checagem (in1, in2, inreag, &menu);
+                            }
     			        }
 			
     			        else if(clickBotaoR(733, 930, 162, 208, &evento, gameFila)){  // Struct2
     			            if(menu.prox->prox->ElNum != 0){
     							info_elem(menu.prox->prox->ElNum);
-    							
+    							playSample(somClickBotao2);
     				    		if(infoMenu() == 1){
     				    		    gameFinish();
     				    		    return 1;
@@ -1154,14 +1201,16 @@ int gameMenu(int NSNumeroDaFase){
     			                //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                useElement(3, &menu);
-    			                if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-    			                    checagem (in1, in2, inreag, &menu);
+    			                if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                                    al_wait_for_event_timed(gameFila, &evento, 0.1);    
+                                    checagem (in1, in2, inreag, &menu);
+                                }
     			            }
 			
     			            else if(clickBotaoR(733, 930, 210, 251, &evento, gameFila)){  // Struct3
     			                if(menu.prox->prox->prox->ElNum != 0){
     								info_elem(menu.prox->prox->prox->ElNum);
-    								
+    								playSample(somClickBotao2);
     				    			if(infoMenu() == 1){
     				    			    gameFinish();
     				    			    return 1;
@@ -1180,14 +1229,16 @@ int gameMenu(int NSNumeroDaFase){
     			                    //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                    useElement(4, &menu);
-    			                    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-    			                        checagem (in1, in2, inreag, &menu);
+    			                    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                                        al_wait_for_event_timed(gameFila, &evento, 0.1);    
+                                        checagem (in1, in2, inreag, &menu);
+                                    }
     			                }
 			
     			                else if(clickBotaoR(733, 930, 253, 297, &evento, gameFila)){  // Struct4
     			                    if(menu.prox->prox->prox->prox->ElNum != 0){
     									info_elem(menu.prox->prox->prox->prox->ElNum);
-    									
+    									playSample(somClickBotao2);
     				    				if(infoMenu() == 1){
     				    				    gameFinish();
     				    				    return 1;
@@ -1206,14 +1257,16 @@ int gameMenu(int NSNumeroDaFase){
     			                        //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                        useElement(5, &menu);
-    			                        if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-    			                            checagem (in1, in2, inreag, &menu);
+    			                        if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                                            al_wait_for_event_timed(gameFila, &evento, 0.1);    
+                                            checagem (in1, in2, inreag, &menu);
+                                        }
     			                    }
 			
     			                    else if(clickBotaoR(733, 930, 299, 342, &evento, gameFila)){  // Struct5
     			                        if(menu.prox->prox->prox->prox->prox->ElNum != 0){
     										info_elem(menu.prox->prox->prox->prox->prox->ElNum);
-    										
+    										playSample(somClickBotao2);
     				    					if(infoMenu() == 1){
     				    					    gameFinish();
     				    					    return 1;
@@ -1232,14 +1285,16 @@ int gameMenu(int NSNumeroDaFase){
     			                            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                            useElement(6, &menu);
-    			                            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-    			                                checagem (in1, in2, inreag, &menu);
+    			                            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                                                al_wait_for_event_timed(gameFila, &evento, 0.1);    
+                                                checagem (in1, in2, inreag, &menu);
+                                            }
     			                        }
 			
     			                        else if(clickBotaoR(733, 930, 344, 387, &evento, gameFila)){  // Struct6
     			                        	if(menu.prox->prox->prox->prox->prox->prox->ElNum != 0){
     											info_elem(menu.prox->prox->prox->prox->prox->prox->ElNum);
-    											
+    											playSample(somClickBotao2);
     				    						if(infoMenu() == 1){
     				    						    gameFinish();
     				    						    return 1;
@@ -1258,14 +1313,16 @@ int gameMenu(int NSNumeroDaFase){
     			                                //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                                useElement(7, &menu);
-    			                                if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-    			                                    checagem (in1, in2, inreag, &menu);
+    			                                if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                                                    al_wait_for_event_timed(gameFila, &evento, 0.1);    
+                                                    checagem (in1, in2, inreag, &menu);
+                                                }
     			                            }
 			
     			                            else if(clickBotaoR(733, 930, 389, 432, &evento, gameFila)){  // Struct7
     			                            	if(menu.prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     												info_elem(menu.prox->prox->prox->prox->prox->prox->prox->ElNum);
-    												
+    												playSample(somClickBotao2);
     				    							if(infoMenu() == 1){
     				    							    gameFinish();
     				    							    return 1;
@@ -1284,8 +1341,10 @@ int gameMenu(int NSNumeroDaFase){
     			                                    //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                                    useElement(8, &menu);
-    			                                    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-    			                                        checagem (in1, in2, inreag, &menu);
+    			                                    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                                                        al_wait_for_event_timed(gameFila, &evento, 0.1);    
+                                                        checagem (in1, in2, inreag, &menu);
+                                                    }
     			                                }
 			
     			                                else if(clickBotaoR(733, 930, 434, 477, &evento, gameFila)){  // Struct8
@@ -1310,14 +1369,16 @@ int gameMenu(int NSNumeroDaFase){
     			                                        //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                                        useElement(9, &menu);
-    			                                        if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-    			                                            checagem (in1, in2, inreag, &menu);
+    			                                        if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                                                            al_wait_for_event_timed(gameFila, &evento, 0.1);    
+                                                            checagem (in1, in2, inreag, &menu);
+                                                        }
     			                                    }
 			
     			                                    else if(clickBotaoR(733, 930, 479, 524, &evento, gameFila)){  // Struct9
     			                                    	if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     														info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
-    														
+    														playSample(somClickBotao2);
     				    									if(infoMenu() == 1){
     				    									    gameFinish();
     				    									    return 1;
@@ -1336,14 +1397,16 @@ int gameMenu(int NSNumeroDaFase){
     			                                            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                                            useElement(10, &menu);
-    			                                            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-    			                                                checagem (in1, in2, inreag, &menu);
+    			                                            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                                                                al_wait_for_event_timed(gameFila, &evento, 0.1);    
+                                                                checagem (in1, in2, inreag, &menu);
+                                                            }
     			                                        }
 			
     			                                        else if(clickBotaoR(733, 930, 526, 564, &evento, gameFila)){  // Struct10
     			                                        	if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     															info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
-    															
+    															playSample(somClickBotao2);
     				    										if(infoMenu() == 1){
     				    										    gameFinish();
     				    										    return 1;
@@ -1395,14 +1458,16 @@ int gameMenu(int NSNumeroDaFase){
     				    //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 				
     				    useElement(1, &menu);
-    				    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-    				        checagem (in1, in2, inreag, &menu);
+    				    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                            al_wait_for_event_timed(gameFila, &evento, 0.1);    
+                            checagem (in1, in2, inreag, &menu);
+                            }
     				}
 				
     				else if(clickBotaoR(733, 930, 120, 160, &evento, gameFila)){  // Struct1
     					if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     						info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
-		
+		                      playSample(somClickBotao2);
     				    	if(infoMenu() == 1){
     				    	    gameFinish();
     				    	    return 1;
@@ -1421,14 +1486,16 @@ int gameMenu(int NSNumeroDaFase){
     			            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			            useElement(2, &menu);
-    			            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-    			                checagem (in1, in2, inreag, &menu);
+    			            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                                al_wait_for_event_timed(gameFila, &evento, 0.1);    
+                                checagem (in1, in2, inreag, &menu);
+                            }
     			        }
 			
     			        else if(clickBotaoR(733, 930, 162, 208, &evento, gameFila)){  // Struct2
     			            if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     							info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
-    							
+    							playSample(somClickBotao2);
     				    		if(infoMenu() == 1){
     				    		    gameFinish();
     				    		    return 1;
@@ -1447,14 +1514,16 @@ int gameMenu(int NSNumeroDaFase){
     			                //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                useElement(3, &menu);
-    			                if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-    			                    checagem (in1, in2, inreag, &menu);
+    			                if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                                    al_wait_for_event_timed(gameFila, &evento, 0.1);    
+                                    checagem (in1, in2, inreag, &menu);
+                                }
     			            }
 			
     			            else if(clickBotaoR(733, 930, 210, 251, &evento, gameFila)){  // Struct3
     			                if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     								info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
-    								
+    								playSample(somClickBotao2);
     				    			if(infoMenu() == 1){
     				    			    gameFinish();
     				    			    return 1;
@@ -1473,14 +1542,16 @@ int gameMenu(int NSNumeroDaFase){
     			                    //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                    useElement(4, &menu);
-    			                    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-    			                        checagem (in1, in2, inreag, &menu);
+    			                    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                                        al_wait_for_event_timed(gameFila, &evento, 0.1);    
+                                        checagem (in1, in2, inreag, &menu);
+                                    }
     			                }
 			
     			                else if(clickBotaoR(733, 930, 253, 297, &evento, gameFila)){  // Struct4
     			                    if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     									info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
-    									
+    									playSample(somClickBotao2);
     				    				if(infoMenu() == 1){
     				    				    gameFinish();
     				    				    return 1;
@@ -1499,8 +1570,10 @@ int gameMenu(int NSNumeroDaFase){
     			                        //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                        useElement(5, &menu);
-    			                        if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-    			                            checagem (in1, in2, inreag, &menu);
+    			                        if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                                            al_wait_for_event_timed(gameFila, &evento, 0.1);    
+                                            checagem (in1, in2, inreag, &menu);
+                                        }
     			                    }
 			
     			                    else if(clickBotaoR(733, 930, 299, 342, &evento, gameFila)){  // Struct5
@@ -1525,14 +1598,16 @@ int gameMenu(int NSNumeroDaFase){
     			                            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                            useElement(6, &menu);
-    			                            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-    			                                checagem (in1, in2, inreag, &menu);
+    			                            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                                                al_wait_for_event_timed(gameFila, &evento, 0.1);    
+                                                checagem (in1, in2, inreag, &menu);
+                                            }
     			                        }
 			
     			                        else if(clickBotaoR(733, 930, 344, 387, &evento, gameFila)){  // Struct6
     			                        	if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     											info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
-    											
+    											playSample(somClickBotao2);
     				    						if(infoMenu() == 1){
     				    						    gameFinish();
     				    						    return 1;
@@ -1551,8 +1626,10 @@ int gameMenu(int NSNumeroDaFase){
     			                                //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                                useElement(7, &menu);
-    			                                if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-    			                                    checagem (in1, in2, inreag, &menu);
+    			                                if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                                                    al_wait_for_event_timed(gameFila, &evento, 0.1);    
+                                                    checagem (in1, in2, inreag, &menu);
+                                                }
     			                            }
 			
     			                            else if(clickBotaoR(733, 930, 389, 432, &evento, gameFila)){  // Struct7
@@ -1577,14 +1654,16 @@ int gameMenu(int NSNumeroDaFase){
     			                                    //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                                    useElement(8, &menu);
-    			                                    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-    			                                        checagem (in1, in2, inreag, &menu);
+    			                                    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                                                        al_wait_for_event_timed(gameFila, &evento, 0.1);    
+                                                        checagem (in1, in2, inreag, &menu);
+                                                    }
     			                                }
 			
     			                                else if(clickBotaoR(733, 930, 434, 477, &evento, gameFila)){  // Struct8
     			                                	if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     													info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
-    													
+    													playSample(somClickBotao2);
     				    								if(infoMenu() == 1){
     				    								    gameFinish();
     				    								    return 1;
@@ -1603,14 +1682,16 @@ int gameMenu(int NSNumeroDaFase){
     			                                        //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                                        useElement(9, &menu);
-    			                                        if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-    			                                            checagem (in1, in2, inreag, &menu);
+    			                                        if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                                                            al_wait_for_event_timed(gameFila, &evento, 0.1);    
+                                                            checagem (in1, in2, inreag, &menu);
+                                                        }
     			                                    }
 			
     			                                    else if(clickBotaoR(733, 930, 479, 524, &evento, gameFila)){  // Struct9
     			                                    	if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     														info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
-    														
+    														playSample(somClickBotao2);
     				    									if(infoMenu() == 1){
     				    									    gameFinish();
     				    									    return 1;
@@ -1629,14 +1710,16 @@ int gameMenu(int NSNumeroDaFase){
     			                                            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                                            useElement(10, &menu);
-    			                                            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-    			                                                checagem (in1, in2, inreag, &menu);
+    			                                            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+                                                                al_wait_for_event_timed(gameFila, &evento, 0.1);    
+                                                                checagem (in1, in2, inreag, &menu);
+                                                            }
     			                                        }
 			
     			                                        else if(clickBotaoR(733, 930, 526, 564, &evento, gameFila)){  // Struct10
     			                                        	if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     															info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
-    															
+    															playSample(somClickBotao2);
     				    										if(infoMenu() == 1){
     				    										    gameFinish();
     				    										    return 1;
@@ -1737,6 +1820,7 @@ bool creditoInit(){
 }
 
 int creditos(){
+
 	if(!creditoInit()){
 		fprintf(stderr, "Erro ao iniciar créditos.\n");
 		return -1;
@@ -1788,23 +1872,28 @@ void creditoFinish(){
 
 //opções
 bool optionsInit(){
+
         optionsBackground = al_load_bitmap("Imagem/optionsMenu.png");
+
         if(!optionsBackground){
                 fprintf(stderr, "Erro ao criar optionsBackground.\n");
                 return false;
         }
 
         optionsFila = al_create_event_queue();
+
         if(!optionsFila){
                 fprintf(stderr, "Erro ao criar optionsFila.\n");
                 al_destroy_bitmap(optionsBackground);
                 return false;
         }
 
+
         return true;
 }
 
 int options(){
+
         if(!optionsInit()){
                 fprintf(stderr, "Erro ao iniciar opções.\n");
                 return -1;
@@ -1812,43 +1901,55 @@ int options(){
 
         while(1){
                 ALLEGRO_EVENT evento;
-
         if(checkSair(&evento, optionsFila)){
             optionsFinish();
             return 1;
         }
 
         al_clear_to_color(al_map_rgb(0, 0, 0));
-        al_draw_bitmap(creditoBackground, 0, 0, 0);
+        al_draw_bitmap(optionsBackground, 0, 0, 0);
 
-        if(clickBotaoL(742, 915, 607, 663, &evento, creditoFila)){
+
+        if(clickBotaoL(742, 915, 365, 421, &evento, optionsFila)){
                 playSample(somClickBotao);
                 break;
         }
 
         if(clickBotaoL(740, 909, 98, 154, &evento, optionsFila)){
-                if(playBgm == true)
-                    playBgm = false;
-                else
-                    playBgm = true;
+                if(playingBGM == true){
+                    playingBGM = false;
+                    al_set_audio_stream_playing(bgm, false);
+                }
+                else{
+                    playingBGM = true;
+                    al_set_audio_stream_playing(bgm, true);
+
+                }
                 playSample(somClickBotao);
-                al_wait_for_event_timed(optionsFila, &evento, 0.5);    
-                break;
+                al_wait_for_event_timed(optionsFila, &evento, 0.8);    
         }
 
         if(clickBotaoL(741, 909, 187, 243, &evento, optionsFila)){
-                if(playFx == true)
+                if(playFx == true){
                     playFx = false;
-                else
-                    playSample(somClickBotao);
+                    somClickBotao = al_load_sample("Audio/mute.wav");
+                    sucess = al_load_sample("Audio/mute.wav");
+                    somClickBotao2 = al_load_sample("Audio/mute.wav");
+                }
+                else{
                     playFx = true;
+                    somClickBotao = al_load_sample("Audio/leftClick.wav");
+                    sucess = al_load_sample("Audio/chimes.wav");
+                    somClickBotao2 = al_load_sample("Audio/rightClick.wav");
 
-                al_wait_for_event_timed(optionsFila, &evento, 0.5);    
-                break;
+                    playSample(somClickBotao);
+                }
+                al_wait_for_event_timed(optionsFila, &evento, 0.8);    
+
         }
 
         //Checagens de mouse sobre botão
-        if(playBgm = true)
+        if(playingBGM == true)
             if(checkBotao(740, 909, 98, 154, &evento, optionsFila))        //Caso o mouse esteja em cima do botão
                 al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 824.5, 108, ALLEGRO_ALIGN_CENTRE, "Musica: ON");
 
@@ -1875,11 +1976,11 @@ int options(){
                 al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 825, 197, ALLEGRO_ALIGN_CENTRE, "Efeitos: OFF");
 
 
-        if(checkBotao(742, 915, 607, 663, &evento, optionsFila))
-            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 828.5, 615, ALLEGRO_ALIGN_CENTRE, "Voltar");
+        if(checkBotao(742, 915, 365, 421, &evento, optionsFila))
+            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 828.5, 380, ALLEGRO_ALIGN_CENTRE, "Voltar");
 
         else
-                al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 828.5, 615, ALLEGRO_ALIGN_CENTRE, "Voltar");
+                al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 828.5, 380, ALLEGRO_ALIGN_CENTRE, "Voltar");
 
 
 
@@ -1889,6 +1990,7 @@ int options(){
 
         else
             buttonPressed = false;
+
 
         al_flip_display();
         }

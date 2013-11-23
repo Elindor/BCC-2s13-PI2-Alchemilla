@@ -157,7 +157,7 @@ void insert(int num, lista *menu, int type){              //
 
 void nomeia_reag(int reagente, int i){              //
     FILE *reag;                                         //  Esta função é chamada dentro da função start_menu.
-    int aux; char confere[30];                         // Ela recebe os reagentes da lista de entrada, e insere-os num
+    int aux; char buff[500];                         // Ela recebe os reagentes da lista de entrada, e insere-os num
 	char c;
 
     reag = fopen("Entradas/reaglist.txt", "r");                      // vetor global, e então esta função aqui deverá ler os numeros no
@@ -165,25 +165,24 @@ void nomeia_reag(int reagente, int i){              //
         fprintf(stderr, "Erro ao abrir reaglist.\n");
         return;
     }
-
+    printf("Reagente = %d, i = %d\n", reagente, i);
     do{                                                 // vetor global e inserir os nomes adequados na interface.
-        fscanf(reag, "%d", &aux);                   // Os nomes são inseridos na matriz reagname[10][30].
+        fgetline(reag, buff, 30);                   // Os nomes são inseridos na matriz reagname[10][30]. 
+        aux = atoi(buff);
+        printf("Tentou colocar: %d\n", aux);
+                        printf("Name = %s\r\n", buff);
 
-		do{
-			fscanf(reag, "%c", &c);
-		}while(c != '\n'); 
 
         if(aux == reagente){                        //
-            fgets(reagname[i], 30, reag);
+            fgetline(reag, reagname[i], 30);
             fclose(reag);
             return;
         }
 
         else
-            fgets(confere, 30, reag);
-            
-        fgets(confere, 30, reag);
-        fgets(confere, 30, reag);
+        fgetline(reag, buff, 30);
+        fgetline(reag, buff, 30);
+        fgetline(reag, buff, 500);
     }while(aux != 0);
 
     fclose(reag);
@@ -227,7 +226,7 @@ void info_reag(int reagente){                           //
 void start_menu(lista *menu){                       //
     FILE *file;                                     //  Esta função deve ser chamada no inicio da fase. Ela lÊ os
     int x, i, y; 
-    char c, buff[30];                                      // parametros iniciais e os insere no menu, em seguida lê o objetivo
+    char c, buff[50];                                      // parametros iniciais e os insere no menu, em seguida lê o objetivo
     file = fopen(startlist, "r");                   // da fase e também o inicializa, e por fim faz o mesmo nos      
     if(!file){
         fprintf(stderr, "Erro ao abrir starlist.\n");
@@ -250,50 +249,40 @@ void start_menu(lista *menu){                       //
 
     while(x != -1){
         insert(x, menu, 0);
-        //printf("insert sucess\n");
         fgetline(file, buff, 20);
-        //printf("start x = %s\r\n", buff);
         x = atoi(buff);
     }
-    //printf("1\n");
 
-    fscanf(file, "%d", &target); //pega numero do objetivo p/ global
+    fgetline(file, buff, 30); //pega numero do objetivo p/ global
+    target = atoi(buff);
 
-	do{
-		fscanf(file, "%c", &c);
-	}while(c != '\n'); 
-
-    fgets(targetname, 30, file);
-    //printf("2\n");
-    //fscanf(file, "%s", targetname); //pega nome do objetivo p/ global
+    fgetline(file, targetname, 50);
     
-    fscanf(file, "%d", &x); // Só pra tirar o próximo -1
+        fgetline(file, buff, 30); // Só pra tirar o próximo -1
     for(i = 0; i < 5; i++){
         reagentes[i] = 0;
         reagname[i][0] = '\0';
     }
-    //printf("3\n");
 
     i = 0;
-    fscanf(file, "%d", &x);
+    fgetline(file, buff, 30);
+    x = atoi(buff);
 
     while(x != -1){
         reagentes[i] = x;
         nomeia_reag(x, i);
         i++;
-        fscanf(file, "%d", &x);
-    }
-    //printf("4\n");
+        fgetline(file, buff, 30);
+        x = atoi(buff);
+        }
     
     fclose(file);
-    //printf("5\n");
 }
 
 void nomeia(int num, int casa){                                             //
     FILE *info;                                                         //  Esta função recebe o numero de um elemento criado
     int aux; //Usado em ordenação e conferir entradas               // e devolve o nome. É feita para incializar após a
     char nome[30], buff[20];                                                  // na interface. (out1name/out2name recebem o resultado)
-    confere[0] = NULL;                                              //
 
     info = fopen(itemlist, "r");
     if(!info){
@@ -370,10 +359,6 @@ int checagem(int in1, int in2, int reag, lista *menu){                       //
     char buff[20];                                               //  Esta função é executada toda a vez em que os espaços
     int aux; //Usado em ordenação e conferir entradas           // para elementos são preenchidos. Ela ordena os elementos
 
-    if(in1 == in2){
-		return -1;                                                  // e procura por resultados da combinação inserida.
-		printf("Hutrês?\n");                                                            //  A função devolve sucesso ou falha
-	}
 
     if(in1 > in2){                                              //
         aux = in1;
@@ -398,7 +383,7 @@ int checagem(int in1, int in2, int reag, lista *menu){                       //
         aux = atoi(buff);
         if(aux == in1){
             fgetline(file, buff, 20);
-            printf("HU3 2 = %s\r\n", buff);
+            printf("HU3 n2 = %s\r\n", buff);
             aux = atoi(buff);
             if(aux == in2){
                 fgetline(file, buff, 20);
@@ -429,7 +414,9 @@ int checagem(int in1, int in2, int reag, lista *menu){                       //
                         insert(aux, menu, 2);
                         
                     }
-                    
+
+                    playSample(sucess);
+
                     fclose(file);
                     return 1; // Se retornar um, faz checagem na lista INFO pelo nome dos elementos.
                     
