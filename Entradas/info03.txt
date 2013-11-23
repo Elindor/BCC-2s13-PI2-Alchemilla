@@ -51,36 +51,36 @@ O Bromometano, ou brometo de metila, é um gás incolor tóxico que ao longo da 
 -
 11
 Dibromo Metano
-
-
+CH2Br2
+O Dibromometano é um solvente naturalmente gerado por algas marinhas. Com poucos usos práticos, é em geral apenas um intermediário quimico para a sintese de brometos.
 -
 12
 Bromofórmio
-
-
+CHBr3
+O Bromofórmio é um liquido incolor, com cheiro adocicado. Assim como o Clorofórmio, é bastante usado como solvente, e é extremamente tóxico. É usado na sintese e refino de drogas, e sua venda é controlada. É a substancia usada para determinar a densidade de pedras preciosas.
 -
 13
 Tetrabrometo de Carbono
-
-
+CBr4
+O Tetrabrometo de Carbono é usado como solvente para ceras, graxas, e oleos, e usado também nas industrias de plastico e borracha. É capaz de separar minerais em decantação/flotação devido à alta densidade, e é um intermediário quimico para agrotóxicos.
 -
 14
 Magnésio
-
-
+Mg
+O magnésio é um metal alcalino-terroso, e é o sétimo elemento mais abundante da terra. É usado especialmente como liga como aluminio, e emite luz muito forte quando aquecido, sendo usado na produção de flashes fotograficos, fogos de artificio e granadas de luz. Também é usado no refino de aço, para retirar o enxofre.
 -
 15
 Brometo de Metil Magnésio
-
-
+CH3BrMg
+O Brometo de Metilmagnésio é um composto quimico sensivel ao ar e umidade, normalmente comercializado como uma solução em éter dietílico. É usado na obtenção de Brometo de Magnésio, quando retirado seu carbono.
 -
 16
 Brometo de Magnésio
-
-
+MgBr2
+O Brometo de Magnésio é um sedativo leve e anticonvulsivo, usado em tratamentos de perturbações do sistema nervoso. É soluvem em ague, e encontrado na água do mar morto, alem de algumas gemas.
 -
 17
 Etano
-
-
+C2H6
+O Etano é um gás alcano sem cor nem cheiro. É o hidrocarboneto saturado mais simples, e é usado na criação de etileno. Ele em geral é produzido através do gás naturou ou refino do petróleo, ao invés do caminho gigantesco que você fez.
 -

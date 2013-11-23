@@ -1,33 +1,33 @@
 1
 Água
-Formula: H20
+H20
 A Água é um solvente amplamente usado na quimica, diversas vezes até chamado de solvente universal. Suas moléculas são polares, de pouca condutividade, e ligam facilmente entre si, todas estas qualidades que a tornam especiais no mundo da quimica.
 2
 Luz
-Formula: N\A
+N\A
 A Luz é um catalizador recorrente no mundo da química. Muito embora insubstancial, os Fótons carregam uma quantidade de energia imensa, e várias vezes a luz é uma fonte de energia necessária para uma reação química.
 3
 Paládio
-Formula: Pd
+Pd
 O paládio é usado na indústria química e farmacêutica como catalisador de reações de hidrogenação e na indústria petrolífera, e é importante na catálise de fracções de petróleo destilado. Também é frequentemente usado em ligas odontológicas, devia à sua resistencia a oxidação.
 4
 Ácido Sulfurico
-Formula: H2SO4
+H2SO4
 O Ácido Sulfurico é um catalisador tão importante, que mede-se a capacidade industrial de um país por sua produção de Ácido Sulfúrico. Sua venda é proibida sem permissão pois é um catalizador essencial para a transformação de Álcool em Éter.
 5
 DMSO
-Formula: (CH3)2SO
+(CH3)2SO
 O Dimetil Sulfóxido, ou DMSO, é muito utilizado na medicina, como anti inflamatório e componente de pomadas devido à alta absorção pela pele. É usado como catalisador na sintese de algumas poucas substancias quimicas, em geral como solvente.
 6
 Alumina
-Formula: Al2O3
+Al2O3
 O Óxido de Alumínio, ou Alumina, é encontrado em bauxita, rubis, safiras, e outros minerais. É uma substancia que reage tanto com ácidos quanto com bases, por ser um óxido anfótero, sendo portanto usado como catalisador em diversas formulas.
 7
+KMnO4
 Permanganato de Potássio
-Formula: KMnO4
 O Permanganato de Potássio é um sal que atua como forte agente oxidante, e é usado na produção de desinfetantes. É amplamente usado como catalisador em compostos quimicos.
 8
+KOH
 Hidróxido de Potássio
-Formula: KOH
 O Hidróxido de Potássio é uma base forte que usado na produção de sabões, diesel, e na depronação de Ácidos. É usado para a obtençãode outras substancias de Potássio, ou como catalizador de sais.
 0

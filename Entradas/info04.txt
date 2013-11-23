@@ -1,101 +1,101 @@
 ﻿
 1
 Água
-
-
+H20
+A Água é um solvente amplamente usado na quimica, diversas vezes até chamado de solvente universal. Suas moléculas são polares, de pouca condutividade, e ligam facilmente entre si, todas estas qualidades que a tornam especiais no mundo da quimica.
 -
 2
 Carbonato de Cálcio
-
-
+CaCO3
+O Carbonato de cálcio é o principal componente das rochas pedras. Embora seja um sal, é levemente alcalino. É muito usado na industria de construção, seja como material, ou como pedregulhos adicionados ao asfalto. Entretanto, é facilmente destruido por acidos, e não é recomendado construir-se apenas com ele devido à chuva acida.
 -
 3
 Gás Hidrogenio
-
-
+H2
+O gás Hidrogênio é o gás mais leve, 14 vezesmais leve que a mistura que compõe o ar atmosférico. Jamais encontra-se hidrogenio puro, devido à facilidade com que ele liga-se consigo mesmo ou com quase qualquer substancia do mundo.
 -
 4
 Hidróxido de Cálcio
-
-
+Ca(OH)2
+O Hidróxido de Cálcio, também conhecido como Cal Apagada, é um importante material na contrução, sendo usado na produção de argamassa, cimento, asfalto, e tinta. Também é usado em suplementos de calcio e depiladores. Além disso, é um reagente amplamente usado na quimica, com diversos usos.
 -
 5
 Acetileno
-
-
+C2H2
+O acetileno, ou Etino, é o hidrocarboneto Alcino mais simples, constituido apenas de dois Carbonos. É usado na solda, devido à sua queima extremamente exotermica. Além disso, é um componente vital de diversas sinteses, como as de alcoois, borrachas e polimeros.
 -
 6
 Eteno
-
-
+C2H4
+O Etileno, ou Eteno, é o Hidrocarboneto Alceno mais simples, constituido apenas de dois Carbonos. É usado como Anestesico cirugico, amadurecimento controlado de frutas, e na fabricação de alcoois e plasticos.
 -
 7
 Etano
-
-
+C2H6
+O Etano é um gás alcano sem cor nem cheiro. É o hidrocarboneto saturado mais simples, e é usado na criação de etileno. Ele em geral é produzido através do gás naturou ou refino do petróleo.
 -
 8
 Água Oxigenada
-
-
+H2O2
+A Água oxigenada, ou o Peróxido de hidrogênio, é uma substancia instável e nociva ao ser humano. É um antisséptico, usado no tratamento de acnes, clareamento dental, esterilização e usado para clarear cabelo. Em exposição à luz, torna-se água comum.
 -
 9
 Gás Oxigênio
-
-
+O2
+O oxigenio, sempre encontrado em duplas e portanto gás quando puro, é um dos elementos mais importantes da quimica, sendo elemento diferencial na criação de óxidos, e essencial à vida através da respiração dos organismos aeróbicos.
 -
 10
 Etanol
-
-
+C2H6O
+O Etanol, ou Álcool Etílico, é uma substancia fácil de se obter (Em tese deveria ser para você também), aplicada como combustível, e usada para limpeza e produção de bebidas.
 -
 11
 Dietil Éter
-
-
+C4H10
+O Dietil Éter, ou Éter Etílico, ou ainda etoxletano, é uma substancia volátil, cuja inalação pode causar efeitos colaterais psicológicos. Quando exposto à luz e ao ar, ele pode esporádicamente produzir peróxidos explosivos, sendo bastante parigoso mantê-los sem conservantes.
 -
 12
 Etenol
-
-
+C2H4O
+O Etenol, ou Hidroxietileno, é um alcool utilizado especialmente em perfumarias e aerossóis que devam evaporar rapidamente, devido à sua volatilidade.
 -
 13
 Etanal
-
-
+C2H4O
+O Etanal, ou Acetaldeído, é um liquido incolor, produto metabólico do alcool. Após ingerido, o Etanol entra em contato com o ácido no figado, e transforma-se em Etanal.
 -
 14
 Butil-Lítio
-
-
+C4H9Li
+O Butíl-Lítio é uma base forte, usado amplamente como iniciados de polimerização. Ele se decompõe antes de vaporizar, e é um composto ingrediente de inumeras reações quimicas, quando não um catalizador.
 -
 15
 Acetileto de litio
-
-
+Li2C2
+O Acetileto de Lítio, ou Carbeto de Lítio, é um composto intermediário de reações e usado em leitura de datação por radiocarbono (carbono 14).
 -
 16
 But-3-in-oxido de Lítio
-
-
+C4H5LiO
+Este elemento não possui aplicações práticas, servindo apenas como um elemento intermediário na sintese de poucas substancias bastante específicas.
 -
 17
 But-3-in-2-ol
-
-
+C4H5OH
+Este elemento não possui aplicações práticas, servindo apenas como um elemento intermediário na sintese de poucas substancias bastante específicas.
 -
 18
 Hidróxido de Lítio
-
-
+LiOH
+O Hidróxido de Litio é um hidróxido corrosivo. É um sólido branco cristalino, usado em filtros de industrias, uma vez que este absorve dióxido de carbono. É um catalisador em vários processos, e é usado em esterificação de graxas.
 -
 19
 But-3-en-2-ol
-
-
+C4H8O
+Este elemento não possui aplicações práticas, servindo apenas como um elemento intermediário na sintese de poucas substancias bastante específicas.
 -
 20
 Sec-Butanol
-
-
+C4H9OH
+O Sec-butanol, ou 2-Butanol, é um liquido incolor inflamavel, produzido em larga escala, como percursor do solvente industrial MEK, um solvente importantíssimo para inumeros tipos de industria.
 -

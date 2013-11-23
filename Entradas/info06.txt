@@ -1,71 +1,71 @@
 ﻿
 1
 Bromo
-
-
+Br2
+O bromo molecular possui poucas aplicações práticas. Ele éusado como aditivo de gasolinas que tenham chumbo, e na produção de produtos de pulverização. Sua maior importancia é como ingediente de reações para criar compostos com Bromo.    Dica: Termine a fase para ganhar um bolo.
 -
 2
 3,4-dimetil But-2-eno
-
-
+C6H12
+Este elemento não possui aplicações práticas, senvindo apenas como um elemento intermediário na sintese de poucas substancias bastante específicas.    Dica: Termine a fase para ganhar um bolo.
 -
 3
 Acetona
-
-
+CH3(CO)CH3
+A acetona, ou propan-2-ona, é um liquido incolor de odor e sabor faceis de distinguir. É volátil e inflamável. É um solvente muito usado, geralmente encontrado em esmaltes, tintas e vernizes. Também é usado na produção de polvora e como gelatinizante para emprego desta em munições.
 -
 4
 Bromânio
-
-
+C6H12Br+
+O bromânio é uma molecula instavel e desequilibrada, que facilmente junta-se com outras. Entertanto, não possui aplicações práticas, servindo apenas como um elemento intermediário na sintese de algumas substancias.
 -
 5
 Brometo
-
-
+Br-
+O Brometo é a forma isolada e impura do átomo do Bromo, com a ausencia o excesso de um elétron. Mistura-se com diversas coisas.
 -
 6
 2,3-dimetil-2,3-dibromo Butano
-
-
+C6H12Br2
+Este elemento não possui aplicações práticas, servindo apenas como um elemento intermediário na sintese de poucas substancias bastante específicas.
 -
 7
 Água
-
-
+H20
+A Água é um solvente amplamente usado na quimica, diversas vezes até chamado de solvente universal. Suas moléculas são polares, de pouca condutividade, e ligam facilmente entre si, todas estas qualidades que a tornam especiais no mundo da quimica.
 -
 8
 2,3-dimetil 3-bromo Butan-2-ol
-
-
+C6H12Br(OH)
+Este elemento não possui aplicações práticas, senvindo apenas como um elemento intermediário na sintese de poucas substancias bastante específicas, como por exemplo, com .
 -
 9
 2,3-dimetil Butan-2-ol
-
-
+C6H13(OH)
+Este elemento não possui aplicações práticas, servindo apenas como um elemento intermediário na sintese de poucas substancias bastante específicas.
 -
 10
 Bromoacetona
-
-
+C3H5BrO
+A Bromoacetona é um solvente de cheiro caracterisco extremamente irritanteaos olhos e à pele, usado na produção de Gás Lacrimogênio.
 -
 11
 Ácido Bromídrico
-
-
+Hbr
+O Ácido Bromídrico é um ácido fortíssimo, com poucos usos além da sintese de outros brometos.
 -
 12
-Ácido Sulfúrico
-
-
+Ácido Sulfídrico
+H2S
+O Ácido sulfídrico é um ácido inorgânico fraco quando diluido na agua, usado no refino de petróleo, e é usado em diversas formulas quimicas.
 -
 13
 2,3-dimetilbutan-2-tiol
-
-
+C6H14S
+Este elemento não possui aplicações práticas, senvindo apenas como um elemento intermediário na sintese de poucas substancias bastante específicas.
 -
 14
 2'-[2-(2,3 dimetil Butil)]Tiopropanona
-
-
+C9H18SO
+Este elemento não possui nenhuma aplicação, tampouco possui informações em livros. Você acaba de sintetizar uma molecula não estudada, e que não te serve para literalmente nada. Parabens pelo esforço desperdiçado. Sem bolo para você.
 -
