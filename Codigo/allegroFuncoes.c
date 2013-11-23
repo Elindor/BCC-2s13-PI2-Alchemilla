@@ -803,7 +803,7 @@ int gameMenu(int NSNumeroDaFase){
             	inreag = reagentes[0];
             	strcpy(inreagname, reagname[0]);
             	printf("Colocou reagente: %d\n", reagentes[0]);
-            	if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+            	if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
             	    al_wait_for_event_timed(gameFila, &evento, 0.1); 
             		checagem (in1, in2, inreag, &menu);
             	}
@@ -828,7 +828,7 @@ int gameMenu(int NSNumeroDaFase){
 
         	    inreag = reagentes[1];
         	    strcpy(inreagname, reagname[1]);
-        	    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+        	    if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
         	        al_wait_for_event_timed(gameFila, &evento, 0.1);    
         	        checagem (in1, in2, inreag, &menu);
         	    }
@@ -852,7 +852,7 @@ int gameMenu(int NSNumeroDaFase){
 
         	    inreag = reagentes[2];
         	    strcpy(inreagname, reagname[2]);
-        	    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+        	    if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
         	        al_wait_for_event_timed(gameFila, &evento, 0.1);    
         	        checagem (in1, in2, inreag, &menu);
         	    }
@@ -875,7 +875,7 @@ int gameMenu(int NSNumeroDaFase){
 
         	    inreag = reagentes[3];
         	    strcpy(inreagname, reagname[3]);
-        	    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+        	    if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
         	        al_wait_for_event_timed(gameFila, &evento, 0.1);    
         	        checagem (in1, in2, inreag, &menu);
         	    }
@@ -899,7 +899,7 @@ int gameMenu(int NSNumeroDaFase){
 
         	    inreag = reagentes[4];
         	    strcpy(inreagname, reagname[4]);
-        	    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+        	    if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
         	        al_wait_for_event_timed(gameFila, &evento, 0.1);    
         	        checagem (in1, in2, inreag, &menu);
         	    }
@@ -975,7 +975,7 @@ int gameMenu(int NSNumeroDaFase){
 
         	    inreag = 0;
         	    inreagname[0] = '\0';
-        	    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+        	    if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
         	        al_wait_for_event_timed(gameFila, &evento, 0.1);    
         	        checagem (in1, in2, inreag, &menu);
         	    }
@@ -1253,7 +1253,7 @@ int gameMenu(int NSNumeroDaFase){
     				    playSample(somClickBotao);
 				
     				    useElement(1, &menu);
-    				    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+    				    if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
                             al_wait_for_event_timed(gameFila, &evento, 0.1);    
                             checagem (in1, in2, inreag, &menu);
                         }
@@ -1291,7 +1291,7 @@ int gameMenu(int NSNumeroDaFase){
     			            playSample(somClickBotao);
 			
     			            useElement(2, &menu);
-    			            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+    			            if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
                                 al_wait_for_event_timed(gameFila, &evento, 0.1);    
                                 checagem (in1, in2, inreag, &menu);
                             }
@@ -1327,7 +1327,7 @@ int gameMenu(int NSNumeroDaFase){
     			                playSample(somClickBotao);
 			
     			                useElement(3, &menu);
-    			                if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+    			                if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
                                     al_wait_for_event_timed(gameFila, &evento, 0.1);    
                                     checagem (in1, in2, inreag, &menu);
                                 }
@@ -1363,7 +1363,7 @@ int gameMenu(int NSNumeroDaFase){
     			                    playSample(somClickBotao);
 			
     			                    useElement(4, &menu);
-    			                    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+    			                    if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
                                         al_wait_for_event_timed(gameFila, &evento, 0.1);    
                                         checagem (in1, in2, inreag, &menu);
                                     }
@@ -1399,7 +1399,7 @@ int gameMenu(int NSNumeroDaFase){
     			                        playSample(somClickBotao);
 			
     			                        useElement(5, &menu);
-    			                        if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+    			                        if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
                                             al_wait_for_event_timed(gameFila, &evento, 0.1);    
                                             checagem (in1, in2, inreag, &menu);
                                         }
@@ -1435,7 +1435,7 @@ int gameMenu(int NSNumeroDaFase){
     			                            playSample(somClickBotao);
 			
     			                            useElement(6, &menu);
-    			                            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+    			                            if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
                                                 al_wait_for_event_timed(gameFila, &evento, 0.1);    
                                                 checagem (in1, in2, inreag, &menu);
                                             }
@@ -1471,7 +1471,7 @@ int gameMenu(int NSNumeroDaFase){
     			                                playSample(somClickBotao);
 			
     			                                useElement(7, &menu);
-    			                                if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+    			                                if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
                                                     al_wait_for_event_timed(gameFila, &evento, 0.1);    
                                                     checagem (in1, in2, inreag, &menu);
                                                 }
@@ -1507,7 +1507,7 @@ int gameMenu(int NSNumeroDaFase){
     			                                    playSample(somClickBotao);
 			
     			                                    useElement(8, &menu);
-    			                                    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+    			                                    if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
                                                         al_wait_for_event_timed(gameFila, &evento, 0.1);    
                                                         checagem (in1, in2, inreag, &menu);
                                                     }
@@ -1543,7 +1543,7 @@ int gameMenu(int NSNumeroDaFase){
     			                                        playSample(somClickBotao);
 			
     			                                        useElement(9, &menu);
-    			                                        if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+    			                                        if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
                                                             al_wait_for_event_timed(gameFila, &evento, 0.1);    
                                                             checagem (in1, in2, inreag, &menu);
                                                         }
@@ -1579,7 +1579,7 @@ int gameMenu(int NSNumeroDaFase){
     			                                            playSample(somClickBotao);
 			
     			                                            useElement(10, &menu);
-    			                                            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+    			                                            if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
                                                                 al_wait_for_event_timed(gameFila, &evento, 0.1);    
                                                                 checagem (in1, in2, inreag, &menu);
                                                             }
@@ -1647,8 +1647,8 @@ int gameMenu(int NSNumeroDaFase){
     				if(clickBotaoL(733, 930, 120, 160, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct1
     				    playSample(somClickBotao);
 				
-    				    useElement(1, &menu);
-    				    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+    				    useElement(11, &menu);
+    				    if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
                             al_wait_for_event_timed(gameFila, &evento, 0.1);    
                             checagem (in1, in2, inreag, &menu);
                             }
@@ -1683,8 +1683,8 @@ int gameMenu(int NSNumeroDaFase){
     			        if(clickBotaoL(733, 930, 162, 208, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct2
     			            playSample(somClickBotao);
 			
-    			            useElement(2, &menu);
-    			            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+    			            useElement(12, &menu);
+    			            if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
                                 al_wait_for_event_timed(gameFila, &evento, 0.1);    
                                 checagem (in1, in2, inreag, &menu);
                             }
@@ -1720,8 +1720,8 @@ int gameMenu(int NSNumeroDaFase){
     			                playSample(somClickBotao);
     			                //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
-    			                useElement(3, &menu);
-    			                if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+    			                useElement(13, &menu);
+    			                if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
                                     al_wait_for_event_timed(gameFila, &evento, 0.1);    
                                     checagem (in1, in2, inreag, &menu);
                                 }
@@ -1757,8 +1757,8 @@ int gameMenu(int NSNumeroDaFase){
     			                    playSample(somClickBotao);
     			                    //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
-    			                    useElement(4, &menu);
-    			                    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+    			                    useElement(14, &menu);
+    			                    if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
                                         al_wait_for_event_timed(gameFila, &evento, 0.1);    
                                         checagem (in1, in2, inreag, &menu);
                                     }
@@ -1794,8 +1794,8 @@ int gameMenu(int NSNumeroDaFase){
     			                        playSample(somClickBotao);
     			                        //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
-    			                        useElement(5, &menu);
-    			                        if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+    			                        useElement(15, &menu);
+    			                        if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
                                             al_wait_for_event_timed(gameFila, &evento, 0.1);    
                                             checagem (in1, in2, inreag, &menu);
                                         }
@@ -1831,8 +1831,8 @@ int gameMenu(int NSNumeroDaFase){
     			                            playSample(somClickBotao);
     			                            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
-    			                            useElement(6, &menu);
-    			                            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+    			                            useElement(16, &menu);
+    			                            if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
                                                 al_wait_for_event_timed(gameFila, &evento, 0.1);    
                                                 checagem (in1, in2, inreag, &menu);
                                             }
@@ -1868,8 +1868,8 @@ int gameMenu(int NSNumeroDaFase){
     			                                playSample(somClickBotao);
     			                                //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
-    			                                useElement(7, &menu);
-    			                                if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+    			                                useElement(17, &menu);
+    			                                if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
                                                     al_wait_for_event_timed(gameFila, &evento, 0.1);    
                                                     checagem (in1, in2, inreag, &menu);
                                                 }
@@ -1905,8 +1905,8 @@ int gameMenu(int NSNumeroDaFase){
     			                                    playSample(somClickBotao);
     			                                    //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
-    			                                    useElement(8, &menu);
-    			                                    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+    			                                    useElement(18, &menu);
+    			                                    if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
                                                         al_wait_for_event_timed(gameFila, &evento, 0.1);    
                                                         checagem (in1, in2, inreag, &menu);
                                                     }
@@ -1942,8 +1942,8 @@ int gameMenu(int NSNumeroDaFase){
     			                                        playSample(somClickBotao);
     			                                        //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
-    			                                        useElement(9, &menu);
-    			                                        if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+    			                                        useElement(19, &menu);
+    			                                        if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
                                                             al_wait_for_event_timed(gameFila, &evento, 0.1);    
                                                             checagem (in1, in2, inreag, &menu);
                                                         }
@@ -1979,9 +1979,10 @@ int gameMenu(int NSNumeroDaFase){
     			                                            playSample(somClickBotao);
     			                                            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
-    			                                            useElement(10, &menu);
-    			                                            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
-                                                                al_wait_for_event_timed(gameFila, &evento, 0.1);    
+    			                                            useElement(20, &menu);
+    			                                            if(in1 > 0 && in2 > 0 && in1 < 21 && in2 <21){
+                                                                al_wait_for_event_timed(gameFila, &evento, 0.1);
+
                                                                 checagem (in1, in2, inreag, &menu);
                                                             }
     			                                        }

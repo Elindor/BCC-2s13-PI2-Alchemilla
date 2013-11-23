@@ -370,6 +370,7 @@ int checagem(int in1, int in2, int reag, lista *menu){                       //
     file = fopen(checklist, "r");
     if(!file){
         fprintf(stderr, "Erro ao abrir checklist.\n");
+        filenamesgen();
         return -1;
     }
 
@@ -427,7 +428,7 @@ int checagem(int in1, int in2, int reag, lista *menu){                       //
         do{
             fgetline(file, buff, 20);
             aux = atoi(buff);
-        }while(aux > 0);
+        }while(aux >= 0);
         
     }while(aux != -2);
 

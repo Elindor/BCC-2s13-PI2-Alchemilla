@@ -3,6 +3,7 @@
 2
 4
 8
+10
 -1
 9
 Diclofenaco
