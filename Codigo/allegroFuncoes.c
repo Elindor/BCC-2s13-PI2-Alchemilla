@@ -7,7 +7,6 @@
 //Define altura e largura da tela
 int larguraTela = 1000 ;
 int alturaTela = 750;
-bool playingBGM = true;
 
 //Variáveis globais
 ALLEGRO_DISPLAY *janela = NULL;
@@ -40,10 +39,11 @@ ALLEGRO_SAMPLE *somNoBotao = NULL;
 ALLEGRO_SAMPLE *somClickBotao = NULL;
 ALLEGRO_SAMPLE *somClickBotao2 = NULL;
 ALLEGRO_SAMPLE *sucess = NULL;
-bool playBgm = true;
+
+bool playingBGM = true;
 bool playFx = true;
 
-bool buttonPressed = false;
+bool buttonPressed = true;
 
 lista menu;
 
@@ -148,7 +148,6 @@ bool mainInit(){                                                                
         fprintf(stderr, "Erro ao instalar codec de audio.\n");
         return false;
     }
-
 
     if(!al_reserve_samples(1)){
         fprintf(stderr, "Erro ao alocar canais de audio.\n");
@@ -260,42 +259,44 @@ int mainMenu(){
 
         ALLEGRO_EVENT evento;
 
-        if(checkSair(&evento, mainFila))
-            break;
-
         al_clear_to_color(al_map_rgb(0, 0, 0));                                 //Limpa a tela
         al_draw_bitmap(menuA, 0, 0, 0);
 
-        //Check
-        if(clickBotaoL(740, 909, 98, 154, &evento, mainFila)){
-            playSample(somClickBotao);
-
-            if(selectMenu() == 1)                                               //Se o retorno for devido ao click de sair do jogo
-                break;
-        }
-
-        else if(clickBotaoL(741, 909, 187, 243, &evento, mainFila)){
-            playSample(somClickBotao);
-
-            if(options() == 1)
-                break;
-        }
-
-        else if(clickBotaoL(741, 909, 277, 333, &evento, mainFila)){
-            playSample(somClickBotao);
-
-            if(creditos() == 1)
+        if(al_is_event_queue_empty(mainFila) && !buttonPressed){
+       		if(checkSair(&evento, mainFila))
             	break;
+
+        	//Check
+        	if(clickBotaoL(740, 909, 98, 154, &evento, mainFila)){
+        	    playSample(somClickBotao);
+	
+	        	    if(selectMenu() == 1)                                               //Se o retorno for devido ao click de sair do jogo
+	        	        break;
+        	}
+
+        	else if(clickBotaoL(741, 909, 187, 243, &evento, mainFila)){
+        	    playSample(somClickBotao);
+	
+	        	    if(options() == 1)
+	        	        break;
+        	}
+
+        	else if(clickBotaoL(741, 909, 277, 333, &evento, mainFila)){
+        	    playSample(somClickBotao);
+	
+	        	    if(creditos() == 1)
+	        	    	break;
+        	}
+
+        	else if(clickBotaoL(740, 909, 365, 421, &evento, mainFila)){
+        	    playSample(somClickBotao);
+        	    
+        	    mainFinish();
+        	    return 0;
+        	}
         }
 
-        else if(clickBotaoL(740, 909, 365, 421, &evento, mainFila)){
-            playSample(somClickBotao);
-            
-            mainFinish();
-            return 0;
-        }
-
-        //Checagens de maouse sobre botão
+        //Checagens de mouse sobre botão
         if(checkBotao(740, 909, 98, 154, &evento, mainFila))        //Caso o mouse esteja em cima do botão
             al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 824.5, 108, ALLEGRO_ALIGN_CENTRE, "Jogar");
 
@@ -321,17 +322,15 @@ int mainMenu(){
             al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 824.5, 375, ALLEGRO_ALIGN_CENTRE, "Sair");
 
         al_flip_display();                                                      //Atualiza a tela
-        
-        /*do{
-            al_wait_for_event(mainFila, &evento);
-        }while(evento.type == ALLEGRO_EVENT_TIMER);*/
+
 
         if(evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP){
-            buttonPressed = true;
+        	al_flush_event_queue(mainFila);
+        	buttonPressed = true;
         }
 
         else
-            buttonPressed = false;
+        	buttonPressed = false;           
     }
 
     mainFinish();
@@ -439,14 +438,78 @@ int selectMenu(){
 
         ALLEGRO_EVENT evento;
 
-        if(checkSair(&evento, selectFila)){
-            selectFinish();
-            return 1;
-        }
-
         al_clear_to_color(al_map_rgb(0, 0, 0));
         al_draw_bitmap(menuB, 0, 0, 0);
 
+        if(al_is_event_queue_empty(selectFila) && !buttonPressed){
+        	if(checkSair(&evento, selectFila)){
+        	    selectFinish();
+        	    return 1;
+        	}
+
+
+        	if(clickBotaoL(0, 50, 0, 50, &evento, selectFila)){
+        	    playSample(somClickBotao);
+        	    break;
+        	}
+
+
+        	if(clickBotaoL(742, 911, 114, 170, &evento, selectFila)){
+            playSample(somClickBotao);
+
+            	if(gameMenu(1) == 1){       //Se o retorno for devido ao click de sair do jogo
+            	    selectFinish();
+            	    return 1;
+            	}
+        	}
+
+        	else if(clickBotaoL(741, 910, 204, 260, &evento, selectFila)){
+            	playSample(somClickBotao);
+
+            	if(gameMenu(2) == 1){       //Se o retorno for devido ao click de sair do jogo
+                	selectFinish();
+                	return 1;
+            	}
+        	}
+
+        	else if(clickBotaoL(740, 909, 293, 349, &evento, selectFila)){
+            	playSample(somClickBotao);
+
+            	if(gameMenu(3) == 1){       //Se o retorno for devido ao click de sair do jogo
+                	selectFinish();
+                	return 1;
+            	}
+        	}
+
+        	else if(clickBotaoL(739, 908, 382, 438, &evento, selectFila)){
+        	    playSample(somClickBotao);
+
+            	if(gameMenu(4) == 1){       //Se o retorno for devido ao click de sair do jogo
+            	    selectFinish();
+            	    return 1;
+            	}
+        	}
+
+        	else if(clickBotaoL(739, 908, 471, 527, &evento, selectFila)){
+        	    playSample(somClickBotao);
+
+            	if(gameMenu(5) == 1){       //Se o retorno for devido ao click de sair do jogo
+            	    selectFinish();
+            	    return 1;
+            	}
+        	}
+
+        	else if(clickBotaoL(739, 908, 560, 616, &evento, selectFila)){
+        	    playSample(somClickBotao);
+
+            	if(gameMenu(6) == 1){       //Se o retorno for devido ao click de sair do jogo
+            	    selectFinish();
+            	    return 1;
+            	}
+        	}
+        }
+
+        
         if(checkBotao(742, 911, 114, 170, &evento, selectFila))        //Caso o mouse esteja em cima do botão
             al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 826.5, 124, ALLEGRO_ALIGN_CENTRE, "Fase 1");
 
@@ -491,69 +554,13 @@ int selectMenu(){
         else
             al_draw_bitmap(botao, 0, 0, 0);
 
-        if(clickBotaoL(0, 50, 0, 50, &evento, selectFila)){
-            playSample(somClickBotao);
-            break;
-        }
 
         ///////////////////////////////////////////////
 
-        if(clickBotaoL(742, 911, 114, 170, &evento, selectFila)){
-            playSample(somClickBotao);
-
-            if(gameMenu(1) == 1){       //Se o retorno for devido ao click de sair do jogo
-                selectFinish();
-                return 1;
-            }
-        }
-
-        else if(clickBotaoL(741, 910, 204, 260, &evento, selectFila)){
-            playSample(somClickBotao);
-
-            if(gameMenu(2) == 1){       //Se o retorno for devido ao click de sair do jogo
-                selectFinish();
-                return 1;
-            }
-        }
-
-        else if(clickBotaoL(740, 909, 293, 349, &evento, selectFila)){
-            playSample(somClickBotao);
-
-            if(gameMenu(3) == 1){       //Se o retorno for devido ao click de sair do jogo
-                selectFinish();
-                return 1;
-            }
-        }
-
-        else if(clickBotaoL(739, 908, 382, 438, &evento, selectFila)){
-            playSample(somClickBotao);
-
-            if(gameMenu(4) == 1){       //Se o retorno for devido ao click de sair do jogo
-                selectFinish();
-                return 1;
-            }
-
-        }
-
-        else if(clickBotaoL(739, 908, 471, 527, &evento, selectFila)){
-            playSample(somClickBotao);
-
-            if(gameMenu(5) == 1){       //Se o retorno for devido ao click de sair do jogo
-                selectFinish();
-                return 1;
-            }
-        }
-
-        else if(clickBotaoL(739, 908, 560, 616, &evento, selectFila)){
-            playSample(somClickBotao);
-
-            if(gameMenu(6) == 1){       //Se o retorno for devido ao click de sair do jogo
-                selectFinish();
-                return 1;
-            }
-        }
+        
 
         if(evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP){
+        	al_flush_event_queue(selectFila);
             buttonPressed = true;
         }
 
@@ -1785,21 +1792,7 @@ void gameFinish(){
 
     logtext1[0] = '\0';
     logtext2[0] = '\0';
-
 }
-
-//opcaoMenu
-/*bool opcaoInit(){
-
-}
-
-void opcaoFinish(){
-
-}
-
-int opcaoMenu(){
-
-}*/
 
 //creditos
 bool creditoInit(){
@@ -1868,39 +1861,36 @@ void creditoFinish(){
 	al_destroy_event_queue(creditoFila);
 }
 
-
-
 //opções
 bool optionsInit(){
 
-        optionsBackground = al_load_bitmap("Imagem/optionsMenu.png");
+    optionsBackground = al_load_bitmap("Imagem/optionsMenu.png");
+    if(!optionsBackground){
+            fprintf(stderr, "Erro ao criar optionsBackground.\n");
+            return false;
+    }
 
-        if(!optionsBackground){
-                fprintf(stderr, "Erro ao criar optionsBackground.\n");
-                return false;
-        }
-
-        optionsFila = al_create_event_queue();
-
-        if(!optionsFila){
-                fprintf(stderr, "Erro ao criar optionsFila.\n");
-                al_destroy_bitmap(optionsBackground);
-                return false;
-        }
+    optionsFila = al_create_event_queue();
+    if(!optionsFila){
+            fprintf(stderr, "Erro ao criar optionsFila.\n");
+            al_destroy_bitmap(optionsBackground);
+            return false;
+    }
 
 
-        return true;
+    return true;
 }
 
 int options(){
 
-        if(!optionsInit()){
-                fprintf(stderr, "Erro ao iniciar opções.\n");
-                return -1;
-        }
+    if(!optionsInit()){
+            fprintf(stderr, "Erro ao iniciar opções.\n");
+            return -1;
+    }
 
-        while(1){
-                ALLEGRO_EVENT evento;
+    while(1){
+        ALLEGRO_EVENT evento;
+
         if(checkSair(&evento, optionsFila)){
             optionsFinish();
             return 1;
@@ -1993,11 +1983,11 @@ int options(){
 
 
         al_flip_display();
-        }
+    }
 
     optionsFinish();
 
-        return 0;
+    return 0;
 }
 
 void optionsFinish(){

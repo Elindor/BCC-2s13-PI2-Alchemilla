@@ -122,7 +122,7 @@ void insert(int num, lista *menu, int type){              //
                 //printf("0.3.3\n");
                 strcpy(logtext1, logtext2);
                 if(type == 1)
-                    sprintf(logtext2,"Elemento Descoberto: %s.", buff);
+                    sprintf(logtext1,"Elemento Descoberto: %s.", buff);
                 if(type == 2)
                     sprintf(logtext2,"Elemento Bônus Destrancado: %s!!!", buff);
 
