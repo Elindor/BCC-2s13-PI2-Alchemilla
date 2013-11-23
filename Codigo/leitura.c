@@ -50,8 +50,8 @@ void useElement(int elem, lista *menu){         //
             return;
         menu = menu -> prox;
     }
-    if(menu -> ElNum == in1 || menu -> ElNum == in2)
-        return;
+    //if(menu -> ElNum == in1 || menu -> ElNum == in2)
+        //return;
 
     //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 
@@ -97,17 +97,17 @@ void insert(int num, lista *menu, int type){              //
     int y;
 
     //PROBLEMA!!!
-    fgetline(file, buff, 20);
+    fgetline(file, buff, 30);
     //printf("y = %s\r\n", buff);
     y = atoi(buff);
 
     do{      
-        fgetline(file, buff, 20);
+        fgetline(file, buff, 30);
         //printf("x = %s\r\n", buff);
         x = atoi(buff);
 
         if(x == -1){
-            fgetline(file, buff, 20);
+            fgetline(file, buff, 30);
             //printf("x/num = %s\r\n", buff);
             x = atoi(buff);
 
@@ -115,7 +115,7 @@ void insert(int num, lista *menu, int type){              //
                 //printf("0.3.2\n");
                 nova -> ElNum = num;
 
-                fgetline(file, buff, 20);
+                fgetline(file, buff, 30);
                 //printf("Name = %s\r\n", buff);
 
                 strcpy(nova->ElName, buff);
@@ -126,7 +126,7 @@ void insert(int num, lista *menu, int type){              //
                 if(type == 2)
                     sprintf(logtext2,"Elemento Bônus Destrancado: %s!!!", buff);
 
-                fgetline(file, buff, 20);
+                fgetline(file, buff, 30);
                 //printf("x/TYPE = %s\r\n", buff);
 
                 nova->ElType = atoi(buff);
@@ -142,7 +142,7 @@ void insert(int num, lista *menu, int type){              //
             }
 
             else{
-                fgetline(file, buff, 20);fgetline(file, buff, 20);
+                fgetline(file, buff, 30);fgetline(file, buff, 30);
             }
         }
 
@@ -245,7 +245,7 @@ void start_menu(lista *menu){                       //
     x = atoi(buff);
 
     //TNC VS!
-	x = 1;
+	//x = 1;
 
     while(x != -1){
         insert(x, menu, 0);
@@ -258,7 +258,7 @@ void start_menu(lista *menu){                       //
 
     fgetline(file, targetname, 50);
     
-        fgetline(file, buff, 30); // Só pra tirar o próximo -1
+    fgetline(file, buff, 30); // Só pra tirar o próximo -1
     for(i = 0; i < 5; i++){
         reagentes[i] = 0;
         reagname[i][0] = '\0';
@@ -274,7 +274,7 @@ void start_menu(lista *menu){                       //
         i++;
         fgetline(file, buff, 30);
         x = atoi(buff);
-        }
+    }
     
     fclose(file);
 }

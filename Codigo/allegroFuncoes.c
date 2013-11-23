@@ -43,7 +43,7 @@ ALLEGRO_SAMPLE *sucess = NULL;
 bool playingBGM = true;
 bool playFx = true;
 
-bool buttonPressed = true;
+bool buttonPressed = false;
 
 lista menu;
 
@@ -779,358 +779,439 @@ int gameMenu(int NSNumeroDaFase){
     }
 
     while(1){
-
-        ALLEGRO_EVENT evento;
-
-        if(checkSair(&evento, gameFila)){
-            gameFinish();
-            return 1;
-        }
+    	ALLEGRO_EVENT evento;
 
         al_clear_to_color(al_map_rgb(0, 0, 0));
         al_draw_bitmap(inGameBackground, 0, 0, 0);
-        //al_draw_text(fonte, al_map_rgb(0, 0, 0), 831.5, 65, ALLEGRO_ALIGN_CENTRE, "Lista de Elementos");
         al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 125, 55, ALLEGRO_ALIGN_CENTRE, "%s", targetname);
 
-    //Checagem para voltar à seleção de fase(funcionará direito quando for implementado os pop-ups)
+        if(al_is_event_queue_empty(gameFila) && !buttonPressed){
+        	if(checkSair(&evento, gameFila)){
+            	gameFinish();
+            	return 1;
+        	}
+
+        	if(clickBotaoL(0, 50, 0, 50, &evento, gameFila)){
+        	    playSample(somClickBotao);
+        	    break;
+        	}
+
+
+        	if(clickBotaoL(201, 317, 597, 712, &evento, gameFila) && reagentes[0] != 0){   // Reag1
+        	    playSample(somClickBotao);
+            
+            	inreag = reagentes[0];
+            	strcpy(inreagname, reagname[0]);
+            	printf("Colocou reagente: %d\n", reagentes[0]);
+            	if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+            	    al_wait_for_event_timed(gameFila, &evento, 0.1); 
+            		checagem (in1, in2, inreag, &menu);
+            	}
+
+        	}
+
+        	else if(clickBotaoR(201, 317, 597, 712, &evento, gameFila)){   // Reag1
+        		if(reagentes[0] != 0){
+        	        playSample(somClickBotao2);
+        			info_reag(reagentes[0]);
+
+        	    	if(infoMenu() == 1){
+        	    	    gameFinish();
+        	    	    return 1;
+        	    	}
+        	    }
+        	}
+
+
+        	else if(clickBotaoL(320, 438, 597, 712, &evento, gameFila) && reagentes[1] != 0){   // Reag2
+        	    playSample(somClickBotao);
+
+        	    inreag = reagentes[1];
+        	    strcpy(inreagname, reagname[1]);
+        	    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+        	        al_wait_for_event_timed(gameFila, &evento, 0.1);    
+        	        checagem (in1, in2, inreag, &menu);
+        	    }
+        	}
+
+        	else if(clickBotaoR(320, 438, 597, 712, &evento, gameFila)){   // Reag2
+        		if(reagentes[1] != 0){
+        	        playSample(somClickBotao2);
+        			info_reag(reagentes[1]);
+
+        	    	if(infoMenu() == 1){
+        	    	    gameFinish();
+        	    	    return 1;
+        	    	}
+        	    }
+        	}
+
+
+        	else if(clickBotaoL(441, 560, 597, 712, &evento, gameFila) && reagentes[2] != 0){   // Reag3
+        	    playSample(somClickBotao);
+
+        	    inreag = reagentes[2];
+        	    strcpy(inreagname, reagname[2]);
+        	    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+        	        al_wait_for_event_timed(gameFila, &evento, 0.1);    
+        	        checagem (in1, in2, inreag, &menu);
+        	    }
+        	}
+
+        	else if(clickBotaoR(441, 560, 597, 712, &evento, gameFila)){   // Reag3
+        		if(reagentes[2] != 0){
+        	        playSample(somClickBotao2);
+        			info_reag(reagentes[2]);
+
+        	    	if(infoMenu() == 1){
+        	    	    gameFinish();
+        	    	    return 1;
+        	    	}
+        	    }
+        	}
+
+        	else if(clickBotaoL(563, 679, 597, 712, &evento, gameFila) && reagentes[3] != 0){   // Reag4
+        	    playSample(somClickBotao);
+
+        	    inreag = reagentes[3];
+        	    strcpy(inreagname, reagname[3]);
+        	    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+        	        al_wait_for_event_timed(gameFila, &evento, 0.1);    
+        	        checagem (in1, in2, inreag, &menu);
+        	    }
+        	}
+
+        	else if(clickBotaoR(563, 679, 597, 712, &evento, gameFila)){   // Reag4
+        		if(reagentes[3] != 0){
+        	        playSample(somClickBotao2);
+        			info_reag(reagentes[3]);
+
+    	        	if(infoMenu() == 1){
+    	        	    gameFinish();
+    	        	    return 1;
+    	        	}
+    	        }
+    	    }
+
+
+        	else if(clickBotaoL(682, 802, 597, 712, &evento, gameFila) && reagentes[4] != 0){   // Reag5
+        	    playSample(somClickBotao);
+
+        	    inreag = reagentes[4];
+        	    strcpy(inreagname, reagname[4]);
+        	    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+        	        al_wait_for_event_timed(gameFila, &evento, 0.1);    
+        	        checagem (in1, in2, inreag, &menu);
+        	    }
+        	}
+
+        	else if(clickBotaoR(682, 802, 597, 712, &evento, gameFila)){   // Reag5
+        		if(reagentes[4] != 0){
+        	        playSample(somClickBotao2);
+        			info_reag(reagentes[4]);
+
+        	    	if(infoMenu() == 1){
+        	    	    gameFinish();
+        	    	    return 1;
+        	    	}
+        	    }
+        	}
+
+
+
+        	else if(clickBotaoL(104, 298, 140, 190, &evento, gameFila) && in1 != 0){  // In1
+        	    playSample(somClickBotao);
+
+        	    in1 = 0;
+        	    in1name[0] = '\0';
+        	}
+
+        	else if(clickBotaoR(104, 298, 140, 190, &evento, gameFila)){  // In1
+        		if(in1 != 0){
+
+        			lista *a;
+        			a = menu.prox;
+
+        			for(int i = 1; i < in1; i++)
+        				a = a->prox;
+
+        			info_elem(a->ElNum);
+        	        playSample(somClickBotao2);
+        			if(infoMenu() == 1){
+        	        	gameFinish();
+        	        	return 1;
+        	    	}
+        		}  
+        	}
+
+
+        	else if(clickBotaoL(424, 618, 140, 190, &evento, gameFila) && in2 != 0){  // In2
+        	    playSample(somClickBotao);
+
+        	    in2 = 0;
+        	    in2name[0] = '\0';
+        	}
+
+        	else if(clickBotaoR(424, 618, 140, 190, &evento, gameFila)){  // In2
+        	    if(in2 != 0){
+
+        			lista *a;
+        			a = menu.prox;
+        			for(int i = 1; i < in2; i++)
+        				a = a->prox;
+
+        			info_elem(a->ElNum);
+        	        playSample(somClickBotao2);
+        			if(infoMenu() == 1){
+        	        	gameFinish();
+        	        	return 1;
+        	    	}
+        		}   
+        	}
+
+
+        	else if(clickBotaoL(267, 461, 210, 260, &evento, gameFila) && inreag != 0){  // InReag (Deveria ser 466 por grafico)
+        	    playSample(somClickBotao);
+
+        	    inreag = 0;
+        	    inreagname[0] = '\0';
+        	    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
+        	        al_wait_for_event_timed(gameFila, &evento, 0.1);    
+        	        checagem (in1, in2, inreag, &menu);
+        	    }
+        	}
+
+        	else if(clickBotaoR(267, 461, 210, 260, &evento, gameFila)){  // InReag (Deveria ser 466 por grafico)
+        		if(inreag != 0){
+        			info_reag(inreag);
+        	        playSample(somClickBotao2);
+        	    	if(infoMenu() == 1){
+        	    	    gameFinish();
+        	    	    return 1;
+        	    	}
+        	    }
+        	}
+
+
+        	else if(clickBotaoL(133, 332, 333, 383, &evento, gameFila) && out1 != 0){  // Out1
+        	    playSample(somClickBotao);
+
+            	if(out1 != 0)
+            	    insert(out1, &menu, 1);
+
+        	    out1 = 0;
+        	    out1name[0] = '\0';
+        	}
+
+        	else if(clickBotaoR(133, 332, 333, 383, &evento, gameFila)){  // Out1
+        	    if(out1 != 0){
+
+        			lista *a;
+        			a = menu.prox;
+        			for(int i = 1; i < in2; i++)
+        				a = a->prox;
+
+        			info_elem(a->ElNum);
+        	        playSample(somClickBotao2);
+        			if(infoMenu() == 1){
+        	        	gameFinish();
+        	        	return 1;
+        	    	}
+        		}   
+        	}
+
+
+        	else if(clickBotaoL(383, 582, 333, 383, &evento, gameFila) && out2 != 0){  // Out2
+        	    playSample(somClickBotao);
+
+            	if(out2 != 0)
+            	    insert(out2, &menu, 1);
+
+        	    out2 = 0;
+        	    out2name[0] = '\0';
+        	}
+
+
+        	else if(clickBotaoR(383, 582, 333, 383, &evento, gameFila)){  // Out2
+        	    if(out2 != 0){
+
+        			lista *a;
+        			a = menu.prox;
+        			for(int i = 1; i < in2; i++)
+        				a = a->prox;
+
+        			info_elem(a->ElNum);
+        	        playSample(somClickBotao2);
+        			if(infoMenu() == 1){
+        	        	gameFinish();
+        	        	return 1;
+        	    	}
+        		}   
+        	}
+        }
+
+    //Checagem para voltar à seleção de fase
         if(checkBotao(0, 50, 0, 50, &evento, gameFila))
             al_draw_tinted_bitmap(botao, (al_map_rgba(128, 128, 128, 0)), 0, 0, 0);
 
         else
             al_draw_bitmap(botao, 0, 0, 0);
 
-        if(clickBotaoL(0, 50, 0, 50, &evento, gameFila)){
-            playSample(somClickBotao);
-            break;
-        }
-
-    /////////////////////////////////////////////////////////////
-        if(clickBotaoL(201, 317, 597, 712, &evento, gameFila) && reagentes[0] != 0){   // Reag1
-            playSample(somClickBotao);
-            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
-            
-            inreag = reagentes[0];
-            strcpy(inreagname, reagname[0]);
-            printf("Colocou reagente: %d\n", reagentes[0]);
-            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10)
-                al_wait_for_event_timed(gameFila, &evento, 0.1);    
-
-                checagem (in1, in2, inreag, &menu);
-        }
-
-        else if(clickBotaoR(201, 317, 597, 712, &evento, gameFila)){   // Reag1
-        	if(reagentes[0] != 0){
-                playSample(somClickBotao2);
-        		info_reag(reagentes[0]);
-
-            	if(infoMenu() == 1){
-            	    gameFinish();
-            	    return 1;
-            	}
-            }
-        }
-
-
-        else if(clickBotaoL(320, 438, 597, 712, &evento, gameFila) && reagentes[1] != 0){   // Reag2
-            playSample(somClickBotao);
-            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
-
-            inreag = reagentes[1];
-            strcpy(inreagname, reagname[1]);
-            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
-                al_wait_for_event_timed(gameFila, &evento, 0.1);    
-                checagem (in1, in2, inreag, &menu);
-            }
-        }
-
-        else if(clickBotaoR(320, 438, 597, 712, &evento, gameFila)){   // Reag2
-        	if(reagentes[1] != 0){
-                playSample(somClickBotao2);
-        		info_reag(reagentes[1]);
-
-            	if(infoMenu() == 1){
-            	    gameFinish();
-            	    return 1;
-            	}
-            }
-        }
-
-
-        else if(clickBotaoL(441, 560, 597, 712, &evento, gameFila) && reagentes[2] != 0){   // Reag3
-            playSample(somClickBotao);
-            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
-
-            inreag = reagentes[2];
-            strcpy(inreagname, reagname[2]);
-            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
-                al_wait_for_event_timed(gameFila, &evento, 0.1);    
-                checagem (in1, in2, inreag, &menu);
-            }
-        }
-
-        else if(clickBotaoR(441, 560, 597, 712, &evento, gameFila)){   // Reag3
-        	if(reagentes[2] != 0){
-                playSample(somClickBotao2);
-        		info_reag(reagentes[2]);
-
-            	if(infoMenu() == 1){
-            	    gameFinish();
-            	    return 1;
-            	}
-            }
-        }
-
-        else if(clickBotaoL(563, 679, 597, 712, &evento, gameFila) && reagentes[3] != 0){   // Reag4
-            playSample(somClickBotao);
-            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
-
-            inreag = reagentes[3];
-            strcpy(inreagname, reagname[3]);
-            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
-                al_wait_for_event_timed(gameFila, &evento, 0.1);    
-                checagem (in1, in2, inreag, &menu);
-            }
-        }
-
-        else if(clickBotaoR(563, 679, 597, 712, &evento, gameFila)){   // Reag4
-        	if(reagentes[3] != 0){
-                playSample(somClickBotao2);
-        		info_reag(reagentes[3]);
-
-            	if(infoMenu() == 1){
-            	    gameFinish();
-            	    return 1;
-            	}
-            }
-        }
-
-
-        else if(clickBotaoL(682, 802, 597, 712, &evento, gameFila) && reagentes[4] != 0){   // Reag5
-            playSample(somClickBotao);
-            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
-
-            inreag = reagentes[4];
-            strcpy(inreagname, reagname[4]);
-            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
-                al_wait_for_event_timed(gameFila, &evento, 0.1);    
-                checagem (in1, in2, inreag, &menu);
-            }
-        }
-
-        else if(clickBotaoR(682, 802, 597, 712, &evento, gameFila)){   // Reag5
-        	if(reagentes[4] != 0){
-                playSample(somClickBotao2);
-        		info_reag(reagentes[4]);
-
-            	if(infoMenu() == 1){
-            	    gameFinish();
-            	    return 1;
-            	}
-            }
-        }
-
-
-
-        else if(clickBotaoL(104, 298, 140, 190, &evento, gameFila) && in1 != 0){  // In1
-            playSample(somClickBotao);
-            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
-
-            in1 = 0;
-            in1name[0] = '\0';
-        }
-
-        else if(clickBotaoR(104, 298, 140, 190, &evento, gameFila)){  // In1
-        	if(in1 != 0){
-
-        		lista *a;
-        		a = menu.prox;
-
-        		for(int i = 1; i < in1; i++){
-        			a = a->prox;
-        		}
-
-        		info_elem(a->ElNum);
-                playSample(somClickBotao2);
-        		if(infoMenu() == 1){
-                	gameFinish();
-                	return 1;
-            	}
-        	}  
-        }
-
-
-        else if(clickBotaoL(424, 618, 140, 190, &evento, gameFila) && in2 != 0){  // In2
-            playSample(somClickBotao);
-            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
-
-            in2 = 0;
-            in2name[0] = '\0';
-        }
-
-        else if(clickBotaoR(424, 618, 140, 190, &evento, gameFila)){  // In2
-            if(in2 != 0){
-
-        		lista *a;
-        		a = menu.prox;
-        		for(int i = 1; i < in2; i++){
-        			a = a->prox;
-        		}
-
-        		info_elem(a->ElNum);
-                playSample(somClickBotao2);
-        		if(infoMenu() == 1){
-                	gameFinish();
-                	return 1;
-            	}
-        	}   
-        }
-
-
-        else if(clickBotaoL(267, 461, 210, 260, &evento, gameFila) && inreag != 0){  // InReag (Deveria ser 466 por grafico)
-            playSample(somClickBotao);
-            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
-
-            inreag = 0;
-            inreagname[0] = '\0';
-            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
-                al_wait_for_event_timed(gameFila, &evento, 0.1);    
-                checagem (in1, in2, inreag, &menu);
-            }
-        }
-
-        else if(clickBotaoR(267, 461, 210, 260, &evento, gameFila)){  // InReag (Deveria ser 466 por grafico)
-        	if(inreag != 0){
-        		info_reag(inreag);
-                playSample(somClickBotao2);
-            	if(infoMenu() == 1){
-            	    gameFinish();
-            	    return 1;
-            	}
-            }
-        }
-
-
-        else if(clickBotaoL(133, 332, 333, 383, &evento, gameFila) && out1 != 0){  // Out1
-            playSample(somClickBotao);
-            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
-
-            if(out1 != 0)
-                insert(out1, &menu, 1);
-
-            out1 = 0;
-            out1name[0] = '\0';
-        }
-
-        else if(clickBotaoR(133, 332, 333, 383, &evento, gameFila)){  // Out1
-            if(out1 != 0){
-
-        		lista *a;
-        		a = menu.prox;
-        		for(int i = 1; i < in2; i++){
-        			a = a->prox;
-        		}
-
-        		info_elem(a->ElNum);
-                playSample(somClickBotao2);
-        		if(infoMenu() == 1){
-                	gameFinish();
-                	return 1;
-            	}
-        	}   
-        }
-
-
-        else if(clickBotaoL(383, 582, 333, 383, &evento, gameFila) && out2 != 0){  // Out2
-            playSample(somClickBotao);
-            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
-
-            if(out2 != 0)
-                insert(out2, &menu, 1);
-
-            out2 = 0;
-            out2name[0] = '\0';
-        }
-
-
-        else if(clickBotaoR(383, 582, 333, 383, &evento, gameFila)){  // Out2
-            if(out2 != 0){
-
-        		lista *a;
-        		a = menu.prox;
-        		for(int i = 1; i < in2; i++){
-        			a = a->prox;
-        		}
-
-        		info_elem(a->ElNum);
-                playSample(somClickBotao2);
-        		if(infoMenu() == 1){
-                	gameFinish();
-                	return 1;
-            	}
-        	}   
-        }
-
     /*---------------------------------------*/
-        if(checkBotao(201, 317, 597, 712, &evento, gameFila))   // Reag1
-             al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 259, 637, ALLEGRO_ALIGN_CENTRE, "%s", reagname[0]);
-        else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 259, 637, ALLEGRO_ALIGN_CENTRE, "%s", reagname[0]);
+        if(checkBotao(201, 317, 597, 712, &evento, gameFila)){   // Reag1
+        	if(strlen(reagname[0]) > 8)
+            	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 259, 647, ALLEGRO_ALIGN_CENTRE, "%s", reagname[0]);
+            else
+            	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 259, 637, ALLEGRO_ALIGN_CENTRE, "%s", reagname[0]);
+        }
+
+        else{
+        	if(strlen(reagname[0]) > 8)
+            	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 259, 647, ALLEGRO_ALIGN_CENTRE, "%s", reagname[0]);
+            else
+            	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 259, 637, ALLEGRO_ALIGN_CENTRE, "%s", reagname[0]);
+        }
 
 
-        if(checkBotao(320, 438, 597, 712, &evento, gameFila))   // Reag2
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 379, 597, ALLEGRO_ALIGN_CENTRE, "%s", reagname[1]);
-        else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 379, 597, ALLEGRO_ALIGN_CENTRE, "%s", reagname[1]);
+        if(checkBotao(320, 438, 597, 712, &evento, gameFila)){   // Reag2
+        	if(strlen(reagname[1]) > 8)
+            	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 379, 647, ALLEGRO_ALIGN_CENTRE, "%s", reagname[1]);
+            else
+            	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 379, 637, ALLEGRO_ALIGN_CENTRE, "%s", reagname[1]);
+        }
 
-        if(checkBotao(441, 560, 597, 712, &evento, gameFila))   // Reag3
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 500.5, 597, ALLEGRO_ALIGN_CENTRE, "%s", reagname[2]);
-        else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 500.5, 597, ALLEGRO_ALIGN_CENTRE, "%s", reagname[2]);
-
-        if(checkBotao(563, 679, 597, 712, &evento, gameFila))   // Reag4
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 621, 597, ALLEGRO_ALIGN_CENTRE, "%s", reagname[3]);
-        else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 621, 597, ALLEGRO_ALIGN_CENTRE, "%s", reagname[3]);
-
-        if(checkBotao(682, 802, 597, 712, &evento, gameFila))   // Reag5
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 742, 597, ALLEGRO_ALIGN_CENTRE, "%s", reagname[4]);
-        else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 742, 597, ALLEGRO_ALIGN_CENTRE, "%s", reagname[4]);
+        else{
+        	if(strlen(reagname[1]) > 8)
+            	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 379, 647, ALLEGRO_ALIGN_CENTRE, "%s", reagname[1]);
+            else
+            	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 379, 637, ALLEGRO_ALIGN_CENTRE, "%s", reagname[1]);
+        }
 
 
-        if(checkBotao(104, 298, 140, 190, &evento, gameFila))  // In1
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 201, 140, ALLEGRO_ALIGN_CENTRE, "%s", in1name);
-        else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 201, 140, ALLEGRO_ALIGN_CENTRE, "%s", in1name);    
+        if(checkBotao(441, 560, 597, 712, &evento, gameFila)){   // Reag3
+        	if(strlen(reagname[2]) > 8)
+            	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 500.5, 647, ALLEGRO_ALIGN_CENTRE, "%s", reagname[2]);
+            else
+            	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 500.5, 637, ALLEGRO_ALIGN_CENTRE, "%s", reagname[2]);
+        }
+
+        else{
+        	if(strlen(reagname[2]) > 8)
+            	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 500.5, 647, ALLEGRO_ALIGN_CENTRE, "%s", reagname[2]);
+            else
+            	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 500.5, 637, ALLEGRO_ALIGN_CENTRE, "%s", reagname[2]);
+        }
 
 
-        if(checkBotao(424, 618, 140, 190, &evento, gameFila))  // In2
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 521, 140, ALLEGRO_ALIGN_CENTRE, "%s", in2name);
-        else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 521, 140, ALLEGRO_ALIGN_CENTRE, "%s", in2name);
+        if(checkBotao(563, 679, 597, 712, &evento, gameFila)){   // Reag4
+        	if(strlen(reagname[3]) > 8)
+            	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 621, 647, ALLEGRO_ALIGN_CENTRE, "%s", reagname[3]);
+            else
+            	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 621, 637, ALLEGRO_ALIGN_CENTRE, "%s", reagname[3]);
+        }
+
+        else{
+        	if(strlen(reagname[3]) > 8)
+            	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 621, 647, ALLEGRO_ALIGN_CENTRE, "%s", reagname[3]);
+            else
+            	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 621, 637, ALLEGRO_ALIGN_CENTRE, "%s", reagname[3]);
+        }
 
 
-        if(checkBotao(267, 461, 210, 260, &evento, gameFila))  // InReag (Deveria ser 466 por grafico)
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 364, 210, ALLEGRO_ALIGN_CENTRE, "%s", inreagname);
-        else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 364, 210, ALLEGRO_ALIGN_CENTRE, "%s", inreagname);
+        if(checkBotao(682, 802, 597, 712, &evento, gameFila)){   // Reag5
+        	if(strlen(reagname[4]) > 8)
+            	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 742, 647, ALLEGRO_ALIGN_CENTRE, "%s", reagname[4]);
+            else
+            	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 742, 637, ALLEGRO_ALIGN_CENTRE, "%s", reagname[4]);
+        }
+
+        else{
+        	if(strlen(reagname[4]) > 8)
+            	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 742, 647, ALLEGRO_ALIGN_CENTRE, "%s", reagname[4]);
+            else
+            	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 742, 637, ALLEGRO_ALIGN_CENTRE, "%s", reagname[4]);
+        }
 
 
-        if(checkBotao(133, 331, 333, 383, &evento, gameFila))  // Out1
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 232, 333, ALLEGRO_ALIGN_CENTRE, "%s", out1name);
-        else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 232, 333, ALLEGRO_ALIGN_CENTRE, "%s", out1name);
+        if(checkBotao(104, 298, 140, 190, &evento, gameFila)){  // In1
+        	if(strlen(in1name) > 15)
+            	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 201, 150, ALLEGRO_ALIGN_CENTRE, "%s", in1name);
+            else
+            	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 201, 140, ALLEGRO_ALIGN_CENTRE, "%s", in1name);
+        }
 
-        if(checkBotao(384, 582, 333, 383, &evento, gameFila))  // Out2
-            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 482, 333, ALLEGRO_ALIGN_CENTRE, "%s", out2name);
-        else
-            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 482, 333, ALLEGRO_ALIGN_CENTRE, "%s", out2name);
+        else{
+        	if(strlen(in1name) > 15)
+            	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 201, 150, ALLEGRO_ALIGN_CENTRE, "%s", in1name);
+            else
+            	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 201, 140, ALLEGRO_ALIGN_CENTRE, "%s", in1name);
+        }   
+
+
+        if(checkBotao(424, 618, 140, 190, &evento, gameFila)){  // In2
+        	if(strlen(in2name) > 15)
+            	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 521, 150, ALLEGRO_ALIGN_CENTRE, "%s", in2name);
+            else
+            	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 521, 140, ALLEGRO_ALIGN_CENTRE, "%s", in2name);
+        }
+
+        else{
+        	if(strlen(in2name) > 15)
+            	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 521, 150, ALLEGRO_ALIGN_CENTRE, "%s", in2name);
+            else
+            	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 521, 140, ALLEGRO_ALIGN_CENTRE, "%s", in2name);
+        }
+
+
+        if(checkBotao(267, 461, 210, 260, &evento, gameFila)){  // InReag (Deveria ser 466 por grafico)
+        	if(strlen(inreagname) > 15)
+            	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 364, 220, ALLEGRO_ALIGN_CENTRE, "%s", inreagname);
+            else
+            	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 364, 210, ALLEGRO_ALIGN_CENTRE, "%s", inreagname);
+        }
+
+        else{
+        	if(strlen(inreagname) > 15)
+            	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 364, 220, ALLEGRO_ALIGN_CENTRE, "%s", inreagname);
+            else
+            	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 364, 210, ALLEGRO_ALIGN_CENTRE, "%s", inreagname);
+        }
+
+
+        if(checkBotao(133, 331, 333, 383, &evento, gameFila)){  // Out1
+        	if(strlen(out1name) > 15)
+            	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 232, 343, ALLEGRO_ALIGN_CENTRE, "%s", out1name);
+            else
+            	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 232, 333, ALLEGRO_ALIGN_CENTRE, "%s", out1name);
+        }
+
+        else{
+        	if(strlen(out1name) > 15)
+            	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 232, 343, ALLEGRO_ALIGN_CENTRE, "%s", out1name);
+            else
+            	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 232, 333, ALLEGRO_ALIGN_CENTRE, "%s", out1name);
+        }
+
+
+        if(checkBotao(384, 582, 333, 383, &evento, gameFila)){  // Out2
+        	if(strlen(out2name) > 15)
+            	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 482, 343, ALLEGRO_ALIGN_CENTRE, "%s", out2name);
+            else
+            	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 482, 333, ALLEGRO_ALIGN_CENTRE, "%s", out2name);
+        }
+
+        else{
+        	if(strlen(out2name) > 15)
+            	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 482, 343, ALLEGRO_ALIGN_CENTRE, "%s", out2name);
+            else
+            	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 482, 333, ALLEGRO_ALIGN_CENTRE, "%s", out2name);
+        }
 
         if(out1 == target || out2 == target){
         	sprintf(logtext1, "Parabéns, você completou a fase.");
         	sprintf(logtext2, "Mas será que você descobriu tudo???");
         }
-        
+
         //logtext1
         al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 50, 493, ALLEGRO_ALIGN_LEFT, "%s", logtext1);
         
@@ -1147,30 +1228,38 @@ int gameMenu(int NSNumeroDaFase){
         		else
         			al_draw_bitmap(botao, 856, 57.5, ALLEGRO_FLIP_HORIZONTAL);
 	
-        		if(clickBotaoL(856, 906, 57.5, 107.5, &evento, gameFila)){
+        		if(clickBotaoL(856, 906, 57.5, 107.5, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){
         			playSample(somClickBotao);
         			page++;
         		}
 
 
         		if(menu.prox){
-    				if(checkBotao(733, 930, 120, 160, &evento, gameFila))  // Struct1
-    				    al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 120, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->ElName);
-    				else
-    				    al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 120, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->ElName);
-				
-    				if(clickBotaoL(733, 930, 120, 160, &evento, gameFila)){  // Struct1
+    				if(checkBotao(733, 930, 120, 160, &evento, gameFila)){  // Struct1
+    					if(strlen(menu.prox->ElName) > 15)
+    				    	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 130, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->ElName);
+    					else
+    				    	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 120, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->ElName);
+    				}
+
+    				else{
+    					if(strlen(menu.prox->ElName) > 15)
+    				    	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 831.5, 130, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->ElName);
+    					else
+    				    	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 120, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->ElName);
+    				}
+
+    				if(clickBotaoL(733, 930, 120, 160, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct1
     				    playSample(somClickBotao);
-    				    //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 				
     				    useElement(1, &menu);
     				    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
                             al_wait_for_event_timed(gameFila, &evento, 0.1);    
                             checagem (in1, in2, inreag, &menu);
-                            }
+                        }
     				}
 				
-    				else if(clickBotaoR(733, 930, 120, 160, &evento, gameFila)){  // Struct1
+    				else if(clickBotaoR(733, 930, 120, 160, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct1
     					if(menu.prox->ElNum != 0){
     						info_elem(menu.prox->ElNum);
 		                  playSample(somClickBotao2);
@@ -1182,14 +1271,24 @@ int gameMenu(int NSNumeroDaFase){
     				}
 			
     			    if(menu.prox->prox){
-    			        if(checkBotao(733, 930, 162, 208, &evento, gameFila))  // Struct2
-    			            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 167, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->ElName);
-    			        else
-    			            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 167, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->ElName);
+    			        if(checkBotao(733, 930, 162, 208, &evento, gameFila)){  // Struct2
+    			        	if(strlen(menu.prox->prox->ElName) > 15)
+    			            	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 177, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->ElName);
+
+    			            else
+    			            	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 167, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->ElName);
+    			        }
+
+    			        else{
+    			        	if(strlen(menu.prox->prox->ElName) > 15)
+    			            	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 831.5, 177, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->ElName);
+
+    			            else
+    			            	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 167, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->ElName);
+    			        }
 			
-    			        if(clickBotaoL(733, 930, 162, 208, &evento, gameFila)){  // Struct2
+    			        if(clickBotaoL(733, 930, 162, 208, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct2
     			            playSample(somClickBotao);
-    			            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			            useElement(2, &menu);
     			            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
@@ -1198,7 +1297,7 @@ int gameMenu(int NSNumeroDaFase){
                             }
     			        }
 			
-    			        else if(clickBotaoR(733, 930, 162, 208, &evento, gameFila)){  // Struct2
+    			        else if(clickBotaoR(733, 930, 162, 208, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct2
     			            if(menu.prox->prox->ElNum != 0){
     							info_elem(menu.prox->prox->ElNum);
     							playSample(somClickBotao2);
@@ -1210,14 +1309,22 @@ int gameMenu(int NSNumeroDaFase){
     			        }
 			
     			        if(menu.prox->prox->prox){
-    			            if(checkBotao(733, 930, 210, 251, &evento, gameFila))  // Struct3
-    			                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 215, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->ElName);
-    			            else
-    			                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 215, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->ElName);
-			
-    			            if(clickBotaoL(733, 930, 210, 251, &evento, gameFila)){  // Struct3
+    			            if(checkBotao(733, 930, 210, 251, &evento, gameFila)){  // Struct3
+    			            	if(strlen(menu.prox->prox->prox->ElName) > 15)
+    			            		al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 225, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->ElName);
+    			            	else
+    			                	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 215, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->ElName);
+    			            }
+
+    			            else{
+    			            	if(strlen(menu.prox->prox->prox->ElName) > 15)
+    			            		al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 831.5, 225, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->ElName);
+    			            	else
+    			                	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 215, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->ElName);
+    			            }
+
+    			            if(clickBotaoL(733, 930, 210, 251, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct3
     			                playSample(somClickBotao);
-    			                //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                useElement(3, &menu);
     			                if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
@@ -1226,7 +1333,7 @@ int gameMenu(int NSNumeroDaFase){
                                 }
     			            }
 			
-    			            else if(clickBotaoR(733, 930, 210, 251, &evento, gameFila)){  // Struct3
+    			            else if(clickBotaoR(733, 930, 210, 251, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct3
     			                if(menu.prox->prox->prox->ElNum != 0){
     								info_elem(menu.prox->prox->prox->ElNum);
     								playSample(somClickBotao2);
@@ -1238,14 +1345,22 @@ int gameMenu(int NSNumeroDaFase){
     			            }
 			
     			            if(menu.prox->prox->prox->prox){
-    			                if(checkBotao(733, 930, 253, 297, &evento, gameFila))  // Struct4
-    			                    al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 253, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->ElName);
-    			                else
-    			                    al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 253, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->ElName);
+    			                if(checkBotao(733, 930, 253, 297, &evento, gameFila)){  // Struct4
+    			                	if(strlen(menu.prox->prox->prox->prox->ElName) > 15)
+    			                		al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 263, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->ElName);
+    			                	else
+    			                    	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 253, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->ElName);
+    			                }
+
+    			                else{
+    			                	if(strlen(menu.prox->prox->prox->prox->ElName) > 15)
+    			                		al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 831.5, 263, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->ElName);
+    			                	else
+    			                    	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 253, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->ElName);
+    			                }
 			
-    			                if(clickBotaoL(733, 930, 253, 297, &evento, gameFila)){  // Struct4
+    			                if(clickBotaoL(733, 930, 253, 297, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct4
     			                    playSample(somClickBotao);
-    			                    //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                    useElement(4, &menu);
     			                    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
@@ -1254,7 +1369,7 @@ int gameMenu(int NSNumeroDaFase){
                                     }
     			                }
 			
-    			                else if(clickBotaoR(733, 930, 253, 297, &evento, gameFila)){  // Struct4
+    			                else if(clickBotaoR(733, 930, 253, 297, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct4
     			                    if(menu.prox->prox->prox->prox->ElNum != 0){
     									info_elem(menu.prox->prox->prox->prox->ElNum);
     									playSample(somClickBotao2);
@@ -1266,14 +1381,22 @@ int gameMenu(int NSNumeroDaFase){
     			                }
 			
     			                if(menu.prox->prox->prox->prox->prox){
-    			                    if(checkBotao(733, 930, 299, 342, &evento, gameFila))  // Struct5
-    			                        al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 299, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->ElName);
-    			                    else
-    			                        al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 299, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->ElName);
+    			                    if(checkBotao(733, 930, 299, 342, &evento, gameFila)){  // Struct5
+    			                    	if(strlen(menu.prox->prox->prox->prox->prox->ElName) > 15)
+    			                    		al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 309, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->ElName);
+    			                    	else
+    			                        	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 299, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->ElName);
+    			                    }
+
+    			                    else{
+    			                    	if(strlen(menu.prox->prox->prox->prox->prox->ElName) > 15)
+    			                    		al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 831.5, 309, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->ElName);
+    			                    	else
+    			                        	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 299, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->ElName);
+    			                    }
 			
-    			                    if(clickBotaoL(733, 930, 299, 342, &evento, gameFila)){  // Struct5
+    			                    if(clickBotaoL(733, 930, 299, 342, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct5
     			                        playSample(somClickBotao);
-    			                        //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                        useElement(5, &menu);
     			                        if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
@@ -1282,7 +1405,7 @@ int gameMenu(int NSNumeroDaFase){
                                         }
     			                    }
 			
-    			                    else if(clickBotaoR(733, 930, 299, 342, &evento, gameFila)){  // Struct5
+    			                    else if(clickBotaoR(733, 930, 299, 342, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct5
     			                        if(menu.prox->prox->prox->prox->prox->ElNum != 0){
     										info_elem(menu.prox->prox->prox->prox->prox->ElNum);
     										playSample(somClickBotao2);
@@ -1294,14 +1417,22 @@ int gameMenu(int NSNumeroDaFase){
     			                    }
 			
     			                    if(menu.prox->prox->prox->prox->prox->prox){
-    			                        if(checkBotao(733, 930, 344, 387, &evento, gameFila))  // Struct6
-    			                            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 344, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->ElName);
-    			                        else
-    			                            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 344, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->ElName);
+    			                        if(checkBotao(733, 930, 344, 387, &evento, gameFila)){  // Struct6
+    			                        	if(strlen(menu.prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                            	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 354, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->ElName);
+    			                            else
+    			                            	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 344, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->ElName);
+    			                        }
+
+    			                        else{
+    			                        	if(strlen(menu.prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                            	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 831.5, 354, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->ElName);
+    			                            else
+    			                            	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 344, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->ElName);
+    			                        }
 			
-    			                        if(clickBotaoL(733, 930, 344, 387, &evento, gameFila)){  // Struct6
+    			                        if(clickBotaoL(733, 930, 344, 387, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct6
     			                            playSample(somClickBotao);
-    			                            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                            useElement(6, &menu);
     			                            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
@@ -1310,7 +1441,7 @@ int gameMenu(int NSNumeroDaFase){
                                             }
     			                        }
 			
-    			                        else if(clickBotaoR(733, 930, 344, 387, &evento, gameFila)){  // Struct6
+    			                        else if(clickBotaoR(733, 930, 344, 387, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct6
     			                        	if(menu.prox->prox->prox->prox->prox->prox->ElNum != 0){
     											info_elem(menu.prox->prox->prox->prox->prox->prox->ElNum);
     											playSample(somClickBotao2);
@@ -1322,14 +1453,22 @@ int gameMenu(int NSNumeroDaFase){
     			                        }
 			
     			                        if(menu.prox->prox->prox->prox->prox->prox->prox){
-    			                            if(checkBotao(733, 930, 389, 432, &evento, gameFila))  // Struct7
-    			                                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 389, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->ElName);
-    			                            else
-    			                                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 389, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                            if(checkBotao(733, 930, 389, 432, &evento, gameFila)){  // Struct7
+    			                            	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                                	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 399, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                else
+    			                                	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 389, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                            }
+
+    			                            else{
+    			                            	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                                	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 831.5, 399, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                else
+    			                                	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 389, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                            }
 			
-    			                            if(clickBotaoL(733, 930, 389, 432, &evento, gameFila)){  // Struct7
+    			                            if(clickBotaoL(733, 930, 389, 432, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct7
     			                                playSample(somClickBotao);
-    			                                //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                                useElement(7, &menu);
     			                                if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
@@ -1338,7 +1477,7 @@ int gameMenu(int NSNumeroDaFase){
                                                 }
     			                            }
 			
-    			                            else if(clickBotaoR(733, 930, 389, 432, &evento, gameFila)){  // Struct7
+    			                            else if(clickBotaoR(733, 930, 389, 432, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct7
     			                            	if(menu.prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     												info_elem(menu.prox->prox->prox->prox->prox->prox->prox->ElNum);
     												playSample(somClickBotao2);
@@ -1350,14 +1489,22 @@ int gameMenu(int NSNumeroDaFase){
     			                            }
 			
     			                            if(menu.prox->prox->prox->prox->prox->prox->prox->prox){
-    			                                if(checkBotao(733, 930, 434, 477, &evento, gameFila))  // Struct8
-    			                                    al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 434, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->ElName);
-    			                                else
-    			                                    al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 434, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                if(checkBotao(733, 930, 434, 477, &evento, gameFila)){  // Struct8
+    			                                	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->ElName)> 15)
+    			                                    	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 444, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                    else
+    			                                    	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 434, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                }
+
+    			                                else{
+    			                                	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->ElName)> 15)
+    			                                    	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 831.5, 444, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                    else
+    			                                    	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 434, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                }
 			
-    			                                if(clickBotaoL(733, 930, 434, 477, &evento, gameFila)){  // Struct8
+    			                                if(clickBotaoL(733, 930, 434, 477, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct8
     			                                    playSample(somClickBotao);
-    			                                    //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                                    useElement(8, &menu);
     			                                    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
@@ -1366,7 +1513,7 @@ int gameMenu(int NSNumeroDaFase){
                                                     }
     			                                }
 			
-    			                                else if(clickBotaoR(733, 930, 434, 477, &evento, gameFila)){  // Struct8
+    			                                else if(clickBotaoR(733, 930, 434, 477, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct8
     			                                	if(menu.prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     													info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
     													
@@ -1378,14 +1525,22 @@ int gameMenu(int NSNumeroDaFase){
     			                                }
 			
     			                                if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox){
-    			                                    if(checkBotao(733, 930, 479, 524, &evento, gameFila))  // Struct9
-    			                                        al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 479, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
-    			                                    else
-    			                                        al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 479, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                    if(checkBotao(733, 930, 479, 524, &evento, gameFila)){  // Struct9
+    			                                    	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                                        	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 489, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                        else
+    			                                        	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 479, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                    }
+
+    			                                    else{
+    			                                    	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                                        	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 831.5, 489, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                        else
+    			                                        	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 479, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                    }
 			
-    			                                    if(clickBotaoL(733, 930, 479, 524, &evento, gameFila)){  // Struct9
+    			                                    if(clickBotaoL(733, 930, 479, 524, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct9
     			                                        playSample(somClickBotao);
-    			                                        //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                                        useElement(9, &menu);
     			                                        if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
@@ -1394,7 +1549,7 @@ int gameMenu(int NSNumeroDaFase){
                                                         }
     			                                    }
 			
-    			                                    else if(clickBotaoR(733, 930, 479, 524, &evento, gameFila)){  // Struct9
+    			                                    else if(clickBotaoR(733, 930, 479, 524, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct9
     			                                    	if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     														info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
     														playSample(somClickBotao2);
@@ -1406,14 +1561,22 @@ int gameMenu(int NSNumeroDaFase){
     			                                    }
 			
     			                                    if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox){
-    			                                        if(checkBotao(733, 930, 526, 564, &evento, gameFila))  // Struct10
-    			                                            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 526, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
-    			                                        else
-    			                                            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 526, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                        if(checkBotao(733, 930, 526, 564, &evento, gameFila)){  // Struct10
+    			                                        	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                                            	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 536, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                            else
+    			                                            	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 526, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                        }
+
+    			                                        else{
+    			                                        	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                                            	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 831.5, 536, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                            else
+    			                                            	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 526, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                        }
 			
-    			                                        if(clickBotaoL(733, 930, 526, 564, &evento, gameFila)){  // Struct10
+    			                                        if(clickBotaoL(733, 930, 526, 564, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct10
     			                                            playSample(somClickBotao);
-    			                                            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			                                            useElement(10, &menu);
     			                                            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
@@ -1422,7 +1585,7 @@ int gameMenu(int NSNumeroDaFase){
                                                             }
     			                                        }
 			
-    			                                        else if(clickBotaoR(733, 930, 526, 564, &evento, gameFila)){  // Struct10
+    			                                        else if(clickBotaoR(733, 930, 526, 564, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct10
     			                                        	if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     															info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
     															playSample(somClickBotao2);
@@ -1451,7 +1614,7 @@ int gameMenu(int NSNumeroDaFase){
         		else
         			al_draw_bitmap(botao, 763, 57.5, 0);
 	
-        		if(clickBotaoL(763, 813, 57.5, 107.5, &evento, gameFila)){
+        		if(clickBotaoL(763, 813, 57.5, 107.5, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){
         			playSample(somClickBotao);
         			page--;
         		}
@@ -1467,14 +1630,22 @@ int gameMenu(int NSNumeroDaFase){
         			menu.prox->prox->prox->prox->prox->prox->prox->prox->prox &&
         			menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox &&
         			menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox){
-    				if(checkBotao(733, 930, 120, 160, &evento, gameFila))  // Struct1
-    				    al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 120, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
-    				else
-    				    al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 120, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    				if(checkBotao(733, 930, 120, 160, &evento, gameFila)){  // Struct1
+    					if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    				    	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 130, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    				    else
+    				    	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 120, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    				}
+
+    				else{
+    					if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    				    	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 831.5, 130, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    				    else
+    				    	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 120, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    				}
 				
-    				if(clickBotaoL(733, 930, 120, 160, &evento, gameFila)){  // Struct1
+    				if(clickBotaoL(733, 930, 120, 160, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct1
     				    playSample(somClickBotao);
-    				    //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 				
     				    useElement(1, &menu);
     				    if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
@@ -1483,7 +1654,7 @@ int gameMenu(int NSNumeroDaFase){
                             }
     				}
 				
-    				else if(clickBotaoR(733, 930, 120, 160, &evento, gameFila)){  // Struct1
+    				else if(clickBotaoR(733, 930, 120, 160, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct1
     					if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     						info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
 		                      playSample(somClickBotao2);
@@ -1495,14 +1666,22 @@ int gameMenu(int NSNumeroDaFase){
     				}
 			
     			    if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox){
-    			        if(checkBotao(733, 930, 162, 208, &evento, gameFila))  // Struct2
-    			            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 167, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
-    			        else
-    			            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 167, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			        if(checkBotao(733, 930, 162, 208, &evento, gameFila)){  // Struct2
+    			        	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			            	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 177, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			            else
+    			            	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 167, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			        }
+
+    			        else{
+    			        	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			            	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 831.5, 177, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			            else
+    			            	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 167, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			        }
 			
-    			        if(clickBotaoL(733, 930, 162, 208, &evento, gameFila)){  // Struct2
+    			        if(clickBotaoL(733, 930, 162, 208, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct2
     			            playSample(somClickBotao);
-    			            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
     			            useElement(2, &menu);
     			            if(in1 > 0 && in2 > 0 && in1 < 10 && in2 <10){
@@ -1511,7 +1690,7 @@ int gameMenu(int NSNumeroDaFase){
                             }
     			        }
 			
-    			        else if(clickBotaoR(733, 930, 162, 208, &evento, gameFila)){  // Struct2
+    			        else if(clickBotaoR(733, 930, 162, 208, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct2
     			            if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     							info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
     							playSample(somClickBotao2);
@@ -1523,12 +1702,21 @@ int gameMenu(int NSNumeroDaFase){
     			        }
 			
     			        if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox){
-    			            if(checkBotao(733, 930, 210, 251, &evento, gameFila))  // Struct3
-    			                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 215, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
-    			            else
-    			                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 215, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			            if(checkBotao(733, 930, 210, 251, &evento, gameFila)){  // Struct3
+    			            	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 225, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                else
+    			                	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 215, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			            }
+
+    			            else{
+    			            	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 225, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                else
+    			                	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 215, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			            }
 			
-    			            if(clickBotaoL(733, 930, 210, 251, &evento, gameFila)){  // Struct3
+    			            if(clickBotaoL(733, 930, 210, 251, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct3
     			                playSample(somClickBotao);
     			                //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
@@ -1539,7 +1727,7 @@ int gameMenu(int NSNumeroDaFase){
                                 }
     			            }
 			
-    			            else if(clickBotaoR(733, 930, 210, 251, &evento, gameFila)){  // Struct3
+    			            else if(clickBotaoR(733, 930, 210, 251, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct3
     			                if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     								info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
     								playSample(somClickBotao2);
@@ -1551,12 +1739,21 @@ int gameMenu(int NSNumeroDaFase){
     			            }
 			
     			            if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox){
-    			                if(checkBotao(733, 930, 253, 297, &evento, gameFila))  // Struct4
-    			                    al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 253, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
-    			                else
-    			                    al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 253, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                if(checkBotao(733, 930, 253, 297, &evento, gameFila)){  // Struct4
+    			                	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                    	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 263, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                    else
+    			                    	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 253, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                }
+
+    			                else{
+    			                	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                    	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 831.5, 263, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                    else
+    			                    	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 253, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                }
 			
-    			                if(clickBotaoL(733, 930, 253, 297, &evento, gameFila)){  // Struct4
+    			                if(clickBotaoL(733, 930, 253, 297, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct4
     			                    playSample(somClickBotao);
     			                    //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
@@ -1567,7 +1764,7 @@ int gameMenu(int NSNumeroDaFase){
                                     }
     			                }
 			
-    			                else if(clickBotaoR(733, 930, 253, 297, &evento, gameFila)){  // Struct4
+    			                else if(clickBotaoR(733, 930, 253, 297, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct4
     			                    if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     									info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
     									playSample(somClickBotao2);
@@ -1579,12 +1776,21 @@ int gameMenu(int NSNumeroDaFase){
     			                }
 			
     			                if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox){
-    			                    if(checkBotao(733, 930, 299, 342, &evento, gameFila))  // Struct5
-    			                        al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 299, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
-    			                    else
-    			                        al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 299, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                    if(checkBotao(733, 930, 299, 342, &evento, gameFila)){  // Struct5
+    			                    	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                        	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 309, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                        else
+    			                        	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 299, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                    }
+
+    			                    else{
+    			                    	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                        	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 831.5, 309, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                        else
+    			                        	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 299, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                    }
 			
-    			                    if(clickBotaoL(733, 930, 299, 342, &evento, gameFila)){  // Struct5
+    			                    if(clickBotaoL(733, 930, 299, 342, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct5
     			                        playSample(somClickBotao);
     			                        //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
@@ -1595,7 +1801,7 @@ int gameMenu(int NSNumeroDaFase){
                                         }
     			                    }
 			
-    			                    else if(clickBotaoR(733, 930, 299, 342, &evento, gameFila)){  // Struct5
+    			                    else if(clickBotaoR(733, 930, 299, 342, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct5
     			                        if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     										info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
     										
@@ -1607,12 +1813,21 @@ int gameMenu(int NSNumeroDaFase){
     			                    }
 			
     			                    if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox){
-    			                        if(checkBotao(733, 930, 344, 387, &evento, gameFila))  // Struct6
-    			                            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 344, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
-    			                        else
-    			                            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 344, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                        if(checkBotao(733, 930, 344, 387, &evento, gameFila)){  // Struct6
+    			                        	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                            	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 354, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                            else
+    			                            	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 344, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                        }
+
+    			                        else{
+    			                        	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                            	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 831.5, 354, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                            else
+    			                            	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 344, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                        }
 			
-    			                        if(clickBotaoL(733, 930, 344, 387, &evento, gameFila)){  // Struct6
+    			                        if(clickBotaoL(733, 930, 344, 387, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct6
     			                            playSample(somClickBotao);
     			                            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
@@ -1623,7 +1838,7 @@ int gameMenu(int NSNumeroDaFase){
                                             }
     			                        }
 			
-    			                        else if(clickBotaoR(733, 930, 344, 387, &evento, gameFila)){  // Struct6
+    			                        else if(clickBotaoR(733, 930, 344, 387, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct6
     			                        	if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     											info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
     											playSample(somClickBotao2);
@@ -1635,12 +1850,21 @@ int gameMenu(int NSNumeroDaFase){
     			                        }
 			
     			                        if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox){
-    			                            if(checkBotao(733, 930, 389, 432, &evento, gameFila))  // Struct7
-    			                                al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 389, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
-    			                            else
-    			                                al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 389, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                            if(checkBotao(733, 930, 389, 432, &evento, gameFila)){  // Struct7
+    			                            	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                                	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 399, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                else
+    			                                	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 389, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                            }
+
+    			                            else{
+    			                            	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                                	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 831.5, 399, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                else
+    			                                	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 389, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                            }
 			
-    			                            if(clickBotaoL(733, 930, 389, 432, &evento, gameFila)){  // Struct7
+    			                            if(clickBotaoL(733, 930, 389, 432, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct7
     			                                playSample(somClickBotao);
     			                                //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
@@ -1651,7 +1875,7 @@ int gameMenu(int NSNumeroDaFase){
                                                 }
     			                            }
 			
-    			                            else if(clickBotaoR(733, 930, 389, 432, &evento, gameFila)){  // Struct7
+    			                            else if(clickBotaoR(733, 930, 389, 432, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct7
     			                            	if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     												info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
     												
@@ -1663,12 +1887,21 @@ int gameMenu(int NSNumeroDaFase){
     			                            }
 			
     			                            if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox){
-    			                                if(checkBotao(733, 930, 434, 477, &evento, gameFila))  // Struct8
-    			                                    al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 434, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
-    			                                else
-    			                                    al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 434, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                if(checkBotao(733, 930, 434, 477, &evento, gameFila)){  // Struct8
+    			                                	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                                    	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 444, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                    else
+    			                                    	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 434, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                }
+
+    			                                else{
+    			                                	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                                    	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 831.5, 444, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                    else
+    			                                    	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 434, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                }
 			
-    			                                if(clickBotaoL(733, 930, 434, 477, &evento, gameFila)){  // Struct8
+    			                                if(clickBotaoL(733, 930, 434, 477, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct8
     			                                    playSample(somClickBotao);
     			                                    //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
@@ -1679,7 +1912,7 @@ int gameMenu(int NSNumeroDaFase){
                                                     }
     			                                }
 			
-    			                                else if(clickBotaoR(733, 930, 434, 477, &evento, gameFila)){  // Struct8
+    			                                else if(clickBotaoR(733, 930, 434, 477, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct8
     			                                	if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     													info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
     													playSample(somClickBotao2);
@@ -1691,12 +1924,21 @@ int gameMenu(int NSNumeroDaFase){
     			                                }
 			
     			                                if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox){
-    			                                    if(checkBotao(733, 930, 479, 524, &evento, gameFila))  // Struct9
-    			                                        al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 479, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
-    			                                    else
-    			                                        al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 479, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                    if(checkBotao(733, 930, 479, 524, &evento, gameFila)){  // Struct9
+    			                                    	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                                        	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 489, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                        else
+    			                                        	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 479, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                    }
+
+    			                                    else{
+    			                                    	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                                        	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 831.5, 489, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                        else
+    			                                        	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 479, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                    }
 			
-    			                                    if(clickBotaoL(733, 930, 479, 524, &evento, gameFila)){  // Struct9
+    			                                    if(clickBotaoL(733, 930, 479, 524, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct9
     			                                        playSample(somClickBotao);
     			                                        //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
@@ -1707,7 +1949,7 @@ int gameMenu(int NSNumeroDaFase){
                                                         }
     			                                    }
 			
-    			                                    else if(clickBotaoR(733, 930, 479, 524, &evento, gameFila)){  // Struct9
+    			                                    else if(clickBotaoR(733, 930, 479, 524, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct9
     			                                    	if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     														info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
     														playSample(somClickBotao2);
@@ -1719,12 +1961,21 @@ int gameMenu(int NSNumeroDaFase){
     			                                    }
 			
     			                                    if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox){
-    			                                        if(checkBotao(733, 930, 526, 564, &evento, gameFila))  // Struct10
-    			                                            al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 526, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
-    			                                        else
-    			                                            al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 526, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                        if(checkBotao(733, 930, 526, 564, &evento, gameFila)){  // Struct10
+    			                                        	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                                            	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 536, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                            else
+    			                                            	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 526, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                        }
+
+    			                                        else{
+    			                                        	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
+    			                                            	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 831.5, 536, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                            else
+    			                                            	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 526, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                                        }
 			
-    			                                        if(clickBotaoL(733, 930, 526, 564, &evento, gameFila)){  // Struct10
+    			                                        if(clickBotaoL(733, 930, 526, 564, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct10
     			                                            playSample(somClickBotao);
     			                                            //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 			
@@ -1735,7 +1986,7 @@ int gameMenu(int NSNumeroDaFase){
                                                             }
     			                                        }
 			
-    			                                        else if(clickBotaoR(733, 930, 526, 564, &evento, gameFila)){  // Struct10
+    			                                        else if(clickBotaoR(733, 930, 526, 564, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct10
     			                                        	if(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum != 0){
     															info_elem(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElNum);
     															playSample(somClickBotao2);
