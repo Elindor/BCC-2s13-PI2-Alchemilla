@@ -189,11 +189,20 @@ bool mainInit(){                                                                
         return false;
     }
 
+    textFont = al_load_font("Fonte/zekton.ttf", 14, 0);
+    if(!textFont){
+    	fprintf(stderr, "Erro ao carregar textFont\n");
+    	al_destroy_display(janela);
+        al_destroy_event_queue(mainFila);
+        al_destroy_font(fonte);
+    }
+
     menuA = al_load_bitmap("Imagem/MenuA.png");
     if(!menuA){
         fprintf(stderr, "MenuA nao foi criado.\n");
         al_destroy_display(janela);
         al_destroy_event_queue(mainFila);
+        al_destroy_font(textFont);
         al_destroy_font(fonte);
         return false;
     }
@@ -203,6 +212,7 @@ bool mainInit(){                                                                
         fprintf(stderr, "Erro ao criar bgm.\n");
         al_destroy_display(janela);
         al_destroy_event_queue(mainFila);
+        al_destroy_font(textFont);
         al_destroy_font(fonte);
         al_destroy_bitmap(menuA);
         return false; 
@@ -213,6 +223,7 @@ bool mainInit(){                                                                
         fprintf(stderr, "Erro ao criar somClickBotao.\n");
         al_destroy_display(janela);
         al_destroy_event_queue(mainFila);
+        al_destroy_font(textFont);
         al_destroy_font(fonte);
         al_destroy_bitmap(menuA);
         al_destroy_audio_stream(bgm);
@@ -225,6 +236,7 @@ bool mainInit(){                                                                
         al_destroy_display(janela);
         al_destroy_event_queue(mainFila);
         al_destroy_font(fonte);
+        al_destroy_font(textFont);
         al_destroy_bitmap(menuA);
         al_destroy_audio_stream(bgm);
         return false;
@@ -236,6 +248,7 @@ bool mainInit(){                                                                
         al_destroy_display(janela);
         al_destroy_event_queue(mainFila);
         al_destroy_font(fonte);
+        al_destroy_font(textFont);
         al_destroy_bitmap(menuA);
         al_destroy_audio_stream(bgm);
         return false;
@@ -343,6 +356,7 @@ void mainFinish(){                          //Desaloca a memória
     al_destroy_display(janela);
     al_destroy_event_queue(mainFila);
     al_destroy_font(fonte);
+    al_destroy_font(textFont);
     al_destroy_audio_stream(bgm);
     al_destroy_sample(somNoBotao);
     al_destroy_sample(somClickBotao);
@@ -596,19 +610,11 @@ bool infoInit(){
         return false;
     }
 
-    textFont = al_load_font("Fonte/zekton.ttf", 14, 0);
-    if(!textFont){
-    	fprintf(stderr, "Erro ao carregar textFont\n");
-    	al_destroy_bitmap(infoBackground);
-    	al_destroy_font(titleFont);
-    }
-
     infoFila = al_create_event_queue();
     if(!infoFila){
     	fprintf(stderr, "Erro ao criar infoFila.\n");
     	al_destroy_bitmap(infoBackground);
     	al_destroy_font(titleFont);
-    	al_destroy_font(textFont);
     	return false;
     }
 
@@ -784,6 +790,7 @@ int gameMenu(int NSNumeroDaFase){
         al_clear_to_color(al_map_rgb(0, 0, 0));
         al_draw_bitmap(inGameBackground, 0, 0, 0);
         //al_draw_text(fonte, al_map_rgb(0, 0, 0), 831.5, 65, ALLEGRO_ALIGN_CENTRE, "Lista de Elementos");
+        al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 125, 55, ALLEGRO_ALIGN_CENTRE, "%s", targetname);
 
     //Checagem para voltar à seleção de fase(funcionará direito quando for implementado os pop-ups)
         if(checkBotao(0, 50, 0, 50, &evento, gameFila))
@@ -1119,6 +1126,11 @@ int gameMenu(int NSNumeroDaFase){
         else
             al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 482, 333, ALLEGRO_ALIGN_CENTRE, "%s", out2name);
 
+        if(out1 == target || out2 == target){
+        	sprintf(logtext1, "Parabéns, você completou a fase.");
+        	sprintf(logtext2, "Mas será que você descobriu tudo???");
+        }
+        
         //logtext1
         al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 50, 493, ALLEGRO_ALIGN_LEFT, "%s", logtext1);
         
