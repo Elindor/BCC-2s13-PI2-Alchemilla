@@ -18,12 +18,14 @@ ALLEGRO_EVENT_QUEUE *selectFila = NULL;
 ALLEGRO_EVENT_QUEUE *gameFila = NULL;
 ALLEGRO_EVENT_QUEUE *infoFila = NULL;
 ALLEGRO_EVENT_QUEUE *creditoFila = NULL;
+ALLEGRO_EVENT_QUEUE *optionsFila = NULL;
 
 ALLEGRO_BITMAP *menuA = NULL;
 ALLEGRO_BITMAP *menuB = NULL;
 ALLEGRO_BITMAP *inGameBackground = NULL;
 ALLEGRO_BITMAP *infoBackground = NULL;
 ALLEGRO_BITMAP *creditoBackground = NULL;
+ALLEGRO_BITMAP *optionsBackground = NULL;
 
 ALLEGRO_FONT *fonte = NULL;
 ALLEGRO_FONT *titleFont = NULL;
@@ -250,7 +252,7 @@ int mainMenu(){
         else if(clickBotaoL(741, 909, 187, 243, &evento, mainFila)){
             playSample(somClickBotao);
 
-            intro();
+            options();
         }
 
         else if(clickBotaoL(741, 909, 277, 333, &evento, mainFila)){
@@ -275,10 +277,10 @@ int mainMenu(){
             al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 824.5, 108, ALLEGRO_ALIGN_CENTRE, "Jogar");
 
         if(checkBotao(741, 909, 187, 243, &evento, mainFila))        //Caso o mouse esteja em cima do botão
-            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 825, 197, ALLEGRO_ALIGN_CENTRE, "Intro");
+            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 825, 197, ALLEGRO_ALIGN_CENTRE, "Opções");
 
         else
-            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 825, 197, ALLEGRO_ALIGN_CENTRE, "Intro");
+            al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 825, 197, ALLEGRO_ALIGN_CENTRE, "Opções");
 
         if(checkBotao(741, 909, 277, 333, &evento, mainFila))        //Caso o mouse esteja em cima do botão
            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 825, 287, ALLEGRO_ALIGN_CENTRE, "Créditos");
@@ -1780,4 +1782,123 @@ int creditos(){
 void creditoFinish(){
 	al_destroy_bitmap(creditoBackground);
 	al_destroy_event_queue(creditoFila);
+}
+
+
+
+//opções
+bool optionsInit(){
+        optionsBackground = al_load_bitmap("Imagem/optionsMenu.png");
+        if(!optionsBackground){
+                fprintf(stderr, "Erro ao criar optionsBackground.\n");
+                return false;
+        }
+
+        optionsFila = al_create_event_queue();
+        if(!optionsFila){
+                fprintf(stderr, "Erro ao criar optionsFila.\n");
+                al_destroy_bitmap(optionsBackground);
+                return false;
+        }
+
+        return true;
+}
+
+int options(){
+        if(!optionsInit()){
+                fprintf(stderr, "Erro ao iniciar opções.\n");
+                return -1;
+        }
+
+        while(1){
+                ALLEGRO_EVENT evento;
+
+        if(checkSair(&evento, optionsFila)){
+            optionsFinish();
+            return 1;
+        }
+
+        al_clear_to_color(al_map_rgb(0, 0, 0));
+        al_draw_bitmap(creditoBackground, 0, 0, 0);
+
+        if(clickBotaoL(742, 915, 607, 663, &evento, creditoFila)){
+                playSample(somClickBotao);
+                break;
+        }
+
+        if(clickBotaoL(740, 909, 98, 154, &evento, optionsFila)){
+                if(playBgm == true)
+                    playBgm = false;
+                else
+                    playBgm = true;
+                playSample(somClickBotao);
+                al_wait_for_event_timed(optionsFila, &evento, 0.5);    
+                break;
+        }
+
+        if(clickBotaoL(741, 909, 187, 243, &evento, optionsFila)){
+                if(playFx == true)
+                    playFx = false;
+                else
+                    playSample(somClickBotao);
+                    playFx = true;
+
+                al_wait_for_event_timed(optionsFila, &evento, 0.5);    
+                break;
+        }
+
+        //Checagens de mouse sobre botão
+        if(playBgm = true)
+            if(checkBotao(740, 909, 98, 154, &evento, optionsFila))        //Caso o mouse esteja em cima do botão
+                al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 824.5, 108, ALLEGRO_ALIGN_CENTRE, "Musica: ON");
+
+            else
+                al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 824.5, 108, ALLEGRO_ALIGN_CENTRE, "Musica: ON");
+        else
+                if(checkBotao(740, 909, 98, 154, &evento, optionsFila))        //Caso o mouse esteja em cima do botão
+                al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 824.5, 108, ALLEGRO_ALIGN_CENTRE, "Musica: OFF");
+
+            else
+                al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 824.5, 108, ALLEGRO_ALIGN_CENTRE, "Musica: OFF");
+
+        if(playFx == true)
+            if(checkBotao(741, 909, 187, 243, &evento, optionsFila))        //Caso o mouse esteja em cima do botão
+                al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 825, 197, ALLEGRO_ALIGN_CENTRE, "Efeitos: ON");
+
+            else
+                al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 825, 197, ALLEGRO_ALIGN_CENTRE, "Efeitos: ON");
+        else
+            if(checkBotao(741, 909, 187, 243, &evento, optionsFila))        //Caso o mouse esteja em cima do botão
+                al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 825, 197, ALLEGRO_ALIGN_CENTRE, "Efeitos: OFF");
+
+            else
+                al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 825, 197, ALLEGRO_ALIGN_CENTRE, "Efeitos: OFF");
+
+
+        if(checkBotao(742, 915, 607, 663, &evento, optionsFila))
+            al_draw_text(fonte, (al_map_rgb(128, 0, 0)), 828.5, 615, ALLEGRO_ALIGN_CENTRE, "Voltar");
+
+        else
+                al_draw_text(fonte, (al_map_rgb(0, 0, 0)), 828.5, 615, ALLEGRO_ALIGN_CENTRE, "Voltar");
+
+
+
+        if(evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP){
+            buttonPressed = true;
+        }
+
+        else
+            buttonPressed = false;
+
+        al_flip_display();
+        }
+
+    optionsFinish();
+
+        return 0;
+}
+
+void optionsFinish(){
+        al_destroy_bitmap(optionsBackground);
+        al_destroy_event_queue(optionsFila);
 }
