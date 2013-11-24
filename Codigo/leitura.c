@@ -1,6 +1,5 @@
 #include "header.h"
 
-
 int in1, in2, inreag, out1, out2; char out1name[30], out2name[30], in1name[30], in2name[30], inreagname[30]; //Variaveis globais, os numeros pra saida da tela de elementos.
 int fase; //Variavel global, a fase do jogo.
 char checklist[21], startlist[21], itemlist[21], infolist[20]; //Nomes dos arquivos que serão usados
@@ -42,7 +41,7 @@ int fgetline(FILE *fp, char s[], int lim){
 }
 
 void useElement(int elem, lista *menu){         //
-    if(in2 != 0 && in1 != 0)                                //  Esta fuinção é responsável por ler um struct(clicado) e adicioná-lo
+    if(in2 != 0 && in1 != 0)                                //  Esta função é responsável por ler um struct(clicado) e adicioná-lo
         return;                                 // nos espaços de entrada da reação. Ele recebe o numero clicado da lista
                                                 // (por ordem), procura até chegar na informação do struct, e então coloca
     for(int i = 0; i < elem; i++){              // adequadamente no espaço correto.
@@ -52,9 +51,7 @@ void useElement(int elem, lista *menu){         //
     }
     //if(menu -> ElNum == in1 || menu -> ElNum == in2)
         //return;
-
-    //al_play_sample(somClickBotao, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
-
+    
     if(in1 == 0){
         in1 = menu -> ElNum;
         strcpy(in1name, menu->ElName);
@@ -158,7 +155,6 @@ void insert(int num, lista *menu, int type){              //
 void nomeia_reag(int reagente, int i){              //
     FILE *reag;                                         //  Esta função é chamada dentro da função start_menu.
     int aux; char buff[500];                         // Ela recebe os reagentes da lista de entrada, e insere-os num
-	char c;
 
     reag = fopen("Entradas/reaglist.txt", "r");                      // vetor global, e então esta função aqui deverá ler os numeros no
     if(!reag){

@@ -1,4 +1,4 @@
-1
+﻿1
 Água
 H20
 A Água é um solvente amplamente usado na quimica, diversas vezes até chamado de solvente universal. Suas moléculas são polares, de pouca condutividade, e ligam facilmente entre si, todas estas qualidades que a tornam especiais no mundo da quimica.
@@ -29,5 +29,5 @@ O Permanganato de Potássio é um sal que atua como forte agente oxidante, e é 
 8
 KOH
 Hidróxido de Potássio
-O Hidróxido de Potássio é uma base forte que usado na produção de sabões, diesel, e na depronação de Ácidos. É usado para a obtençãode outras substancias de Potássio, ou como catalizador de sais.
+O Hidróxido de Potássio é uma base forte que usado na produção de sabões, diesel, e na depronação de Ácidos. É usado para a obtenção de outras substancias de Potássio, ou como catalizador de sais.
 0

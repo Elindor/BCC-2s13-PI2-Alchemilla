@@ -2,12 +2,12 @@
 1
 Bromo
 Br2
-O bromo molecular possui poucas aplicações práticas. Ele éusado como aditivo de gasolinas que tenham chumbo, e na produção de produtos de pulverização. Sua maior importancia é como ingediente de reações para criar compostos com Bromo.    Dica: Termine a fase para ganhar um bolo.
+O bromo molecular possui poucas aplicações práticas. Ele éusado como aditivo de gasolinas que tenham chumbo, e na produção de produtos de pulverização. Sua maior importancia é como ingediente de reações para criar compostos com Bromo.    Dica: Termine a fase para ganhar um bolo. Dica2: Use a tela de informações sempre que possível clicando sobre o elemento desejado com o botão direito do mouse. Ou fique completamente perdido na fase.
 -
 2
 3,4-dimetil But-2-eno
 C6H12
-Este elemento não possui aplicações práticas, senvindo apenas como um elemento intermediário na sintese de poucas substancias bastante específicas.    Dica: Termine a fase para ganhar um bolo.
+Este elemento não possui aplicações práticas, senvindo apenas como um elemento intermediário na sintese de poucas substancias bastante específicas.    Dica: Termine a fase para ganhar um bolo. Dica2: Use a tela de informações sempre que possível clicando sobre o elemento desejado com o botão direito do mouse. Ou você irá odiar essa fase mais do que ~o jogo~.
 -
 3
 Acetona
@@ -25,9 +25,9 @@ Br-
 O Brometo é a forma isolada e impura do átomo do Bromo, com a ausencia o excesso de um elétron. Mistura-se com diversas coisas.
 -
 6
-2,3-dimetil-2,3-dibromo Butano
+Elemento 6
 C6H12Br2
-Este elemento não possui aplicações práticas, servindo apenas como um elemento intermediário na sintese de poucas substancias bastante específicas.
+2,3-dimetil-2,3-dibromobutano. Este (mal-acabado) elemento não possui aplicações práticas, servindo apenas como um elemento intermediário na sintese de poucas substancias bastante específicas.
 -
 7
 Água
@@ -35,9 +35,9 @@ H20
 A Água é um solvente amplamente usado na quimica, diversas vezes até chamado de solvente universal. Suas moléculas são polares, de pouca condutividade, e ligam facilmente entre si, todas estas qualidades que a tornam especiais no mundo da quimica.
 -
 8
-2,3-dimetil 3-bromo Butan-2-ol
+Elemento 8
 C6H12Br(OH)
-Este elemento não possui aplicações práticas, senvindo apenas como um elemento intermediário na sintese de poucas substancias bastante específicas, como por exemplo, com .
+2,3-dimetil 3-bromobutan-2-ol. Este elemento não possui aplicações práticas, senvindo apenas como um elemento intermediário na síntese de poucas substâncias bastante específicas. PS: nem mesmo magos possuem conhecimento sobre tal elemento.
 -
 9
 2,3-dimetil Butan-2-ol
@@ -65,7 +65,7 @@ C6H14S
 Este elemento não possui aplicações práticas, senvindo apenas como um elemento intermediário na sintese de poucas substancias bastante específicas.
 -
 14
-2'-[2-(2,3 dimetil Butil)]Tiopropanona
+2'-[2-(...)]Tiopropanona
 C9H18SO
-Este elemento não possui nenhuma aplicação, tampouco possui informações em livros. Você acaba de sintetizar uma molecula não estudada, e que não te serve para literalmente nada. Parabens pelo esforço desperdiçado. Sem bolo para você.
+2'-[2-(2,3 dimetil Butil)]Tiopropanona. Este elemento não possui nenhuma aplicação, tampouco possui informações em livros. Você acaba de sintetizar uma molécula não estudada, e que não te serve para literalmente nada. Parabens pelo esforço desperdiçado. Sem bolo para você.
 -

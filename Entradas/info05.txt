@@ -2,27 +2,27 @@
 1
 Ácido 2-Cloro Benzóico
 C7H5ClO2
-O Ácido 2-Cloro Benzóico é um ácido carboxílico, que é nocivo ao sistema respiratório e aos olhos. É um elemento intermediário na sintese de poucas substancias bastante específicas.
+O Ácido 2-Cloro Benzóico é um ácido carboxílico, que é nocivo ao sistema respiratório e aos olhos. É um elemento intermediário na síntese de poucas substâncias bastante específicas.
 -
 2
 2,6-Dicloro Anilina
 C6H5NCl2
-Este elemento não possui aplicações práticas, sendo apenas um elemento intermediário na sintese de poucas substancias bastante específicas.
+Este elemento não possui aplicações práticas, sendo apenas um elemento intermediário na síntese de poucas substâncias bastante específicas.
 -
 3
-Ácido 2-(2,6-Dicloro Anilina)Benzóico
+Ácido 2-(...)Benzóico
 C13H9NCl2O2
-Este elemento não possui aplicações práticas, sendo apenas um elemento intermediário na sintese de poucas substancias bastante específicas.
+Ácido 2-(2,6-Dicloro Anilina)Benzóico. Este elemento não possui aplicações práticas, sendo apenas um elemento intermediário na síntese de poucas substancias bastante específicas e para estourar o limite de caracteres do jogo.
 -
 4
 Cloreto de Tiolina
 SOCl2
-O Cloreto de Tiolina é um composto inorganico usado em cloração. É um liquido incolor, destilavel, e que decompõe-se aos 140 °C.É um elemento intermediário na sintese de diversas substancias.
+O Cloreto de Tiolina é um composto inorganico usado em cloração. É um líquido incolor, destilável, e que decompõe-se aos 140 °C.É um elemento intermediário na sintese de diversas substâncias.
 -
 5
-(2,6-Dicloro)Fenil-[2(1-Clorometil)]Fenil Amina
+(..)Fenil-[2(..)]Fenilamina
 C13H10NCl3
-Este elemento de nome desnecessáriamente grande, é um elemento intermediário na sintese de poucas substancias bastante específicas.
+(2,6-Dicloro)Fenil-[2(1-Clorometil)]Fenilamina. Este elemento de nome desnecessáriamente grande, é um elemento intermediário na síntese de poucas substancias bastante específicas. Em conjunto com a (2,6-Dicloro)Fenil[2(1-hidroxilmetil)]Fenilamina, tornam a química algum tipo de idioma alienígena.
 -
 6
 Cianeto de Sódio
@@ -30,9 +30,9 @@ NaCN
 O Cianeto de Sódio é um sal solido e incolor que é extensivamente usado na extração de prata e ouro de seus minérios, um processo muito mais ecológico do que o seguro.
 -
 7
-(2,6-Dicloro)Fenil(2-Ciano)Fenil Amina
+(...)Fenil(...)Fenil Amina
 C13H8N2Cl2
-Este outro elemento de nome excessivamente grande, é um elemento intermediário na sintese de poucas substancias bastante específicas.
+(2,6-Dicloro)Fenil(2-Ciano)Fenil Amina. Este outro elemento de nome excessivamente grande, é um elemento intermediário na sintese de poucas substancias bastante específicas.
 -
 8
 Hidróxido de Sódio
@@ -50,7 +50,7 @@ Li(AlH4)
 O Hidreto de Lítio-Alumínio é um sólido extremamente perigoso, usado como propelente de foguete e agente redutor na sintese de compsotos organicos. É um elemento intermediário na sintese de algumas substancias.
 -
 11
-(2,6-Dicloro)Fenil[2(1-hidroxilmetil)]Fenil Amina
+(..)Fenil[2(..)]Fenilamina
 C13H11NCl2
-Este elemento não possui aplicações práticas, senvindo apenas como um elemento intermediário na sintese de poucas substancias bastante específicas.
+(2,6-Dicloro)Fenil[2(1-hidroxilmetil)]Fenilamina. Este elemento não possui aplicações práticas, senvindo apenas como um elemento intermediário na sintese de poucas substancias bastante específicas. Juntamente com a (2,6-Dicloro)Fenil-[2(1-Clorometil)]Fenilamina dão uma tremenda dor de cabeça para diferenciá-las.
 -

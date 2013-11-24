@@ -231,7 +231,7 @@ bool mainInit(){                                                                
     }
 
     somClickBotao2 = al_load_sample("Audio/leftClick.wav");
-    if(!somClickBotao){
+    if(!somClickBotao2){
         fprintf(stderr, "Erro ao criar somClickBotao2.\n");
         al_destroy_display(janela);
         al_destroy_event_queue(mainFila);
@@ -239,11 +239,12 @@ bool mainInit(){                                                                
         al_destroy_font(textFont);
         al_destroy_bitmap(menuA);
         al_destroy_audio_stream(bgm);
+        al_destroy_sample(somClickBotao);
         return false;
     }
 
     sucess = al_load_sample("Audio/chimes.wav");
-    if(!somClickBotao){
+    if(!sucess){
         fprintf(stderr, "Erro ao criar sucess sound.\n");
         al_destroy_display(janela);
         al_destroy_event_queue(mainFila);
@@ -251,6 +252,22 @@ bool mainInit(){                                                                
         al_destroy_font(textFont);
         al_destroy_bitmap(menuA);
         al_destroy_audio_stream(bgm);
+        al_destroy_sample(somClickBotao);
+        al_destroy_sample(somClickBotao2);
+        return false;
+    }
+
+    if(!intro()){
+        fprintf(stderr, "Erro ao executar introdução.\n");
+        al_destroy_display(janela);
+        al_destroy_event_queue(mainFila);
+        al_destroy_font(fonte);
+        al_destroy_font(textFont);
+        al_destroy_bitmap(menuA);
+        al_destroy_audio_stream(bgm);
+        al_destroy_sample(somClickBotao);
+        al_destroy_sample(somClickBotao2);
+        al_destroy_sample(sucess);
         return false;
     }
 
@@ -360,6 +377,8 @@ void mainFinish(){                          //Desaloca a memória
     al_destroy_audio_stream(bgm);
     al_destroy_sample(somNoBotao);
     al_destroy_sample(somClickBotao);
+    al_destroy_sample(somClickBotao2);
+    al_destroy_sample(sucess);
 }
 
 //Intro
@@ -397,7 +416,7 @@ void fadeInOut(ALLEGRO_BITMAP *img, int velocidade, int restTime){              
 }
 
 bool introInit(){
-    introImg = al_load_bitmap("Imagem/the game.png");                             //Carrega introImg (perdi)
+    introImg = al_load_bitmap("Imagem/logo.png");                             //Carrega introImg (perdi)
     if(!introImg){                                                                //Se o introImg não for carregado
         fprintf(stderr, "Bitmap nao foi criado.\n");
         mainFinish();
@@ -928,19 +947,13 @@ int gameMenu(int NSNumeroDaFase){
 
         	else if(clickBotaoR(104, 298, 140, 190, &evento, gameFila)){  // In1
         		if(in1 != 0){
+                    info_elem(in1);
+                    playSample(somClickBotao2);
 
-        			lista *a;
-        			a = menu.prox;
-
-        			for(int i = 1; i < in1; i++)
-        				a = a->prox;
-
-        			info_elem(a->ElNum);
-        	        playSample(somClickBotao2);
-        			if(infoMenu() == 1){
-        	        	gameFinish();
-        	        	return 1;
-        	    	}
+                    if(infoMenu() == 1){
+                        gameFinish();
+                        return 1;
+                    }
         		}  
         	}
 
@@ -954,18 +967,13 @@ int gameMenu(int NSNumeroDaFase){
 
         	else if(clickBotaoR(424, 618, 140, 190, &evento, gameFila)){  // In2
         	    if(in2 != 0){
+                    info_elem(in2);
+                    playSample(somClickBotao2);
 
-        			lista *a;
-        			a = menu.prox;
-        			for(int i = 1; i < in2; i++)
-        				a = a->prox;
-
-        			info_elem(a->ElNum);
-        	        playSample(somClickBotao2);
-        			if(infoMenu() == 1){
-        	        	gameFinish();
-        	        	return 1;
-        	    	}
+                    if(infoMenu() == 1){
+                        gameFinish();
+                        return 1;
+                    }
         		}   
         	}
 
@@ -1005,18 +1013,13 @@ int gameMenu(int NSNumeroDaFase){
 
         	else if(clickBotaoR(133, 332, 333, 383, &evento, gameFila)){  // Out1
         	    if(out1 != 0){
+                    info_elem(out1);
+                    playSample(somClickBotao2);
 
-        			lista *a;
-        			a = menu.prox;
-        			for(int i = 1; i < in2; i++)
-        				a = a->prox;
-
-        			info_elem(a->ElNum);
-        	        playSample(somClickBotao2);
-        			if(infoMenu() == 1){
-        	        	gameFinish();
-        	        	return 1;
-        	    	}
+                    if(infoMenu() == 1){
+                        gameFinish();
+                        return 1;
+                    }
         		}   
         	}
 
@@ -1034,18 +1037,13 @@ int gameMenu(int NSNumeroDaFase){
 
         	else if(clickBotaoR(383, 582, 333, 383, &evento, gameFila)){  // Out2
         	    if(out2 != 0){
+                    info_elem(out2);
+                    playSample(somClickBotao2);
 
-        			lista *a;
-        			a = menu.prox;
-        			for(int i = 1; i < in2; i++)
-        				a = a->prox;
-
-        			info_elem(a->ElNum);
-        	        playSample(somClickBotao2);
-        			if(infoMenu() == 1){
-        	        	gameFinish();
-        	        	return 1;
-        	    	}
+                    if(infoMenu() == 1){
+                        gameFinish();
+                        return 1;
+                    }
         		}   
         	}
         }
@@ -1711,9 +1709,9 @@ int gameMenu(int NSNumeroDaFase){
 
     			            else{
     			            	if(strlen(menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName) > 15)
-    			                	al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 831.5, 225, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                	al_draw_textf(textFont, (al_map_rgb(0, 0, 0)), 831.5, 225, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
     			                else
-    			                	al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 831.5, 215, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
+    			                	al_draw_textf(fonte, (al_map_rgb(0, 0, 0)), 831.5, 215, ALLEGRO_ALIGN_CENTRE, "%s", menu.prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->prox->ElName);
     			            }
 			
     			            if(clickBotaoL(733, 930, 210, 251, &evento, gameFila) && al_is_event_queue_empty(gameFila) && !buttonPressed){  // Struct3

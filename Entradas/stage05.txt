@@ -1,4 +1,4 @@
-00
+﻿00
 -1
 1
 Ácido 2-Cloro Benzóico
@@ -9,7 +9,7 @@
 1
 -1
 3
-Ácido 2-(2,6-Dicloro Anilina)Benzóico
+Ácido 2-(...)Benzóico
 1
 -1
 4
@@ -17,7 +17,7 @@ Cloreto de Tiolina
 1
 -1
 5
-(2,6-Dicloro)Fenil-[2(1-Clorometil)]Fenil Amina
+(..)Fenil-[2(..)]Fenilamina
 1
 -1
 6
@@ -25,7 +25,7 @@ Cianeto de Sódio
 1
 -1
 7
-(2,6-Dicloro)Fenil(2-Ciano)Fenil Amina
+(...)Fenil(...)Fenil Amina
 1
 -1
 8
@@ -41,6 +41,6 @@ Hidreto de Lítio-Alumínio
 1
 -1
 11
-(2,6-Dicloro)Fenil[2(1-hidroxilmetil)]Fenil Amina
+(..)Fenil[2(..)]Fenil Amina
 1
 -2

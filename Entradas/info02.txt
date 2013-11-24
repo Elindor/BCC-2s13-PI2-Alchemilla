@@ -32,7 +32,7 @@ O átimo Sódio, de numero atomico 11, é altamente reativo e corrosivo em conta
 7
 Gás Hidrogênio
 H2
-O gás Hidrogênio é o gás mais leve, 14 vezesmais leve que a mistura que compõe o ar atmosférico. Jamais encontra-se hidrogenio puro, devido à facilidade com que ele liga-seconsigo mesmo ou com quase qualquer substancia do mundo.
+O gás Hidrogênio é o gás mais leve, 14 vezes mais leve que a mistura que compõe o ar atmosférico. Jamais encontra-se hidrogenio puro, devido à facilidade com que ele liga-seconsigo mesmo ou com quase qualquer substancia do mundo.
 -
 8
 Gás Oxigenio
@@ -42,17 +42,17 @@ O oxigenio, sempre encontrado em duplas e portanto gás quando puro, é um dos e
 9
 Cloreto de Cálcio
 CaCl2
-O Cloreto de Calcio é um sal, soluvel em agua, usado em maquinas de refrigeração, produção de queijo, e é componente do cimento. É usado junto com uma base forte na produção de Hidreto de Calcio.
+O Cloreto de Calcio é um sal, soluvel em agua, usado em maquinas de refrigeração, produção de queijo, e é componente do cimento. É usado junto com uma base forte na produção de Hidreto de Cálcio.
 -
 10
 Hidróxido de Cálcio
 Ca(OH)2
-O Hidróxido de Cálcio, também conhecido como Cal Apagada, é um importante material na contrução, sendo usado na produção de argamassa, cimento, asfalto, e tinta. Também é usado em suplementos de calcio e depiladores. Além disso, é um reagente amplamente usado na quimica, com diversos usos.
+O Hidróxido de Cálcio, também conhecido como Cal Apagada, é um importante material na contrução, sendo usado na produção de argamassa, cimento, asfalto, e tinta. Também é usado em suplementos de cálcio e depiladores. Além disso, é um reagente amplamente usado na quimica, com diversos usos.
 -
 11
 Óxido de Cálcio
 CaO
-O Óxido de Cálcio, ou apenas Cal, é uma das substancias mais importantes da industria. Usado na fabricação de argamassas e tinturas, é usado também em ceramicas, siderugicas, produção de papel, desodorantes, e como branqueador, alem de ser outro reagente amplamente usado na química.
+O Óxido de Cálcio, ou apenas Cal, é uma das substâncias mais importantes da indústria. Usado na fabricação de argamassas e tinturas, é usado também em cerâmicas, siderúgicas, produção de papel, desodorantes, e como branqueador, além de ser outro reagente amplamente usado na química.
 -
 12
 Hidreto de Sódio
@@ -62,5 +62,5 @@ O Hidreto de sódio é uma base fortíssima, insoluvem em solventes organicos e 
 13
 Hidreto de Cálcio
 CaH2
-O Hidreto de Cálcio é um composto quimico cinza, ou raramente branco quando puro, que reage fortemente com agua liberando Hidrogenio, tornando-se portanto um agente de secagem fortíssimo.
+O Hidreto de Cálcio é um composto quimico cinza, ou raramente branco quando puro, que reage fortemente com água liberando Hidrogenio, tornando-se portanto um agente de secagem fortíssimo.
 !

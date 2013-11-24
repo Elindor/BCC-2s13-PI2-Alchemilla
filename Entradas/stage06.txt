@@ -1,4 +1,4 @@
-00
+﻿00
 -1
 1
 Bromo
@@ -21,7 +21,7 @@ Brometo
 1
 -1
 6
-2,3-dimetil-2,3-dibromo Butano
+Elemento 6
 2
 -1
 7
@@ -29,7 +29,7 @@ Brometo
 1
 -1
 8
-2,3-dimetil 3-bromo Butan-2-ol
+Elemento 8
 2
 -1
 9
@@ -53,6 +53,6 @@ Bromoacetona
 1
 -1
 14
-2'-[2-(2,3 dimetil Butil)]Tiopropanona
+2'-[2-(...)]Tiopropanona
 3
 -2

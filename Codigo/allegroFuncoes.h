@@ -1,5 +1,7 @@
 #ifndef allegroFuncoes
 #define allegroFuncoes
+#include "struct.h"
+
 bool mainInit();                                                                        //Inicia os componentes
 int mainMenu();
 void mainFinish();                                                                      //Limpa os componentes
@@ -37,4 +39,5 @@ int options();
 void optionsFinish();
 
 extern ALLEGRO_SAMPLE *somClickBotao, *somClickBotao2, *sucess;
+extern lista menu;
 #endif
