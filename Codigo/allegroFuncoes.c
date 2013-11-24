@@ -1213,10 +1213,10 @@ int gameMenu(int NSNumeroDaFase){
         }
 
         //logtext1
-        al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 50, 493, ALLEGRO_ALIGN_LEFT, "%s", logtext1);
+        al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 50, 500, ALLEGRO_ALIGN_LEFT, "%s", logtext1);
         
         //logtext2
-        al_draw_textf(fonte, (al_map_rgb(128, 0, 0)), 50, 545, ALLEGRO_ALIGN_LEFT, "%s", logtext2);
+        al_draw_textf(textFont, (al_map_rgb(128, 0, 0)), 50, 545, ALLEGRO_ALIGN_LEFT, "%s", logtext2);
 
 
 	//Gambiarra ahead!
