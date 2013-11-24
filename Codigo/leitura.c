@@ -9,7 +9,7 @@ int reagentes[5];        //reagentes ativos
 char reagname[5][30];    //e seus nomes
 char infoname[30], infosymbol[30], infotext[500];    // Para janela de informações
 char confere[30];
-char logtext1[40], logtext2[40];
+char logtext1[100], logtext2[100];
 
 void filenamesgen(){
     sprintf (checklist, "Entradas/check%02d.txt", fase); //
@@ -85,7 +85,7 @@ void insert(int num, lista *menu, int type){              //
 
     FILE *file;
     int x;
-    char buff[30];
+    char buff[100];
 
     file = fopen(itemlist, "r");
     if(!file){
