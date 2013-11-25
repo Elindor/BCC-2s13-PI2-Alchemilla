@@ -162,11 +162,14 @@ void nomeia_reag(int reagente, int i){              //
         return;
     }
     printf("Reagente = %d, i = %d\n", reagente, i);
+
     do{                                                 // vetor global e inserir os nomes adequados na interface.
         fgetline(reag, buff, 30);                   // Os nomes são inseridos na matriz reagname[10][30]. 
         aux = atoi(buff);
         printf("Tentou colocar: %d\n", aux);
                         printf("Name = %s\r\n", buff);
+	if(aux == 0)
+	aux = 1;
 
 
         if(aux == reagente){                        //
@@ -179,7 +182,7 @@ void nomeia_reag(int reagente, int i){              //
         fgetline(reag, buff, 30);
         fgetline(reag, buff, 30);
         fgetline(reag, buff, 500);
-    }while(aux != 0);
+    }while(1);
 
     fclose(reag);
 
@@ -196,10 +199,10 @@ void info_reag(int reagente){                           //
         fprintf(stderr, "Erro ao abrir reaglist.\n");
         return;
     }
-
     do{                                                 // janela de informações mostrá-los.
         fgetline(reag, buff, 20);
         aux = atoi(buff);
+	if(aux == 0) aux = 1;
 
         if(aux == reagente){
             fgetline(reag, infoname, 30);
@@ -241,7 +244,7 @@ void start_menu(lista *menu){                       //
     x = atoi(buff);
 
     //TNC VS!
-	//x = 1;
+	x = 1;
 
     while(x != -1){
         insert(x, menu, 0);
