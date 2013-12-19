@@ -9,7 +9,7 @@ Carbonato de Cálcio
 1
 -1
 3
-Gás Hidrogenio
+Gás Hidrogênio
 1
 -1
 4
@@ -57,11 +57,11 @@ Butil-Lítio
 1
 -1
 15
-Acetileto de litio
+Acetileto de lítio
 1
 -1
 16
-But-3-in-oxido de Lítio
+But-3-in-óxido de Lítio
 1
 -1
 17

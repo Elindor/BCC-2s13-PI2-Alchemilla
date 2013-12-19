@@ -2,7 +2,7 @@
 1
 Cloro
 Cl2
-O gás cloro é o estado puro do Cloro, náo isolado. É abundante na atmosfeta e é essencial para diversas formas de vida. É usado para no tratamento de água para o consumo,e também na composição de diversos produtos de limpeza, como desinfetantes. É tóxico, e em altas concentrações é extremamente venenoso.
+O gás cloro é o estado puro do Cloro, náo isolado. É abundante na atmosfeta e é essencial para diversas formas de vida. É usado no tratamento de água para o consumo,e também na composição de diversos produtos de limpeza, como desinfetantes. É tóxico, e em altas concentrações é extremamente venenoso.
 -
 2
 Metano
@@ -27,7 +27,7 @@ O Dicloro Metano, é um dos mais comuns solventes, por ser pouco perigoso, muito
 6
 Clorofórmio
 CHCl3
-O Clorofórmio é um liquido extremamente volátil, usado como anestésico externo aplicado em pele, embora muito tóxico se ingerido ou respirado, podendo desacordar ou matar, causando danos em todo o sistema central do corpo humano, além de ser cancerigeno.
+O Clorofórmio é um liquido extremamente volátil, usado como anestésico externo aplicado em pele, embora muito tóxico se ingerido ou respirado, podendo desacordar ou matar, causando danos em todo o sistema central do corpo humano, além de ser cancerígeno.
 -
 7
 Tetracloreto de Carbono
@@ -37,7 +37,7 @@ O Tetracloreto de Carbono é usado hoje em investigações cientificas e e duran
 8
 Bromo
 Br2
-O bromo molecular possui poucas aplicações práticas. Ele éusado como aditivo de gasolinas que tenham chumbo, e na produção de produtos de pulverização. Sua maior importancia é como ingediente de reações para criar compostos com Bromo.
+O bromo molecular possui poucas aplicações práticas. Ele é usado como aditivo de gasolinas que tenham chumbo, e na produção de produtos de pulverização. Sua maior importância é como ingediente de reações para criar compostos com Bromo.
 -
 9
 Ácido Bromídrico
@@ -52,22 +52,22 @@ O Bromometano, ou brometo de metila, é um gás incolor tóxico que ao longo da 
 11
 Dibromo Metano
 CH2Br2
-O Dibromometano é um solvente naturalmente gerado por algas marinhas. Com poucos usos práticos, é em geral apenas um intermediário quimico para a sintese de brometos.
+O Dibromometano é um solvente naturalmente gerado por algas marinhas. Com poucos usos práticos, é em geral apenas um intermediário quimico para a síntese de brometos.
 -
 12
 Bromofórmio
 CHBr3
-O Bromofórmio é um liquido incolor, com cheiro adocicado. Assim como o Clorofórmio, é bastante usado como solvente, e é extremamente tóxico. É usado na sintese e refino de drogas, e sua venda é controlada. É a substancia usada para determinar a densidade de pedras preciosas.
+O Bromofórmio é um liquido incolor, com cheiro adocicado. Assim como o Clorofórmio, é bastante usado como solvente, e é extremamente tóxico. É usado na sintese e refino de drogas, e sua venda é controlada. É a substância usada para determinar a densidade de pedras preciosas.
 -
 13
 Tetrabrometo de Carbono
 CBr4
-O Tetrabrometo de Carbono é usado como solvente para ceras, graxas, e oleos, e usado também nas industrias de plastico e borracha. É capaz de separar minerais em decantação/flotação devido à alta densidade, e é um intermediário quimico para agrotóxicos.
+O Tetrabrometo de Carbono é usado como solvente para ceras, graxas, e óleos, e usado também nas industrias de plástico e borracha. É capaz de separar minerais em decantação/flotação devido à alta densidade, e é um intermediário químico para agrotóxicos.
 -
 14
 Magnésio
 Mg
-O magnésio é um metal alcalino-terroso, e é o sétimo elemento mais abundante da terra. É usado especialmente como liga como aluminio, e emite luz muito forte quando aquecido, sendo usado na produção de flashes fotograficos, fogos de artificio e granadas de luz. Também é usado no refino de aço, para retirar o enxofre.
+O magnésio é um metal alcalino-terroso, e é o sétimo elemento mais abundante da terra. É usado especialmente como liga como alumínio, e emite luz muito forte quando aquecido, sendo usado na produção de flashes fotográficos, fogos de artifício e granadas de luz. Também é usado no refino de aço, para retirar o enxofre.
 -
 15
 Brometo de Metil Magnésio
@@ -77,7 +77,7 @@ O Brometo de Metilmagnésio é um composto quimico sensivel ao ar e umidade, nor
 16
 Brometo de Magnésio
 MgBr2
-O Brometo de Magnésio é um sedativo leve e anticonvulsivo, usado em tratamentos de perturbações do sistema nervoso. É soluvem em ague, e encontrado na água do mar morto, alem de algumas gemas.
+O Brometo de Magnésio é um sedativo leve e anticonvulsivo, usado em tratamentos de perturbações do sistema nervoso. É soluvem em agua, e encontrado na água do mar morto, além de algumas gemas.
 -
 17
 Etano

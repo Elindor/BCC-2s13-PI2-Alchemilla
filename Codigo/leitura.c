@@ -6,8 +6,7 @@ char checklist[21], startlist[21], itemlist[21], infolist[20]; //Nomes dos arqui
 int target; char targetname[30]; //Objetivo da fase
 int reagentes[5];        //reagentes ativos
 char reagname[5][30];    //e seus nomes
-char infoname[30], infosymbol[30], infotext[500];    // Para janela de informações
-char confere[30];
+char infoname[35], infosymbol[35], infotext[500];    // Para janela de informações
 char logtext1[100], logtext2[100];
 
 void filenamesgen(){
@@ -200,20 +199,20 @@ void info_reag(int reagente){                           //
         return;
     }
     do{                                                 // janela de informações mostrá-los.
-        fgetline(reag, buff, 20);
+        fgetline(reag, buff, 35);
         aux = atoi(buff);
 	if(aux == 0) aux = 1;
 
         if(aux == reagente){
-            fgetline(reag, infoname, 30);
-            fgetline(reag, infosymbol, 30);
+            fgetline(reag, infoname, 35);
+            fgetline(reag, infosymbol, 35);
             fgetline(reag, infotext, 500);
             fclose(reag);
             return;
         }
             
-        fgetline(reag, buff, 30);
-        fgetline(reag, buff, 30);
+        fgetline(reag, buff, 35);
+        fgetline(reag, buff, 35);
         fgetline(reag, buff, 500);
     }while(aux != 0);
 
@@ -326,24 +325,24 @@ void info_elem(int elem){                   //
         return;
     }
 
-    fgetline(reag, buff, 30);
+    fgetline(reag, buff, 35);
 
     do{                                         // informações carregar.
-        fgetline(reag, buff, 30);
+        fgetline(reag, buff, 35);
         aux = atoi(buff);
         printf("%d\n", aux);
 
         if(aux == elem){
-            fgetline(reag, infoname, 30);
-            fgetline(reag, infosymbol, 30);
+            fgetline(reag, infoname, 35);
+            fgetline(reag, infosymbol, 35);
             fgetline(reag, infotext, 500);
             fclose(reag);
             return;
         }
 
         
-        fgetline(reag, buff, 30);
-        fgetline(reag, buff, 30);
+        fgetline(reag, buff, 35);
+        fgetline(reag, buff, 35);
         fgetline(reag, buff, 500);
         fgetline(reag, buff, 10);
     }while(aux != 0);

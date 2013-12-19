@@ -2,7 +2,7 @@
 1
 Bromo
 Br2
-O bromo molecular possui poucas aplicações práticas. Ele éusado como aditivo de gasolinas que tenham chumbo, e na produção de produtos de pulverização. Sua maior importancia é como ingediente de reações para criar compostos com Bromo.    Dica: Termine a fase para ganhar um bolo. Dica2: Use a tela de informações sempre que possível clicando sobre o elemento desejado com o botão direito do mouse. Ou fique completamente perdido na fase.
+O bromo molecular possui poucas aplicações práticas. Ele éusado como aditivo de gasolinas que tenham chumbo, e na produção de produtos de pulverização. Sua maior importância é como ingediente de reações para criar compostos com Bromo.    Dica: Termine a fase para ganhar um bolo. Dica2: Use a tela de informações sempre que possível clicando sobre o elemento desejado com o botão direito do mouse. Ou fique completamente perdido na fase.
 -
 2
 3,4-dimetil But-2-eno
@@ -12,17 +12,17 @@ Este elemento não possui aplicações práticas, senvindo apenas como um elemen
 3
 Acetona
 CH3(CO)CH3
-A acetona, ou propan-2-ona, é um liquido incolor de odor e sabor faceis de distinguir. É volátil e inflamável. É um solvente muito usado, geralmente encontrado em esmaltes, tintas e vernizes. Também é usado na produção de polvora e como gelatinizante para emprego desta em munições.
+A acetona, ou propan-2-ona, é um líquido incolor de odor e sabor faceis de distinguir. É volátil e inflamável. É um solvente muito usado, geralmente encontrado em esmaltes, tintas e vernizes. Também é usado na produção de pólvora e como gelatinizante para emprego desta em munições.
 -
 4
 Bromânio
 C6H12Br+
-O bromânio é uma molecula instavel e desequilibrada, que facilmente junta-se com outras. Entertanto, não possui aplicações práticas, servindo apenas como um elemento intermediário na sintese de algumas substancias.
+O bromânio é uma molécula instável e desequilibrada, que facilmente junta-se com outras. Entertanto, não possui aplicações práticas, servindo apenas como um elemento intermediário na sintese de algumas substâncias.
 -
 5
 Brometo
 Br-
-O Brometo é a forma isolada e impura do átomo do Bromo, com a ausencia o excesso de um elétron. Mistura-se com diversas coisas.
+O Brometo é a forma isolada e impura do átomo do Bromo, com a ausência de um elétron. Mistura-se com diversas coisas, menos com essa gentalha.
 -
 6
 Elemento 6
@@ -42,12 +42,12 @@ C6H12Br(OH)
 9
 2,3-dimetil Butan-2-ol
 C6H13(OH)
-Este elemento não possui aplicações práticas, servindo apenas como um elemento intermediário na sintese de poucas substancias bastante específicas.
+Este elemento não possui aplicações práticas, servindo apenas como um elemento intermediário na síntese de poucas substâncias bastante específicas.
 -
 10
 Bromoacetona
 C3H5BrO
-A Bromoacetona é um solvente de cheiro caracterisco extremamente irritanteaos olhos e à pele, usado na produção de Gás Lacrimogênio.
+A Bromoacetona é um solvente de cheiro caracterisco extremamente irritante aos olhos e à pele, usado na produção de Gás Lacrimogênio.
 -
 11
 Ácido Bromídrico

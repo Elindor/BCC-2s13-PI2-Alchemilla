@@ -369,6 +369,8 @@ int mainMenu(){
 }
 
 void mainFinish(){                          //Desaloca a memória
+    //al_flush_event_queue(mainFila);
+
     al_destroy_bitmap(menuA);
     al_destroy_display(janela);
     al_destroy_event_queue(mainFila);
@@ -609,6 +611,8 @@ int selectMenu(){
 }
 
 void selectFinish(){
+    //al_flush_event_queue(selectFila);
+
     al_destroy_bitmap(menuB);
     al_destroy_bitmap(botao);
     al_destroy_event_queue(selectFila);
@@ -641,6 +645,8 @@ bool infoInit(){
 }
 
 void infoFinish(){
+    al_flush_event_queue(infoFila);
+
     al_destroy_bitmap(infoBackground);
     al_destroy_font(titleFont);
     al_destroy_event_queue(infoFila);
@@ -703,16 +709,25 @@ int infoMenu(){
     				linha5[0] = '\0';
     		}
 
-    		else
-    			linha4[0] = '\0';
+    		else{
+                linha4[0] = '\0';
+                linha5[0] = '\0';
+            }
     	}
 
-    	else
-    		linha3[0] = '\0';
+    	else{
+            linha3[0] = '\0';
+            linha4[0] = '\0';
+            linha5[0] = '\0';
+        }
     }
 
-    else
-    	linha2[0] = '\0';
+    else{
+        linha2[0] = '\0';
+        linha3[0] = '\0';
+        linha4[0] = '\0';
+        linha5[0] = '\0';
+    }
 
     linha1[100] = '\0';
     linha2[100] = '\0';
@@ -2026,6 +2041,8 @@ int gameMenu(int NSNumeroDaFase){
 void gameFinish(){
     int i;
 
+    //al_flush_event_queue(gameFila);
+
 	al_destroy_event_queue(gameFila);
 	al_destroy_bitmap(inGameBackground);
     termina_lista(&menu);
@@ -2050,7 +2067,6 @@ void gameFinish(){
     in1name[0] = '\0';
     in2name[0] = '\0';
     inreagname[0] = '\0';
-    confere[0] = '\0';
 
     logtext1[0] = '\0';
     logtext2[0] = '\0';
@@ -2119,6 +2135,8 @@ int creditos(){
 }
 
 void creditoFinish(){
+    //al_flush_event_queue(creditoFila);
+
 	al_destroy_bitmap(creditoBackground);
 	al_destroy_event_queue(creditoFila);
 }
@@ -2253,6 +2271,8 @@ int options(){
 }
 
 void optionsFinish(){
-        al_destroy_bitmap(optionsBackground);
-        al_destroy_event_queue(optionsFila);
+    //al_flush_event_queue(optionsFila);
+
+    al_destroy_bitmap(optionsBackground);
+    al_destroy_event_queue(optionsFila);
 }

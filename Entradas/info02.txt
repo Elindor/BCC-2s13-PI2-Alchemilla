@@ -10,9 +10,9 @@ HCl
 O Ácido cloridrico, ou em algumas circunstancias, o Ácido Muriático, é um ácido muito forte usado diversas vezes na industria como reagente. Por ser um ácido forte, reage com Bases.
 -
 3
-Calcio
+Cálcio
 Ca
-O átomo Calcio, de numero atomico 20, é um metal alcalino-terroso branco, que amarela rapidamente em exposição ao ar. O calcio puro isolado possui carga 2+.
+O átomo Cálcio, de numero atomico 20, é um metal alcalino-terroso branco, que amarela rapidamente em exposição ao ar. O calcio puro isolado possui carga 2+.
 -
 4
 Cloreto de Sódio
@@ -62,5 +62,5 @@ O Hidreto de sódio é uma base fortíssima, insoluvem em solventes organicos e 
 13
 Hidreto de Cálcio
 CaH2
-O Hidreto de Cálcio é um composto quimico cinza, ou raramente branco quando puro, que reage fortemente com água liberando Hidrogenio, tornando-se portanto um agente de secagem fortíssimo.
+O Hidreto de Cálcio é um composto quimico cinza, ou raramente branco quando puro, que reage fortemente com água liberando Hidrogênio, tornando-se portanto um agente de secagem fortíssimo.
 !

@@ -7,17 +7,17 @@ A Água é um solvente amplamente usado na quimica, diversas vezes até chamado 
 2
 Carbonato de Cálcio
 CaCO3
-O Carbonato de cálcio é o principal componente das rochas pedras. Embora seja um sal, é levemente alcalino. É muito usado na industria de construção, seja como material, ou como pedregulhos adicionados ao asfalto. Entretanto, é facilmente destruido por acidos, e não é recomendado construir-se apenas com ele devido à chuva acida.
+O Carbonato de cálcio é o principal componente das rochas pedras. Embora seja um sal, é levemente alcalino. É muito usado na industria de construção, seja como material, ou como pedregulhos adicionados ao asfalto. Entretanto, é facilmente destruido por ácidos, e não é recomendado construir-se apenas com ele devido à chuva acida.
 -
 3
-Gás Hidrogenio
+Gás Hidrogênio
 H2
-O gás Hidrogênio é o gás mais leve, 14 vezesmais leve que a mistura que compõe o ar atmosférico. Jamais encontra-se hidrogenio puro, devido à facilidade com que ele liga-se consigo mesmo ou com quase qualquer substancia do mundo.
+O gás Hidrogênio é o gás mais leve, 14 vezes mais leve que a mistura que compõe o ar atmosférico. Jamais encontra-se hidrogênio puro, devido à facilidade com que ele liga-se consigo mesmo ou com quase qualquer substancia do mundo.
 -
 4
 Hidróxido de Cálcio
 Ca(OH)2
-O Hidróxido de Cálcio, também conhecido como Cal Apagada, é um importante material na contrução, sendo usado na produção de argamassa, cimento, asfalto, e tinta. Também é usado em suplementos de calcio e depiladores. Além disso, é um reagente amplamente usado na quimica, com diversos usos.
+O Hidróxido de Cálcio, também conhecido como Cal Apagada, é um importante material na contrução, sendo usado na produção de argamassa, cimento, asfalto, e tinta. Também é usado em suplementos de cálcio e depiladores. Além disso, é um reagente amplamente usado na quimica, com diversos usos.
 -
 5
 Acetileno
@@ -52,12 +52,12 @@ O Etanol, ou Álcool Etílico, é uma substancia fácil de se obter (Em tese dev
 11
 Dietil Éter
 C4H10
-O Dietil Éter, ou Éter Etílico, ou ainda etoxletano, é uma substancia volátil, cuja inalação pode causar efeitos colaterais psicológicos. Quando exposto à luz e ao ar, ele pode esporádicamente produzir peróxidos explosivos, sendo bastante parigoso mantê-los sem conservantes.
+O Dietil Éter, ou Éter Etílico, ou ainda etoxletano, é uma substancia volátil, cuja inalação pode causar efeitos colaterais psicológicos. Quando exposto à luz e ao ar, ele pode esporádicamente produzir peróxidos explosivos, sendo bastante perigoso mantê-los sem conservantes.
 -
 12
 Etenol
 C2H4O
-O Etenol, ou Hidroxietileno, é um alcool utilizado especialmente em perfumarias e aerossóis que devam evaporar rapidamente, devido à sua volatilidade.
+O Etenol, ou Hidroxietileno, é um álcool utilizado especialmente em perfumarias e aerossóis que devam evaporar rapidamente, devido à sua volatilidade.
 -
 13
 Etanal
@@ -67,15 +67,15 @@ O Etanal, ou Acetaldeído, é um liquido incolor, produto metabólico do alcool.
 14
 Butil-Lítio
 C4H9Li
-O Butíl-Lítio é uma base forte, usado amplamente como iniciados de polimerização. Ele se decompõe antes de vaporizar, e é um composto ingrediente de inumeras reações quimicas, quando não um catalizador.
+O Butíl-Lítio é uma base forte, usado amplamente como iniciados de polimerização. Ele se decompõe antes de vaporizar, e é um composto ingrediente de inúmeras reações quimicas, quando não um catalizador.
 -
 15
-Acetileto de litio
+Acetileto de lítio
 Li2C2
 O Acetileto de Lítio, ou Carbeto de Lítio, é um composto intermediário de reações e usado em leitura de datação por radiocarbono (carbono 14).
 -
 16
-But-3-in-oxido de Lítio
+But-3-in-óxido de Lítio
 C4H5LiO
 Este elemento não possui aplicações práticas, servindo apenas como um elemento intermediário na sintese de poucas substancias bastante específicas.
 -
@@ -97,5 +97,5 @@ Este elemento não possui aplicações práticas, servindo apenas como um elemen
 20
 Sec-Butanol
 C4H9OH
-O Sec-butanol, ou 2-Butanol, é um liquido incolor inflamavel, produzido em larga escala, como percursor do solvente industrial MEK, um solvente importantíssimo para inumeros tipos de industria.
+O Sec-butanol, ou 2-Butanol, é um liquido incolor inflamável, produzido em larga escala, como percursor do solvente industrial MEK, um solvente importantíssimo para inumeros tipos de industria.
 -
